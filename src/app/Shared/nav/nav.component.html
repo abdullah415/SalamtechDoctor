@@ -19,8 +19,25 @@
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
+   
     </div>
+    <div *ngIf="DefaultLang == 'en'" >
+      <div class="btn-lang" (click)="ChangeLanguage(DefaultLang)">
+        <img (click)="ChangeLanguage(DefaultLang)" src="../../../assets/img/en/en.png" srcset="img/en@2x.png 2x,img/en@3x.png 3x" class="en">
+        <span >English</span>
+      </div>
+    </div>
+    <div *ngIf="DefaultLang == 'ar'" >
+      <div class="btn-lang" (click)="ChangeLanguage(DefaultLang)">
+        <img (click)="ChangeLanguage(DefaultLang)" src="../../../assets/img/ar/arabic-language-code.png" class="en">
+        <span >عربى</span>
+      </div>
+    </div>
+
   </div>
 </nav>
+<p>
+  {{ 'mainModule.welcomeMessege' | translate }}
+</p>
 
 

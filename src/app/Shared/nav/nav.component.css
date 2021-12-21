@@ -47,3 +47,26 @@ div.content {
     float: none;
   }
 }
+
+
+.btn-lang {
+  width: 127px;
+  height: 40px;
+  padding: 5px 12px 5px 2.3px;
+  background-color: #eff0f1;
+  cursor: pointer;
+}
+img.en {
+  width: 45.4px;
+  height: 30px;
+  flex-grow: 0;
+  margin: 0 12.3px 0 0;
+  object-fit: contain;
+}
+
+.btn-lang span
+{
+  font-family: 'SFUIText';
+  color: #97999a;
+  font-size: 14px;
+}
