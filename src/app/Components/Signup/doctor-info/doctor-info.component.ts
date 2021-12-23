@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActiveComponentService } from '../active-component.service';
 
 @Component({
   selector: 'app-doctor-info',
@@ -8,16 +7,15 @@ import { ActiveComponentService } from '../active-component.service';
 })
 export class DoctorInfoComponent implements OnInit {
 
-  constructor(private _ActiveComponentService:ActiveComponentService) {     
-        this.DefaultStyle = "Doctorinfo"; 
-        this._ActiveComponentService.ActiveComponent = "Doctorinfo";
-        console.log(this._ActiveComponentService.ActiveComponent)
-    }
+  constructor() {  }
 
-    //#region Decalre Variables
-    DefaultStyle:string = "Doctorinfo";
-    //#endregion
-    ngOnInit(): void {
-      this.DefaultStyle = "Doctorinfo";
-    }
+  ngOnInit(): void {}
+
+  changeStyle()
+  {
+  //  document.getElementById('Signup')?.classList.remove('OnClick-Style');
+  //  document.getElementById('Doctorinfo')?.classList.remove('OnClick-Style');
+   document.getElementById('Certificates')?.classList.add('OnClick-Style');
+  }
+
 }

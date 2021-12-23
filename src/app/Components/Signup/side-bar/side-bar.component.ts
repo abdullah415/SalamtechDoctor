@@ -1,5 +1,4 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ActiveComponentService } from '../active-component.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -8,18 +7,12 @@ import { ActiveComponentService } from '../active-component.service';
 })
 export class SideBarComponent implements OnInit  {
 
-  constructor(private _ActiveComponentService:ActiveComponentService) {
-    // this.DefaultStyle = this._ActiveComponentService.ActiveComponent ; 
-    this._ActiveComponentService.ActiveComponent = "Signup";
+  constructor() {
+    
    }
  
-
-  //#region Decalre Variables
-  DefaultStyle:string;
-  //#endregion
   ngOnInit(): void {
-    this.DefaultStyle = "Signup";
-    console.log(this.DefaultStyle)
+    document.getElementById('Signup')?.classList.add('OnClick-Style');
   }
   
 

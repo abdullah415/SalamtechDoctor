@@ -29,9 +29,22 @@ ul
     color: #A6AAB5;
     font-size: 18px;
     font-weight: 500;
-    margin: 11px;
+    margin: 0px;
     padding: 5px;
     padding-left: 15px;
+    transition: 1s;
+}
+.li-Content-OnClick-Style
+{
+    /* background-color: salmon; */
+    border-left: 2px solid #DCDEE4;
+    color: #A6AAB5;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0px;
+    padding: 5px;
+    padding-left: 15px;
+    transition: 1s;
 }
 
 ul li span

@@ -12,6 +12,9 @@ import { LoginComponent } from './Components/login/login.component';
 import { SideBarComponent } from './Components/Signup/side-bar/side-bar.component';
 import { SignupComponent } from './Components/Signup/signup/signup.component';
 import { DoctorInfoComponent } from './Components/Signup/doctor-info/doctor-info.component';
+import { CertificatesComponent } from './Components/Signup/certificates/certificates.component';
+import { DocumentsComponent } from './Components/Signup/documents/documents.component';
+import { CongratulationsComponent } from './Components/Signup/congratulations/congratulations.component';
 
 // AoT requires an exported function for factories
 export function CreateTranslateLoader(http: HttpClient) {
@@ -27,6 +30,9 @@ export function CreateTranslateLoader(http: HttpClient) {
     SideBarComponent,
     SignupComponent,
     DoctorInfoComponent,
+    CertificatesComponent,
+    DocumentsComponent,
+    CongratulationsComponent,
   ],
   imports: [
     HttpClientModule,
