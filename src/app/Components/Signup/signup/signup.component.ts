@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActiveComponentService } from '../active-component.service';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-signup',
@@ -8,22 +7,30 @@ import { ActiveComponentService } from '../active-component.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private _ActiveComponentService:ActiveComponentService) {
-    this.DefaultStyle = "Signup"; 
-    this._ActiveComponentService.ActiveComponent = "Signup";
-   }
+  @ViewChild('DoctorinfoRef') DoctorinfoRef: ElementRef<HTMLInputElement>;
 
-   //#region Decalre Variables
-   DefaultStyle:string = "Signup";
-   //#endregion
+
+  constructor() {}
+    
+
+  
    ngOnInit(): void {
-     this.DefaultStyle = "Signup";
+   document.getElementById('Doctorinfo')?.classList.remove('OnClick-Style');
+   document.getElementById('Signup')?.classList.add('OnClick-Style');
    }
 
    changeStyle()
    {
-    this._ActiveComponentService.ActiveComponent = "Doctorinfo";
-    this.DefaultStyle = "Doctorinfo"; 
+    // document.getElementById('Signup')?.classList.remove('OnClick-Style');
+    document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
+    // document.getElementById('Certificates')?.classList.remove('OnClick-Style');
+    // document.getElementById('LegalDocuments')?.classList.remove('OnClick-Style');
+    // document.getElementById('Signup')?.classList.remove('OnClick-Style');
+    // document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
+
+    // this.DoctorinfoRef.nativeElement.style.color="#262D70";
+    // this.DoctorinfoRef.nativeElement.style.borderLeftColor="#262D70";
+    // this.DoctorinfoRef.nativeElement.style.color="red";
    }
 
 
