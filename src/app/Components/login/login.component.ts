@@ -1,23 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
-  constructor() {}
+  constructor(private elementRef :ElementRef) {}
 
   ngOnInit() {}
-
-  displayStyle = "none";
-
-  openPopup() {
-    this.displayStyle = "block";
-  }
-  closePopup() {
-    this.displayStyle = "none";
-  }
 
 }

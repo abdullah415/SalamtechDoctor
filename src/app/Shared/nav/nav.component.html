@@ -1,13 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" ><img src="assets/img/logo.webp"
-      srcset="assets/img/logo@2x.webp 2x,
-      assets/img/logo@3x.webp 3x"
-      class="logo"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand "><img src="assets/img/logo.webp" srcset="assets/img/logo@2x.webp 2x,
+      assets/img/logo@3x.webp 3x" class="logo"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">{{ 'mainModule.Home' | translate }}</a>
@@ -23,25 +22,28 @@
         </li>
       </ul>
 
-    </div>
-    
-    <app-login></app-login>
 
-    <div *ngIf="DefaultLang == 'en'" >
-      <div class="btn-lang" (click)="ChangeLanguage(DefaultLang)">
-        <img (click)="ChangeLanguage(DefaultLang)" src="../../../assets/img/en/en.png" srcset="img/en@2x.png 2x,img/en@3x.png 3x" class="en">
-        <span >English</span>
+      <div class="d-flex">
+        <app-login></app-login>
+
+        <div *ngIf="DefaultLang == 'en'">
+          <div class="btn-lang" (click)="ChangeLanguage(DefaultLang)">
+            <img (click)="ChangeLanguage(DefaultLang)" src="../../../assets/img/en/en.png"
+              srcset="img/en@2x.png 2x,img/en@3x.png 3x" class="en">
+            <span>English</span>
+          </div>
+        </div>
+        <div *ngIf="DefaultLang == 'ar'">
+          <div class="btn-lang" (click)="ChangeLanguage(DefaultLang)">
+            <img (click)="ChangeLanguage(DefaultLang)" src="../../../assets/img/ar/arabic-language-code.png" class="en">
+            <span>عربى</span>
+          </div>
+        </div>
       </div>
+
+
+
     </div>
-    <div *ngIf="DefaultLang == 'ar'" >
-      <div class="btn-lang" (click)="ChangeLanguage(DefaultLang)">
-        <img (click)="ChangeLanguage(DefaultLang)" src="../../../assets/img/ar/arabic-language-code.png" class="en">
-        <span >عربى</span>
-      </div>
-    </div>
-
-
-
 
 
   </div>
@@ -49,5 +51,3 @@
 <p>
   <!-- {{ 'mainModule.welcomeMessege' | translate }} -->
 </p>
-
-
