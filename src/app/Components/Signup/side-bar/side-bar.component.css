@@ -1,0 +1,48 @@
+/*-------------- sidebar start ------------------*/
+.main-sidebar
+{
+    height: 80vh;
+    background-color: blue;
+}
+.sidebar-col
+{
+    background-color: #f3f3f3;
+}
+.sidebar-item
+{
+    width: 80%;
+    height: 80%;
+    /* background-color: red; */
+    margin: 10%;
+}
+
+ul
+{
+    /* background-color: saddlebrown; */
+    list-style-type:none;
+    margin-top: 50px;
+}
+.li-Content
+{
+    /* background-color: salmon; */
+    border-left: 2px solid #DCDEE4;
+    color: #A6AAB5;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 11px;
+    padding: 5px;
+    padding-left: 15px;
+}
+
+ul li span
+{
+    cursor: pointer;
+
+}
+
+.OnClick-Style
+{
+    border-left: 2px solid #262D70;
+    color: #262D70;
+}
+/*-------------- sidebar End   ------------------*/

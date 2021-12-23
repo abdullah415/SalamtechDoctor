@@ -9,6 +9,9 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './Components/login/login.component';
+import { SideBarComponent } from './Components/Signup/side-bar/side-bar.component';
+import { SignupComponent } from './Components/Signup/signup/signup.component';
+import { DoctorInfoComponent } from './Components/Signup/doctor-info/doctor-info.component';
 
 // AoT requires an exported function for factories
 export function CreateTranslateLoader(http: HttpClient) {
@@ -21,6 +24,9 @@ export function CreateTranslateLoader(http: HttpClient) {
     NavComponent,
     FooterComponent,
     LoginComponent,
+    SideBarComponent,
+    SignupComponent,
+    DoctorInfoComponent,
   ],
   imports: [
     HttpClientModule,
