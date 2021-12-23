@@ -9,7 +9,10 @@ export class DoctorInfoComponent implements OnInit {
 
   constructor() {  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
+    document.getElementById('Signup')?.classList.add('OnClick-Style');
+  }
 
   changeStyle()
   {

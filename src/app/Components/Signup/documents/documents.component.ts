@@ -10,6 +10,11 @@ export class DocumentsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
+    document.getElementById('Signup')?.classList.add('OnClick-Style');
+    document.getElementById('Certificates')?.classList.add('OnClick-Style');
+    document.getElementById('LegalDocuments')?.classList.add('OnClick-Style');
+
   }
 
   changeStyle()

@@ -15,7 +15,8 @@ export class SignupComponent implements OnInit {
 
   
    ngOnInit(): void {
-     
+   document.getElementById('Doctorinfo')?.classList.remove('OnClick-Style');
+   document.getElementById('Signup')?.classList.add('OnClick-Style');
    }
 
    changeStyle()
