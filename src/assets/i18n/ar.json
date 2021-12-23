@@ -1,5 +1,9 @@
 {
     "mainModule":{
-        "welcomeMessege":"مرحبا بكم "
+        "welcomeMessege":"مرحبا بكم ",
+        "Home":"الرئيسية",
+        "AboutUs":"عنّا",
+        "ContactUs":"تواصل معنا",
+        "Help":"مساعدة"
     }
 }

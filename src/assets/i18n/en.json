@@ -1,5 +1,9 @@
 {
     "mainModule":{
-        "welcomeMessege":"you are welcome "
+        "welcomeMessege":"you are welcome ",
+        "Home":"Home",
+        "AboutUs":"About Us",
+        "ContactUs":"Contact Us",
+        "Help":"Help"
     }
 }

@@ -13,9 +13,9 @@ DefaultLang!:string;
 //#endregion
 
   //#region  Constructor
-  constructor(private translate:TranslateService){ 
+  constructor(private translate:TranslateService){
     // translate.setDefaultLang('en');
-    translate.use('en');
+    // translate.use('en');
    }
   //#endregion
 
@@ -30,26 +30,26 @@ DefaultLang!:string;
   //#endregion
 
 
- 
+
 
   //#region change Language Method
   ChangeLanguage(e:string)
   {
-    if(e == 'en')
+    if(e === 'en')
     {
-      this.translate.use(e);
-      document.getElementsByTagName('html')[0].setAttribute("dir","rtl");
       this.DefaultLang = 'ar';
+      document.getElementsByTagName('html')[0].setAttribute("dir","rtl");
+      this.translate.use(this.DefaultLang);
     }
-    if(e == 'ar')
+    if(e === 'ar')
     {
-      this.translate.use(e);
-      document.getElementsByTagName('html')[0].setAttribute("dir","ltr");
       this.DefaultLang = 'en';
+      document.getElementsByTagName('html')[0].setAttribute("dir","ltr");
+      this.translate.use(this.DefaultLang);
     }
 
   }
   //#endregion
 
-  
+
 }

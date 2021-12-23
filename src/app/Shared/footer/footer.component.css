@@ -1,5 +1,5 @@
 .appFooter {
-  width: 100%;
+  /* width: 100%; */
   height: 128px;
   margin: 6px 0 0;
   padding: 39px 82px 42px 99px;
@@ -19,12 +19,39 @@ img.Logo {
   height: 31px; */
   /* margin: 7px 291px 9px 241px; */
   font-family: Poppins;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
+  font-size: 18px;
+  text-align: end;
   color: #fff;
+}
+
+img.Path-812 {
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
+  object-fit: contain;
+  background-color: #232227;
+}
+
+img.twitter {
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
+  object-fit: contain;
+  background-color: #232227;
+}
+
+img.facebook {
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
+  object-fit: contain;
+  background-color: #232227;
+}
+
+img.linkedin {
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
+  object-fit: contain;
+  background-color: #232227;
 }

@@ -70,3 +70,9 @@ img.en {
   color: #97999a;
   font-size: 14px;
 }
+
+img.logo {
+  width: 114.8px;
+  height: 30px;
+  object-fit: contain;
+}
