@@ -15,6 +15,7 @@ import { DoctorInfoComponent } from './Components/Signup/doctor-info/doctor-info
 import { CertificatesComponent } from './Components/Signup/certificates/certificates.component';
 import { DocumentsComponent } from './Components/Signup/documents/documents.component';
 import { CongratulationsComponent } from './Components/Signup/congratulations/congratulations.component';
+import { FormsModule } from '@angular/forms';
 
 // AoT requires an exported function for factories
 export function CreateTranslateLoader(http: HttpClient) {
@@ -38,6 +39,7 @@ export function CreateTranslateLoader(http: HttpClient) {
     HttpClientModule,
     BrowserModule,
     NgbModule,
+    FormsModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {
