@@ -1,0 +1,81 @@
+.main-Shared-place
+{
+    /* height: 80vh; */
+    /* background-color: tomato; */
+    margin-top:20px;
+}
+.Name-item
+{
+    width: 80%;
+    height: 80%;
+    background-color: red;
+    /* margin: 10%; */
+    margin-top: 0px;
+    /* margin-left: 0px; */
+}
+.lbl-Register
+{
+    display: inline-block;
+    padding-bottom: 5px;}
+.input-style
+{
+    /* background-color: black; */
+    font-size: 16px;
+}
+
+.input-style input
+{
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    border: 1px solid #C5C7CF;
+    border-radius: 8px;
+    outline: none;
+}
+
+.lbl-Register
+{
+    color: #8B90A0;
+}
+.col-style
+{
+    height: fit-content;
+}
+.errspan {
+    float: right;
+    margin-right: 10px;
+    margin-top: -23px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+.Path-5
+{
+    display: inline-block;
+}
+.next-btn
+{
+    width: 231px;
+    height: 53px;
+    /* flex-grow: 0; */
+    /* margin: 42px 151px 64px 0; */
+    /* padding: 14px 92px 15px 93px; */
+    border-radius: 8px;
+    background-color: #262d70;
+
+    font-size: 20px;
+    font-weight: 500;
+    /* font-stretch: normal;
+    font-style: normal; */
+    /* line-height: normal; */
+    letter-spacing: normal;
+    color: #fff;
+}
+
+.star
+{
+color: red;
+font-weight: 500;
+}
+
+

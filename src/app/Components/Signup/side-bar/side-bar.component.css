@@ -1,8 +1,9 @@
 /*-------------- sidebar start ------------------*/
 .main-sidebar
 {
-    height: 80vh;
-    background-color: blue;
+    height: 80%;
+    /* background-color: red; */
+
 }
 .sidebar-col
 {
@@ -12,7 +13,9 @@
 {
     width: 80%;
     height: 80%;
-    /* background-color: red; */
+    background-color: #f3f3f3;
+    /* background-colorgb(3, 2, 2)red; */
+
     margin: 10%;
 }
 
@@ -57,5 +60,27 @@ ul li span
 {
     border-left: 2px solid #262D70;
     color: #262D70;
+}
+.var-component
+{
+    background-color: white;
+    padding-top: 35px;
+}
+.container-outlet
+{
+    height: 100%;
+}
+.row-outlet
+{
+    height: 90%;
+}
+.row-terms
+{
+    height: 10%;
+}
+.termsCondition-style
+{
+    color:#00d2ca;
+    cursor: pointer;
 }
 /*-------------- sidebar End   ------------------*/

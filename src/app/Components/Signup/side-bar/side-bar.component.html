@@ -1,5 +1,5 @@
 <div class="row main-sidebar">
-    <div class="col-3 sidebar-col">
+    <div class="col-0 col-md-3 sidebar-col">
         <div class="sidebar-item">
             <ul>
                 <li id="Signup"          class="li-Content" ><span>Signup</span></li>
@@ -10,9 +10,23 @@
             </ul>
         </div>
     </div>
-    <div class="col-9" style="background-color: green;">
-        <router-outlet>
+    <div class=" col-12 col-md-9 var-component">
+        <div class="container-fluid container-outlet">
+            <div class="row row-outlet">
+                <div class="col-12" >
+                    <router-outlet>
 
-        </router-outlet>
+                    </router-outlet>
+                </div>
+            </div>
+            <div class="row row-terms justify-content-center" style="align-items: center;justify-content: center;">
+                <div class="col-12"  style="height: 50px;display: flex; justify-content: center;align-items: center;" >
+                        <span>
+                            singing up you are approve our <span class="termsCondition-style"> Terms &  Conditions</span>
+                        </span> 
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>
