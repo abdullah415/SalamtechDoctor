@@ -33,5 +33,14 @@ export class SignupComponent implements OnInit {
     // this.DoctorinfoRef.nativeElement.style.color="red";
    }
 
+   passwordIcon(id:string){
+    const password = document.querySelector('#'+id);
+
+    // toggle the type attribute
+    const type = password?.getAttribute('type') === 'password' ? 'text' : 'password';
+    password?.setAttribute('type', type);
+    // toggle the eye slash icon
+    password?.classList.toggle('fa-eye-slash');
+  }
 
 }

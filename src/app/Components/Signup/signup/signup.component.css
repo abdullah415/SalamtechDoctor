@@ -21,9 +21,20 @@
 {
     /* background-color: black; */
     font-size: 16px;
+    /* border: 1px solid #C5C7CF; */
+    border-radius: 8px;
 }
 
 .input-style input
+{
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    border: 1px solid #C5C7CF;
+    border-radius: 8px;
+    outline: none;
+}
+.input-style-phone
 {
     width: 100%;
     padding: 5px;
@@ -45,6 +56,14 @@
     float: right;
     margin-right: 10px;
     margin-top: -23px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+.errspan-left {
+    float: left;
+    margin-left: 10px;
+    margin-top: -27px;
     position: relative;
     z-index: 2;
     cursor: pointer;
@@ -78,4 +97,14 @@ color: red;
 font-weight: 500;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

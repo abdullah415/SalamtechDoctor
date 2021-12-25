@@ -3,7 +3,7 @@
         <div class="row" style="padding-left:30px ;">
             <div class="col-12 col-md-4 col-style"  >
                 <div class="">
-                    <span class="lbl-Register" >First Name</span>
+                    <span class="lbl-Register" >{{ 'mainModule.signup.FirstName' | translate }}</span>
                     <span class="star"> * </span>
                     <div class="input-style">
                         <input type="text">
@@ -12,7 +12,7 @@
             </div>
             <div class="col-12 col-md-4 col-style">
                 <div class="">
-                    <span class="lbl-Register">Middle Name</span>
+                    <span class="lbl-Register">{{ 'mainModule.signup.MiddleName' | translate }}</span>
                     <span class="star"> * </span>
                     <div class="input-style">
                         <input type="text">
@@ -21,7 +21,7 @@
             </div>
             <div class="col-12 col-md-4 col-style"  >
                 <div class="">
-                    <span class="lbl-Register">Last Name</span>
+                    <span class="lbl-Register">{{ 'mainModule.signup.LastName' | translate }}</span>
                     <span class="star"> * </span>
                     <div class="input-style">
                         <input type="text">
@@ -32,22 +32,29 @@
     </div>
 
     <div class="col-12" style="margin-top: 30px;" >
-        
+
         <div class="row" style="padding-left:30px ;">
+
+                <!-- Email -->
                 <div class="col-12 col-md-6" >
-                        <span class="lbl-Register">Email</span>
+                        <span class="lbl-Register">{{ 'mainModule.signup.Email' | translate }}</span>
                         <span class="star"> * </span>
                         <div class="input-style">
                             <input type="email">
                         </div>
                 </div>
+
+                <!-- Phone Number -->
                 <div class="col-12 col-md-6 ">
-                        <span class="lbl-Register">Phone Number</span>
+                        <span class="lbl-Register">{{ 'mainModule.signup.PhoneNumber' | translate }}</span>
                         <span class="star"> * </span>
-                        <div class="input-style">
-                            <input type="text">
+                        <div class="input-style-phone">
+                            <img src="../../../../assets/img/Group 512657.png" style="margin-left: 5px;margin-right: 5px;" >
+                            <span>+2</span>
+                            <input type="number" style="width: 84%;border-width: 0px;outline: none;margin-left: 10px;">
                         </div>
                 </div>
+
         </div>
     </div>
 
@@ -56,21 +63,29 @@
     <div class="col-12" style="margin-top: 30px;" >
             <div class="row" style="padding-left:30px ;">
                     <div class="col-12 col-md-6" >
-                            <span class="lbl-Register">Password</span>
-                            <span class="star"> * </span>
-                            <div class="input-style">
-                                <input type="password" placeholder="***********">
-                                    <img src="../../../../assets/img/Path 5.png" class="errspan" >
+                        <div class="form-group mt-3">
+                            <label for="passwor1">{{ 'mainModule.signup.Password' | translate }}<span class="star"> * </span></label>
+                            <div class="input-group mb-3">
+                                <input class="form-control border-right-0" id="Password1" type="password" placeholder="***********" name="Password"
+                                    required>
+                                <span (click)="passwordIcon('Password1')" class="input-group-text  border-left-0"
+                                    style="background-color: white!important; cursor: pointer;"><i class="far fa-eye text-end"
+                                        id="togglePassword"></i></span>
                             </div>
+                        </div>
                             
                     </div>
                     <div class="col-12 col-md-6">
-                            <span class="lbl-Register">Password</span>
-                            <span class="star"> * </span>
-                            <div class="input-style">
-                                <input type="password" placeholder="***********">
-                                    <img src="../../../../assets/img/Path 5.png" class="errspan" >
+                        <div class="form-group mt-3">
+                            <label for="passwor1">{{ 'mainModule.signup.ConfirmPassword' | translate }}<span class="star"> * </span></label>
+                            <div class="input-group mb-3">
+                                <input class="form-control border-right-0 " id="Password2" type="password" placeholder="***********" name="Password"
+                                    required>
+                                <span (click)="passwordIcon('Password2')" class="input-group-text  border-left-0"
+                                    style="background-color: white!important; cursor: pointer;"><i class="far fa-eye text-end"
+                                        id="togglePassword"></i></span>
                             </div>
+                        </div>
                     </div>
             </div>
         </div>
@@ -78,7 +93,7 @@
     <!-- Next Button Block -->
     <div class="col-12" style="margin-top: 50px;margin-bottom: 20px;" >
         <div class="row" style="padding-left:30px ;">
-            <div class="btn next-btn" (click)="changeStyle()" [routerLink]="['/DoctorInfo']">Next</div>
+            <div class="btn next-btn" (click)="changeStyle()" [routerLink]="['/DoctorInfo']">{{ 'mainModule.signup.Next' | translate }}</div>
         </div>
     </div>
 

@@ -4,6 +4,16 @@
         "Home":"الرئيسية",
         "AboutUs":"عنّا",
         "ContactUs":"تواصل معنا",
-        "Help":"مساعدة"
-    }
+        "Help":"مساعدة",
+        "signup":{
+            "FirstName":"الأسم الأول",
+            "MiddleName":"الأسم الأوسط",
+            "LastName":"الأسم الأخير",
+            "Email":"البريد الإلكترونى",
+            "PhoneNumber":"الموبايل",
+            "Password":"كلمة السر",
+            "ConfirmPassword":"تأكيد كلمة السر",
+            "Next":"التالى"
+        }
+    }  
 }

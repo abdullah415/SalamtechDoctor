@@ -4,6 +4,16 @@
         "Home":"Home",
         "AboutUs":"About Us",
         "ContactUs":"Contact Us",
-        "Help":"Help"
-    }
+        "Help":"Help",
+        "signup":{
+            "FirstName":"First Name",
+            "MiddleName":"Middle Name",
+            "LastName":"Last Name",
+            "Email":"Email",
+            "PhoneNumber":"Phone Number",
+            "Password":"Password",
+            "ConfirmPassword":"Confirm Password",
+            "Next":"Next"
+        }
+    } 
 }
