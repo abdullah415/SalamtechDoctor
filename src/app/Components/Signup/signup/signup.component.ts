@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Signup } from 'src/Models/signup';
+import { SignupService } from 'src/Service/signup/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,96 +10,73 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
 
-//#region  Declare Variables
-signupform : FormGroup ;
+  //#region  Declare Variables
+  signupform : FormGroup ;
+  SignUp:Signup = new Signup();
+  //#endregion
 
-// //#region Validation Object
-//   validationObject = 
-//   {
-//     FirstName:
-//       {
-//         requierd:'FirstName requierd ' ,
-//         minLength:'FirstName 2 character or more '
-//       },
-//       MiddleName:
-//       {
-//         requierd:'MiddleName requierd ' ,
-//         minLength:'MiddleName 2 character or more '
-//       },
-//       LastName:
-//       {
-//         requierd:'LastName requierd ' ,
-//         minLength:'LastName 2 character or more '
-//       },
-//       Email:
-//       {
-//         requierd:'Email requierd ' ,
-//       },
-//       PhoneNumber:
-//       {
-//         requierd:'PhoneNumber requierd ' ,
-//       },
-//       Password:
-//       {
-//         requierd:'Password requierd ' ,
-//       },
-//       ConfirmPassword:
-//       {
-//         requierd:'ConfirmPassword requierd ' ,
-//       },
-
-//   };
-// //#endregion
-
-//#endregion
-
-  constructor(private fb:FormBuilder) {}
+  //#region Constructor
+  constructor(private fb:FormBuilder , private SignupService:SignupService) {}
+  //#endregion
     
+  //#region OnInit Section
+  ngOnInit(): void 
+  {
 
-  
-   ngOnInit(): void {
      //#region Sidebar Section
-     document.getElementById('Doctorinfo')?.classList.remove('OnClick-Style');
-     document.getElementById('Signup')?.classList.add('OnClick-Style');
+       document.getElementById('Doctorinfo')?.classList.remove('OnClick-Style');
+       document.getElementById('Signup')?.classList.add('OnClick-Style');
+       //#endregion
+   
+     //#region  Register Form Section
+     this.signupform = this.fb.group(
+       {
+           FirstName:['',[Validators.required , Validators.minLength(2)]],
+           MiddleName:['',[Validators.min(1) , Validators.required]],
+           LastName:['',[Validators.min(1) , Validators.required]],
+           Email:['',[Validators.email , Validators.required]],
+           PhoneNumber:['',[Validators.required]],
+           Password:['',[Validators.required , Validators.minLength(5)]],
+           ConfirmPassword:['',[Validators.required , Validators.minLength(5)]],
+         });
      //#endregion
- 
-
-   //#region  Register Form Section
-   this.signupform = this.fb.group(
-     {
-        FirstName:['',[Validators.required , Validators.minLength(2)]],
-        MiddleName:['',[Validators.min(1) , Validators.required]],
-        LastName:['',[Validators.min(1) , Validators.required]],
-        Email:['',[Validators.email , Validators.required]],
-        PhoneNumber:['',[Validators.required]],
-        Password:['',[Validators.required , Validators.minLength(5)]],
-        ConfirmPassword:['',[Validators.required , Validators.minLength(5)]],
-      });
-   //#endregion
+  
    }
+  //#endregion
 
-   changeStyle()
+  //#region Submit values
+   Submit()
    {
-    // document.getElementById('Signup')?.classList.remove('OnClick-Style');
-    document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
-    // document.getElementById('Certificates')?.classList.remove('OnClick-Style');
-    // document.getElementById('LegalDocuments')?.classList.remove('OnClick-Style');
-    // document.getElementById('Signup')?.classList.remove('OnClick-Style');
-    // document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
+        this.SignUp.Name = this.signupform.controls.FirstName.value  + " " +
+                          this.signupform.controls.MiddleName.value + " " +
+                          this.signupform.controls.LastName.value;
 
-    // this.DoctorinfoRef.nativeElement.style.color="#262D70";
-    // this.DoctorinfoRef.nativeElement.style.borderLeftColor="#262D70";
-    // this.DoctorinfoRef.nativeElement.style.color="red";
+        this.SignUp.Password = this.signupform.controls.Password.value;
+        this.SignUp.Phone = this.signupform.controls.PhoneNumber.value;
+        this.SignUp.Email = this.signupform.controls.Email.value;
+        this.SignUp.UserTypeId = 2;
+
+          this.SignupService.SignUp(this.SignUp).subscribe((res)=>{
+            console.log("success")
+          },
+          (err)=>{
+            // this.errorMsg=err.error.Message
+            console.log("err")
+          })
+      // document.getElementById('Doctorinfo')?.classList.add('OnClick-Style'); 
    }
+   //#endregion
 
-   passwordIcon(id:string){
-    const password = document.querySelector('#'+id);
+  //#region Toggle Password Method
+    passwordIcon(id:string){
+      const password = document.querySelector('#'+id);
 
-    // toggle the type attribute
-    const type = password?.getAttribute('type') === 'password' ? 'text' : 'password';
-    password?.setAttribute('type', type);
-    // toggle the eye slash icon
-    password?.classList.toggle('fa-eye-slash');
-  }
+      // toggle the type attribute
+      const type = password?.getAttribute('type') === 'password' ? 'text' : 'password';
+      password?.setAttribute('type', type);
+      // toggle the eye slash icon
+      password?.classList.toggle('fa-eye-slash');
+    }
+    //#endregion
 
 }

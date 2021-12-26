@@ -39,7 +39,7 @@
     width: 100%;
     padding: 5px;
     font-size: 18px;
-    border: 1px solid #C5C7CF;
+    border: 0px solid #C5C7CF;
     border-radius: 8px;
     outline: none;
     display: flex;
@@ -78,19 +78,13 @@
 {
     width: 231px;
     height: 53px;
-    /* flex-grow: 0; */
-    /* margin: 42px 151px 64px 0; */
-    /* padding: 14px 92px 15px 93px; */
     border-radius: 8px;
     background-color: #262d70;
-
     font-size: 20px;
     font-weight: 500;
-    /* font-stretch: normal;
-    font-style: normal; */
-    /* line-height: normal; */
     letter-spacing: normal;
     color: #fff;
+    line-height: 40px;
 }
 
 .star

@@ -62,7 +62,7 @@
         <div class="col-12" style="margin-top: 30px;" >
     
             <div class="row" style="padding-left:30px ;">
-    
+
                     <!-- Email -->
                     <div class="col-12 col-md-6" >
                             <span class="lbl-Register">{{ 'mainModule.signup.Email' | translate }}</span>
@@ -72,10 +72,10 @@
                                 <input  type="email" 
                                         formControlName="Email"
                                         class="form-control"
-                                        [class.is-valid]="signupform.controls['email'].valid
-                                        && signupform.controls['email'].touched"
-                                        [class.is-invalid]="signupform.controls['email'].invalid
-                                        && signupform.controls['email'].touched"
+                                        [class.is-valid]="signupform.controls['Email'].valid
+                                        && signupform.controls['Email'].touched"
+                                        [class.is-invalid]="signupform.controls['Email'].invalid
+                                        && signupform.controls['Email'].touched"
                                 >
 
                             </div>
@@ -91,21 +91,13 @@
 
                             <input  formControlName="PhoneNumber"
                                     type="number" 
-                                    style="width: 84%;border-width: 0px;outline: none;margin-left: 10px;"
-                                    
-                            >
-
-                                <!-- 
+                                    style="width: 84%;border-width: 1px;outline: none;margin-left: 10px;"      
                                     class="form-control"
-                                                                        [class.is-valid]="signupform.controls['LastName'].valid
-                                                                        && signupform.controls['LastName'].touched"
-                                                                        [class.is-invalid]="signupform.controls['LastName'].invalid
-                                                                        && signupform.controls['LastName'].touched"
-                                -->
-
+                                    [class.is-valid]="signupform.controls['PhoneNumber'].valid && signupform.controls['PhoneNumber'].touched"
+                                    [class.is-invalid]="signupform.controls['PhoneNumber'].invalid && signupform.controls['PhoneNumber'].touched"
+                            >
                         </div>
                     </div>
-    
             </div>
         </div>
     
@@ -119,16 +111,15 @@
                                 <div class="input-group mb-3">
 
                                     <input  formControlName="Password"
-                                            class="form-control"
-                                            [class.is-valid]="signupform.controls['LastName'].valid
-                                            && signupform.controls['LastName'].touched"
-                                            [class.is-invalid]="signupform.controls['LastName'].invalid
-                                            && signupform.controls['LastName'].touched"
+                                            [class.is-valid]="signupform.controls['Password'].valid
+                                            && signupform.controls['Password'].touched"
+                                            [class.is-invalid]="signupform.controls['Password'].invalid
+                                            && signupform.controls['Password'].touched"
                                             class="form-control border-right-0" 
                                             id="Password1" 
                                             type="password" 
                                             placeholder="***********" 
-                                            name="Password"
+                                            name="Password1"
                                             required
                                         >
 
@@ -145,16 +136,15 @@
                                 <div class="input-group mb-3">
 
                                     <input  formControlName="ConfirmPassword"
-                                            class="form-control"
-                                            [class.is-valid]="signupform.controls['LastName'].valid
-                                            && signupform.controls['LastName'].touched"
-                                            [class.is-invalid]="signupform.controls['LastName'].invalid
-                                            && signupform.controls['LastName'].touched"
+                                            [class.is-valid]="signupform.controls['ConfirmPassword'].valid
+                                            && signupform.controls['ConfirmPassword'].touched"
+                                            [class.is-invalid]="signupform.controls['ConfirmPassword'].invalid
+                                            && signupform.controls['ConfirmPassword'].touched"
                                             class="form-control border-right-0 " 
                                             id="Password2" 
                                             type="password" 
                                             placeholder="***********" 
-                                            name="Password"
+                                            name="Password2"
                                             required
                                     >
 
@@ -174,7 +164,11 @@
         <!-- Next Button Block -->
         <div class="col-12" style="margin-top: 50px;margin-bottom: 20px;" >
             <div class="row" style="padding-left:30px ;">
-                <div class="btn next-btn" (click)="changeStyle()" [routerLink]="['/DoctorInfo']">{{ 'mainModule.signup.Next' | translate }}</div>
+                <button class="btn next-btn" 
+                    (click)="Submit()"
+                    [routerLink]="['/OTP']">{{ 'mainModule.signup.Next' | translate }}
+                </button>
+                <!-- [disabled]="signupform.invalid"   -->
             </div>
         </div>
     </form>

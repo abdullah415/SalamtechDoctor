@@ -78,9 +78,21 @@ ul li span
 {
     height: 10%;
 }
+
+
+/*-------------- Terms-Condition Style Start   ------------------*/
+.Terms-Condition-style
+{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8B90A0;
+}
 .termsCondition-style
 {
     color:#00d2ca;
     cursor: pointer;
 }
-/*-------------- sidebar End   ------------------*/
+/*-------------- Terms-Condition Style End     ------------------*/
+

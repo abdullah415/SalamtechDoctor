@@ -14,6 +14,9 @@
             "Password":"كلمة السر",
             "ConfirmPassword":"تأكيد كلمة السر",
             "Next":"التالى"
+        },
+        "ResendCode":{
+            "verify":"تحقق"
         }
     }  
 }
