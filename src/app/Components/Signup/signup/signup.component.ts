@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Signup } from 'src/Models/signup';
 import { SignupService } from 'src/Service/signup/signup.service';
 
@@ -16,7 +17,7 @@ export class SignupComponent implements OnInit {
   //#endregion
 
   //#region Constructor
-  constructor(private fb:FormBuilder , private SignupService:SignupService) {}
+  constructor(private fb:FormBuilder , private SignupService:SignupService , private router:Router) {}
   //#endregion
     
   //#region OnInit Section
@@ -56,13 +57,21 @@ export class SignupComponent implements OnInit {
         this.SignUp.Email = this.signupform.controls.Email.value;
         this.SignUp.UserTypeId = 2;
 
-          this.SignupService.SignUp(this.SignUp).subscribe((res)=>{
+          let reuslt = this.SignupService.SignUp(this.SignUp).subscribe(
+            (res:any)=>
+            {
             console.log("success")
+            console.log(res)
+            
           },
-          (err)=>{
+          (err:any)=>
+          {
             // this.errorMsg=err.error.Message
-            console.log("err")
+            console.log("errrrrrrrrrrrr")
           })
+
+          if(reuslt == undefined)
+          console.log("undefind result");
       // document.getElementById('Doctorinfo')?.classList.add('OnClick-Style'); 
    }
    //#endregion
