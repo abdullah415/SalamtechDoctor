@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -7,16 +8,72 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  @ViewChild('DoctorinfoRef') DoctorinfoRef: ElementRef<HTMLInputElement>;
+//#region  Declare Variables
+signupform : FormGroup ;
 
+// //#region Validation Object
+//   validationObject = 
+//   {
+//     FirstName:
+//       {
+//         requierd:'FirstName requierd ' ,
+//         minLength:'FirstName 2 character or more '
+//       },
+//       MiddleName:
+//       {
+//         requierd:'MiddleName requierd ' ,
+//         minLength:'MiddleName 2 character or more '
+//       },
+//       LastName:
+//       {
+//         requierd:'LastName requierd ' ,
+//         minLength:'LastName 2 character or more '
+//       },
+//       Email:
+//       {
+//         requierd:'Email requierd ' ,
+//       },
+//       PhoneNumber:
+//       {
+//         requierd:'PhoneNumber requierd ' ,
+//       },
+//       Password:
+//       {
+//         requierd:'Password requierd ' ,
+//       },
+//       ConfirmPassword:
+//       {
+//         requierd:'ConfirmPassword requierd ' ,
+//       },
 
-  constructor() {}
+//   };
+// //#endregion
+
+//#endregion
+
+  constructor(private fb:FormBuilder) {}
     
 
   
    ngOnInit(): void {
-   document.getElementById('Doctorinfo')?.classList.remove('OnClick-Style');
-   document.getElementById('Signup')?.classList.add('OnClick-Style');
+     //#region Sidebar Section
+     document.getElementById('Doctorinfo')?.classList.remove('OnClick-Style');
+     document.getElementById('Signup')?.classList.add('OnClick-Style');
+     //#endregion
+ 
+
+   //#region  Register Form Section
+   this.signupform = this.fb.group(
+     {
+        FirstName:['',[Validators.required , Validators.minLength(2)]],
+        MiddleName:['',[Validators.min(1) , Validators.required]],
+        LastName:['',[Validators.min(1) , Validators.required]],
+        Email:['',[Validators.email , Validators.required]],
+        PhoneNumber:['',[Validators.required]],
+        Password:['',[Validators.required , Validators.minLength(5)]],
+        ConfirmPassword:['',[Validators.required , Validators.minLength(5)]],
+      });
+   //#endregion
    }
 
    changeStyle()

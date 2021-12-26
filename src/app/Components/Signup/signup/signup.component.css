@@ -42,6 +42,8 @@
     border: 1px solid #C5C7CF;
     border-radius: 8px;
     outline: none;
+    display: flex;
+    /* border-width: 0px; */
 }
 
 .lbl-Register
