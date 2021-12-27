@@ -15,6 +15,9 @@
                                     && signupform.controls['FirstName'].touched"
                                        [class.is-invalid]="signupform.controls['FirstName'].invalid
                                     && signupform.controls['FirstName'].touched "
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    maxlength = "10"
+                                    minlength="3"
                             >
 
                         </div>
@@ -33,6 +36,9 @@
                                     && signupform.controls['MiddleName'].touched"
                                        [class.is-invalid]="signupform.controls['MiddleName'].invalid
                                     && signupform.controls['MiddleName'].touched"
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    maxlength = "10"
+                                    minlength="3"
                             >
 
                         </div>
@@ -51,6 +57,9 @@
                                     && signupform.controls['LastName'].touched"
                                        [class.is-invalid]="signupform.controls['LastName'].invalid
                                     && signupform.controls['LastName'].touched"
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    maxlength = "10"
+                                    minlength="3"
                             >
 
                         </div>
@@ -65,7 +74,7 @@
 
                     <!-- Email -->
                     <div class="col-12 col-md-6" >
-                            <span class="lbl-Register">{{ 'mainModule.signup.Email' | translate }}</span>
+                            <span class="lbl-Register" >{{ 'mainModule.signup.Email' | translate }}</span>
                             <span class="star"> * </span>
                             <div class="input-style">
 
@@ -76,26 +85,35 @@
                                         && signupform.controls['Email'].touched"
                                         [class.is-invalid]="signupform.controls['Email'].invalid
                                         && signupform.controls['Email'].touched"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                        maxlength = "50"
+                                        minlength="5"
                                 >
 
                             </div>
                     </div>
     
                     <!-- Phone Number -->
-                    <div class="col-12 col-md-6 ">
-                        <span class="lbl-Register">{{ 'mainModule.signup.PhoneNumber' | translate }}</span>
+                    <div class="col-12 col-md-6 " >
+                        <span class="lbl-Register" >{{ 'mainModule.signup.PhoneNumber' | translate }}</span>
                         <span class="star" > * </span>
                         <div class="input-style-phone">
-                            <img src="../../../../assets/img/Group 512657.png" style="margin-left: 5px;margin-right: 5px;">
-                            <span>+2</span>
+                            <!-- <img src="../../../../assets/img/Group 512657.png" style="margin-left: 5px;margin-right: 5px;">
+                            <span>+2</span> -->
 
                             <input  formControlName="PhoneNumber"
                                     type="number" 
-                                    style="width: 84%;border-width: 1px;outline: none;margin-left: 10px;"      
-                                    class="form-control"
+                                    style=" border-width: 1px;outline: none;  display: block; "      
+                                    class="form-control "
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    maxlength = "10"
+                                    minlength="10"
                                     [class.is-valid]="signupform.controls['PhoneNumber'].valid && signupform.controls['PhoneNumber'].touched"
                                     [class.is-invalid]="signupform.controls['PhoneNumber'].invalid && signupform.controls['PhoneNumber'].touched"
-                            >
+                                    [class.icon]="1"
+                                    >
+                            <span class="unit">+20</span>
+
                         </div>
                     </div>
             </div>
@@ -116,6 +134,9 @@
                                             [class.is-invalid]="signupform.controls['Password'].invalid
                                             && signupform.controls['Password'].touched"
                                             class="form-control border-right-0" 
+                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                            maxlength = "6"
+                                            minlength="6"
                                             id="Password1" 
                                             type="password" 
                                             placeholder="***********" 
@@ -124,8 +145,9 @@
                                         >
 
                                     <span (click)="passwordIcon('Password1')" class="input-group-text  border-left-0"
-                                        style="background-color: white!important; cursor: pointer;"><i class="far fa-eye text-end"
-                                            id="togglePassword"></i></span>
+                                        style="background-color: white!important; cursor: pointer;border-radius: 0px;">
+                                        <i class="far fa-eye text-end" id="togglePassword"></i>
+                                    </span>
                                 </div>
                             </div>
                                 
@@ -137,10 +159,13 @@
 
                                     <input  formControlName="ConfirmPassword"
                                             [class.is-valid]="signupform.controls['ConfirmPassword'].valid
-                                            && signupform.controls['ConfirmPassword'].touched"
+                                            && signupform.controls['ConfirmPassword'].touched "
                                             [class.is-invalid]="signupform.controls['ConfirmPassword'].invalid
-                                            && signupform.controls['ConfirmPassword'].touched"
-                                            class="form-control border-right-0 " 
+                                            && signupform.controls['ConfirmPassword'].touched" 
+                                            class="form-control border-right-0 "
+                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                            maxlength = "6"
+                                            minlength="6"
                                             id="Password2" 
                                             type="password" 
                                             placeholder="***********" 
@@ -149,9 +174,7 @@
                                     >
 
                                     <span  (click)="passwordIcon('Password2')" 
-                                           class="input-group-text  border-left-0"
-                                            style="background-color: white!important; cursor: pointer;">
-
+                                           class="input-group-text  border-left-0" style="background-color: white!important; cursor: pointer;border-radius: 0px;">
                                         <i class="far fa-eye text-end"  id="togglePassword"></i>
 
                                     </span>
@@ -164,11 +187,19 @@
         <!-- Next Button Block -->
         <div class="col-12" style="margin-top: 50px;margin-bottom: 20px;" >
             <div class="row" style="padding-left:30px ;">
-                <button class="btn next-btn" 
-                    (click)="Submit()" >{{ 'mainModule.signup.Next' | translate }}
+                <div class="col-12" >
+                    <button class="btn next-btn" 
+                            [disabled]="signupform.invalid" 
+                            (click)="Submit()" >
+
+                            {{ 'mainModule.signup.Next' | translate }}
                 </button>
-                <!-- [disabled]="signupform.invalid"   -->
-                <!-- [routerLink]="['/OTP']" -->
+                </div>  
+                <div class="col-11" [hidden]="ErrorMessege==''" style="text-align: center;margin-left: 12px;margin-top: 20px;">
+                    <div class="alert alert-danger">
+                     {{ErrorMessege}}
+                    </div>
+                 </div> 
             </div>
         </div>
     </form>

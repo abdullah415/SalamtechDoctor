@@ -5,3 +5,5 @@ export class Signup {
     Name: string;
     UserTypeId: number;
 }
+
+

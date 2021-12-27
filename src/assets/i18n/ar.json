@@ -15,8 +15,10 @@
             "ConfirmPassword":"تأكيد كلمة السر",
             "Next":"التالى"
         },
-        "ResendCode":{
-            "verify":"تحقق"
+        "otp":{
+            "verify":"تحقق",
+            "ResendAgain":"إرسال مرة أخرى",
+            "Didntrecivecode":"لم تستلم رمز ؟"
         }
     }  
 }

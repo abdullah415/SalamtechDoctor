@@ -14,15 +14,23 @@ export class SignupComponent implements OnInit {
   //#region  Declare Variables
   signupform : FormGroup ;
   SignUp:Signup = new Signup();
+  ErrorMessege:string;
   //#endregion
 
   //#region Constructor
-  constructor(private fb:FormBuilder , private SignupService:SignupService , private router:Router) {}
+  constructor(private fb:FormBuilder , 
+              private SignupService:SignupService , 
+              private router:Router) {
+
+  }
   //#endregion
     
   //#region OnInit Section
   ngOnInit(): void 
   {
+    //#region Init Section
+    this.ErrorMessege=""; 
+    //#endregion
 
      //#region Sidebar Section
        document.getElementById('Doctorinfo')?.classList.remove('OnClick-Style');
@@ -32,16 +40,15 @@ export class SignupComponent implements OnInit {
      //#region  Register Form Section
      this.signupform = this.fb.group(
        {
-           FirstName:['',[Validators.required , Validators.minLength(2)]],
-           MiddleName:['',[Validators.min(1) , Validators.required]],
-           LastName:['',[Validators.min(1) , Validators.required]],
+           FirstName:['',[Validators.required , Validators.minLength(3)]],
+           MiddleName:['',[Validators.minLength(3) , Validators.required]],
+           LastName:['',[Validators.minLength(3) , Validators.required]],
            Email:['',[Validators.email , Validators.required]],
-           PhoneNumber:['',[Validators.required]],
-           Password:['',[Validators.required , Validators.minLength(5)]],
-           ConfirmPassword:['',[Validators.required , Validators.minLength(5)]],
+           PhoneNumber:['',[Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
+           Password:['',[Validators.required , Validators.minLength(6)]],
+           ConfirmPassword:['',[Validators.required ]],
          });
      //#endregion
-  
    }
   //#endregion
 
@@ -53,25 +60,23 @@ export class SignupComponent implements OnInit {
                           this.signupform.controls.LastName.value;
 
         this.SignUp.Password = this.signupform.controls.Password.value;
-        this.SignUp.Phone = this.signupform.controls.PhoneNumber.value;
+        this.SignUp.Phone = (this.signupform.controls.PhoneNumber.value).toString();
+        this.SignUp.Phone = '0'+this.SignUp.Phone;
         this.SignUp.Email = this.signupform.controls.Email.value;
         this.SignUp.UserTypeId = 2;
 
           let reuslt = this.SignupService.SignUp(this.SignUp).subscribe(
-            (res:any)=>
-            {
-            console.log("success")
-            console.log(res)
-            
-          },
-          (err:any)=>
-          {
-            // this.errorMsg=err.error.Message
-            console.log("errrrrrrrrrrrr")
-          })
 
-          if(reuslt == undefined)
-          console.log("undefind result");
+              (data)=> {
+                    this.router.navigateByUrl("OTP");   
+                    console.log(data);
+                  },
+              (err)=> {
+                this.ErrorMessege = err.error['Message']; 
+                    // console.log(err.error['Message']);
+                  }
+          )
+          
       // document.getElementById('Doctorinfo')?.classList.add('OnClick-Style'); 
    }
    //#endregion
@@ -88,4 +93,8 @@ export class SignupComponent implements OnInit {
     }
     //#endregion
 
+
+    
+
+    
 }

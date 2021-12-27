@@ -78,9 +78,18 @@ height: fit-content;
 .Resend-block
 {
     cursor: pointer;
+    border-width: 0px;
     color: #3440b1;
+    font-weight: 500;
     /* font-weight: bold; */
+    background-color: transparent;
+    
+}
 
+.Resend-block:disabled
+{
+    color: #afafaf;
+    font-weight: 500;
 }
 
 .next-btn
