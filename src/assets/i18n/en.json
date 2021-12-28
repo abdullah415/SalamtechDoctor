@@ -25,7 +25,11 @@
           "DontHaveAnAccount?":"Don't Have An Account?",
           "createAccount":"Create Account",
           "ForgetPassword":"Forget Password?",
-          "LoginAsPatient":"Login As Patient"
+          "LoginAsPatient":"Login As Patient",
+        "otp":{
+            "verify":"verify",
+            "ResendAgain":"Resend Again",
+            "Didntrecivecode":"Didn’t recive a code ?"
         }
     }
 }

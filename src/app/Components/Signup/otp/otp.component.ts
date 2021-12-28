@@ -6,12 +6,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./otp.component.css']
 })
 export class OtpComponent implements OnInit {
-   i:number=60;
+
+   //#region Declare Variables
+   i:number=4;
+   EnableResendLink:boolean;
+   //#endregion
+
+  //#region Constructor
   constructor() { }
+  //#endregion
 
-  ngOnInit(): void {
+   //#region OnInit Method
+   ngOnInit(): void {
+
+    //#region Init Values
+    this.EnableResendLink = true;
+    //#endregion
+
+    //#region Call Methods
     this.counter();
+    //#endregion
+   
   }
+  //#endregion
 
-  counter(){ setInterval(() => { if (this.i == 0) { return; }this.i-- }, 1000); }
+   //#region counter interval
+   counter(){ setInterval(() => { 
+    if (this.i == 0) 
+    {    
+      this.EnableResendLink = false;
+    return; 
+  }this.i-- }, 1000); }
+  //#endregion
+
+   //#region  ResendCode
+   ResendCode()
+   {
+     
+   }
+  //#endregion
+
+
 }
