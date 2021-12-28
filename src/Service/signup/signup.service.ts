@@ -3,13 +3,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Signup } from 'src/Models/signup';
+import { ResenderCode } from './resender-code';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignupService {
 
+  //#region Constructor
   constructor(private http: HttpClient) {}
+  //#endregion
+
+  //#region Declare varaibles
+  ResenderCodeObject:ResenderCode;
+  //#endregion
 
   //#region Options
   httpOptions = { 
@@ -19,8 +26,11 @@ export class SignupService {
     )};
   //#endregion
 
-    SignUp(user:Signup){
-      return this.http.post(`${environment.URL}en/User/CreateUser`,user,this.httpOptions);
-    }
+  //#region Signup API
+  SignUp(user:Signup){
+    return this.http.post(`${environment.URL}en/User/Register`,user,this.httpOptions);
+  }
+  //#endregion
+   
 
 }
