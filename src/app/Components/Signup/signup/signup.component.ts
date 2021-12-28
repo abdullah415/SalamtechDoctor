@@ -17,28 +17,31 @@ export class SignupComponent implements OnInit {
   SignUp:Signup = new Signup();
   ErrorMessege:string;
   _Responsesignup:Responsesignup= new Responsesignup();
+  direction:any;
   //#endregion
 
   //#region Constructor
-  constructor(private fb:FormBuilder , 
-              private SignupService:SignupService , 
+  constructor(private fb:FormBuilder ,
+              private SignupService:SignupService ,
               private router:Router) {
 
   }
   //#endregion
-    
+
   //#region OnInit Section
-  ngOnInit(): void 
+  ngOnInit(): void
   {
     //#region Init Section
-    this.ErrorMessege=""; 
+    this.ErrorMessege="";
+    this.direction = document.getElementsByTagName('html')[0].getAttribute("dir");
+    console.log(this.direction);
     //#endregion
 
      //#region Sidebar Section
        document.getElementById('Doctorinfo')?.classList.remove('OnClick-Style');
        document.getElementById('Signup')?.classList.add('OnClick-Style');
        //#endregion
-   
+
      //#region  Register Form Section
      this.signupform = this.fb.group(
        {
@@ -72,16 +75,16 @@ export class SignupComponent implements OnInit {
               (data)=> {
                 this._Responsesignup.Data = data;
                     this.router.navigateByUrl("OTP");
-                    this.SignupService.ResenderCodeObject = this._Responsesignup.Data["Data"];   
+                    this.SignupService.ResenderCodeObject = this._Responsesignup.Data["Data"];
                     // console.log("dsdsdsdsdsd : ",this._Responsesignup.Data["Data"]);
                   },
               (err)=> {
-                this.ErrorMessege = err.error['Message']; 
+                this.ErrorMessege = err.error['Message'];
                     // console.log(err.error['Message']);
                   }
           )
-          
-      // document.getElementById('Doctorinfo')?.classList.add('OnClick-Style'); 
+
+      // document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
    }
    //#endregion
 
@@ -98,7 +101,4 @@ export class SignupComponent implements OnInit {
     //#endregion
 
 
-    
-
-    
 }

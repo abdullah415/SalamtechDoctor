@@ -1,216 +1,236 @@
-<div class="row main-Shared-place" >
-    <form [formGroup]="signupform" >
-        <div class="col-12" >
-            <div class="row" style="padding-left:30px ;">
-                <div class="col-12 col-md-4 col-style"  >
-                    <div class="">
-                        <span class="lbl-Register" >{{ 'mainModule.signup.FirstName' | translate }}</span>
-                        <span class="star"> * </span>
-                        <div class="input-style">
-
-                            <input  type="text" 
-                                    class="form-control"
-                                    formControlName="FirstName"
-                                       [class.is-valid]="signupform.controls['FirstName'].valid
-                                    && signupform.controls['FirstName'].touched"
-                                       [class.is-invalid]="signupform.controls['FirstName'].invalid
-                                    && signupform.controls['FirstName'].touched "
-                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    maxlength = "10"
-                                    minlength="3"
-                            >
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 col-style">
-                    <div class="">
-                        <span class="lbl-Register">{{ 'mainModule.signup.MiddleName' | translate }}</span>
-                        <span class="star"> * </span>
-                        <div class="input-style">
-
-                            <input type="text"
-                                   class="form-control" 
-                                   formControlName="MiddleName" 
-                                   [class.is-valid]="signupform.controls['MiddleName'].valid
-                                    && signupform.controls['MiddleName'].touched"
-                                       [class.is-invalid]="signupform.controls['MiddleName'].invalid
-                                    && signupform.controls['MiddleName'].touched"
-                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    maxlength = "10"
-                                    minlength="3"
-                            >
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 col-style"  >
-                    <div class="">
-                        <span class="lbl-Register">{{ 'mainModule.signup.LastName' | translate }}</span>
-                        <span class="star"> * </span>
-                        <div class="input-style">
-
-                            <input type="text" 
-                                   formControlName="LastName"
-                                   class="form-control"
-                                   [class.is-valid]="signupform.controls['LastName'].valid
-                                    && signupform.controls['LastName'].touched"
-                                       [class.is-invalid]="signupform.controls['LastName'].invalid
-                                    && signupform.controls['LastName'].touched"
-                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    maxlength = "10"
-                                    minlength="3"
-                            >
-
-                        </div>
-                    </div>
-                </div>
+<div class="row main-Shared-place">
+  <form [formGroup]="signupform">
+    <div class="col-12">
+      <div class="row" style="padding-left: 30px">
+        <div class="col-12 col-md-4 col-style">
+          <div class="">
+            <span class="lbl-Register">{{
+              "mainModule.signup.FirstName" | translate
+            }}</span>
+            <span class="star"> * </span>
+            <div class="input-style">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="FirstName"
+                [class.is-valid]="
+                  signupform.controls['FirstName'].valid &&
+                  signupform.controls['FirstName'].touched
+                "
+                [class.is-invalid]="
+                  signupform.controls['FirstName'].invalid &&
+                  signupform.controls['FirstName'].touched
+                "
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="10"
+                minlength="3"
+              />
             </div>
+          </div>
         </div>
-    
-        <div class="col-12" style="margin-top: 30px;" >
-    
-            <div class="row" style="padding-left:30px ;">
+        <div class="col-12 col-md-4 col-style">
+          <div class="">
+            <span class="lbl-Register">{{
+              "mainModule.signup.MiddleName" | translate
+            }}</span>
+            <span class="star"> * </span>
+            <div class="input-style">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="MiddleName"
+                [class.is-valid]="
+                  signupform.controls['MiddleName'].valid &&
+                  signupform.controls['MiddleName'].touched
+                "
+                [class.is-invalid]="
+                  signupform.controls['MiddleName'].invalid &&
+                  signupform.controls['MiddleName'].touched
+                "
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="10"
+                minlength="3"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 col-style">
+          <div class="">
+            <span class="lbl-Register">{{
+              "mainModule.signup.LastName" | translate
+            }}</span>
+            <span class="star"> * </span>
+            <div class="input-style">
+              <input
+                type="text"
+                formControlName="LastName"
+                class="form-control"
+                [class.is-valid]="
+                  signupform.controls['LastName'].valid &&
+                  signupform.controls['LastName'].touched
+                "
+                [class.is-invalid]="
+                  signupform.controls['LastName'].invalid &&
+                  signupform.controls['LastName'].touched
+                "
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="10"
+                minlength="3"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    <!-- Email -->
-                    <div class="col-12 col-md-6" >
-                            <span class="lbl-Register" >{{ 'mainModule.signup.Email' | translate }}</span>
-                            <span class="star"> * </span>
-                            <div class="input-style">
+    <div class="col-12" style="margin-top: 30px">
+      <div class="row" style="padding-left: 30px">
+        <!-- Email -->
+        <div class="col-12 col-md-6">
+          <span class="lbl-Register">{{
+            "mainModule.signup.Email" | translate
+          }}</span>
+          <span class="star"> * </span>
+          <div class="input-style">
+            <input
+              type="email"
+              formControlName="Email"
+              class="form-control"
+              [class.is-valid]="
+                signupform.controls['Email'].valid &&
+                signupform.controls['Email'].touched
+              "
+              [class.is-invalid]="
+                signupform.controls['Email'].invalid &&
+                signupform.controls['Email'].touched
+              "
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              maxlength="50"
+              minlength="5"
+            />
+          </div>
+        </div>
 
-                                <input  type="email" 
-                                        formControlName="Email"
-                                        class="form-control"
-                                        [class.is-valid]="signupform.controls['Email'].valid
-                                        && signupform.controls['Email'].touched"
-                                        [class.is-invalid]="signupform.controls['Email'].invalid
-                                        && signupform.controls['Email'].touched"
-                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                        maxlength = "50"
-                                        minlength="5"
-                                >
-
-                            </div>
-                    </div>
-    
-                    <!-- Phone Number -->
-                    <div class="col-12 col-md-6 " >
-                        <span class="lbl-Register" >{{ 'mainModule.signup.PhoneNumber' | translate }}</span>
-                        <span class="star" > * </span>
-                        <div class="input-style-phone">
-                            <!-- <img src="../../../../assets/img/Group 512657.png" style="margin-left: 5px;margin-right: 5px;">
+        <!-- Phone Number -->
+        <div class="col-12 col-md-6">
+          <span class="lbl-Register">{{
+            "mainModule.signup.PhoneNumber" | translate
+          }}</span>
+          <span class="star"> * </span>
+          <div class="input-style-phone">
+            <!-- <img src="../../../../assets/img/Group 512657.png" style="margin-left: 5px;margin-right: 5px;">
                             <span>+2</span> -->
 
-                            <input  formControlName="PhoneNumber"
-                                    type="number" 
-                                    style=" border-width: 1px;outline: none;  display: block; "      
-                                    class="form-control "
-                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    maxlength = "10"
-                                    minlength="10"
-                                    [class.is-valid]="signupform.controls['PhoneNumber'].valid && signupform.controls['PhoneNumber'].touched"
-                                    [class.is-invalid]="signupform.controls['PhoneNumber'].invalid && signupform.controls['PhoneNumber'].touched"
-                                    [class.icon]="1"
-                                    >
-                            <span class="unit">+20</span>
-
-                        </div>
-                    </div>
-            </div>
+            <input
+              formControlName="PhoneNumber"
+              type="number"
+              style="border-width: 1px; outline: none; display: block"
+              class="form-control"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              maxlength="10"
+              minlength="10"
+              [class.is-valid]="
+                signupform.controls['PhoneNumber'].valid &&
+                signupform.controls['PhoneNumber'].touched
+              "
+              [class.is-invalid]="
+                signupform.controls['PhoneNumber'].invalid &&
+                signupform.controls['PhoneNumber'].touched
+              "
+              [class.icon]="1"
+            />
+            <span class="unit">+20</span>
+          </div>
         </div>
-    
-    
-        <!-- Password Block -->
-        <div class="col-12" style="margin-top: 30px;" >
-                <div class="row" style="padding-left:30px ;">
-                        <div class="col-12 col-md-6" >
-                            <div class="form-group mt-3">
-                                <label for="passwor1">{{ 'mainModule.signup.Password' | translate }}<span class="star"> * </span></label>
-                                <div class="input-group mb-3">
+      </div>
+    </div>
 
-                                    <input  formControlName="Password"
-                                            [class.is-valid]="signupform.controls['Password'].valid
-                                            && signupform.controls['Password'].touched"
-                                            [class.is-invalid]="signupform.controls['Password'].invalid
-                                            && signupform.controls['Password'].touched"
-                                            class="form-control border-right-0" 
-                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                            maxlength = "6"
-                                            minlength="6"
-                                            id="Password1" 
-                                            type="password" 
-                                            placeholder="***********" 
-                                            name="Password1"
-                                            required
-                                        >
+    <!-- Password Block -->
+    <div class="col-12" style="margin-top: 30px">
+      <div class="row" style="padding-left: 30px">
+        <div class="col-12 col-md-6">
+          <div class="form-group mt-3">
 
-                                    <span (click)="passwordIcon('Password1')" class="input-group-text  border-left-0"
-                                        style="background-color: white!important; cursor: pointer;border-radius: 0px;">
-                                        <i class="far fa-eye text-end" id="togglePassword"></i>
-                                    </span>
-                                </div>
-                            </div>
-                                
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-group mt-3">
-                                <label for="passwor1">{{ 'mainModule.signup.ConfirmPassword' | translate }}<span class="star"> * </span></label>
-                                <div class="input-group mb-3">
+            <label for="passwor1" class="lbl-Register" >{{ "mainModule.signup.Password" | translate}}<span class="star"> * </span></label>
 
-                                    <input  formControlName="ConfirmPassword"
-                                            [class.is-valid]="signupform.controls['ConfirmPassword'].valid
-                                            && signupform.controls['ConfirmPassword'].touched "
-                                            [class.is-invalid]="signupform.controls['ConfirmPassword'].invalid
-                                            && signupform.controls['ConfirmPassword'].touched" 
-                                            class="form-control border-right-0 "
-                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                            maxlength = "6"
-                                            minlength="6"
-                                            id="Password2" 
-                                            type="password" 
-                                            placeholder="***********" 
-                                            name="Password2"
-                                            required
-                                    >
+            <div class="input-style" style="position: relative;">
+                <input
+                  formControlName="Password"
+                  class="form-control border-right-0"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  maxlength="6"
+                  minlength="6"
+                  id="Password1"
+                  type="password"
+                  placeholder="***********"
+                  name="Password1"
+                  required
+                  style="width: 100%;"
+                />
+                <span class="eye"
+                      [ngClass]="{'eye-right': direction =='ltr', 'eye-left': direction =='rtl' }"
+                      (click)="passwordIcon('Password1')">
 
-                                    <span  (click)="passwordIcon('Password2')" 
-                                           class="input-group-text  border-left-0" style="background-color: white!important; cursor: pointer;border-radius: 0px;">
-                                        <i class="far fa-eye text-end"  id="togglePassword"></i>
+                  <i class="far fa-eye text-end" id="togglePassword"></i>
 
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                </div>
+                </span>
             </div>
-    
-        <!-- Next Button Block -->
-        <div class="col-12" style="margin-top: 50px;margin-bottom: 20px;" >
-            <div class="row" style="padding-left:30px ;">
-                <div class="col-12" >
-                    <button class="btn next-btn" 
-                            [disabled]="signupform.invalid" 
-                            (click)="Submit()" >
-
-                            {{ 'mainModule.signup.Next' | translate }}
-                </button>
-                </div>  
-                <div class="col-11" [hidden]="ErrorMessege==''" style="text-align: center;margin-left: 12px;margin-top: 20px;">
-                    <div class="alert alert-danger">
-                     {{ErrorMessege}}
-                    </div>
-                 </div> 
-            </div>
+          </div>
         </div>
-    </form>
+        <div class="col-12 col-md-6">
+          <div class="form-group mt-3">
+
+            <label for="passwor1" class="lbl-Register">{{ "mainModule.signup.ConfirmPassword" | translate}}<span class="star"> * </span></label>
+
+            <div class="input-style" style="position: relative;">
+                <input
+                  formControlName="ConfirmPassword"
+                  class="form-control border-right-0"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  maxlength="6"
+                  minlength="6"
+                  id="Password2"
+                  type="password"
+                  placeholder="***********"
+                  name="Password2"
+                  required
+                  style="width: 100%;"
+                />
+                <span  class="eye"
+                      [ngClass]="{'eye-right': direction =='ltr', 'eye-left': direction =='rtl' }"
+                      (click)="passwordIcon('Password2')">
+
+                  <i class="far fa-eye text-end" id="togglePassword"></i>
+
+                </span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Next Button Block -->
+    <div class="col-12" style="margin-top: 50px; margin-bottom: 20px">
+      <div class="row" style="padding-left: 30px">
+        <div class="col-12">
+          <button
+            class="btn next-btn"
+            [disabled]="signupform.invalid"
+            (click)="Submit()"
+          >
+            {{ "mainModule.signup.Next" | translate }}
+          </button>
+        </div>
+        <div
+          class="col-11"
+          [hidden]="ErrorMessege == ''"
+          style="text-align: center; margin-left: 12px; margin-top: 20px"
+        >
+          <div class="alert alert-danger">
+            {{ ErrorMessege }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
-
-
-
-
-
-
-
-
-
- 

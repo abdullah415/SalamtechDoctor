@@ -2,7 +2,7 @@
  .qq
 {
     background-color: red;
-    height: 100vh;
+    height: 100%;
 
 }
 
@@ -10,11 +10,11 @@
 /*-------------------validations input start-------------------*/
 .ng-valid[required] , .ng-valid.required
 {
-    border-left:5px solid #42a948;
+    border-inline-start:5px solid #42a948;
 }
 .ng-invalid[required] , .ng-invalid.required
 {
-    border-left:5px solid #a94442;
+    border-inline-start:5px solid #a94442;
 }
 /*-------------------validations input end  -------------------*/
 
