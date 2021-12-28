@@ -52,6 +52,7 @@ export function CreateTranslateLoader(http: HttpClient) {
           deps: [HttpClient]
       },
       defaultLanguage:'en'
+      
   })
 ],
   providers: [],

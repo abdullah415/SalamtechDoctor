@@ -17,6 +17,15 @@
         },
         "ResendCode":{
             "verify":"verify"
+        },
+        "login":{
+          "LoginAsDoctor":"Login As Doctor",
+          "PhoneNumber":"Phone Number",
+          "SignIn":"Sign In",
+          "DontHaveAnAccount?":"Don't Have An Account?",
+          "createAccount":"Create Account",
+          "ForgetPassword":"Forget Password?",
+          "LoginAsPatient":"Login As Patient"
         }
-    } 
+    }
 }
