@@ -16,7 +16,7 @@ DefaultLang:string |null;
   constructor(private translate:TranslateService){
     // translate.setDefaultLang('en');
     // translate.use('en');
-    if(localStorage.getItem("lan")!=null){
+    if(localStorage.getItem("lan") !=null){
       this.DefaultLang = localStorage.getItem("lan");
     }else{
       this.DefaultLang='en'
