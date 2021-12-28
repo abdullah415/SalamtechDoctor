@@ -1,8 +1,8 @@
 export class Responsesignup {
-    Message:string;
-    MessageCode:string;
-    Success:string;
-    Data:Response;
+    Message:any;
+    MessageCode:any;
+    Success:any;
+    Data:any;
 }
 
 

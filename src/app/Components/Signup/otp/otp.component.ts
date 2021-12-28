@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SignupService } from 'src/Service/signup/signup.service';
 
 @Component({
   selector: 'app-otp',
@@ -10,10 +11,14 @@ export class OtpComponent implements OnInit {
    //#region Declare Variables
    i:number=4;
    EnableResendLink:boolean;
+   NCODE1:any;
+   NCODE2:any;
+   NCODE3:any;
+   NCODE4:any;
    //#endregion
 
   //#region Constructor
-  constructor() { }
+  constructor(private SignupService:SignupService ) { }
   //#endregion
 
    //#region OnInit Method
@@ -21,6 +26,7 @@ export class OtpComponent implements OnInit {
 
     //#region Init Values
     this.EnableResendLink = true;
+    this.NCODE1 = "";
     //#endregion
 
     //#region Call Methods
@@ -46,5 +52,13 @@ export class OtpComponent implements OnInit {
    }
   //#endregion
 
+  //#region  Verify Code
+  verify(){
+    if(true){
+      console.log(this.NCODE1);
+      // this.SignupService.ResenderCodeObject
+    }
+  }
+  //#endregion
 
 }

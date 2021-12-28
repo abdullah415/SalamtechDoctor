@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Signup } from 'src/Models/signup';
+import { Responsesignup } from 'src/Service/signup/responsesignup';
 import { SignupService } from 'src/Service/signup/signup.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit {
   signupform : FormGroup ;
   SignUp:Signup = new Signup();
   ErrorMessege:string;
+  _Responsesignup:Responsesignup= new Responsesignup();
   //#endregion
 
   //#region Constructor
@@ -68,8 +70,10 @@ export class SignupComponent implements OnInit {
           let reuslt = this.SignupService.SignUp(this.SignUp).subscribe(
 
               (data)=> {
-                    this.router.navigateByUrl("OTP");   
-                    console.log(data);
+                this._Responsesignup.Data = data;
+                    this.router.navigateByUrl("OTP");
+                    this.SignupService.ResenderCodeObject = this._Responsesignup.Data["Data"];   
+                    // console.log("dsdsdsdsdsd : ",this._Responsesignup.Data["Data"]);
                   },
               (err)=> {
                 this.ErrorMessege = err.error['Message']; 
