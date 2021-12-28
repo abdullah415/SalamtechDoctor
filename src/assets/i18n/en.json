@@ -31,6 +31,15 @@
             "verify":"verify",
             "ResendAgain":"Resend Again",
             "Didntrecivecode":"Didn’t recive a code ?"
+        },
+        "sideBar":{
+          "Signup":"Sign Up",
+          "DoctorInfo":"Doctor info",
+          "Certificates":"Certificates",
+          "LegalDocuments":"Legal Documents",
+          "Congratulations":"Congratulations",
+          "singingUpYouAreApproveOur":"singing up you are approve our",
+          "Terms&Conditions":"Terms & Conditions"
         }
     }
 }

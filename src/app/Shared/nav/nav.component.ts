@@ -47,26 +47,26 @@ DefaultLang:string |null;
 
 
   //#region change Language Method
-  ChangeLanguage(e:string)
+  ChangeLanguage(e:any)
   {
     if(e === 'en')
     {
 
       console.log(localStorage.getItem("lan"))
 
-      // this.DefaultLang = 'ar';
+      this.DefaultLang = 'ar';
       localStorage.setItem("lan",'ar')
+      this.translate.use(this.DefaultLang);
       document.getElementsByTagName('html')[0].setAttribute("dir","rtl");
-      this.translate.use("ar");
 
 
     }
     if(e === 'ar')
     {
       localStorage.setItem("lan","en")
-      // this.DefaultLang = 'en';
+      this.DefaultLang = 'en';
+      this.translate.use(this.DefaultLang);
       document.getElementsByTagName('html')[0].setAttribute("dir","ltr");
-      this.translate.use("en");
 
     }
 
