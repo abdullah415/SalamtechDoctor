@@ -29,11 +29,11 @@
         },
         "sideBar":{
           "Signup":"التسجيل",
-          "DoctorInfo":"معلومات عن الدكتور",
+          "DoctorInfo":"بيانات الطبيب",
           "Certificates":"الشهادات",
           "LegalDocuments":"الأوراق الرسمية",
           "Congratulations":"تهانينا",
-          "singingUpYouAreApproveOur":"بالتسجيل فانت موافق علي",
+          "singingUpYouAreApproveOur":"بالتسجيل فأنت موافق علي",
           "Terms&Conditions":"الشروط والاحكام"
         }
     }
