@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Signup } from 'src/Models/signup';
@@ -8,14 +8,20 @@ import { ResenderCode } from './resender-code';
 @Injectable({
   providedIn: 'root'
 })
-export class SignupService {
+export class SignupService implements OnInit {
 
   //#region Constructor
   constructor(private http: HttpClient) {}
   //#endregion
 
+  //#region On Init Method
+  ngOnInit(): void {
+    this.ResenderCodeObject.Code = 0;
+  }
+  //#endregion
+
   //#region Declare varaibles
-  ResenderCodeObject:ResenderCode;
+  ResenderCodeObject:ResenderCode = new ResenderCode();
   //#endregion
 
   //#region Options
