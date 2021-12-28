@@ -9,21 +9,35 @@ import { TranslateService } from '@ngx-translate/core';
 export class NavComponent implements OnInit {
 
 //#region Declare Variables
-DefaultLang!:string;
+DefaultLang:string |null;
 //#endregion
 
   //#region  Constructor
   constructor(private translate:TranslateService){
     // translate.setDefaultLang('en');
     // translate.use('en');
+    if(localStorage.getItem("lan")!=null){
+      this.DefaultLang = localStorage.getItem("lan");
+    }else{
+      this.DefaultLang='en'
+    }
    }
   //#endregion
 
   //#region On Init Method
   ngOnInit(): void {
 
+
     //#region Init Variables Scope
-    this.DefaultLang = "en";
+    if(this.DefaultLang === 'ar'){
+
+      document.getElementsByTagName('html')[0].setAttribute("dir","rtl");
+      this.translate.use(this.DefaultLang);
+    }else{
+      this.DefaultLang = 'en';
+      document.getElementsByTagName('html')[0].setAttribute("dir","ltr");
+      this.translate.use(this.DefaultLang);
+    }
     //#endregion
 
   }
@@ -37,15 +51,23 @@ DefaultLang!:string;
   {
     if(e === 'en')
     {
-      this.DefaultLang = 'ar';
+
+      console.log(localStorage.getItem("lan"))
+
+      // this.DefaultLang = 'ar';
+      localStorage.setItem("lan",'ar')
       document.getElementsByTagName('html')[0].setAttribute("dir","rtl");
-      this.translate.use(this.DefaultLang);
+      this.translate.use("ar");
+
+
     }
     if(e === 'ar')
     {
-      this.DefaultLang = 'en';
+      localStorage.setItem("lan","en")
+      // this.DefaultLang = 'en';
       document.getElementsByTagName('html')[0].setAttribute("dir","ltr");
-      this.translate.use(this.DefaultLang);
+      this.translate.use("en");
+
     }
 
   }

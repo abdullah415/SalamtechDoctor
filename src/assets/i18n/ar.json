@@ -15,10 +15,18 @@
             "ConfirmPassword":"تأكيد كلمة السر",
             "Next":"التالى"
         },
-        "otp":{
-            "verify":"تحقق",
-            "ResendAgain":"إرسال مرة أخرى",
-            "Didntrecivecode":"لم تستلم رمز ؟"
+        "ResendCode":{
+            "verify":"تحقق"
+        },
+        "login":{
+          "LoginAsDoctor":"تسجيل الدخول للدكنور",
+          "PhoneNumber":"رقم الموبيل",
+          "SignIn":"تسجيل الدخول",
+          "DontHaveAnAccount?":"ليس لديك حساب ؟",
+          "createAccount":"انشاء حساب",
+          "ForgetPassword":"نسيت كلمة المرور",
+          "LoginAsPatient":"تسجيل الدخول للمريض"
+
         }
-    }  
+    }
 }
