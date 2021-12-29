@@ -10,7 +10,7 @@ import { SignUpMainComponent } from './Components/Signup/sign-up-main.component'
 import { SignupComponent } from './Components/Signup/signup/signup.component';
 
 const routes: Routes = [
-  {path:'Signup',component:SignUpMainComponent ,children:[
+  {path:'signup',component:SignUpMainComponent ,children:[
     {path:'',component:SignupComponent },
     {path:'OTP',component:OtpComponent },
     {path:'DoctorInfo',component:DoctorInfoComponent },
