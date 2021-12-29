@@ -67,19 +67,21 @@ export class OtpComponent implements OnInit {
     // }
 
     // this.second = 59
-    let interval = setInterval(() => {
-      if (this.second != 0) {
-        this.second--
-      } else {
-        if (this.minute > 0) {
-          this.minute--
-          this.second = 59
+    if(this.minute !=0){
+      let interval = setInterval(() => {
+        if (this.second != 0) {
+          this.second--
         } else {
-          clearInterval(interval)
-          console.log("end");
+          if (this.minute > 0) {
+            this.minute--
+            this.second = 59
+          } else {
+            clearInterval(interval)
+            console.log("end");
+          }
         }
-      }
-    }, 1000)
+      }, 1000)
+    }
 
 
   }
@@ -87,10 +89,10 @@ export class OtpComponent implements OnInit {
   //this.iterate = this.minute;
   // while(this.iterate > 0 )
   // {
-  //   setInterval(() => { 
+  //   setInterval(() => {
   //     this.second--
   //   },1000);
-  //   this.iterate--;  
+  //   this.iterate--;
   //   this.second =60;
   // }
   // }

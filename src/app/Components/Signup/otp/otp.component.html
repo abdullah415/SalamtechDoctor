@@ -1,7 +1,7 @@
 <div class="row main-row">
     <div class="col-12 noselect">
         <h3 class="title">
-            Enter the Verification Code 
+            Enter the Verification Code
         </h3>
     </div>
     <div class="col-12">
@@ -9,7 +9,7 @@
             Code sent to <span class="phone-style">+0000000000</span>
         </div>
         <div class="expired-style">
-            This code will be expired within 
+            This code will be expired within
             <span class="couter-style">{{minute}}:{{second}}</span>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="code-block"> <input class="code-color" [(ngModel)]="NCODE4" id="codeBox4" type="number" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)"></div>
     </div>
     <div class="col-12 dont-recieve-block">
-        <span> {{ 'mainModule.otp.Didntrecivecode' | translate }} 
+        <span> {{ 'mainModule.otp.Didntrecivecode' | translate }}
             <button class="Resend-block" [disabled]="EnableResendLink" (click)="ResendCode()"> {{ 'mainModule.otp.ResendAgain' | translate }}</button>
          </span>
     </div>
