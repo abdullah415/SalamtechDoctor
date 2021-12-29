@@ -1,5 +1,5 @@
 <div class="row main-Shared-place">
-  <form [formGroup]="signupform">
+  <form dir="auto" [formGroup]="signupform">
     <div class="col-12">
       <div class="row" style="padding-left: 30px">
         <div class="col-12 col-md-4 col-style">
@@ -91,7 +91,7 @@
             "mainModule.signup.Email" | translate
           }}</span>
           <span class="star"> * </span>
-          <div class="input-style">
+          <div dir="auto" class="input-style">
             <input
               type="email"
               formControlName="Email"
@@ -117,7 +117,7 @@
             "mainModule.signup.PhoneNumber" | translate
           }}</span>
           <span class="star"> * </span>
-          <div class="input-style-phone">
+          <div dir="auto" class="input-style-phone">
             <!-- <img src="../../../../assets/img/Group 512657.png" style="margin-left: 5px;margin-right: 5px;">
                             <span>+2</span> -->
 
@@ -167,8 +167,8 @@
                   required
                   style="width: 100%;"
                 />
-                <span class="eye"
-                      [ngClass]="{'eye-right': direction =='ltr', 'eye-left': direction =='rtl' }"
+                <span dir="auto" class="eye"
+
                       (click)="passwordIcon('Password1')">
 
                   <i class="far fa-eye text-end" id="togglePassword"></i>
@@ -196,8 +196,8 @@
                   required
                   style="width: 100%;"
                 />
-                <span  class="eye"
-                      [ngClass]="{'eye-right': direction =='ltr', 'eye-left': direction =='rtl' }"
+                <span dir="auto" class="eye"
+
                       (click)="passwordIcon('Password2')">
 
                   <i class="far fa-eye text-end" id="togglePassword"></i>

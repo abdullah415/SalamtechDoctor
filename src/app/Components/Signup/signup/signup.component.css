@@ -143,10 +143,6 @@ input[type=number] {
     font-size: 15px;
     line-height: 17px;
     font-weight: 500;
-  }
-  .rtl .eye-left {
-    left: 15px;
-  }
-  .eye-right {
     right: 15px;
   }
+
