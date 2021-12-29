@@ -40,6 +40,14 @@
           "Congratulations":"Congratulations",
           "singingUpYouAreApproveOur":"singing up you are approve our",
           "Terms&Conditions":"Terms & Conditions"
+        },
+        "main":{
+          "menu":"MENU",
+          "option":"OPTIONS",
+          "settings":"Settings",
+          "Help":"Help",
+          "Logout":"Logout"
+
         }
     }
 }

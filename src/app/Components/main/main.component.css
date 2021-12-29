@@ -1,3 +1,15 @@
+/*-------------- log start ------------------*/
+.logo
+{
+    width: 100%;
+    height:10%;
+    min-height: 90px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+/*-------------- logo end ------------------*/
 /*-------------- sidebar start ------------------*/
 .main-sidebar
 {
@@ -8,33 +20,40 @@
 .sidebar-col
 {
     background-color: #f3f3f3;
+    padding: 0px;
 }
 .sidebar-item
 {
     width: 80%;
-    height: 80%;
+    height: 100%;
     background-color: #f3f3f3;
-    /* background-colorgb(3, 2, 2)red; */
+    margin-left: 10%;
+    margin-right: 10%;
+}
 
-    margin: 10%;
+.sidebar-content
+{
+    width:100% ;
+    height: 90%;
+    /* background-color: yellow; */
 }
 
 ul
 {
     /* background-color: saddlebrown; */
     list-style-type:none;
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
 .li-Content
 {
     /* background-color: salmon; */
-    border-inline-start: 2px solid #DCDEE4;
+    /* border-inline-start: 2px solid #DCDEE4; */
     color: #A6AAB5;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
-    margin: 0px;
+    /* margin: 0px; */
     padding: 5px;
-    padding-inline-start: 15px;
+    /* padding-inline-start: 15px; */
     transition: 1s;
 }
 .li-Content-OnClick-Style
@@ -50,10 +69,13 @@ ul
     transition: 1s;
 }
 
+ul li 
+{
+    padding-bottom:20px ;
+}
 ul li span
 {
     cursor: pointer;
-
 }
 
 .OnClick-Style
@@ -96,3 +118,41 @@ ul li span
 }
 /*-------------- Terms-Condition Style End     ------------------*/
 
+.title-block
+{
+    width: 100%;
+    /* height: 50px; */
+    line-height: 50px;
+    background-color: yellowgreen;
+}
+
+.li-item
+{
+    padding-left: 20px;
+}
+
+.sub-group-title
+{
+    color: rgba(40, 41, 45, 0.85);
+    font-weight: 700;
+}
+
+.option-sidebar
+{
+    height: 50%;
+    margin-top: 50px;
+}
+
+.menu-sidebar
+{
+    height: 50%;
+    /* border-bottom: 1px solid rgba(38, 44, 58, 0.2); */
+}
+
+.hr-sidebar-main
+{
+    height: 2px;
+    width: 110%;
+    margin-left: 0px;
+    margin-right: 0px;
+}

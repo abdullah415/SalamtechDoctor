@@ -35,6 +35,14 @@
           "Congratulations":"تهانينا",
           "singingUpYouAreApproveOur":"بالتسجيل فأنت موافق علي",
           "Terms&Conditions":"الشروط والاحكام"
+        },
+        "main":{
+          "menu":"القائمة",
+          "option":"الإختيارات",
+          "settings":"الإعدادات",
+          "Help":"مساعدة",
+          "Logout":"خروج"
+
         }
     }
 }
