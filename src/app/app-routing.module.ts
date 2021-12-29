@@ -5,15 +5,18 @@ import { CongratulationsComponent } from './Components/Signup/congratulations/co
 import { DoctorInfoComponent } from './Components/Signup/doctor-info/doctor-info.component';
 import { DocumentsComponent } from './Components/Signup/documents/documents.component';
 import { OtpComponent } from './Components/Signup/otp/otp.component';
+import { SignUpMainComponent } from './Components/Signup/sign-up-main.component';
 import { SignupComponent } from './Components/Signup/signup/signup.component';
 
 const routes: Routes = [
-  {path:'',component:SignupComponent , pathMatch: 'full' },
-  {path:'OTP',component:OtpComponent },
-  {path:'DoctorInfo',component:DoctorInfoComponent },
-  {path:'Certificates',component:CertificatesComponent },
-  {path:'Documents',component:DocumentsComponent },
-  {path:'Congratulations',component:CongratulationsComponent },
+  {path:'',component:SignUpMainComponent ,children:[
+    {path:'',component:SignupComponent },
+    {path:'OTP',component:OtpComponent },
+    {path:'DoctorInfo',component:DoctorInfoComponent },
+    {path:'Certificates',component:CertificatesComponent },
+    {path:'Documents',component:DocumentsComponent },
+    {path:'Congratulations',component:CongratulationsComponent },
+  ] },
 
 ];
 

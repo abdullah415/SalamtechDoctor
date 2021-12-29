@@ -17,6 +17,7 @@ import { DocumentsComponent } from './Components/Signup/documents/documents.comp
 import { CongratulationsComponent } from './Components/Signup/congratulations/congratulations.component';
 import { FormsModule , ReactiveFormsModule  } from '@angular/forms';
 import { OtpComponent } from './Components/Signup/otp/otp.component';
+import { SignUpMainComponent } from './Components/Signup/sign-up-main.component';
 
 
 // AoT requires an exported function for factories
@@ -37,6 +38,7 @@ export function CreateTranslateLoader(http: HttpClient) {
     DocumentsComponent,
     CongratulationsComponent,
     OtpComponent,
+    SignUpMainComponent,
   ],
   imports: [
     HttpClientModule,
