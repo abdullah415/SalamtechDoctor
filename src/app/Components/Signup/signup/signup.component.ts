@@ -76,6 +76,7 @@ export class SignupComponent implements OnInit {
                 this._Responsesignup.Data = data;
                     this.router.navigateByUrl("OTP");
                     this.SignupService.ResenderCodeObject = this._Responsesignup.Data["Data"];
+                    this.SignupService.Phone = this.SignUp.Phone;
                     // console.log("dsdsdsdsdsd : ",this._Responsesignup.Data["Data"]);
                   },
               (err)=> {

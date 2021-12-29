@@ -22,6 +22,7 @@ export class SignupService implements OnInit {
 
   //#region Declare varaibles
   ResenderCodeObject:ResenderCode = new ResenderCode();
+  Phone:any;
   //#endregion
 
   //#region Options

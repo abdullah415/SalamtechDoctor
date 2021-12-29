@@ -20,6 +20,7 @@ export class OtpComponent implements OnInit {
   NCODE3: any;
   NCODE4: any;
   iterate: number;
+  PhoneNumber:any;
   //#endregion
 
   //#region Constructor
@@ -33,40 +34,26 @@ export class OtpComponent implements OnInit {
     this.EnableResendLink = true;
     this.minute = 0;
     this.second = 0;
+    this.PhoneNumber = this.SignupService.Phone;
 
-    // if(!isNaN(this.SignupService.ResenderCodeObject.ReSendCounter))
-    // {
-    // this.count = this.SignupService.ResenderCodeObject.ReSendCounter;
+    if(!isNaN(this.SignupService.ResenderCodeObject.ReSendCounter))
+    {
     this.minute = this.SignupService.ResenderCodeObject.ReSendCounter / 60;
     this.second = this.SignupService.ResenderCodeObject.ReSendCounter % 60;
     // this.iterate = 2;
-    // }
+    }
     //#endregion
 
     //#region Call Methods
     this.counter();
     //#endregion
 
-    // console.log(this.SignupService.ResenderCodeObject.Code);
-    // console.log(this.SignupService.ResenderCodeObject.ReSendCounter);
   }
   //#endregion
 
   //#region counter interval
   counter() {
-    // while(this.minute >0){
 
-    //   setInterval(()=>{
-    //     if(this.minute>0){
-    //       this.second--
-    //     }else{
-
-    //     }
-    //   },1000)
-    //   this.minute
-    // }
-
-    // this.second = 59
     if(this.minute !=0){
       let interval = setInterval(() => {
         if (this.second != 0) {
@@ -86,18 +73,6 @@ export class OtpComponent implements OnInit {
 
   }
 
-  //this.iterate = this.minute;
-  // while(this.iterate > 0 )
-  // {
-  //   setInterval(() => {
-  //     this.second--
-  //   },1000);
-  //   this.iterate--;
-  //   this.second =60;
-  // }
-  // }
-  //#endregion
-
   //#region  ResendCode
   ResendCode() {
 
@@ -110,7 +85,6 @@ export class OtpComponent implements OnInit {
     var NCODE = this.NCODE1.toString() + this.NCODE2.toString() + this.NCODE3.toString() + this.NCODE4.toString();
     if (this.SignupService.ResenderCodeObject.Code == NCODE) {
       console.log("Successfully");
-      // this.SignupService.ResenderCodeObject
     }
     else {
       console.log("failed");
