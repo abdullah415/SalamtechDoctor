@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CertificatesComponent implements OnInit {
 
+  buttonAdd:boolean=false
   constructor() { }
 
   ngOnInit(): void {
@@ -22,6 +23,10 @@ export class CertificatesComponent implements OnInit {
   //  document.getElementById('Doctorinfo')?.classList.remove('OnClick-Style');
   //  document.getElementById('Certificates')?.classList.remove('OnClick-Style');
    document.getElementById('LegalDocuments')?.classList.add('OnClick-Style');
+  }
+
+  showAdd(){
+    this.buttonAdd=!this.buttonAdd
   }
 
 }

@@ -1,44 +1,78 @@
-<div class="card ">
-  <div class="card-header">
-    New Certification
+<div class="container mt-3">
+  <div *ngIf="buttonAdd" class="row justify-content-end my-3">
+    <div class="col-3">
+      <button
+        class="btn text-white w-100"
+        style="background-color: #262d70"
+        [routerLink]="['/Certificates']"
+      >
+      Add New Certificate
+      </button>
+    </div>
   </div>
-  <div class="card-body">
-    <div class="row">
-      <div class="col-8">
-        <div class="input-group ">
-          <label for="title">Certificate title</label>
-          <input id="title" type="text" class="form-control w-100 mt-2 input-style" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+  <div class="row justify-content-start ">
+    <div class="col-10">
+      <div class="card ">
+        <div class="card-header border-0 text-muted" style="background-color: #f9f9f9!important;">
+          New Certification
         </div>
-      </div>
-      <div class="col-4">
-        <div class="input-group ">
-          <label for="year">year</label>
-          <input id="year" type="text" class="form-control w-100 mt-2 input-style" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+        <div class="card-body bg-color">
+          <div class="row">
+            <div class="col-8">
+              <div class="input-group ">
+                <label for="title" class="text-muted">Certificate title<span class="text-danger">*</span></label>
+                <input id="title" type="text" class="form-control w-100 mt-2 input-style" placeholder="title" >
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="input-group ">
+                <label for="year">year<span class="text-danger">*</span></label>
+                <input id="year" type="number" class="form-control w-100 mt-2 input-style" placeholder="1995" >
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-12">
+              <div class="form-floating">
+                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">Description (120 characters max)<span class="text-danger">*</span></label>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 120px"></textarea>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="card-footer bg-color text-muted border-0">
+          <button class="btn button-upload px-3 mb-2"><i class="fas fa-upload px-2"></i>Upload Certificate</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="row mt-3">
-      <div class="col-12">
-        <div class="form-floating">
-          <label for="floatingTextarea2" class="position-relative px-0 py-2">Description (120 characters max)</label>
-          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 120px"></textarea>
-        </div>
-      </div>
+  <div class="row justify-content-start mt-3">
+    <div class="col-3">
+      <button
+      (click)="showAdd()"
+        class="btn  w-100"
+        style="background-color: #e9eaf1;color: #262d70; border-color: #262d70;"
+        [routerLink]="['/Certificates']"
+      >
+      <i class="fas fa-plus px-1"></i>Add New Certificate
+      </button>
     </div>
-
-
   </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
 
-
-<div class="row">
-  <div class="col-4">
-    <button class="btn " style="background-color: #262d70;" (click)="changeStyle()" [routerLink]="['/Documents']">
-      next
-  </button>
+  <div class="row justify-content-end mt-5">
+    <div class="col-3">
+      <button
+        class="btn text-white w-100"
+        style="background-color: #262d70"
+        [routerLink]="['/Certificates']"
+      >
+        Next
+      </button>
+    </div>
   </div>
+
 </div>
