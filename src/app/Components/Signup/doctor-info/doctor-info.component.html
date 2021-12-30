@@ -4,12 +4,21 @@
       <div class="col-lg-4 col-md-12  col-sm-12 mb-4">
         <div class="row img-block just">
           <div class="col img-col-block">
-            <img src="../../../../assets/img/DoctorImg/Rectangle 2.png" />
+            <img src="{{imgURL}}" />
           </div>
         </div>
         <div class="row ChangeProfilePhoto-block ">
           <div class="col justify-content-center" style="display: flex; align-items: center">
-            <button class="changePhoto-btn">Change Profile Photo</button>
+            <input type='file'
+                    formControlName="ImageDoctor"  
+                   #file 
+                   accept="image/*" id="getFile" style="display:none"
+                  (change)="preview(file.files)">
+
+            <button onclick="document.getElementById('getFile').click()" 
+                    class="changePhoto-btn">
+              Change Profile Photo
+            </button>
           </div>
         </div>
       </div>
@@ -140,9 +149,15 @@
           "mainModule.DoctorInfo.Gender" | translate
           }}</span>
         <span class="star"> * </span>
-        <select formControlName="Gender" class="form-select" aria-label="Default select example">
-          <option selected>{{ "mainModule.DoctorInfo.Male" | translate }}</option>
-          <option value="f">
+        <select formControlName="Gender" 
+                (change)="SelectGender($event)" 
+                class="form-select" 
+                aria-label="Default select example">
+          <option value="" selected >{{ "mainModule.DoctorInfo.Gender" | translate }}</option>
+          <option value="1">
+            {{ "mainModule.DoctorInfo.Male" | translate }}
+          </option>
+          <option value="2">
             {{ "mainModule.DoctorInfo.Female" | translate }}
           </option>
         </select>
@@ -154,11 +169,16 @@
           {{ "mainModule.DoctorInfo.Nationality" | translate }}
         </span>
         <span class="star"> * </span>
-        <select formControlName="Country" class="form-select" aria-label="Default select example">
-          <option selected>
+        <select formControlName="Country" 
+                (change)="SelectCountries($event)" 
+                class="form-select" 
+                aria-label="Default select example">
+          <option value="" selected>
             {{ "mainModule.DoctorInfo.Egypt" | translate }}
           </option>
-          <!-- <option value="f">{{"mainModule.DoctorInfo.Nationality" | translate}}</option> -->
+          <option *ngFor="let item of DropDownList_GetCountries" value="{{item.Id}}">
+            {{item.Name}}
+            </option>
         </select>
       </div>
   
@@ -194,10 +214,10 @@
         <select formControlName="Speciality" 
                 (change)="SelectSpeciality($event)" 
                 class="form-select" aria-label="Default select example">
-          <option selected>
+          <option value="" selected>
             {{ "mainModule.DoctorInfo.Speciality" | translate }}
           </option>
-          <option *ngFor="let item of DropDownList">
+          <option *ngFor="let item of DropDownList_Speciality" value="{{item.Id}}">
             {{item.Name}}
             </option>
         </select>
@@ -209,13 +229,16 @@
           "mainModule.DoctorInfo.SubSpeciality" | translate
           }}</span>
         <span class="star"> * </span>
-        <select formControlName="SubSpeciality" class="form-select" aria-label="Default select example">
-          <option selected>
+        <select formControlName="SubSpeciality" 
+                (change)="SelectSubSpeciality($event)" 
+                class="form-select" 
+                aria-label="Default select example">
+          <option value="" selected>
             {{ "mainModule.DoctorInfo.SubSpeciality" | translate }}
           </option>
-          <option value="f">
-            {{ "mainModule.DoctorInfo.SubSpeciality" | translate }}
-          </option>
+          <option *ngFor="let item of DropDownList_SubSpeciality" value="{{item.Id}}">
+            {{item.Name}}
+            </option>
         </select>
       </div>
   
@@ -225,13 +248,16 @@
           "mainModule.DoctorInfo.Seniority" | translate
           }}</span>
         <span class="star"> * </span>
-        <select formControlName="Seniority" class="form-select" aria-label="Default select example">
-          <option selected>
+        <select formControlName="Seniority"
+                (change)="SelectSeniority($event)"  
+                class="form-select" 
+                aria-label="Default select example">
+          <option value="" selected>
             {{ "mainModule.DoctorInfo.Seniority" | translate }}
           </option>
-          <option value="f">
-            {{ "mainModule.DoctorInfo.Seniority" | translate }}
-          </option>
+          <option *ngFor="let item of DropDownList_SeniorityLevel" value="{{item.Id}}">
+            {{item.Name}}
+            </option>
         </select>
       </div>
     </div>
@@ -262,7 +288,7 @@
   
   <div class="row justify-content-end mt-4 ">
     <div class="col-3">
-      <button class="btn text-white w-100" style="background-color: #262d70" (click)="DoctorImgSubmit()"
+      <button class="btn text-white w-100" style="background-color: #262d70" (click)="DoctorInfoSubmit()"
         [routerLink]="['/Certificates']">
         Next
       </button>
