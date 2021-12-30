@@ -28,7 +28,7 @@ ngOnInit(): void {
   document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
   document.getElementById('Signup')?.classList.add('OnClick-Style');
   //#endregion
- 
+
    //#region  Register Form Section
    this.DoctorInfoForm = this.fb.group(
     {
@@ -46,6 +46,10 @@ ngOnInit(): void {
         Nationality:['',[Validators.required ]],
         Country:['',[Validators.required ]],
         DateOfBirth:['',[Validators.required ]],
+        Speciality:['',[Validators.required]],
+        SubSpeciality:['',[Validators.required]],
+        Seniority:['',[Validators.required]]
+
       });
   //#endregion
 

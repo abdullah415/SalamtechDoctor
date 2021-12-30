@@ -57,7 +57,13 @@
           "Female":"Female",
           "Nationality":"Nationality",
           "Egypt":"Egypt",
-          "Date_of_birth":"Date of birth"
+          "Date_of_birth":"Date of birth",
+          "Speciality":"Speciality",
+          "SubSpeciality":"Sub-Speciality",
+          "Seniority":"Seniority",
+          "BiographyAr":"معلومات شخصية",
+          "Biography":"Biography"
+
         }
     }
 }

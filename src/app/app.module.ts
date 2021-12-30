@@ -20,6 +20,7 @@ import { OtpComponent } from './Components/Signup/otp/otp.component';
 import { SignUpMainComponent } from './Components/Signup/sign-up-main.component';
 import { MainComponent } from './Components/main/main.component';
 import { MainNavComponent } from './Shared/main-nav/main-nav.component';
+import { UploadFileComponent } from './Shared/upload-file/upload-file.component';
 
 
 // AoT requires an exported function for factories
@@ -42,7 +43,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     OtpComponent,
     SignUpMainComponent,
     MainComponent,
-    MainNavComponent
+    MainNavComponent,
+    UploadFileComponent
   ],
   imports: [
     HttpClientModule,

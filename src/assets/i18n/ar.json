@@ -52,7 +52,13 @@
           "Female":"أنثى",
           "Nationality":"الجنسية",
           "Egypt":"مصر",
-          "Date_of_birth":"تاريخ الميلاد"
+          "Date_of_birth":"تاريخ الميلاد",
+          "Speciality":"المجال",
+          "SubSpeciality":"التخصص",
+          "Seniority":"الدرجه العلمية",
+          "BiographyAr":"Biography",
+          "Biography":"المعلومات الشخصية"
+
         }
     }
 }
