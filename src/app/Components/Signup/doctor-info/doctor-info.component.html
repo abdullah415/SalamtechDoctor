@@ -179,7 +179,7 @@
                 </div>
 
             </div>
-            
+
         </div>
 
     </div>
@@ -250,11 +250,15 @@
             }}</span>
             <span class="star"> * </span>
             <select
+                (change)="SelectSpeciality($event)"
                 formControlName="Speciality"
                 class="form-select"
                 aria-label="Default select example">
                 <option selected>
                 {{ "mainModule.DoctorInfo.Speciality" | translate }}
+                </option>
+                <option *ngFor="let item of DropDownList">
+                    {{item.Name}}
                 </option>
             </select>
         </div>
@@ -293,9 +297,7 @@
                 <option selected>
                 {{ "mainModule.DoctorInfo.Seniority" | translate }}
                 </option>
-                <option value="f">
-                {{ "mainModule.DoctorInfo.Seniority" | translate }}
-                </option>
+               
             </select>
         </div>
 
@@ -307,17 +309,19 @@
         <div class="col-12 col-md-6">
             <div class="form-floating">
                 <label
-                for="floatingTextarea2 "
-                class="position-relative px-0 lbl-Register"
-                >{{ "mainModule.DoctorInfo.Biography" | translate }}
-                <span class="star"> * </span></label
+                    for="floatingTextarea2 "
+                    class="position-relative px-0 lbl-Register">
+                    {{ "mainModule.DoctorInfo.Biography" | translate }}
+                    <span class="star"> * </span>
+                </label
                 >
                 <textarea
-                class="form-control"
-                placeholder="Leave a comment here"
-                id="floatingTextarea2"
-                style="height: 120px"
-                ></textarea>
+                    class="form-control"
+                    placeholder="Leave a comment here"
+                    formControlName="Biography"
+                    id="floatingTextarea2"
+                    style="height: 120px" >
+                </textarea>
             </div>
         </div>
 
@@ -333,6 +337,7 @@
                 <textarea
                 class="form-control textForArabic"
                 placeholder="Leave a comment here"
+                formControlName="BiographyAr"
                 id="floatingTextarea2"
                 style="height: 120px"
                 ></textarea>
@@ -348,7 +353,7 @@
     <button
       class="btn text-white w-100"
       style="background-color: #262d70"
-      (click)="changeStyle()"
+      (click)="DoctorImgSubmit()"
       [routerLink]="['/Certificates']"
     >
       Next
