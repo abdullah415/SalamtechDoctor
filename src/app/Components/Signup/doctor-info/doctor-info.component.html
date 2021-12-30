@@ -42,7 +42,7 @@
                         />
                         </div>
                 </div>
-                <div class="col-6" >
+                <div class="col-6 textForArabic" >
                     <span class="lbl-Register">{{
                         "mainModule.DoctorInfo.FirstNameAr" | translate
                         }}</span>
@@ -50,7 +50,7 @@
                         <div class="input-style">
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control textForArabic"
                             formControlName="FirstNameAr"
                             [class.is-valid]="
                             DoctorInfoForm.controls['FirstNameAr'].valid &&
@@ -74,7 +74,7 @@
                         <div class="input-style">
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control "
                             formControlName="MiddleName"
                             [class.is-valid]="
                             DoctorInfoForm.controls['MiddleName'].valid &&
@@ -90,7 +90,7 @@
                         />
                         </div>
                 </div>
-                <div class="col-6" >
+                <div class="col-6 textForArabic" >
                     <span class="lbl-Register">{{
                         "mainModule.DoctorInfo.MiddleNameAr" | translate
                         }}</span>
@@ -98,7 +98,7 @@
                         <div class="input-style">
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control textForArabic"
                             formControlName="MiddleNameAr"
                             [class.is-valid]="
                             DoctorInfoForm.controls['MiddleNameAr'].valid &&
@@ -114,7 +114,7 @@
                         />
                         </div>
                 </div>
-                <div class="col-6" >
+                <div class="col-6 " >
                     <span class="lbl-Register">{{
                         "mainModule.signup.LastName" | translate
                         }}</span>
@@ -122,7 +122,7 @@
                         <div class="input-style">
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control "
                             formControlName="LastName"
                             [class.is-valid]="
                             DoctorInfoForm.controls['LastName'].valid &&
@@ -138,7 +138,7 @@
                         />
                         </div>
                 </div>
-                <div class="col-6" >
+                <div class="col-6 textForArabic" >
                     <span class="lbl-Register">{{
                         "mainModule.DoctorInfo.LastNameAr" | translate
                         }}</span>
@@ -146,7 +146,7 @@
                         <div class="input-style">
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control textForArabic"
                             formControlName="LastNameAr"
                             [class.is-valid]="
                             DoctorInfoForm.controls['LastNameAr'].valid &&
@@ -216,158 +216,6 @@
         </div>
         </div>
     </div>
-  <div class="row">
-    <div class="col-4" style="background-color: black">1</div>
-
-    <div class="col-8">
-      <div class="row">
-        <div class="col-6">
-          <span class="lbl-Register">{{
-            "mainModule.signup.FirstName" | translate
-          }}</span>
-          <span class="star"> * </span>
-          <div class="input-style">
-            <input
-              type="text"
-              class="form-control"
-              formControlName="FirstName"
-              [class.is-valid]="
-                DoctorInfoForm.controls['FirstName'].valid &&
-                DoctorInfoForm.controls['FirstName'].touched
-              "
-              [class.is-invalid]="
-                DoctorInfoForm.controls['FirstName'].invalid &&
-                DoctorInfoForm.controls['FirstName'].touched
-              "
-              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-              maxlength="10"
-              minlength="3"
-            />
-          </div>
-        </div>
-        <div class="col-6 textForArabic">
-          <span class="lbl-Register">{{
-            "mainModule.DoctorInfo.FirstNameAr" | translate
-          }}</span>
-          <span class="star"> * </span>
-          <div class="input-style">
-            <input
-              type="text"
-              class="form-control textForArabic"
-              formControlName="FirstNameAr"
-              [class.is-valid]="
-                DoctorInfoForm.controls['FirstNameAr'].valid &&
-                DoctorInfoForm.controls['FirstNameAr'].touched
-              "
-              [class.is-invalid]="
-                DoctorInfoForm.controls['FirstNameAr'].invalid &&
-                DoctorInfoForm.controls['FirstNameAr'].touched
-              "
-              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-              maxlength="10"
-              minlength="3"
-            />
-          </div>
-        </div>
-        <div class="col-6">
-          <span class="lbl-Register">{{
-            "mainModule.signup.MiddleName" | translate
-          }}</span>
-          <span class="star"> * </span>
-          <div class="input-style">
-            <input
-              type="text"
-              class="form-control"
-              formControlName="MiddleName"
-              [class.is-valid]="
-                DoctorInfoForm.controls['MiddleName'].valid &&
-                DoctorInfoForm.controls['MiddleName'].touched
-              "
-              [class.is-invalid]="
-                DoctorInfoForm.controls['MiddleName'].invalid &&
-                DoctorInfoForm.controls['MiddleName'].touched
-              "
-              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-              maxlength="10"
-              minlength="3"
-            />
-          </div>
-        </div>
-        <div class="col-6 textForArabic">
-          <span class="lbl-Register">{{
-            "mainModule.DoctorInfo.MiddleNameAr" | translate
-          }}</span>
-          <span class="star"> * </span>
-          <div class="input-style">
-            <input
-              type="text"
-              class="form-control textForArabic"
-              formControlName="MiddleNameAr"
-              [class.is-valid]="
-                DoctorInfoForm.controls['MiddleNameAr'].valid &&
-                DoctorInfoForm.controls['MiddleNameAr'].touched
-              "
-              [class.is-invalid]="
-                DoctorInfoForm.controls['MiddleNameAr'].invalid &&
-                DoctorInfoForm.controls['MiddleNameAr'].touched
-              "
-              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-              maxlength="10"
-              minlength="3"
-            />
-          </div>
-        </div>
-        <div class="col-6">
-          <span class="lbl-Register">{{
-            "mainModule.signup.LastName" | translate
-          }}</span>
-          <span class="star"> * </span>
-          <div class="input-style">
-            <input
-              type="text"
-              class="form-control"
-              formControlName="LastName"
-              [class.is-valid]="
-                DoctorInfoForm.controls['LastName'].valid &&
-                DoctorInfoForm.controls['LastName'].touched
-              "
-              [class.is-invalid]="
-                DoctorInfoForm.controls['LastName'].invalid &&
-                DoctorInfoForm.controls['LastName'].touched
-              "
-              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-              maxlength="10"
-              minlength="3"
-            />
-          </div>
-        </div>
-        <div class="col-6 textForArabic">
-          <span class="lbl-Register">{{
-            "mainModule.DoctorInfo.LastNameAr" | translate
-          }}</span>
-          <span class="star"> * </span>
-          <div class="input-style">
-            <input
-              type="text"
-              class="form-control textForArabic"
-              formControlName="LastNameAr"
-              [class.is-valid]="
-                DoctorInfoForm.controls['LastNameAr'].valid &&
-                DoctorInfoForm.controls['LastNameAr'].touched
-              "
-              [class.is-invalid]="
-                DoctorInfoForm.controls['LastNameAr'].invalid &&
-                DoctorInfoForm.controls['LastNameAr'].touched
-              "
-              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-              maxlength="10"
-              minlength="3"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="row">
     <div class="col-12 col-md-4 col-style">

@@ -137,6 +137,7 @@ input[type="number"] {
   right: 15px;
 }
 
+<<<<<<< HEAD
 
   .img-block
   {
@@ -170,5 +171,7 @@ input[type="number"] {
     background-color: #262d70;
     color: white;
     font-size: 14px;
+}
+.textForArabic{
   text-align: end;
 }
