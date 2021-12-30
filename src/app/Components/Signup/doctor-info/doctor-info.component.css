@@ -149,3 +149,37 @@ input[type=number] {
     right: 15px;
   }
 
+
+  .img-block
+  {
+      height:70%;
+      /* background-color: green; */
+  }
+
+  .ChangeProfilePhoto-block
+  {
+      height: 30%;
+      /* background-color: hotpink; */
+  }
+
+  .img-col-block
+  {
+      text-align: center;
+  }
+
+  .img-block .img-col-block img
+  {
+      margin-top: 20px;
+     width: 150px;
+     height: 150px;
+  }
+
+.changePhoto-btn
+{
+    padding: 15px 25px;
+    border-radius: 5px;
+    border: 1px solid #262d70;
+    background-color: #262d70;
+    color: white;
+    font-size: 14px;
+}

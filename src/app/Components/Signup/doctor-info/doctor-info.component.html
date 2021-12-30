@@ -1,8 +1,19 @@
 <form dir="auto" [formGroup]="DoctorInfoForm">
     <div class="row">
 
-        <div class="col-4" style="background-color: black;">
-            1
+        <div class="col-4 " >
+            <div class="row img-block ">
+                <div class="col img-col-block" >
+                    <img src="../../../../assets/img/DoctorImg/Rectangle 2.png">
+                </div>
+            </div>
+            <div class="row ChangeProfilePhoto-block " >
+                <div class="col justify-content-center" style="display: flex;align-items: center;">
+                    <button class="changePhoto-btn" >
+                        Change Profile Photo
+                    </button>
+                </div>
+            </div>
         </div>
 
         <div class="col-8">
@@ -184,10 +195,22 @@
             }}</span>
             <span class="star"> * </span>
             <div class="input-style">
-            
-
-                <input class="datepicker" data-date-format="mm/dd/yyyy">
-
+            <input
+                type="date"
+                formControlName="DateOfBirth"
+                class="form-control"
+                [class.is-valid]="
+                DoctorInfoForm.controls['DateOfBirth'].valid &&
+                DoctorInfoForm.controls['DateOfBirth'].touched
+                "
+                [class.is-invalid]="
+                DoctorInfoForm.controls['DateOfBirth'].invalid &&
+                DoctorInfoForm.controls['DateOfBirth'].touched
+                "
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="10"
+                minlength="3"
+            />
             </div>
         </div>
         </div>

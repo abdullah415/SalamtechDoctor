@@ -45,6 +45,7 @@ ngOnInit(): void {
         Gender:['',[Validators.required ]],
         Nationality:['',[Validators.required ]],
         Country:['',[Validators.required ]],
+        DateOfBirth:['',[Validators.required ]],
       });
   //#endregion
 
