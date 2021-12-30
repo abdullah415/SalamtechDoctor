@@ -191,10 +191,15 @@
           "mainModule.DoctorInfo.Speciality" | translate
           }}</span>
         <span class="star"> * </span>
-        <select formControlName="Speciality" class="form-select" aria-label="Default select example">
+        <select formControlName="Speciality" 
+                (change)="SelectSpeciality($event)" 
+                class="form-select" aria-label="Default select example">
           <option selected>
             {{ "mainModule.DoctorInfo.Speciality" | translate }}
           </option>
+          <option *ngFor="let item of DropDownList">
+            {{item.Name}}
+            </option>
         </select>
       </div>
   
