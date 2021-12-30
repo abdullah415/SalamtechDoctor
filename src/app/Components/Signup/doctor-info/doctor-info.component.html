@@ -252,21 +252,49 @@
   <div class="row">
     <div class="col-12 col-md-6">
       <div class="form-floating">
-        <label for="floatingTextarea2 " class="position-relative px-0 py-2 lbl-Register">{{ "mainModule.DoctorInfo.Biography" | translate }} <span class="star"> * </span></label>
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 120px"></textarea>
+        <label
+          for="floatingTextarea2 "
+          class="position-relative px-0 lbl-Register"
+          >{{ "mainModule.DoctorInfo.Biography" | translate }}
+          <span class="star"> * </span></label
+        >
+        <textarea
+          class="form-control"
+          placeholder="Leave a comment here"
+          id="floatingTextarea2"
+          style="height: 120px"
+        ></textarea>
       </div>
     </div>
 
     <div class="col-12 col-md-6">
-      <div class="form-floating">
-        <label for="floatingTextarea2 " class="position-relative px-0 py-2 lbl-Register"><span class="star"> * </span>{{ "mainModule.DoctorInfo.BiographyAr" | translate }}</label>
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 120px"></textarea>
+      <div class="form-floating textForArabic">
+        <label
+          for="floatingTextarea2 "
+          class="position-relative px-0 lbl-Register"
+          ><span class="star"> * </span
+          >{{ "mainModule.DoctorInfo.BiographyAr" | translate }}</label
+        >
+        <textarea
+          class="form-control textForArabic"
+          placeholder="Leave a comment here"
+          id="floatingTextarea2"
+          style="height: 120px"
+        ></textarea>
       </div>
     </div>
   </div>
 </form>
 
-<!-- <p>doctor-info works!</p>
-<button (click)="changeStyle()" [routerLink]="['/Certificates']">
-    next
-</button> -->
+<div class="row justify-content-end mt-4">
+  <div class="col-3">
+    <button
+      class="btn text-white w-100"
+      style="background-color: #262d70"
+      (click)="changeStyle()"
+      [routerLink]="['/Certificates']"
+    >
+      Next
+    </button>
+  </div>
+</div>
