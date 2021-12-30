@@ -52,9 +52,9 @@
 .lbl-Register {
   color: #8b90a0;
 }
-.col-style {
+/* .col-style {
   height: fit-content;
-}
+} */
 .errspan {
   float: left;
   margin-left: 10px;
@@ -140,13 +140,13 @@ input[type="number"] {
 
   .img-block
   {
-      height:70%;
+      /* height:70%; */
       /* background-color: green; */
   }
- 
+
   .ChangeProfilePhoto-block
   {
-      height: 30%;
+      /* height: 30%; */
       /* background-color: hotpink; */
   }
 
@@ -157,7 +157,7 @@ input[type="number"] {
 
   .img-block .img-col-block img
   {
-      margin-top: 20px;
+     margin: 20px 0px;
      width: 150px;
      height: 150px;
   }
@@ -173,4 +173,14 @@ input[type="number"] {
 }
 .textForArabic{
   text-align: end;
+}
+
+input {
+  border-radius: 8px!important;
+}
+ select{
+  border-radius: 8px!important;
+}
+textarea{
+  border-radius: 8px!important;
 }
