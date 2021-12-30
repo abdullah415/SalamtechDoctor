@@ -11,13 +11,13 @@ import { SignupComponent } from './Components/Signup/signup/signup.component';
 
 const routes: Routes = [
   {path:'signup',component:SignUpMainComponent ,children:[
-      {path:'',component:SignupComponent },
-      {path:'OTP',component:OtpComponent },
-      {path:'DoctorInfo',component:DoctorInfoComponent },
-      {path:'Certificates',component:CertificatesComponent },
-      {path:'Documents',component:DocumentsComponent },
-      {path:'Congratulations',component:CongratulationsComponent },] 
-  },
+    {path:'',component:SignupComponent },
+    {path:'OTP',component:OtpComponent },
+    {path:'doctorinfo',component:DoctorInfoComponent },
+    {path:'Certificates',component:CertificatesComponent },
+    {path:'Documents',component:DocumentsComponent },
+    {path:'Congratulations',component:CongratulationsComponent },
+  ] },
   {path:'',component:MainComponent },
 
 

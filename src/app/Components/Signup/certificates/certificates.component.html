@@ -1,4 +1,44 @@
-<p>certificates works!</p>
-<button (click)="changeStyle()" [routerLink]="['/Documents']">
-    next
-</button>
+<div class="card ">
+  <div class="card-header">
+    New Certification
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-8">
+        <div class="input-group ">
+          <label for="title">Certificate title</label>
+          <input id="title" type="text" class="form-control w-100 mt-2 input-style" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="input-group ">
+          <label for="year">year</label>
+          <input id="year" type="text" class="form-control w-100 mt-2 input-style" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12">
+        <div class="form-floating">
+          <label for="floatingTextarea2" class="position-relative px-0 py-2">Description (120 characters max)</label>
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 120px"></textarea>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-4">
+    <button class="btn " style="background-color: #262d70;" (click)="changeStyle()" [routerLink]="['/Documents']">
+      next
+  </button>
+  </div>
+</div>
