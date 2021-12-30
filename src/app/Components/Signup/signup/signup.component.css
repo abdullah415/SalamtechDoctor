@@ -1,6 +1,6 @@
 .main-Shared-place
 {
-    /* height: 80vh; */
+    height: 100%;
     /* background-color: tomato; */
     margin-top:20px;
 }
@@ -16,7 +16,9 @@
 .lbl-Register
 {
     display: inline-block;
-    padding-bottom: 5px;}
+    padding-bottom: 5px;
+}
+
 .input-style
 {
     /* background-color: black; */

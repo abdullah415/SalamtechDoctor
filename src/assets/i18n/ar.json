@@ -42,7 +42,17 @@
           "settings":"الإعدادات",
           "Help":"مساعدة",
           "Logout":"خروج"
-
+        },
+        "DoctorInfo":{
+          "FirstNameAr":"First Name",
+          "MiddleNameAr":"Middle Name",
+          "LastNameAr":"Last Name",
+          "Gender":"الجنس",
+          "Male":"ذكر",
+          "Female":"أنثى",
+          "Nationality":"الجنسية",
+          "Egypt":"مصر",
+          "Date_of_birth":"تاريخ الميلاد"
         }
     }
 }
