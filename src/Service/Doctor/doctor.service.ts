@@ -6,7 +6,7 @@ import { DoctorInfoModel } from 'src/Models/doctor-info-model';
 import { DropDownModel } from 'src/Models/drop-down-model';
 
 @Injectable({
-  providedIn: 'root' 
+  providedIn: 'root'
 })
 export class DoctorService {
 
@@ -15,14 +15,15 @@ export class DoctorService {
   //#region Options
   httpOptions = {
     headers: new HttpHeaders({
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiZmZkNmQ4MjItMmUyOS00ZGFhLTk5M2MtYzRmYmRkOTI1NWY4IiwiZXhwIjoxNjQxMDQxNDM5LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.cd_fGmg73iV9o3d4r0Rke0mNSjXO8O7gg8wHF-SihDU'
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiZmZkNmQ4MjItMmUyOS00ZGFhLTk5M2MtYzRmYmRkOTI1NWY4IiwiZXhwIjoxNjQxMDQxNDM5LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.cd_fGmg73iV9o3d4r0Rke0mNSjXO8O7gg8wHF-SihDU',
       }
+
     )};
   //#endregion
 
     //#region Get Specialist Id Name
-    CreateProfile(lang:string , DoctorInfoModel:DoctorInfoModel):Observable<DropDownModel>{
-      return this.http.post<DropDownModel>(`${environment.URL}${lang}/Doctor/CreateProfile`,DoctorInfoModel,this.httpOptions);
+    CreateProfile(lang:string , DoctorInfoModel:FormData){
+      return this.http.post(`${environment.URL}${lang}/Doctor/CreateProfile`,DoctorInfoModel,this.httpOptions);
     }
     //#endregion
 

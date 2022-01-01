@@ -28,17 +28,19 @@ export class DoctorInfoComponent implements OnInit {
   //#region Constructor
   constructor(private fb:FormBuilder ,
     private SignupService:SignupService ,
-    private router:Router , 
+    private router:Router ,
     private DoctorService:DoctorService) {  }
   //#endregion
 
   //#region On Init Method
     ngOnInit(): void {
 
+
       //#region Init Values
       document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
       document.getElementById('Signup')?.classList.add('OnClick-Style');
       this.DropDownList_Speciality = [];
+      this.DoctorInfoModel=new DoctorInfoModel()
       // this.DoctorInfoForm.controls.ImageDoctor.value = "";
       // this.DropDownModel.Data = [];
       //#endregion
@@ -69,7 +71,7 @@ export class DoctorInfoComponent implements OnInit {
           });
       //#endregion
 
-      //#region call Methods 
+      //#region call Methods
       this.GetSpecialistIdName('en');
       this.SeniorityLevelIdName('en');
       this.GetCountries('en');
@@ -95,14 +97,14 @@ export class DoctorInfoComponent implements OnInit {
   //#endregion
 
   //#region GetSubSpecialistIdName
-  CreateProfile(lang:string , _DoctorInfoModel:DoctorInfoModel)
+  CreateProfile(lang:string , _DoctorInfoModel:FormData)
   {
     this.DoctorService.CreateProfile(lang ,_DoctorInfoModel ).subscribe(
       (response)=>{
-       console.log(response);
+       this.router.navigateByUrl('signup/certificates');
       },
       (err)=>{
-        console.log(err);
+        // console.log(err);
       }
     )
   }
@@ -156,24 +158,43 @@ GetSpecialistIdName(lang:string)
   //#region Doctor Info Submit Method
     DoctorInfoSubmit()
   {
+    const formData = new FormData();
+
 
     this.DoctorInfoModel.FirstName = this.DoctorInfoForm.controls.FirstName.value;
     this.DoctorInfoModel.FirstNameAr = this.DoctorInfoForm.controls.FirstNameAr.value;
-    this.DoctorInfoModel.MiddelName = this.DoctorInfoForm.controls.MiddelName.value;
-    this.DoctorInfoModel.MiddelNameAr = this.DoctorInfoForm.controls.MiddelNameAr.value;
+    this.DoctorInfoModel.MiddelName = this.DoctorInfoForm.controls.MiddleName.value;
+    this.DoctorInfoModel.MiddelNameAr = this.DoctorInfoForm.controls.MiddleNameAr.value;
     this.DoctorInfoModel.LastName = this.DoctorInfoForm.controls.LastName.value;
     this.DoctorInfoModel.LastNameAr = this.DoctorInfoForm.controls.LastNameAr.value;
-    this.DoctorInfoModel.GenderId = this.DoctorInfoForm.controls.Gender.value;
-    this.DoctorInfoModel.NationalityId = this.DoctorInfoForm.controls.Country.value;
-    this.DoctorInfoModel.SeniorityLevelId = this.DoctorInfoForm.controls.Seniority.value;
-    this.DoctorInfoModel.SpecialistId = this.DoctorInfoForm.controls.Speciality.value;
+    this.DoctorInfoModel.GenderId = Number(this.DoctorInfoForm.controls.Gender);
+    this.DoctorInfoModel.NationalityId = Number(this.DoctorInfoForm.controls.Country);
+    this.DoctorInfoModel.SeniorityLevelId = Number(this.DoctorInfoForm.controls.Seniority);
+    this.DoctorInfoModel.SpecialistId =Number( this.DoctorInfoForm.controls.Speciality);
     this.DoctorInfoModel.Birthday = this.DoctorInfoForm.controls.DateOfBirth.value;
-    this.DoctorInfoModel.DoctorSubSpecialist = this.DoctorInfoForm.controls.SubSpeciality.value;
+    this.DoctorInfoModel.DoctorSubSpecialist = Number(this.DoctorInfoForm.controls.SubSpeciality);
     this.DoctorInfoModel.DoctorInfo = this.DoctorInfoForm.controls.Biography.value;
     this.DoctorInfoModel.DoctorInfoAr = this.DoctorInfoForm.controls.BiographyAr.value;
 
-    document.getElementById('Certificates')?.classList.add('OnClick-Style');  
-    this.CreateProfile('en',this.DoctorInfoModel);  
+    document.getElementById('Certificates')?.classList.add('OnClick-Style');
+
+    formData.append("FirstName", this.DoctorInfoModel.FirstName);
+    formData.append("FirstNameAr", this.DoctorInfoModel.FirstNameAr);
+    formData.append("MiddelName", this.DoctorInfoModel.MiddelName);
+    formData.append("MiddelNameAr", this.DoctorInfoModel.MiddelNameAr);
+    formData.append("LastName", this.DoctorInfoModel.LastName);
+    formData.append("LastNameAr", this.DoctorInfoModel.LastNameAr);
+    formData.append("GenderId", this.DoctorInfoModel.GenderId as unknown as Blob);
+    formData.append("NationalityId", this.DoctorInfoModel.NationalityId as unknown as Blob);
+    formData.append("SeniorityLevelId", this.DoctorInfoModel.SeniorityLevelId as unknown as Blob);
+    formData.append("SpecialistId", this.DoctorInfoModel.SpecialistId as unknown as Blob);
+    formData.append("Birthday", this.DoctorInfoModel.Birthday);
+    formData.append("DoctorSubSpecialist", this.DoctorInfoModel.DoctorSubSpecialist as unknown as Blob);
+    formData.append("DoctorInfo", this.DoctorInfoModel.DoctorInfo);
+    formData.append("DoctorInfoAr", this.DoctorInfoModel.DoctorInfoAr);
+    formData.append("profileImage", this.DoctorInfoModel.profileImage);
+
+    this.CreateProfile('en',formData);
 
   }
   //#endregion
@@ -191,7 +212,7 @@ GetSpecialistIdName(lang:string)
   }
   //#endregion
 
-  //#region SubSpeciality Method event change
+  //#region Seniority Method event change
   SelectSeniority(event:any){
     this.DoctorInfoForm.controls.Seniority = event.target.value;
   }
@@ -209,7 +230,7 @@ GetSpecialistIdName(lang:string)
     {
       this.DoctorInfoForm.controls.Gender = event.target.value;
     }
-   
+
   }
   //#endregion
 
@@ -217,17 +238,17 @@ GetSpecialistIdName(lang:string)
     public imagePath: any;
     imgURL: any = "../../../../assets/img/DoctorImg/Rectangle 2.png";
     public message: string;
-  
+
     preview(files:any) {
       if (files.length === 0)
         return;
-  
+
       var mimeType = files[0].type;
       if (mimeType.match(/image\/*/) == null) {
         this.message = "Only images are supported.";
         return;
       }
-  
+
       var reader = new FileReader();
       this.imagePath = files;
       reader.readAsDataURL(files[0]);

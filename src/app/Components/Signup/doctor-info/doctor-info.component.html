@@ -10,19 +10,19 @@
         <div class="row ChangeProfilePhoto-block ">
           <div class="col justify-content-center" style="display: flex; align-items: center">
             <input type='file'
-                    formControlName="ImageDoctor"  
-                   #file 
+                    formControlName="ImageDoctor"
+                   #file
                    accept="image/*" id="getFile" style="display:none"
                   (change)="preview(file.files)">
 
-            <button onclick="document.getElementById('getFile').click()" 
+            <button onclick="document.getElementById('getFile').click()"
                     class="changePhoto-btn">
               Change Profile Photo
             </button>
           </div>
         </div>
       </div>
-  
+
       <div class="col-lg-8 col-md-12">
         <div class="row">
           <!-- First Name -->
@@ -43,7 +43,7 @@
                 maxlength="10" minlength="3" />
             </div>
           </div>
-  
+
           <!-- First Name Ar -->
           <div class="col-lg-6 col-sm-12 textForArabic">
             <span class="lbl-Register">{{
@@ -62,7 +62,7 @@
                 maxlength="10" minlength="3" />
             </div>
           </div>
-  
+
           <!-- Middle Name -->
           <div class="col-lg-6 col-sm-12">
             <span class="lbl-Register">{{
@@ -81,7 +81,7 @@
                 maxlength="10" minlength="3" />
             </div>
           </div>
-  
+
           <!-- Middle Name Ar -->
           <div class="col-lg-6 col-sm-12 textForArabic">
             <span class="lbl-Register">{{
@@ -100,7 +100,7 @@
                 maxlength="10" minlength="3" />
             </div>
           </div>
-  
+
           <!-- Last Name -->
           <div class="col-lg-6 col-sm-12">
             <span class="lbl-Register">{{
@@ -119,7 +119,7 @@
                 maxlength="10" minlength="3" />
             </div>
           </div>
-  
+
           <!-- Last Name Ar -->
           <div class="col-lg-6 col-sm-12 textForArabic">
             <span class="lbl-Register">{{
@@ -141,7 +141,7 @@
         </div>
       </div>
     </div>
-  
+
     <div class="row">
       <!-- Gender -->
       <div class="col-12 col-md-4 mb-4 ">
@@ -149,9 +149,9 @@
           "mainModule.DoctorInfo.Gender" | translate
           }}</span>
         <span class="star"> * </span>
-        <select formControlName="Gender" 
-                (change)="SelectGender($event)" 
-                class="form-select" 
+        <select formControlName="Gender"
+                (change)="SelectGender($event)"
+                class="form-select"
                 aria-label="Default select example">
           <option value="" selected >{{ "mainModule.DoctorInfo.Gender" | translate }}</option>
           <option value="1">
@@ -162,26 +162,26 @@
           </option>
         </select>
       </div>
-  
+
       <!-- Nationality -->
       <div class="col-12 col-md-4 mb-4">
         <span class="lbl-Register">
           {{ "mainModule.DoctorInfo.Nationality" | translate }}
         </span>
         <span class="star"> * </span>
-        <select formControlName="Country" 
-                (change)="SelectCountries($event)" 
-                class="form-select" 
+        <select formControlName="Country"
+                (change)="SelectCountries($event)"
+                class="form-select"
                 aria-label="Default select example">
           <option value="" selected>
             {{ "mainModule.DoctorInfo.Egypt" | translate }}
           </option>
-          <option *ngFor="let item of DropDownList_GetCountries" value="{{item.Id}}">
+          <option *ngFor="let item of DropDownList_GetCountries" value={{item.Id}}>
             {{item.Name}}
             </option>
         </select>
       </div>
-  
+
       <!-- Date_of_birth -->
       <div class="col-12 col-md-4">
         <div class="">
@@ -203,7 +203,7 @@
         </div>
       </div>
     </div>
-  
+
     <div class="row">
       <!-- Speciality -->
       <div class="col-12 col-md-4 mb-4">
@@ -211,37 +211,37 @@
           "mainModule.DoctorInfo.Speciality" | translate
           }}</span>
         <span class="star"> * </span>
-        <select formControlName="Speciality" 
-                (change)="SelectSpeciality($event)" 
+        <select formControlName="Speciality"
+                (change)="SelectSpeciality($event)"
                 class="form-select" aria-label="Default select example">
           <option value="" selected>
             {{ "mainModule.DoctorInfo.Speciality" | translate }}
           </option>
-          <option *ngFor="let item of DropDownList_Speciality" value="{{item.Id}}">
+          <option *ngFor="let item of DropDownList_Speciality" value={{item.Id}}>
             {{item.Name}}
             </option>
         </select>
       </div>
-  
+
       <!-- SubSpeciality -->
       <div class="col-12 col-md-4 mb-4">
         <span class="lbl-Register">{{
           "mainModule.DoctorInfo.SubSpeciality" | translate
           }}</span>
         <span class="star"> * </span>
-        <select formControlName="SubSpeciality" 
-                (change)="SelectSubSpeciality($event)" 
-                class="form-select" 
+        <select formControlName="SubSpeciality"
+                (change)="SelectSubSpeciality($event)"
+                class="form-select"
                 aria-label="Default select example">
           <option value="" selected>
             {{ "mainModule.DoctorInfo.SubSpeciality" | translate }}
           </option>
-          <option *ngFor="let item of DropDownList_SubSpeciality" value="{{item.Id}}">
+          <option *ngFor="let item of DropDownList_SubSpeciality" value={{item.Id}}>
             {{item.Name}}
             </option>
         </select>
       </div>
-  
+
       <!-- Seniority -->
       <div class="col-12 col-md-4 ">
         <span class="lbl-Register">{{
@@ -249,19 +249,19 @@
           }}</span>
         <span class="star"> * </span>
         <select formControlName="Seniority"
-                (change)="SelectSeniority($event)"  
-                class="form-select" 
+                (change)="SelectSeniority($event)"
+                class="form-select"
                 aria-label="Default select example">
           <option value="" selected>
             {{ "mainModule.DoctorInfo.Seniority" | translate }}
           </option>
-          <option *ngFor="let item of DropDownList_SeniorityLevel" value="{{item.Id}}">
+          <option *ngFor="let item of DropDownList_SeniorityLevel" value={{item.Id}}>
             {{item.Name}}
             </option>
         </select>
       </div>
     </div>
-  
+
     <div class="row">
       <!-- Biography -->
       <div class="col-12 col-md-6">
@@ -269,29 +269,27 @@
           <label for="floatingTextarea2 " class="position-relative px-0 lbl-Register">{{ "mainModule.DoctorInfo.Biography"
             | translate }}
             <span class="star"> * </span></label>
-          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+          <textarea formControlName='Biography' class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
             style="height: 120px"></textarea>
         </div>
       </div>
-  
+
       <!-- BiographyAr -->
       <div class="col-12 col-md-6">
         <div class="form-floating textForArabic">
           <label for="floatingTextarea2 " class="position-relative px-0 lbl-Register"><span class="star"> * </span>{{
             "mainModule.DoctorInfo.BiographyAr" | translate }}</label>
-          <textarea class="form-control textForArabic" placeholder="Leave a comment here" id="floatingTextarea2"
+          <textarea formControlName='BiographyAr' class="form-control textForArabic" placeholder="Leave a comment here" id="floatingTextarea2"
             style="height: 120px"></textarea>
         </div>
       </div>
     </div>
   </form>
-  
+
   <div class="row justify-content-end mt-4 ">
     <div class="col-3">
-      <button class="btn text-white w-100" style="background-color: #262d70" (click)="DoctorInfoSubmit()"
-        [routerLink]="['/Certificates']">
+      <button class="btn text-white w-100" style="background-color: #262d70" (click)="DoctorInfoSubmit()">
         Next
       </button>
     </div>
   </div>
-  

@@ -1,9 +1,9 @@
 export class DoctorInfoModel {
 
-    FirstName: string;
-    FirstNameAr: string;
-    MiddelName: string;
-    MiddelNameAr: string;
+  FirstName: string;
+  FirstNameAr: string;
+  MiddelName: string;
+  MiddelNameAr: string;
     LastName: string;
     LastNameAr: string;
     GenderId: number;
