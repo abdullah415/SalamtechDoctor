@@ -1,78 +1,180 @@
 <div class="container mt-3">
-  <div *ngIf="buttonAdd" class="row justify-content-end my-3">
+  <div class="row justify-content-end my-3">
     <div class="col-3">
-      <button
-        class="btn text-white w-100"
-        style="background-color: #262d70"
-        [routerLink]="['/Certificates']"
-      >
-      Add New Certificate
+      <button class="btn text-white w-100" style="background-color: #262d70" [routerLink]="['/Certificates']">
+        Add New Certificate
       </button>
     </div>
   </div>
-  <div class="row justify-content-start ">
+
+  <div *ngIf="submittedCertificate" class="mb-2 col-10"  >
+    <div class="card-header d-flex border-0 mb-2 text-muted justify-content-between" style="background-color: #f9f9f9 !important" *ngFor="let item of submittedCertificate.Data">
+      <div class="btn col-6 text-start">
+        {{item.Title}}
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <div class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal2">
+          <span dir="auto" class="eye text-muted">
+            <i class="far fa-eye mx-1" id="togglePassword"></i>
+          </span>
+        </div>
+        <div class="btn " (click)="DeleteImg()">
+          <span dir="auto" class="eye text-danger">
+            <i class="far fa-trash-alt mx-1"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form #form="ngForm" class="row justify-content-start" [formGroup]="CertificateForm">
     <div class="col-10">
-      <div class="card ">
-        <div class="card-header border-0 text-muted" style="background-color: #f9f9f9!important;">
-          New Certification
+      <div class="card">
+        <div class="card-header d-flex border-0 text-muted justify-content-between" style="background-color: #f9f9f9 !important">
+         <div class="btn"> New Certification</div>
+          <div class="btn" (click)="resetForm()">reset</div>
         </div>
         <div class="card-body bg-color">
           <div class="row">
-            <div class="col-8">
-              <div class="input-group ">
+            <div class="col-6">
+              <div class="input-group">
                 <label for="title" class="text-muted">Certificate title<span class="text-danger">*</span></label>
-                <input id="title" type="text" class="form-control w-100 mt-2 input-style" placeholder="title" >
+                <input id="title" type="text" class="form-control w-100 mt-2 input-style" formControlName="title"
+                  [class.is-valid]="
+                    CertificateForm.controls['title'].valid &&
+                    CertificateForm.controls['title'].touched
+                  " [class.is-invalid]="
+                    CertificateForm.controls['title'].invalid &&
+                    CertificateForm.controls['title'].touched
+                  " placeholder="title" />
               </div>
             </div>
-            <div class="col-4">
-              <div class="input-group ">
-                <label for="year">year<span class="text-danger">*</span></label>
-                <input id="year" type="number" class="form-control w-100 mt-2 input-style" placeholder="1995" >
+            <div class="col-6">
+              <div class="input-group">
+                <label for="titleAr" class="text-muted">Certificate titleAr<span class="text-danger">*</span></label>
+                <input id="titleAr" type="text" class="form-control w-100 mt-2 input-style text-right" formControlName="titleAr"
+                  [class.is-valid]="
+                    CertificateForm.controls['titleAr'].valid &&
+                    CertificateForm.controls['titleAr'].touched
+                  " [class.is-invalid]="
+                    CertificateForm.controls['titleAr'].invalid &&
+                    CertificateForm.controls['titleAr'].touched
+                  " placeholder="titleAr" />
               </div>
             </div>
           </div>
 
           <div class="row mt-3">
-            <div class="col-12">
+            <div class="col-6">
               <div class="form-floating">
-                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">Description (120 characters max)<span class="text-danger">*</span></label>
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 120px"></textarea>
+                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">Description <span class="text-danger">*</span></label>
+                <textarea formControlName="Description" [class.is-valid]="
+                    CertificateForm.controls['Description'].valid &&
+                    CertificateForm.controls['Description'].touched
+                  " [class.is-invalid]="
+                    CertificateForm.controls['Description'].invalid &&
+                    CertificateForm.controls['Description'].touched
+                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                  style="height: 120px"></textarea>
+              </div>
+            </div>
+            <div class="col-6">
+              <div dir="auto" class="form-floating">
+                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">DescriptionAr <span class="text-danger">*</span></label>
+                <textarea formControlName="DescriptionAr" [class.is-valid]="
+                    CertificateForm.controls['DescriptionAr'].valid &&
+                    CertificateForm.controls['DescriptionAr'].touched
+                  " [class.is-invalid]="
+                    CertificateForm.controls['DescriptionAr'].invalid &&
+                    CertificateForm.controls['DescriptionAr'].touched
+                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                  style="height: 120px"></textarea>
               </div>
             </div>
           </div>
-
-
+          <div class="row mt-3">
+            <div class="col-6">
+              <div class="input-group">
+                <label for="year">year<span class="text-danger">*</span></label>
+                <input formControlName="year" [class.is-valid]="
+                    CertificateForm.controls['year'].valid &&
+                    CertificateForm.controls['year'].touched
+                  " [class.is-invalid]="
+                    CertificateForm.controls['year'].invalid &&
+                    CertificateForm.controls['year'].touched
+                  " id="year" type="number" class="form-control w-100 mt-2 input-style" placeholder="1995" />
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-footer bg-color text-muted border-0">
-          <button class="btn button-upload px-3 mb-2"><i class="fas fa-upload px-2"></i>Upload Certificate</button>
+
+
+        <div class="card-footer bg-light text-muted border-0">
+          <div class="row">
+            <div class="">
+              <div *ngIf="showImgbox" class="d-flex bg-color text-muted border p-2 mb-2">
+                <div class="col-6 btn text-start">
+                  {{ imageName }}
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                  <!-- Button trigger modal -->
+                  <div class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                    <span dir="auto" class="eye text-muted">
+                      <i class="far fa-eye mx-1" id="togglePassword"></i>View
+                    </span>
+                  </div>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <img src="{{ imgURL }}" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="btn" (click)="DeleteImg()">
+                    <span dir="auto" class="eye text-danger">
+                      <i class="far fa-trash-alt mx-1"></i>Delete
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <input type="file" class="btn button-upload px-3 mb-2" formControlName="ImageCertificate" #file
+                accept="image/*" id="getFile" style="display: none" (change)="preview(file.files)" />
+              <button *ngIf="!showImgbox" onclick="document.getElementById('getFile').click()"
+                class="btn button-upload px-3 mb-2">
+                <i class="fas fa-upload px-2"></i>{{ imageName }}
+              </button>
+            </div>
+          </div>
+
+          <div class="row justify-content-end mb-2">
+            <div class="col-2">
+              <button style="padding: 10px" type="button" class="btn mx-2 text-white" style="background-color: #262d70"(click)="SubmitCertificate()" [disabled]="CertificateForm.invalid">
+                Submit
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 
-  <div class="row justify-content-start mt-3">
+  <!-- <div class="row justify-content-start mt-3">
     <div class="col-3">
-      <button
-      (click)="showAdd()"
-        class="btn  w-100"
-        style="background-color: #e9eaf1;color: #262d70; border-color: #262d70;"
-        [routerLink]="['/Certificates']"
-      >
-      <i class="fas fa-plus px-1"></i>Add New Certificate
+      <button *ngIf="!buttonAdd" (click)="showAdd()" class="btn w-100"
+        style="background-color: #e9eaf1; color: #262d70; border-color: #262d70">
+        <i class="fas fa-plus px-1"></i>Add New Certificate
       </button>
     </div>
-  </div>
+  </div> -->
 
   <div class="row justify-content-end mt-5">
     <div class="col-3">
-      <button
-        class="btn text-white w-100"
-        style="background-color: #262d70"
-        [routerLink]="['/Certificates']"
-      >
+      <button class="btn text-white w-100" style="background-color: #262d70" [routerLink]="['signup/certificates']">
         Next
       </button>
     </div>
   </div>
-
 </div>
