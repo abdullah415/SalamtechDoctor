@@ -15,7 +15,7 @@ const routes: Routes = [
     {path:'OTP',component:OtpComponent },
     {path:'doctorinfo',component:DoctorInfoComponent },
     {path:'certificates',component:CertificatesComponent },
-    {path:'Documents',component:DocumentsComponent },
+    {path:'documents',component:DocumentsComponent },
     {path:'Congratulations',component:CongratulationsComponent },
   ] },
   {path:'',component:MainComponent },

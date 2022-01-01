@@ -1,4 +1,95 @@
-<p>documents works!</p>
+<div class="row">
+    <!-- <div class="col-12">National ID Front / Back (Jpg / Pdf)</div> -->
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12 col-md-6  ">
+                  <div class="upload-image" >
+                    <input type='file'
+                            formControlName="ImageDoctor"
+                           #file
+                           accept="image/*" id="getFile1" style="display:none"
+                          (change)="preview(file.files , 1)">
+        
+                    <button onclick="document.getElementById('getFile1').click()" class="input-file-btn">
+                        <img src="{{imgFront}}" [hidden]="Upload_Image == false" />
+                        
+                    </button>
+                    <div class="col img-col-block" [hidden]="Upload_Image == true && imgFront != null">
+                        <i onclick="document.getElementById('getFile1').click()" class="fas fa-cloud-upload-alt img-icon"></i><br>
+                        <label class="upload-label">Upload Front National ID</label>  
+                      </div>
+                  </div>
+                  <div  class="edit_view upload-image" >
+                    <button class="btn-edit" onclick="document.getElementById('getFile1').click()" ><i class="far fa-edit icon-edit-style"></i></button>
+                    <i class="far fa-eye  icon-edit-style"></i>
+                </div>
+              </div>
+              <div class="col-12 col-md-6  ">
+                <div class="upload-image" >
+                  <input type='file'
+                          formControlName="ImageDoctor"
+                         #file2
+                         accept="image/*" id="getFile2" style="display:none"
+                        (change)="preview(file2.files , 2)">
+      
+                  <button onclick="document.getElementById('getFile2').click()" class="input-file-btn">
+                    <div [hidden]="imgBack == null">
+                        <img src="{{imgBack}}" [hidden]="Upload_Image == false" />
+                    </div>        
+                  </button>
+                  <div class="col img-col-block" [hidden]="Upload_Image == true && imgBack != null ">
+                      <i  class="fas fa-cloud-upload-alt img-icon"></i><br>
+                      <label class="upload-label">Upload Back National ID</label>  
+                    </div>
+                </div>
+                <div  class="edit_view upload-image" >
+                 <button class="btn-edit" onclick="document.getElementById('getFile2').click()"><i class="far fa-edit icon-edit-style"></i></button> 
+                  <button><i class="far fa-eye  icon-edit-style"></i></button>
+              </div>
+            </div>
+            <!-- <div class="col-12 col-md-6 upload-image" style="background-color: green;" > -->
+                <!-- <input type='file'
+                        formControlName="ImageDoctor"
+                        #file
+                        accept="image/*" id="getFile"
+                        class="input-file"
+                        (change)="preview(file.files)">
+    
+                <button onclick="document.getElementById('getFile').click()" class="input-file-btn">
+                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                     <label>Upload National ID </label>   
+                    
+                </button> -->
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>documents works!</p>
 <button (click)="changeStyle()" [routerLink]="['/Congratulations']">
     next
-</button>
+</button> -->
