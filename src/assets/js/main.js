@@ -16,15 +16,16 @@
         getCodeBoxElement(index - 1).focus();
     }
     }
-    function onFocusEvent(index) {
-    for (item = 1; item < index; item++) {
-        const currentElement = getCodeBoxElement(item);
-        if (!currentElement.value) {
-            currentElement.focus();
-            break;
+        function onFocusEvent(index) {
+        for (item = 1; item < index; item++) {
+            const currentElement = getCodeBoxElement(item);
+            if (!currentElement.value) {
+                currentElement.focus();
+                break;
+            }
         }
     }
-    }
+    
     
 
 

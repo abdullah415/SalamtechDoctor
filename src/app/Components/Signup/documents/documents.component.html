@@ -1,4 +1,136 @@
-<p>documents works!</p>
+<div class="row">
+    <div class="col-12" style="margin-bottom: 20px;">{{"mainModule.Documents.NationalID" | translate }}</div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12 col-md-6  ">
+                  <div class="upload-image" >
+                    <input type='file'
+                            formControlName="NationalIDFront"
+                           #file
+                           accept="image/*" id="getFile1" style="display:none"
+                          (change)="preview(file.files , 1)">
+        
+                    <button onclick="document.getElementById('getFile1').click()" class="input-file-btn">
+                        <div [hidden]="imgFront == null">
+                            <img src="{{imgFront}}" [hidden]="Upload_Image == false" />
+
+                        </div>      
+                    </button>
+                    <div onclick="document.getElementById('getFile1').click()" class="col img-col-block" [hidden]="Upload_Image == true && imgFront != null">
+                        <i  class="fas fa-cloud-upload-alt img-icon"></i><br>
+                        <label class="upload-label">{{"mainModule.Documents.UploadFront" | translate }}</label>  
+                      </div>
+                  </div>
+                  <div  class="edit_view upload-image" >
+                    <button class="btn-edit" onclick="document.getElementById('getFile1').click()" ><i class="far fa-edit icon-edit-style"></i></button>
+                    <button class="btn-eye"><i class="far fa-eye  icon-edit-style"></i></button>
+                </div>
+            </div>
+            <div class="col-12 col-md-6  ">
+                <div class="upload-image" >
+                  <input type='file'
+                          formControlName="NationalIDBack"
+                         #file2
+                         accept="image/*" id="getFile2" style="display:none"
+                        (change)="preview(file2.files , 2)">
+      
+                  <button onclick="document.getElementById('getFile2').click()" class="input-file-btn">
+                    <div [hidden]="imgBack == null">
+                        <img src="{{imgBack}}" [hidden]="Upload_Image == false" />
+                    </div>        
+                  </button>
+                  <div onclick="document.getElementById('getFile2').click()" class="col img-col-block" [hidden]="Upload_Image == true && imgBack != null ">
+                      <i  class="fas fa-cloud-upload-alt img-icon"></i><br>
+                      <label class="upload-label">{{"mainModule.Documents.UploadBack" | translate }}</label>  
+                    </div>
+                </div>
+                <div  class="edit_view upload-image" >
+                 <button class="btn-edit" onclick="document.getElementById('getFile2').click()"><i class="far fa-edit icon-edit-style"></i></button> 
+                  <button class="btn-eye"><i class="far fa-eye  icon-edit-style"></i></button>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Syndicate-block  -->
+<div class="row Syndicate-block">
+    <div class="col-12" style="margin-bottom: 20px;">{{"mainModule.Documents.NationalID" | translate }}</div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12 col-md-6  ">
+                  <div class="upload-image" >
+                    <input type='file'
+                            formControlName="SyndicateFront"
+                           #file3
+                           accept="image/*" id="getFile3" style="display:none"
+                          (change)="preview(file3.files , 3)">
+        
+                    <button onclick="document.getElementById('getFile3').click()" class="input-file-btn">
+                        <div [hidden]="SyndicateFront == null">
+                            <img src="{{SyndicateFront}}" [hidden]="Upload_Image == false" />
+                        </div>      
+                    </button>
+                    <div onclick="document.getElementById('getFile3').click()" class="col img-col-block" [hidden]="Upload_Image == true && SyndicateFront != null">
+                        <i  class="fas fa-cloud-upload-alt img-icon"></i><br>
+                        <label class="upload-label">{{"mainModule.Documents.UploadFront" | translate }}</label>  
+                      </div>
+                  </div>
+                  <div  class="edit_view upload-image" >
+                    <button class="btn-edit" onclick="document.getElementById('getFile3').click()" ><i class="far fa-edit icon-edit-style"></i></button>
+                    <button class="btn-eye"><i class="far fa-eye  icon-edit-style"></i></button>
+                </div>
+            </div>
+            <div class="col-12 col-md-6  ">
+                <div class="upload-image" >
+                  <input type='file'
+                          formControlName="SyndicateBack"
+                         #file4
+                         accept="image/*" id="getFile4" style="display:none"
+                        (change)="preview(file4.files , 4)">
+      
+                  <button onclick="document.getElementById('getFile4').click()" class="input-file-btn">
+                    <div [hidden]="SyndicateBack == null">
+                        <img src="{{SyndicateBack}}" [hidden]="Upload_Image == false" />
+                    </div>        
+                  </button>
+                  <div onclick="document.getElementById('getFile4').click()" class="col img-col-block" [hidden]="Upload_Image == true && SyndicateBack != null ">
+                      <i  class="fas fa-cloud-upload-alt img-icon"></i><br>
+                      <label class="upload-label">{{"mainModule.Documents.UploadBack" | translate }}</label>  
+                    </div>
+                </div>
+                <div  class="edit_view upload-image" >
+                 <button class="btn-edit" onclick="document.getElementById('getFile4').click()"><i class="far fa-edit icon-edit-style"></i></button> 
+                  <button class="btn-eye"><i class="far fa-eye  icon-edit-style"></i></button>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>documents works!</p>
 <button (click)="changeStyle()" [routerLink]="['/Congratulations']">
     next
-</button>
+</button> -->

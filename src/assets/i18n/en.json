@@ -63,7 +63,11 @@
           "Seniority":"Seniority",
           "BiographyAr":"معلومات شخصية",
           "Biography":"Biography"
-
+        },
+        "Documents":{
+          "NationalID":"National ID Front / Back (Jpg / Pdf)",
+          "UploadFront":"From Front",
+          "UploadBack":"From Back"
         }
     }
 }
