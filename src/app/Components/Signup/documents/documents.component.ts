@@ -29,7 +29,10 @@ Upload_Image:boolean;
       //#region  Register Form Section
       this.DocumentsForm = this.fb.group(
         {
-            // Biography:['',[Validators.required]]
+          NationalIDFront:['',[Validators.required]],
+          NationalIDBack:['',[Validators.nullValidator]],
+          SyndicateFront:['',[Validators.required]],
+          SyndicateBack:['',[Validators.nullValidator]],
           });
       //#endregion
   }
@@ -43,6 +46,8 @@ Upload_Image:boolean;
     public imagePath: any;
     imgFront: any = null  ;
     imgBack: any  = null;
+    SyndicateFront:any=null;
+    SyndicateBack:any=null;
     public message: string;
 
     preview(files:any , typeImg:number) {
@@ -58,16 +63,23 @@ Upload_Image:boolean;
       var reader = new FileReader();
       this.imagePath = files;
       reader.readAsDataURL(files[0]);
-      reader.onload = (_event) => {
+      reader.onload = (_event) => 
+      {
         if(typeImg == 1)
         {
           this.imgFront = reader.result;
-          // this.imgBack = null;
         }
         if(typeImg == 2)
         {
           this.imgBack = reader.result;
-          // this.imgFront = null;
+        }
+        if(typeImg == 3)
+        {
+          this.SyndicateFront = reader.result;
+        }
+        if(typeImg == 4)
+        {
+          this.SyndicateBack = reader.result;
         }
       }
       this.Upload_Image = true;

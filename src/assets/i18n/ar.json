@@ -58,6 +58,12 @@
           "Seniority":"الدرجه العلمية",
           "BiographyAr":"Biography",
           "Biography":"المعلومات الشخصية"
+        },
+        "Documents":{
+          "NationalID":"صورة الرقم القومى من الوجه / الخلف ( صورة / ملف )",
+          "UploadFront":" من الوجه",
+          "UploadBack":" من الخلف "
+
 
         }
     }
