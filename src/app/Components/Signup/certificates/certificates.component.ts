@@ -20,6 +20,8 @@ export class CertificatesComponent implements OnInit {
   CertificateForm:FormGroup
   imageName:string='Upload Certificate'
 
+  editableCertificate:Certificate
+
   constructor(private fb:FormBuilder ,private certificateService:CertificateService) { }
 
   ngOnInit(): void {
@@ -29,16 +31,17 @@ export class CertificatesComponent implements OnInit {
     document.getElementById('Certificates')?.classList.add('OnClick-Style');
     //#endregion
 
+    this.editableCertificate=new Certificate()
     this.certificate=new Certificate()
 
     this.CertificateForm = this.fb.group(
       {
         title:['',[Validators.required , Validators.minLength(3)]],
         titleAr:['',[Validators.required , Validators.minLength(3)]],
-        year:['',[Validators.required , Validators.minLength(3)]],
+        year:['',[Validators.required ]],
         Description:['',[Validators.required , Validators.minLength(3)]],
         DescriptionAr:['',[Validators.required , Validators.minLength(3)]],
-        ImageCertificate:['',[Validators.required]]
+        ImageCertificate:['',[Validators.required ]]
       }
     )
 
@@ -80,7 +83,7 @@ export class CertificatesComponent implements OnInit {
     this.certificateService.CreateCertificate('en',certificate).subscribe((res)=>{
       this.certificateService.GetDoctorCertificate('en').subscribe((res)=>{
         this.submittedCertificate= res as CertificateResponse
-        console.log(this.submittedCertificate)
+        this.resetForm()
       })
     },
     (err)=>{
@@ -117,6 +120,14 @@ export class CertificatesComponent implements OnInit {
   }
   //#endregion
 
+  DeleteCertificate(id:number){
+    this.certificateService.DeleteCertificate('en',id).subscribe((res)=>{
+      this.certificateService.GetDoctorCertificate('en').subscribe((res)=>{
+        this.submittedCertificate= res as CertificateResponse
+        console.log(this.submittedCertificate)}
+      )},
+      (err)=>{console.log(err)})
+    }
 
   DeleteImg(){
     this.showImgbox=!this.showImgbox
@@ -125,5 +136,12 @@ export class CertificatesComponent implements OnInit {
 
   resetForm(){
     this.CertificateForm.reset()
+    this.DeleteImg();
+  }
+
+
+
+  Edit(id:number){
+    this.editableCertificate= this.submittedCertificate.Data.find((item)=>item.Id==id) as Certificate
   }
 }
