@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IdNameList } from 'src/Models/id-name-list';
+import { DocumentService } from 'src/Service/Documents/document.service';
 
 @Component({
   selector: 'app-documents',
@@ -8,24 +10,32 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class DocumentsComponent implements OnInit {
 
-//#region Declare variables
-DocumentsForm:FormGroup
-Upload_Image:boolean;
+  //#region Declare variables
+  DocumentsForm:FormGroup
+  Upload_Image:boolean;
+  LegalDocumentList:IdNameList[];
+  //#endregion
+
+  //#region Constructor
+constructor( 
+  private fb:FormBuilder , 
+  private DocumentService:DocumentService
+) { }
 //#endregion
 
-  constructor(private fb:FormBuilder ) { }
-
+  //#region On Init Method
   ngOnInit(): void {
 
-    //#region Init variables
+      //#region Init variables
     document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
     document.getElementById('Signup')?.classList.add('OnClick-Style');
     document.getElementById('Certificates')?.classList.add('OnClick-Style');
     document.getElementById('LegalDocuments')?.classList.add('OnClick-Style');
 
     this.Upload_Image = false;
+    this.LegalDocumentList = [{"Name":'',"Id":0},{"Name":'',"Id":0},{"Name":'',"Id":0}];
     //#endregion
-   
+  
       //#region  Register Form Section
       this.DocumentsForm = this.fb.group(
         {
@@ -33,24 +43,66 @@ Upload_Image:boolean;
           NationalIDBack:['',[Validators.nullValidator]],
           SyndicateFront:['',[Validators.required]],
           SyndicateBack:['',[Validators.nullValidator]],
+          ProfessionCertificate:['',[Validators.required]],
           });
       //#endregion
-  }
 
-  changeStyle()
+      //#region Invoke Method's
+    this.GetLegalDocument('en');
+    //#endregion
+
+    }
+//#endregion
+
+  //#region Consume API's
+
+    //#region Submit Method
+    changeStyle()
+    {
+    document.getElementById('Congratulations')?.classList.add('OnClick-Style');
+    }
+    //#endregion
+
+    //#region Legal Document Method 
+      GetLegalDocument(lang:string)
+      {
+        this.DocumentService.GetLegalDocument(lang ).subscribe(
+          (response)=>{
+            this.LegalDocumentList = response.Data;
+            // console.log(this.LegalDocumen tList[0].Name)
+          },
+          (err)=>{ }
+        )
+      }
+      //#endregion
+
+  //#region Doctor Documents
+  CreateProfile(lang:string , _DoctorInfoModel:FormData)
   {
-   document.getElementById('Congratulations')?.classList.add('OnClick-Style');
+    this.DocumentService.CreateDoctorDocuments(lang ,_DoctorInfoModel ).subscribe(
+      (response)=>{
+      console.log(response);
+      },
+      (err)=>{
+        console.log(err);
+      }
+    )
   }
+  //#endregion
 
-    //#region review AND File FormData image from input file
+//#endregion
+
+  //#region review AND File FormData image from input file
     public imagePath: any;
     imgFront: any = null  ;
     imgBack: any  = null;
     SyndicateFront:any=null;
     SyndicateBack:any=null;
+    ImgCertificate:any=null;
     public message: string;
 
-    preview(files:any , typeImg:number) {
+    preview(files:any , typeImg:number , ID:number) {
+      const formData = new FormData();
       if (files.length === 0)
         return;
 
@@ -81,11 +133,19 @@ Upload_Image:boolean;
         {
           this.SyndicateBack = reader.result;
         }
+        if(typeImg == 5)
+        {
+          this.ImgCertificate = reader.result;
+        }
       }
       this.Upload_Image = true;
 
-      // this.DoctorInfoModel.profileImage = files[0];
-      // this.FormDataImage.append('EpisodeIamge', files[0]);
+      formData.append('LegalDocumentTypeId ', ID as unknown as Blob);
+      formData.append('document ', files[0]);
+
+      console.log("fdfdf : ",files[0])
+      // this.CreateProfile('en',formData);
+
     }
     //#endregion
 

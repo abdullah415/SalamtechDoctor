@@ -27,7 +27,6 @@ ul
 }
 .li-Content
 {
-    /* background-color: salmon; */
     border-inline-start: 2px solid #DCDEE4;
     color: #A6AAB5;
     font-size: 18px;
@@ -39,7 +38,6 @@ ul
 }
 .li-Content-OnClick-Style
 {
-    /* background-color: salmon; */
     border-inline-start: 2px solid #DCDEE4;
     color: #A6AAB5;
     font-size: 18px;
@@ -72,13 +70,8 @@ ul li span
 }
 .row-outlet
 {
-    height: 90%;
+    min-height: 90%;
 }
-/* .row-terms
-{
-    height: 10%;
-} */
-
 
 /*-------------- Terms-Condition Style Start   ------------------*/
 .Terms-Condition-style

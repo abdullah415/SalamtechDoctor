@@ -67,7 +67,8 @@
         "Documents":{
           "NationalID":"National ID Front / Back (Jpg / Pdf)",
           "UploadFront":"From Front",
-          "UploadBack":"From Back"
+          "UploadBack":"From Back",
+          "SyndicateCard":"Syndicate Card / Back (Jpg / Pdf)"
         }
     }
 }
