@@ -136,12 +136,18 @@ export class CertificatesComponent implements OnInit {
 
   resetForm(){
     this.CertificateForm.reset()
-    this.DeleteImg();
+    if(this.imageName !='Upload Certificate'){
+      this.DeleteImg()
+    }
   }
 
-
+  kyjk(){
+    console.log(this.editableCertificate.Title)
+  }
 
   Edit(id:number){
     this.editableCertificate= this.submittedCertificate.Data.find((item)=>item.Id==id) as Certificate
+
+    let i=document.getElementById('title')
   }
 }

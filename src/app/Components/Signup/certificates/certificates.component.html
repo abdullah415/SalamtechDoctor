@@ -66,7 +66,7 @@
                   " [class.is-invalid]="
                     CertificateForm.controls['title'].invalid &&
                     CertificateForm.controls['title'].touched
-                  " placeholder="title" value="{{editableCertificate.Title}}" />
+                  " placeholder="title"   [(ngModel)]="editableCertificate.Title"/>
               </div>
             </div>
             <div class="col-6">
@@ -79,7 +79,7 @@
                   " [class.is-invalid]="
                     CertificateForm.controls['titleAr'].invalid &&
                     CertificateForm.controls['titleAr'].touched
-                  " placeholder="titleAr" value="{{editableCertificate.TitleAr}}"/>
+                  " placeholder="titleAr" [value]="editableCertificate.TitleAr"/>
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@
                   " [class.is-invalid]="
                     CertificateForm.controls['Description'].invalid &&
                     CertificateForm.controls['Description'].touched
-                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea" value="{{editableCertificate.Description}}"
+                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea" [value]="editableCertificate.Description"
                   style="height: 120px"></textarea>
               </div>
             </div>
@@ -109,7 +109,7 @@
                   " [class.is-invalid]="
                     CertificateForm.controls['DescriptionAr'].invalid &&
                     CertificateForm.controls['DescriptionAr'].touched
-                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" value="{{editableCertificate.DescriptionAr}}"
+                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" [value]="editableCertificate.DescriptionAr"
                   style="height: 120px"></textarea>
               </div>
             </div>
@@ -126,7 +126,7 @@
                   " [class.is-invalid]="
                     CertificateForm.controls['year'].invalid &&
                     CertificateForm.controls['year'].touched
-                  " id="year" type="number" class="form-control w-100 mt-2 input-style" placeholder="1995" value="{{editableCertificate.Year}}"/>
+                  " id="year" type="number" class="form-control w-100 mt-2 input-style" placeholder="1995" [value]="editableCertificate.Year"/>
               </div>
             </div>
           </div>
@@ -141,7 +141,6 @@
                 </div>
                 <div class="col-6 d-flex justify-content-end">
 
-                  
                   <!-- Button trigger modal -->
                   <div class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                     <span dir="auto" class="eye text-muted">
