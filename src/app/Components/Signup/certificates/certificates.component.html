@@ -7,18 +7,34 @@
     </div>
   </div>
 
-  <div *ngIf="submittedCertificate" class="mb-2 col-10"  >
-    <div class="card-header d-flex border-0 mb-2 text-muted justify-content-between" style="background-color: #f9f9f9 !important" *ngFor="let item of submittedCertificate.Data">
+  <div *ngIf="submittedCertificate" class="mb-2 col-10">
+    <div (click)="Edit(item.Id)" class="
+        card-header
+        d-flex
+        border-0
+        mb-2
+        text-muted
+        justify-content-between
+      " style="background-color: #f9f9f9 !important" *ngFor="let item of submittedCertificate.Data; let i= index">
       <div class="btn col-6 text-start">
-        {{item.Title}}
+        {{ item.Title }}
       </div>
       <div class="col-6 d-flex justify-content-end">
-        <div class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal2">
+        <div class="btn" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + i" >
           <span dir="auto" class="eye text-muted">
             <i class="far fa-eye mx-1" id="togglePassword"></i>
           </span>
         </div>
-        <div class="btn " (click)="DeleteImg()">
+
+        <div class="modal fade" id="exampleModal{{i}}" tabindex="-1" aria-labelledby="exampleModal2Label"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <img src="https://salamtech.azurewebsites.net/{{ item.CertificateUrl }}" />
+            </div>
+          </div>
+        </div>
+        <div class="btn" (click)="DeleteCertificate(item.Id)">
           <span dir="auto" class="eye text-danger">
             <i class="far fa-trash-alt mx-1"></i>
           </span>
@@ -26,12 +42,17 @@
       </div>
     </div>
   </div>
+
   <form #form="ngForm" class="row justify-content-start" [formGroup]="CertificateForm">
     <div class="col-10">
       <div class="card">
-        <div class="card-header d-flex border-0 text-muted justify-content-between" style="background-color: #f9f9f9 !important">
-         <div class="btn"> New Certification</div>
-          <div class="btn" (click)="resetForm()">reset</div>
+        <div class="card-header d-flex border-0 text-muted justify-content-between"
+          style="background-color: #f9f9f9 !important">
+          <div class="btn">New Certification</div>
+          <div>
+            <div class="btn px-1" (click)="resetForm()">Reset</div>
+            <div class="btn text-danger">Delete</div>
+          </div>
         </div>
         <div class="card-body bg-color">
           <div class="row">
@@ -45,20 +66,20 @@
                   " [class.is-invalid]="
                     CertificateForm.controls['title'].invalid &&
                     CertificateForm.controls['title'].touched
-                  " placeholder="title" />
+                  " placeholder="title" value="{{editableCertificate.Title}}" />
               </div>
             </div>
             <div class="col-6">
               <div class="input-group">
                 <label for="titleAr" class="text-muted">Certificate titleAr<span class="text-danger">*</span></label>
-                <input id="titleAr" type="text" class="form-control w-100 mt-2 input-style text-right" formControlName="titleAr"
-                  [class.is-valid]="
+                <input id="titleAr" type="text" class="form-control w-100 mt-2 input-style text-right"
+                  formControlName="titleAr" [class.is-valid]="
                     CertificateForm.controls['titleAr'].valid &&
                     CertificateForm.controls['titleAr'].touched
                   " [class.is-invalid]="
                     CertificateForm.controls['titleAr'].invalid &&
                     CertificateForm.controls['titleAr'].touched
-                  " placeholder="titleAr" />
+                  " placeholder="titleAr" value="{{editableCertificate.TitleAr}}"/>
               </div>
             </div>
           </div>
@@ -66,27 +87,29 @@
           <div class="row mt-3">
             <div class="col-6">
               <div class="form-floating">
-                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">Description <span class="text-danger">*</span></label>
+                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">Description <span
+                    class="text-danger">*</span></label>
                 <textarea formControlName="Description" [class.is-valid]="
                     CertificateForm.controls['Description'].valid &&
                     CertificateForm.controls['Description'].touched
                   " [class.is-invalid]="
                     CertificateForm.controls['Description'].invalid &&
                     CertificateForm.controls['Description'].touched
-                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea" value="{{editableCertificate.Description}}"
                   style="height: 120px"></textarea>
               </div>
             </div>
             <div class="col-6">
               <div dir="auto" class="form-floating">
-                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">DescriptionAr <span class="text-danger">*</span></label>
+                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">DescriptionAr <span
+                    class="text-danger">*</span></label>
                 <textarea formControlName="DescriptionAr" [class.is-valid]="
                     CertificateForm.controls['DescriptionAr'].valid &&
                     CertificateForm.controls['DescriptionAr'].touched
                   " [class.is-invalid]="
                     CertificateForm.controls['DescriptionAr'].invalid &&
                     CertificateForm.controls['DescriptionAr'].touched
-                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" value="{{editableCertificate.DescriptionAr}}"
                   style="height: 120px"></textarea>
               </div>
             </div>
@@ -95,18 +118,19 @@
             <div class="col-6">
               <div class="input-group">
                 <label for="year">year<span class="text-danger">*</span></label>
-                <input formControlName="year" [class.is-valid]="
+                <input
+                onKeyPress="if(this.value.length==4 ) return false; "
+                formControlName="year" [class.is-valid]="
                     CertificateForm.controls['year'].valid &&
                     CertificateForm.controls['year'].touched
                   " [class.is-invalid]="
                     CertificateForm.controls['year'].invalid &&
                     CertificateForm.controls['year'].touched
-                  " id="year" type="number" class="form-control w-100 mt-2 input-style" placeholder="1995" />
+                  " id="year" type="number" class="form-control w-100 mt-2 input-style" placeholder="1995" value="{{editableCertificate.Year}}"/>
               </div>
             </div>
           </div>
         </div>
-
 
         <div class="card-footer bg-light text-muted border-0">
           <div class="row">
@@ -116,6 +140,8 @@
                   {{ imageName }}
                 </div>
                 <div class="col-6 d-flex justify-content-end">
+
+                  
                   <!-- Button trigger modal -->
                   <div class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                     <span dir="auto" class="eye text-muted">
@@ -151,7 +177,8 @@
 
           <div class="row justify-content-end mb-2">
             <div class="col-2">
-              <button style="padding: 10px" type="button" class="btn mx-2 text-white" style="background-color: #262d70"(click)="SubmitCertificate()" [disabled]="CertificateForm.invalid">
+              <button style="padding: 10px" type="button" class="btn mx-2 text-white" style="background-color: #262d70"
+                (click)="SubmitCertificate()" [disabled]="CertificateForm.invalid">
                 Submit
               </button>
             </div>
@@ -177,4 +204,6 @@
       </button>
     </div>
   </div>
+
+
 </div>
