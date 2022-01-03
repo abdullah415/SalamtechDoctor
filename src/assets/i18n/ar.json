@@ -68,6 +68,21 @@
           "sidebarinfo":"بيانات العيادة",
           "sidebargalary":"صور العيادة",
           "sidebarschedule":"مواعيد العيادة"
+        },
+        "Certificate":{
+          "AddNewCertificate":"اضافة شهادة جديده",
+          "NewCertificate":"شهادة جديدة",
+          "Reset":"اعادة ضبط",
+          "Delete":"حذف",
+          "CertificateTitle":"العنوان ",
+          "CertificateTitleAr":"Certificate Title In Engilsh",
+          "Description":"الوصف ",
+          "DescriptionAr":"Certificate Description In Engilsh",
+          "Year":"السنة",
+          "View":"عرض",
+          "Submit":"اضافة",
+          "Save":"حفظ",
+          "Next":"التالي"
         }
     }
 }
