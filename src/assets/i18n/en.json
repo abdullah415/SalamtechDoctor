@@ -39,7 +39,8 @@
           "LegalDocuments":"Legal Documents",
           "Congratulations":"Congratulations",
           "singingUpYouAreApproveOur":"singing up you are approve our",
-          "Terms&Conditions":"Terms & Conditions"
+          "Terms&Conditions":"Terms & Conditions",
+          "AddClinics":"Add Clinics"
         },
         "main":{
           "menu":"MENU",
@@ -65,10 +66,7 @@
           "Biography":"Biography"
         },
         "Documents":{
-          "NationalID":"National ID Front / Back (Jpg / Pdf)",
-          "UploadFront":"From Front",
-          "UploadBack":"From Back",
-          "SyndicateCard":"Syndicate Card / Back (Jpg / Pdf)"
+
         }
     }
 }

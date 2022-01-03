@@ -34,7 +34,9 @@
           "LegalDocuments":"الأوراق الرسمية",
           "Congratulations":"تهانينا",
           "singingUpYouAreApproveOur":"بالتسجيل فأنت موافق علي",
-          "Terms&Conditions":"الشروط والاحكام"
+          "Terms&Conditions":"الشروط والاحكام",
+          "AddClinics":"إضافة عيادة"
+
         },
         "main":{
           "menu":"القائمة",
@@ -60,11 +62,6 @@
           "Biography":"المعلومات الشخصية"
         },
         "Documents":{
-          "NationalID":"صورة الرقم القومى من الوجه / الخلف ( صورة / ملف )",
-          "UploadFront":" من الوجه",
-          "UploadBack":" من الخلف ",
-          "SyndicateCard":"صورة كارنيه النقابة من الوجه / الخلف (صورة / ملف )"
-
 
         }
     }
