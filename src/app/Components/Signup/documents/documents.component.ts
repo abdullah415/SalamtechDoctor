@@ -60,7 +60,7 @@ constructor(
     SubmitDocuments()
     {
     document.getElementById('Congratulations')?.classList.add('OnClick-Style');
-    
+
     }
     //#endregion
 
@@ -82,7 +82,7 @@ constructor(
   {
     this.DocumentService.CreateDoctorDocuments(lang ,Model ).subscribe(
       (response)=>{
-      // console.log(response);
+      console.log(response);
       },
       (err)=>{
         console.log(err);
