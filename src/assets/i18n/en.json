@@ -67,6 +67,11 @@
         },
         "Documents":{
 
+        },
+        "Clinic":{
+          "sidebarinfo":"Clinic Info",
+          "sidebargalary":"Clinic Galary",
+          "sidebarschedule":"Clinic Schedule"
         }
     }
 }

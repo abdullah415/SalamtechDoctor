@@ -218,11 +218,33 @@
 
     <div class="row justify-content-end ">
       <div class="col-3">
-        <button class="btn text-white w-100"
+        <!-- <button class="btn text-white w-100"
                 style="background-color: #262d70;margin-top: 50px;padding: 15px;"
                 (click)="SubmitDocuments()">
           Next
-        </button>
+        </button> -->
+
+         <!--Modal   -->
+         <div class="btn" data-bs-toggle="modal" [attr.data-bs-target]="'#nextbtn'" >
+          <span dir="auto">
+            <!-- <i class="far fa-eye icon-edit-style" id="togglePassword"></i> -->
+            <button class="btn text-white w-100"
+            style="background-color: #262d70;margin-top: 50px;padding: 15px;"
+            (click)="SubmitDocuments()">
+            Next
+          </button>
+          </span>
+        </div>
+
+        <div class="modal fade" id="nextbtn" tabindex="-1" aria-labelledby="exampleModal2Label"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <img src="{{ imgFront }}" />
+            </div>
+          </div>
+        </div>
+      <!-- End Modal -->
       </div>
     </div>
 

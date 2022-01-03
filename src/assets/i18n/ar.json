@@ -63,6 +63,11 @@
         },
         "Documents":{
 
+        },
+        "Clinic":{
+          "sidebarinfo":"بيانات العيادة",
+          "sidebargalary":"صور العيادة",
+          "sidebarschedule":"مواعيد العيادة"
         }
     }
 }

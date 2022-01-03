@@ -21,6 +21,11 @@ import { SignUpMainComponent } from './Components/Signup/sign-up-main.component'
 import { MainComponent } from './Components/main/main.component';
 import { MainNavComponent } from './Shared/main-nav/main-nav.component';
 import { UploadFileComponent } from './Shared/upload-file/upload-file.component';
+import { ClinicInfoMainComponent } from './Components/clinic/clinic-info-main.component';
+import { ClinicInfoComponent } from './Components/clinic/clinic-info/clinic-info.component';
+import { ClinicGalaryComponent } from './Components/clinic/clinic-galary/clinic-galary.component';
+import { ClinicSchedualComponent } from './Components/clinic/clinic-schedual/clinic-schedual.component';
+import { ClinicSidebarComponent } from './Components/clinic/clinic-sidebar/clinic-sidebar.component';
 
 
 // AoT requires an exported function for factories
@@ -44,7 +49,12 @@ export function CreateTranslateLoader(http: HttpClient) {
     SignUpMainComponent,
     MainComponent,
     MainNavComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    ClinicInfoMainComponent,
+    ClinicInfoComponent,
+    ClinicGalaryComponent,
+    ClinicSchedualComponent,
+    ClinicSidebarComponent,
   ],
   imports: [
     HttpClientModule,
