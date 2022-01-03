@@ -4,6 +4,6 @@ export class DropDownModel
  {
     Message:string;
     MessageCode:number;
-    Success:boolean;  
-    Data:IdNameList[];  
+    Success:boolean;
+    Data:IdNameList[];
 }

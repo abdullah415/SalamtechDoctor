@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GalaryResolver } from 'src/Resolver/galary.resolver';
 import { ClinicGalaryComponent } from './Components/clinic/clinic-galary/clinic-galary.component';
 import { ClinicInfoMainComponent } from './Components/clinic/clinic-info-main.component';
 import { ClinicInfoComponent } from './Components/clinic/clinic-info/clinic-info.component';
@@ -24,8 +25,8 @@ const routes: Routes = [
   ] },
   {path:'clinic',component:ClinicInfoMainComponent ,children:[
       {path:'',component:ClinicInfoComponent },
-      {path:'galay',component:ClinicGalaryComponent },
-      {path:'Scheduld',component:ClinicSchedualComponent },
+      {path:'galay',component:ClinicGalaryComponent , resolve:{Galary:GalaryResolver}},
+      {path:'Schedule',component:ClinicSchedualComponent },
   ] },
   {path:'',component:MainComponent },
 
