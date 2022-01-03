@@ -17,8 +17,8 @@ export class DocumentsComponent implements OnInit {
   //#endregion
 
   //#region Constructor
-constructor( 
-  private fb:FormBuilder , 
+constructor(
+  private fb:FormBuilder ,
   private DocumentService:DocumentService
 ) { }
 //#endregion
@@ -35,7 +35,7 @@ constructor(
     this.Upload_Image = false;
     this.LegalDocumentList = [{"Name":'',"Id":0},{"Name":'',"Id":0},{"Name":'',"Id":0}];
     //#endregion
-  
+
       //#region  Register Form Section
       this.DocumentsForm = this.fb.group(
         {
@@ -57,13 +57,14 @@ constructor(
   //#region Consume API's
 
     //#region Submit Method
-    changeStyle()
+    SubmitDocuments()
     {
     document.getElementById('Congratulations')?.classList.add('OnClick-Style');
+    
     }
     //#endregion
 
-    //#region Legal Document Method 
+    //#region Legal Document Method
       GetLegalDocument(lang:string)
       {
         this.DocumentService.GetLegalDocument(lang ).subscribe(
@@ -77,11 +78,11 @@ constructor(
       //#endregion
 
   //#region Doctor Documents
-  CreateProfile(lang:string , _DoctorInfoModel:FormData)
+  CreateDoctorDocuments(lang:string , Model:FormData)
   {
-    this.DocumentService.CreateDoctorDocuments(lang ,_DoctorInfoModel ).subscribe(
+    this.DocumentService.CreateDoctorDocuments(lang ,Model ).subscribe(
       (response)=>{
-      console.log(response);
+      // console.log(response);
       },
       (err)=>{
         console.log(err);
@@ -115,7 +116,7 @@ constructor(
       var reader = new FileReader();
       this.imagePath = files;
       reader.readAsDataURL(files[0]);
-      reader.onload = (_event) => 
+      reader.onload = (_event) =>
       {
         if(typeImg == 1)
         {
@@ -140,12 +141,10 @@ constructor(
       }
       this.Upload_Image = true;
 
-      formData.append('LegalDocumentTypeId ', ID as unknown as Blob);
-      formData.append('document ', files[0]);
-
-      console.log("fdfdf : ",files[0])
-      // this.CreateProfile('en',formData);
-
+      formData.append('LegalDocumentTypeId', ID as unknown as Blob);
+      formData.append('document',files[0] );
+      console.log(formData)
+      this.CreateDoctorDocuments('en',formData)
     }
     //#endregion
 
