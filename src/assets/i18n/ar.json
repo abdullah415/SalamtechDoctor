@@ -67,7 +67,8 @@
         "Clinic":{
           "sidebarinfo":"بيانات العيادة",
           "sidebargalary":"صور العيادة",
-          "sidebarschedule":"مواعيد العيادة"
+          "sidebarschedule":"مواعيد العيادة",
+          "GalayTitle":"معرض الصور"
         },
         "Certificate":{
           "AddNewCertificate":"اضافة شهادة جديده",

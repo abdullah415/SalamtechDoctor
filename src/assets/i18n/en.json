@@ -71,7 +71,8 @@
         "Clinic":{
           "sidebarinfo":"Clinic Info",
           "sidebargalary":"Clinic Galary",
-          "sidebarschedule":"Clinic Schedule"
+          "sidebarschedule":"Clinic Schedule",
+          "GalayTitle":"Galary Title"
         },
         "Certificate":{
           "AddNewCertificate":"Add New Certificate",
