@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Galary } from 'src/Models/galary';
+import { GeneralResponse } from 'src/Models/general-response';
 import { GalaryService } from 'src/Service/ClinicGalary/galary.service';
 
 @Component({
@@ -11,10 +13,13 @@ export class ClinicGalaryComponent implements OnInit {
 
   //#region Decalre Variables
     GalaryList:Galary[];
+    Response:GeneralResponse<Galary>;
   //#endregion
 
   //#region Constructor
-    constructor(private GalaryService:GalaryService) { }
+    constructor(private GalaryService:GalaryService,
+                private router:Router,
+                private route: ActivatedRoute ) { }
   //#endregion
 
   //#region On Init Method
@@ -25,7 +30,7 @@ export class ClinicGalaryComponent implements OnInit {
       //#endregion
 
       //#region Call Methods
-      this.GetClinicGalleryByClinicId('en',1);
+      this.GetClinicGalleryByClinicId('en',37);
       //#endregion
 
     }
@@ -36,15 +41,17 @@ export class ClinicGalaryComponent implements OnInit {
       //#region Get Clinic Gallery By Clinic Id
         GetClinicGalleryByClinicId(lang:string,ID:number)
         {
-          this.GalaryService.GetClinicGalleryByClinicId(lang,ID).subscribe(
-            (response)=>{
-              this.GalaryList = response.Data;
-              console.log("GalaryList",this.GalaryList);
-            },
-            (err)=>{
-              console.log(err);
-            }
-          )
+          // this.GalaryService.GetClinicGalleryByClinicId(lang,ID).subscribe(
+          //   (response)=>{
+          //     this.GalaryList = response.Data;
+          //   },
+          //   (err)=>{
+          //     console.log(err);
+          //   }
+          // )
+          this.Response = this.route.snapshot.data['Galary']
+          this.GalaryList = this.Response.Data;
+
         }
       //#endregion
 
@@ -52,8 +59,8 @@ export class ClinicGalaryComponent implements OnInit {
           CreateClinicGallery(lang:string,formData:FormData){
             this.GalaryService.CreateClinicGallery(lang,formData).subscribe(
               (response)=>{
-                console.log(response);
-                this.GetClinicGalleryByClinicId('en',1);
+                // console.log(response);
+                this.GetClinicGalleryByClinicId('en',37);
               },
               (err)=>{
                 console.log(err);
@@ -94,10 +101,16 @@ export class ClinicGalaryComponent implements OnInit {
 
       formData.append('ClinicId', ID as unknown as Blob);
       formData.append('clinicGallery',files[0] );
-      console.log(formData)
 
       this.CreateClinicGallery('en',formData);
+      window.location.reload();
+
     }
   //#endregion
 
+  //#region Next to
+  Next(){
+    this.router.navigateByUrl("clinic/Schedule")
+  }
+  //#endregion
 }
