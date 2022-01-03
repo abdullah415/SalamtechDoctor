@@ -26,6 +26,9 @@ import { ClinicInfoComponent } from './Components/clinic/clinic-info/clinic-info
 import { ClinicGalaryComponent } from './Components/clinic/clinic-galary/clinic-galary.component';
 import { ClinicSchedualComponent } from './Components/clinic/clinic-schedual/clinic-schedual.component';
 import { ClinicSidebarComponent } from './Components/clinic/clinic-sidebar/clinic-sidebar.component';
+import { GoogleMapsComponent } from './Shared/google-maps/google-maps.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 
 // AoT requires an exported function for factories
@@ -55,11 +58,16 @@ export function CreateTranslateLoader(http: HttpClient) {
     ClinicGalaryComponent,
     ClinicSchedualComponent,
     ClinicSidebarComponent,
+    GoogleMapsComponent,
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     NgbModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBV_whQcaYG3YOrjdkosNh_Tz9G2xOLeCs',
+      // libraries: ['places']
+    }),
     FormsModule,
     ReactiveFormsModule ,
     AppRoutingModule,

@@ -22,7 +22,6 @@ export class CertificatesComponent implements OnInit {
   imageName:string='Upload Certificate'
 
   editableCertificate:Certificate
-  newCertificate:Certificate
 
   constructor(private fb:FormBuilder ,private certificateService:CertificateService) { }
 
@@ -35,7 +34,6 @@ export class CertificatesComponent implements OnInit {
     document.getElementById('Certificates')?.classList.add('OnClick-Style');
     //#endregion
 
-    this.newCertificate=new Certificate()
     this.editableCertificate=new Certificate()
     this.certificate=new Certificate()
 
@@ -156,12 +154,10 @@ export class CertificatesComponent implements OnInit {
 
   Edit(id:number){
     this.editableCertificate= this.submittedCertificate.Data.find((item)=>item.Id==id) as Certificate
-    this.newCertificate=this.editableCertificate
     this.sendButton=true
   }
 
   SaveCertificate(){
-    this.editableCertificate=this.newCertificate
     const formData = new FormData();
 
     formData.append('CertificateId',+this.editableCertificate.Id as unknown as Blob)

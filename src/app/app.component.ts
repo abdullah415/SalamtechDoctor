@@ -1,4 +1,7 @@
 import { Component,OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Coordinates } from 'src/Models/Coordinates';
+import { GoogleMapsComponent } from './Shared/google-maps/google-maps.component';
 
 @Component({
   selector: 'app-root',
