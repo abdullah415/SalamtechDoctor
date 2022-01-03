@@ -12,7 +12,7 @@ export class CertificateService {
   httpOptions = {
     headers: new HttpHeaders({
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiNTg3ODc0MDgtYzFiMS00NmQyLTg5NGUtNzI2ZGU3OTJmMmYwIiwiZXhwIjoxNjQxMzAwNDEyLCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.PjfCHlRd5Rb1v4vBgpwlDi3EEceCH8IYjeh7jT_b-u0',
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiMGUxNzJjYmItY2Q4Zi00MDE4LTgyZjUtNWRlZmMzZTdlODEwIiwiZXhwIjoxNjQxMzczMTE0LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.3dExNCRwEwiY7cFTDgAK99v2bAgln56Y0SPGeshppYk',
     }),
   };
   //#endregion
@@ -38,6 +38,15 @@ export class CertificateService {
   DeleteCertificate(lang: string,id:number) {
     return this.http.delete(
       `${environment.URL}${lang}/Doctor/DeleteDoctorCertificates?CertificateId=${id}`,
+      this.httpOptions
+    );
+  }
+  //#endregion
+
+  //#region Update Certificate Id
+  UpdateCertificate(lang: string,Certificate: FormData) {
+    return this.http.post(
+      `${environment.URL}${lang}/Doctor/UpdateDoctorCertificate`,Certificate,
       this.httpOptions
     );
   }

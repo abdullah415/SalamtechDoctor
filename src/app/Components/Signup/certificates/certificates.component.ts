@@ -11,6 +11,7 @@ import { CertificateService } from 'src/Service/Certificate/certificate.service'
 })
 export class CertificatesComponent implements OnInit {
 
+  sendButton:boolean=false
   buttonAdd:boolean=false;
   showImgbox:boolean=false
 
@@ -21,16 +22,20 @@ export class CertificatesComponent implements OnInit {
   imageName:string='Upload Certificate'
 
   editableCertificate:Certificate
+  newCertificate:Certificate
 
   constructor(private fb:FormBuilder ,private certificateService:CertificateService) { }
 
   ngOnInit(): void {
+
+
     //#region Sidebar style
     document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
     document.getElementById('Signup')?.classList.add('OnClick-Style');
     document.getElementById('Certificates')?.classList.add('OnClick-Style');
     //#endregion
 
+    this.newCertificate=new Certificate()
     this.editableCertificate=new Certificate()
     this.certificate=new Certificate()
 
@@ -77,8 +82,9 @@ export class CertificatesComponent implements OnInit {
 
     this.CreateCertificate('en',formData)
   }
-  //#region review AND File FormData image from input file
 
+
+  //#region review AND File FormData image from input file
   CreateCertificate(lang:string,certificate:FormData){
     this.certificateService.CreateCertificate('en',certificate).subscribe((res)=>{
       this.certificateService.GetDoctorCertificate('en').subscribe((res)=>{
@@ -114,24 +120,29 @@ export class CertificatesComponent implements OnInit {
       }
 
     this.certificate.CertificateUrl = files[0];
+    this.editableCertificate.CertificateUrl=files[0]
     this.imageName=files[0].name
     this.showImgbox=true
     // this.FormDataImage.append('EpisodeIamge', files[0]);
   }
   //#endregion
 
-  DeleteCertificate(id:number){
-    this.certificateService.DeleteCertificate('en',id).subscribe((res)=>{
-      this.certificateService.GetDoctorCertificate('en').subscribe((res)=>{
-        this.submittedCertificate= res as CertificateResponse
-        console.log(this.submittedCertificate)}
-      )},
-      (err)=>{console.log(err)})
-    }
+  //#region Delete Certificate
+    DeleteCertificate(id:number){
+      this.certificateService.DeleteCertificate('en',id).subscribe((res)=>{
+        this.certificateService.GetDoctorCertificate('en').subscribe((res)=>{
+          this.submittedCertificate= res as CertificateResponse
+          console.log(this.submittedCertificate)}
+        )},
+        (err)=>{console.log(err)})
+      }
+  //#endregion
+
 
   DeleteImg(){
     this.showImgbox=!this.showImgbox
     this.imageName='Upload Certificate'
+
   }
 
   resetForm(){
@@ -141,13 +152,36 @@ export class CertificatesComponent implements OnInit {
     }
   }
 
-  kyjk(){
-    console.log(this.editableCertificate.Title)
-  }
+
 
   Edit(id:number){
     this.editableCertificate= this.submittedCertificate.Data.find((item)=>item.Id==id) as Certificate
+    this.newCertificate=this.editableCertificate
+    this.sendButton=true
+  }
 
-    let i=document.getElementById('title')
+  SaveCertificate(){
+    this.editableCertificate=this.newCertificate
+    const formData = new FormData();
+
+    formData.append('CertificateId',+this.editableCertificate.Id as unknown as Blob)
+    formData.append('Title',this.editableCertificate.Title)
+    formData.append('Description',this.editableCertificate.Description)
+    formData.append('TitleAr',this.editableCertificate.TitleAr)
+    formData.append('DescriptionAr',this.editableCertificate.DescriptionAr)
+    formData.append('Year', +this.editableCertificate.Year as unknown as Blob)
+    formData.append('certificateImage',this.editableCertificate.CertificateUrl)
+
+    this.UpdateCertificate('en',formData)
+  }
+
+  UpdateCertificate(lang:string,certificate:FormData){
+    this.certificateService.UpdateCertificate('en',certificate).subscribe((res)=>{
+      this.certificateService.GetDoctorCertificate('en').subscribe((res)=>{
+        this.submittedCertificate= res as CertificateResponse
+        this.resetForm()}
+      )
+    },
+    (err)=>{console.log(err)})
   }
 }

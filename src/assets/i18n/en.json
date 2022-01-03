@@ -67,6 +67,21 @@
         },
         "Documents":{
 
+        },
+        "Certificate":{
+          "AddNewCertificate":"Add New Certificate",
+          "NewCertificate":"New Certificate",
+          "Reset":"Reset",
+          "Delete":"Delete",
+          "CertificateTitle":"Certificate Title",
+          "CertificateTitleAr":"العنوان بالعربي",
+          "Description":"Description",
+          "DescriptionAr":"الوصف بالعربي",
+          "Year":"Year",
+          "View":"View",
+          "Submit":"Submit",
+          "Save":"Save",
+          "Next":"Next"
         }
     }
 }

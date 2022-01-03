@@ -2,13 +2,14 @@
   <div class="row justify-content-end my-3">
     <div class="col-3">
       <button class="btn text-white w-100" style="background-color: #262d70" [routerLink]="['/Certificates']">
-        Add New Certificate
+        {{"mainModule.Certificate.AddNewCertificate" | translate}}
       </button>
     </div>
   </div>
 
+  <!-- history of certificates -->
   <div *ngIf="submittedCertificate" class="mb-2 col-10">
-    <div (click)="Edit(item.Id)" class="
+    <div class="
         card-header
         d-flex
         border-0
@@ -16,11 +17,11 @@
         text-muted
         justify-content-between
       " style="background-color: #f9f9f9 !important" *ngFor="let item of submittedCertificate.Data; let i= index">
-      <div class="btn col-6 text-start">
+      <div (click)="Edit(item.Id)" class="btn col-6 text-start">
         {{ item.Title }}
       </div>
       <div class="col-6 d-flex justify-content-end">
-        <div class="btn" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + i" >
+        <div class="btn" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + i">
           <span dir="auto" class="eye text-muted">
             <i class="far fa-eye mx-1" id="togglePassword"></i>
           </span>
@@ -42,23 +43,26 @@
       </div>
     </div>
   </div>
+  <!-- End history of certificates -->
 
+  <!-- Submit Form -->
   <form #form="ngForm" class="row justify-content-start" [formGroup]="CertificateForm">
     <div class="col-10">
       <div class="card">
         <div class="card-header d-flex border-0 text-muted justify-content-between"
           style="background-color: #f9f9f9 !important">
-          <div class="btn">New Certification</div>
+          <div class="btn">{{"mainModule.Certificate.NewCertificate" | translate}}</div>
           <div>
-            <div class="btn px-1" (click)="resetForm()">Reset</div>
-            <div class="btn text-danger">Delete</div>
+            <div class="btn px-1" (click)="resetForm()">{{"mainModule.Certificate.Reset" | translate}}</div>
+            <div id="delete" style="display: none;" class="btn text-danger">{{"mainModule.Certificate.Delete" | translate}}</div>
           </div>
         </div>
         <div class="card-body bg-color">
           <div class="row">
+            <!-- Titlt Input -->
             <div class="col-6">
               <div class="input-group">
-                <label for="title" class="text-muted">Certificate title<span class="text-danger">*</span></label>
+                <label for="title" class="text-muted">{{"mainModule.Certificate.CertificateTitle" | translate}}<span class="text-danger">*</span></label>
                 <input id="title" type="text" class="form-control w-100 mt-2 input-style" formControlName="title"
                   [class.is-valid]="
                     CertificateForm.controls['title'].valid &&
@@ -66,12 +70,15 @@
                   " [class.is-invalid]="
                     CertificateForm.controls['title'].invalid &&
                     CertificateForm.controls['title'].touched
-                  " placeholder="title"   [(ngModel)]="editableCertificate.Title"/>
+                  "  [(ngModel)]="editableCertificate.Title" />
               </div>
             </div>
-            <div class="col-6">
+            <!-- End Titlt Input -->
+
+            <!-- TitltAr Input -->
+            <div dir="auto" class="col-6">
               <div class="input-group">
-                <label for="titleAr" class="text-muted">Certificate titleAr<span class="text-danger">*</span></label>
+                <label for="titleAr" class="text-muted">{{"mainModule.Certificate.CertificateTitleAr" | translate}}<span class="text-danger">*</span></label>
                 <input id="titleAr" type="text" class="form-control w-100 mt-2 input-style text-right"
                   formControlName="titleAr" [class.is-valid]="
                     CertificateForm.controls['titleAr'].valid &&
@@ -79,15 +86,17 @@
                   " [class.is-invalid]="
                     CertificateForm.controls['titleAr'].invalid &&
                     CertificateForm.controls['titleAr'].touched
-                  " placeholder="titleAr" [value]="editableCertificate.TitleAr"/>
+                  "  [(ngModel)]="editableCertificate.TitleAr" />
               </div>
             </div>
+            <!-- End TitltAr Input -->
           </div>
 
           <div class="row mt-3">
+            <!--  Description Input -->
             <div class="col-6">
               <div class="form-floating">
-                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">Description <span
+                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">{{"mainModule.Certificate.Description" | translate}} <span
                     class="text-danger">*</span></label>
                 <textarea formControlName="Description" [class.is-valid]="
                     CertificateForm.controls['Description'].valid &&
@@ -95,13 +104,16 @@
                   " [class.is-invalid]="
                     CertificateForm.controls['Description'].invalid &&
                     CertificateForm.controls['Description'].touched
-                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea" [value]="editableCertificate.Description"
-                  style="height: 120px"></textarea>
+                  " class="form-control"  id="floatingTextarea"
+                  [(ngModel)]="editableCertificate.Description" style="height: 120px"></textarea>
               </div>
             </div>
+            <!-- End Description Input -->
+
+            <!--  DescriptionAr Input -->
             <div class="col-6">
               <div dir="auto" class="form-floating">
-                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">DescriptionAr <span
+                <label for="floatingTextarea2" class="position-relative px-0 py-2 text-muted">{{"mainModule.Certificate.DescriptionAr" | translate}} <span
                     class="text-danger">*</span></label>
                 <textarea formControlName="DescriptionAr" [class.is-valid]="
                     CertificateForm.controls['DescriptionAr'].valid &&
@@ -109,27 +121,30 @@
                   " [class.is-invalid]="
                     CertificateForm.controls['DescriptionAr'].invalid &&
                     CertificateForm.controls['DescriptionAr'].touched
-                  " class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" [value]="editableCertificate.DescriptionAr"
-                  style="height: 120px"></textarea>
+                  " class="form-control"  id="floatingTextarea2"
+                  [(ngModel)]="editableCertificate.DescriptionAr" style="height: 120px"></textarea>
               </div>
             </div>
+            <!-- End DescriptionAr Input -->
           </div>
+
+          <!--  year Input -->
           <div class="row mt-3">
             <div class="col-6">
               <div class="input-group">
-                <label for="year">year<span class="text-danger">*</span></label>
-                <input
-                onKeyPress="if(this.value.length==4 ) return false; "
-                formControlName="year" [class.is-valid]="
+                <label for="year">{{"mainModule.Certificate.Year" | translate}}<span class="text-danger">*</span></label>
+                <input onKeyPress="if(this.value.length==4 ) return false; " formControlName="year" [class.is-valid]="
                     CertificateForm.controls['year'].valid &&
                     CertificateForm.controls['year'].touched
                   " [class.is-invalid]="
                     CertificateForm.controls['year'].invalid &&
                     CertificateForm.controls['year'].touched
-                  " id="year" type="number" class="form-control w-100 mt-2 input-style" placeholder="1995" [value]="editableCertificate.Year"/>
+                  " id="year" type="number" class="form-control w-100 mt-2 input-style" placeholder="0000"
+                  [(ngModel)]="editableCertificate.Year" />
               </div>
             </div>
           </div>
+          <!-- End year Input -->
         </div>
 
         <div class="card-footer bg-light text-muted border-0">
@@ -144,7 +159,7 @@
                   <!-- Button trigger modal -->
                   <div class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                     <span dir="auto" class="eye text-muted">
-                      <i class="far fa-eye mx-1" id="togglePassword"></i>View
+                      <i class="far fa-eye mx-1" id="togglePassword"></i>{{"mainModule.Certificate.View" | translate}}
                     </span>
                   </div>
 
@@ -160,7 +175,7 @@
 
                   <div class="btn" (click)="DeleteImg()">
                     <span dir="auto" class="eye text-danger">
-                      <i class="far fa-trash-alt mx-1"></i>Delete
+                      <i class="far fa-trash-alt mx-1"></i>{{"mainModule.Certificate.Delete" | translate}}
                     </span>
                   </div>
                 </div>
@@ -176,9 +191,13 @@
 
           <div class="row justify-content-end mb-2">
             <div class="col-2">
-              <button style="padding: 10px" type="button" class="btn mx-2 text-white" style="background-color: #262d70"
-                (click)="SubmitCertificate()" [disabled]="CertificateForm.invalid">
-                Submit
+              <button *ngIf="!sendButton" style="padding: 10px" type="button" class="btn mx-2 text-white"
+                style="background-color: #262d70" (click)="SubmitCertificate()" [disabled]="CertificateForm.invalid">
+                {{"mainModule.Certificate.Submit" | translate}}
+              </button>
+              <button *ngIf="sendButton" style="padding: 10px" type="button" class="btn mx-2 text-white"
+                style="background-color: #262d70" (click)="SaveCertificate()" [disabled]="CertificateForm.invalid">
+                {{"mainModule.Certificate.Save" | translate}}
               </button>
             </div>
           </div>
@@ -186,20 +205,11 @@
       </div>
     </div>
   </form>
-
-  <!-- <div class="row justify-content-start mt-3">
-    <div class="col-3">
-      <button *ngIf="!buttonAdd" (click)="showAdd()" class="btn w-100"
-        style="background-color: #e9eaf1; color: #262d70; border-color: #262d70">
-        <i class="fas fa-plus px-1"></i>Add New Certificate
-      </button>
-    </div>
-  </div> -->
-
+  <!-- End Submit Form -->
   <div class="row justify-content-end mt-5">
     <div class="col-3">
       <button class="btn text-white w-100" style="background-color: #262d70" [routerLink]="['signup/certificates']">
-        Next
+        {{"mainModule.Certificate.Next" | translate}}
       </button>
     </div>
   </div>
