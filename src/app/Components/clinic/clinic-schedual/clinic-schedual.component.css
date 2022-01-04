@@ -16,7 +16,6 @@
 
   .Schedule-block
   {
-      /* background-color: rosybrown; */
   }
 
 .day-block
@@ -24,6 +23,8 @@
     padding:10px;
     font-size: 20px;
     font-weight: 500;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 /*----------------btn switch start---------------------*/
@@ -33,7 +34,7 @@
     width: 60px;
     height: 34px;
     line-height: 30px;
-    margin-top: 8px;
+    margin-top: 20px;
   }
   
   .switch input { 
@@ -89,3 +90,29 @@
     border-radius: 50%;
   }
 /*----------------btn switch end------------------------*/
+
+.card-header
+{
+  /* height: 30px; */
+  /* background-color:#F9F9F9; */
+  padding: 10px;
+  font-size: 16px;
+}
+
+.card-body
+{
+  padding: 0px;
+  background-color: rgb(215 208 208 / 20%);
+  border-radius: 8px;
+}
+
+.delete-period
+{
+  color: red;
+  font-weight: 500;
+}
+.lbl-input
+{
+  display: block;
+  padding-bottom:10px ;
+}
