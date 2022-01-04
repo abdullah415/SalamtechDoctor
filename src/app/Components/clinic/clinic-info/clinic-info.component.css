@@ -21,6 +21,7 @@
     font-size: 16px;
     /* border: 1px solid #C5C7CF; */
     border-radius: 8px;
+position: relative;
   }
 
   .input-style input {
@@ -32,6 +33,11 @@
     outline: none;
     padding-right: 35px;
     margin-bottom: 20px;
+  }
+
+  .mobile-input
+  {
+    padding-left: 70px;
   }
   .input-style-phone {
     width: 100%;
