@@ -34,25 +34,32 @@ export class GoogleMapsComponent implements OnInit {
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
+      let autocomplete = new google.maps.places.Autocomplete(<HTMLInputElement>document.getElementById("address"), {
+        types: ['address']});
+        autocomplete.addListener("place_changed", () => {
+          this.ngZone.run(() => {
+            //get the place result
+            let place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+            //verify result
+            if (place.geometry === undefined || place.geometry === null) {
+              return;
+            }
 
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-
-          //set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.zoom = 12;
+            //set latitude, longitude and zoom
+            this.latitude = place.geometry.location.lat();
+            this.longitude = place.geometry.location.lng();
+            this.zoom = 12;
+          });
         });
-      });
+
     });
+
+  }
+
+  text(){
+    console.log("compelete",this.searchElementRef.nativeElement.value)
+
   }
 
   // Get Current Location Coordinates
@@ -69,7 +76,7 @@ export class GoogleMapsComponent implements OnInit {
 
 
   markerDragEnd($event: any) {
-    console.log($event);
+    console.log("drag",$event);
     this.latitude = $event.coords.lat;
     this.longitude = $event.coords.lng;
     this.getAddress(this.latitude, this.longitude);

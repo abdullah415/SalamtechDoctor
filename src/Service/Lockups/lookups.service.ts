@@ -2,7 +2,10 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Area } from 'src/Models/Area';
+import { City } from 'src/Models/City';
 import { DropDownModel } from 'src/Models/drop-down-model';
+import { GeneralResponse } from 'src/Models/general-response';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +17,19 @@ export class LookupsService {
   //#region Options
   httpOptions = {
     headers: new HttpHeaders({
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiYjg5YjNkOWItZmEwNy00YzMzLTg2ZjgtNTgzMTlhMTc1YzIxIiwiZXhwIjoxNjQxMjkyNzY3LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.zopo2nE2NxBttbC-_DMXh0lQt5_S-ng9Ic-0F_ChpcM',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiOWIxYjkwNzEtZWZkNy00MDQ3LWE1NzctMjg3OTdlMjY4NjRkIiwiZXhwIjoxNjQxNDYxMzU1LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.ehFTuLy5VuB846Nnk0Q05HiSQ0r6UyF-5_Uasp6EtTM',
       })};
   //#endregion
 
     //#region Get Cities
-    GetCities(lang:string):Observable<DropDownModel>{
-      return this.http.get<DropDownModel>(`${environment.URL}${lang}/City/GetAllCities`,this.httpOptions);
+    GetCities(lang:string):Observable<GeneralResponse<City>>{
+      return this.http.get<GeneralResponse<City>>(`${environment.URL}${lang}/City/GetAllCities`,this.httpOptions);
     }
     //#endregion CreateDoctorDocuments
 
     //#region Get Areas
-    GetAreas(lang:string):Observable<DropDownModel>{
-      return this.http.get<DropDownModel>(`${environment.URL}${lang}/Area/GetAllAreas`,this.httpOptions);
+    GetAreas(lang:string):Observable<GeneralResponse<Area>>{
+      return this.http.get<GeneralResponse<Area>>(`${environment.URL}${lang}/Area/GetAllAreas`,this.httpOptions);
     }
     //#endregion CreateDoctorDocuments
 }

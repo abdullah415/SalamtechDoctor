@@ -65,8 +65,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     BrowserModule,
     NgbModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBV_whQcaYG3YOrjdkosNh_Tz9G2xOLeCs',
-      // libraries: ['places']
+      apiKey: ' AIzaSyAy8wLUdHfHVmzlWLNPVF96SO0GY1gP4Po',
+      libraries: ['places']
     }),
     FormsModule,
     ReactiveFormsModule ,
