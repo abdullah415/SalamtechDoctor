@@ -113,15 +113,20 @@
         <div class="col-lg-6 col-sm-12">
           <span class="lbl-Register">PhoneNumber</span>
           <span class="star"> * </span>
-          <div dir="auto" class="input-style ">
+          <div dir="auto" class="input-style">
             <!-- <img src="../../../../assets/img/Group 512657.png" style="margin-left: 5px;margin-right: 5px;">
                             <span>+2</span> -->
 
             <input
               formControlName="PhoneNumber"
               type="number"
-              style="border-width: 1px; outline: none; display: block;padding-left: 70px;"
-              class="form-control "
+              style="
+                border-width: 1px;
+                outline: none;
+                display: block;
+                padding-left: 70px;
+              "
+              class="form-control"
               oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
               maxlength="10"
               minlength="10"
@@ -145,14 +150,19 @@
         <div class="col-lg-6 col-sm-12">
           <span class="lbl-Register">Phone Number2</span>
           <!-- <span class="star"> * </span> -->
-          <div dir="auto" class="input-style ">
+          <div dir="auto" class="input-style">
             <!-- <img src="../../../../assets/img/Group 512657.png" style="margin-left: 5px;margin-right: 5px;">
                             <span>+2</span> -->
 
             <input
               formControlName="PhoneNumber2"
               type="number"
-              style="border-width: 1px; outline: none; display: block;padding-left: 70px;"
+              style="
+                border-width: 1px;
+                outline: none;
+                display: block;
+                padding-left: 70px;
+              "
               class="form-control"
               oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
               maxlength="10"
@@ -175,15 +185,20 @@
         <div class="col-lg-6 col-sm-12">
           <span class="lbl-Register">Phone Number3</span>
           <!-- <span class="star"> * </span> -->
-          <div dir="auto" class="input-style ">
+          <div dir="auto" class="input-style">
             <!-- <img src="../../../../assets/img/Group 512657.png" style="margin-left: 5px;margin-right: 5px;">
                             <span>+2</span> -->
 
             <input
               formControlName="PhoneNumber3"
               type="number"
-              style="border-width: 1px; outline: none; display: block;padding-left: 70px;"
-              class="form-control "
+              style="
+                border-width: 1px;
+                outline: none;
+                display: block;
+                padding-left: 70px;
+              "
+              class="form-control"
               oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
               maxlength="10"
               minlength="10"
@@ -203,7 +218,6 @@
       </div>
     </div>
   </div>
-
 
   <div class="row">
     <!-- FixedFee -->
@@ -315,23 +329,18 @@
         class="form-select"
         aria-label="Default select example"
         (change)="SelectCity($event)"
-        >
-      <option value=""  selected disabled>
-        Select City
-      </option>
+      >
+        <option value="" selected disabled>Select City</option>
 
-        <option *ngFor="let item of Cities" value={{item.Id}}>
-          {{item.Name}}
+        <option *ngFor="let item of Cities" value="{{ item.Id }}">
+          {{ item.Name }}
         </option>
-
       </select>
     </div>
 
     <!-- Area -->
     <div class="col-12 col-md-4 mb-4">
-      <span class="lbl-Register">
-        Area
-      </span>
+      <span class="lbl-Register"> Area </span>
       <span class="star"> * </span>
       <select
         formControlName="Area"
@@ -339,12 +348,10 @@
         aria-label="Default select example"
         (change)="SelectArea($event)"
       >
-      <option  value="" selected disabled>
-        Select Area
-      </option>
+        <option value="" selected disabled>Select Area</option>
 
-        <option *ngFor="let item of Areas" value={{item.Id}}>
-          {{item.Name}}
+        <option *ngFor="let item of Areas" value="{{ item.Id }}">
+          {{ item.Name }}
         </option>
       </select>
     </div>
@@ -443,25 +450,30 @@
   <div class="row">
     <!-- ApartmentNumber -->
     <div class="col-12 mb-4">
-      <span class="lbl-Register">
-        Services
-      </span>
+      <span class="lbl-Register"> Services </span>
       <span class="star"> * </span>
-      <select id="example-getting-started" multiple="multiple">
-        <option value="cheese">Cheese</option>
-        <option value="tomatoes">Tomatoes</option>
-        <option value="mozarella">Mozzarella</option>
-        <option value="mushrooms">Mushrooms</option>
-        <option value="pepperoni">Pepperoni</option>
-        <option value="onions">Onions</option>
-    </select>
+      <ng-multiselect-dropdown
+        formControlName="Services"
+        [placeholder]="'custom placeholder'"
+        [settings]="dropdownSettings"
+        [data]="dropdownList"
+        [(ngModel)]="selectedItems"
+        (ngModelChange)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+
+      >
+      </ng-multiselect-dropdown>
     </div>
   </div>
 </form>
 
 <div class="row justify-content-end mt-4">
   <div class="col-3">
-    <button (click)="submitClinic()" class="btn text-white w-100" style="background-color: #262d70">
+    <button
+      (click)="submitClinic()"
+      class="btn text-white w-100"
+      style="background-color: #262d70"
+    >
       Next
     </button>
   </div>

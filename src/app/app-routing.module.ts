@@ -26,7 +26,7 @@ const routes: Routes = [
   {path:'clinic',component:ClinicInfoMainComponent ,children:[
       {path:'',component:ClinicInfoComponent },
       {path:'gallary',component:ClinicGalaryComponent , resolve:{Galary:GalaryResolver}},
-      {path:'Schedule',component:ClinicSchedualComponent },
+      {path:'schedule',component:ClinicSchedualComponent },
   ] },
   {path:'',component:MainComponent },
 

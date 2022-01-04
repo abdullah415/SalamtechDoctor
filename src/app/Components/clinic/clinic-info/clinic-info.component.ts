@@ -8,6 +8,8 @@ import { Coordinates } from 'src/Models/Coordinates';
 import { ClinicInfoService } from 'src/Service/ClinicInfo/clinic-info.service';
 import { LookupsService } from 'src/Service/Lockups/lookups.service';
 import { ClinicInfoModel } from './../../../../Models/clinicInfoModel';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { IdNameList } from 'src/Models/id-name-list';
 
 @Component({
   selector: 'app-clinic-info',
@@ -44,6 +46,12 @@ export class ClinicInfoComponent implements OnInit {
   ClinicInfoForm: FormGroup;
   ClinicInfoModel: ClinicInfoModel;
   CountryId:any
+  Services:IdNameList[]
+  dropdownList:any = [];
+  selectedItems:IdNameList[] = [];
+  selectedItemsIds:number[] = [];
+  dropdownSettings:IDropdownSettings = {};
+
   constructor(
     private fb: FormBuilder,
     private modalService: NgbModal,
@@ -55,10 +63,21 @@ export class ClinicInfoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // $(document).ready(function() {
-    //     $('#example-getting-started').multiselect();
-    // });
+    //#region test select
+    this.GetServices()
 
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'Id',
+      textField: 'Name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
+
+
+    //#endregion
 
     this.GetCities();
 
@@ -97,6 +116,7 @@ export class ClinicInfoComponent implements OnInit {
       FloorNumber: ['', [Validators.required]],
       ApartmentNumber: ['', [Validators.required]],
       FixedFee: ['', [Validators.required]],
+      Services: ['', [Validators.nullValidator]],
     });
     //#endregion
   }
@@ -131,6 +151,7 @@ export class ClinicInfoComponent implements OnInit {
     this.lookupService.GetCities('en').subscribe(
       (res) => {
         this.Cities = res.Data;
+
       },
       (err) => {
         console.log(err);
@@ -144,6 +165,22 @@ export class ClinicInfoComponent implements OnInit {
     this.lookupService.GetAreas('en').subscribe(
       (res) => {
         this.Areas = res.Data;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  //#endregion
+
+  //#region git Services
+  GetServices() {
+    this.lookupService.GetServices('en').subscribe(
+      (res) => {
+        this.Services = res.Data;
+    this.dropdownList = this.Services
+
+        console.log(this.dropdownList)
       },
       (err) => {
         console.log(err);
@@ -179,9 +216,12 @@ export class ClinicInfoComponent implements OnInit {
   //#region
   submitClinic(){
     const formData = new FormData();
+    this.selectedItems.forEach(element => {
+      formData.append('HealthEntityServiceDtos',element.Id as unknown as Blob)    });
+    console.log("list",this.selectedItemsIds)
 
     formData.append('HealthEntityPhoneDtos',[+this.ClinicInfoForm.controls.PhoneNumber.value,+this.ClinicInfoForm.controls.PhoneNumber2.value,+this.ClinicInfoForm.controls.PhoneNumber3.value] as unknown as Blob)
-    // formData.append('HealthEntityServiceDtos',[] as unknown as Blob)
+
     formData.append('Name',this.ClinicInfoForm.controls.Name.value)
     formData.append('NameAr',this.ClinicInfoForm.controls.NameAr.value)
     formData.append('Email',this.ClinicInfoForm.controls.Email.value)
@@ -199,4 +239,11 @@ export class ClinicInfoComponent implements OnInit {
   }
 
 
+
+  onItemSelect(item: any) {
+    // console.log(this.selectedItems)
+  }
+  onSelectAll(items: any) {
+    // console.log(items);
+  }
 }

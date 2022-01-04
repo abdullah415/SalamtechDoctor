@@ -31,5 +31,11 @@ export class LookupsService {
     GetAreas(lang:string):Observable<GeneralResponse<Area>>{
       return this.http.get<GeneralResponse<Area>>(`${environment.URL}${lang}/Area/GetAllAreas`,this.httpOptions);
     }
-    //#endregion CreateDoctorDocuments
+    //#endregion
+
+    //#region Get Services
+    GetServices(lang:string):Observable<DropDownModel>{
+      return this.http.get<DropDownModel>(`${environment.URL}${lang}/Services/GetServicesBySpecialist`,this.httpOptions);
+    }
+    //#endregion
 }

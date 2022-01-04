@@ -28,6 +28,7 @@ import { ClinicSchedualComponent } from './Components/clinic/clinic-schedual/cli
 import { ClinicSidebarComponent } from './Components/clinic/clinic-sidebar/clinic-sidebar.component';
 import { GoogleMapsComponent } from './Shared/google-maps/google-maps.component';
 import { AgmCoreModule } from '@agm/core';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 
@@ -68,6 +69,7 @@ export function CreateTranslateLoader(http: HttpClient) {
       apiKey: ' AIzaSyAy8wLUdHfHVmzlWLNPVF96SO0GY1gP4Po',
       libraries: ['places']
     }),
+    NgMultiSelectDropDownModule.forRoot(),
     FormsModule,
     ReactiveFormsModule ,
     AppRoutingModule,
