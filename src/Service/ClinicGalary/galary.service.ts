@@ -32,4 +32,10 @@ export class GalaryService {
         }
         //#endregion
 
+      //#region Delete Clinic Gallery
+        DeleteClinicGallery(lang:string , ID:number):Observable<GeneralResponse<Galary>>{
+          return this.http.delete<GeneralResponse<Galary>>(`${environment.URL}${lang}/DoctorClinic/DeleteClinicGallery?ClinicGalleryId=${ID}`,this.httpOptions);
+        }
+        //#endregion
+
 }
