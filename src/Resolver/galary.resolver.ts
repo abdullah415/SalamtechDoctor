@@ -18,7 +18,7 @@ export class GalaryResolver implements Resolve<any> {
   constructor(private Service:GalaryService){}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<GeneralResponse<Galary>> {
-    return this.Service.GetClinicGalleryByClinicId('en',37).pipe(map(Galary=>Galary));
+    return this.Service.GetClinicGalleryByClinicId('en',41).pipe(map(Galary=>Galary));
   }
 
 }

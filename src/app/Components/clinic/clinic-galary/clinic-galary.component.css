@@ -14,7 +14,8 @@
   margin: 3px;
   padding: 3;
   border-radius: 10px;
-
+  position: relative;
+  /* z-index: -1; */
 }
 .Galary-unit-block img
 {
@@ -42,4 +43,16 @@
     color: #fff;
     text-align: center;
     margin-top: 20px;
+}
+.view-delete-card-galary
+{
+  align-items: center;
+  background-color: rgb(233 231 231 / 50%);
+  margin: 3px;
+}
+.delete-view-btn
+{
+  position: relative;
+  font-size: 22px;
+  cursor: pointer;
 }
