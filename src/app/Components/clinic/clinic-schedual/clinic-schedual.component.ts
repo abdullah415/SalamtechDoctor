@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClinicSchedualComponent implements OnInit {
 
+  HideBorder:boolean;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  hideborder()
+  {
+
   }
 
 }

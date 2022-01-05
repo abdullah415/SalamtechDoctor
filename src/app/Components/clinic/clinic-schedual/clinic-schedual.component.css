@@ -16,6 +16,7 @@
 
   .Schedule-block
   {
+    margin-bottom: 15px;
   }
 
 .day-block
@@ -25,6 +26,8 @@
     font-weight: 500;
     padding-top: 20px;
     padding-bottom: 20px;
+    user-select: none;
+    cursor: pointer;
 }
 
 /*----------------btn switch start---------------------*/
@@ -113,6 +116,54 @@
 }
 .lbl-input
 {
-  display: block;
+  /* display: block; */
+  width: fit-content;
   padding-bottom:10px ;
+  color: #8b90a0;
+
+}
+
+.input-style-period
+{
+    border-radius: 5px;
+    padding: 5px;
+    border-width: 1px;
+    padding-right: 50px;
+    padding-left: 15px;
+
+}
+
+.unit {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  font-weight: 500;
+}
+
+.interval
+{
+  padding-right: 92px;
+}
+
+hr
+{
+  position: absolute;
+  top: 68px;
+  left: 0px;
+  width: 96%;
+  margin-left: 2%;
+  height: 2px;
+  background-color: #cbcbcb;
+}
+
+.period-count
+{
+  padding-left: 10px;
+  font-size: 12px;
+}
+
+.add-new-peroid-btn
+{
+  margin: 20px;
+  padding: 10px;
 }

@@ -6,7 +6,9 @@
 
 }
 
-
+html body{
+  overflow-x: hidden;
+}
 /*-------------------validations input start-------------------*/
 .ng-valid[required] , .ng-valid.required
 {
