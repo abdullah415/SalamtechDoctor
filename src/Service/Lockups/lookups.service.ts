@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Area } from 'src/Models/Area';
 import { City } from 'src/Models/City';
 import { DropDownModel } from 'src/Models/drop-down-model';
+import { Duration } from 'src/Models/duration';
 import { GeneralResponse } from 'src/Models/general-response';
 
 @Injectable({
@@ -38,4 +39,12 @@ export class LookupsService {
       return this.http.get<DropDownModel>(`${environment.URL}${lang}/Services/GetServicesBySpecialist`,this.httpOptions);
     }
     //#endregion
+
+    //#region Get Days
+    GetDays(lang:string):Observable<DropDownModel>{
+      return this.http.get<DropDownModel>(`${environment.URL}${lang}/LookUp/GetDays`,this.httpOptions);
+    }
+    //#endregion
+
+
 }
