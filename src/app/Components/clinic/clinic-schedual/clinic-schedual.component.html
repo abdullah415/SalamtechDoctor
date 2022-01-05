@@ -5,77 +5,119 @@
         Schedule
        </label> 
     </div>
-
     <!-- Schedule Body -->
-    <div class="col-12">
+    <div *ngFor="let number of [0,1];let i=index" class="col-12">
         <div class="row Schedule-block ">
-            <div id="Saturday" class="col-12">
-                    <!--header  -->
-                    <div class="row">
-                        <div class="col-12 col-md-6 d-flex justify-content-start">
-                            <label class="day-block" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-                                Saturday
+          <div class="col" style="position: relative;">
+            <hr>
+          </div>
+          <div id="Saturday" class="col-12">
+                  <!--header  -->
+                  <div class="row" style="margin-bottom: 15px;" >
+                      <div class="col-6 col-md-6 d-flex justify-content-start" data-bs-toggle="collapse" [attr.href]="'#multiCollapseExample'+i" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+                          <label (click)="hideborder()" class="day-block" >
+                              Saturday <span class="period-count"> 5 Periods</span>
+                          </label>
+                          
+                      </div>
+                      <div class="col-6 col-md-6 d-flex justify-content-end">
+                          <label class="switch">
+                              <input type="checkbox" checked>
+                              <span class="slider round"></span>
                             </label>
-                        </div>
-                        <div class="col-12 col-md-6 d-flex justify-content-end">
-                            <label class="switch">
-                                <input type="checkbox" checked>
-                                <span class="slider round"></span>
-                              </label>
-                        </div>
-                    </div>
-                    <!-- body -->
-                  <div class="row">
-                    <div class="col">
-                      <div class="collapse multi-collapse" id="multiCollapseExample1">
-                        <div class="card card-body">
-                          <div class="row">
-                            <div class="col-12">
-                              <div class="col-12 card-header d-flex justify-content-between">
-                                <label>
-                                  Period 2
-                                </label>
-                               <div class="delete-period">
-                                <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
-                                <label style="color: black;padding-left: 20px;padding-right: 20px;">Reset</label>
-                               </div>
-                              </div>
-                              <div class="col-12">
-                                <div class="row">
-                                  <div class="col-12">
-                                    <div style="padding: 20px;">
-                                      <label class="lbl-input">Operating hours</label>
-                                      <input class="form-control" style="border-radius: 5px;padding: 5px;border-width: 1px;">
-                                    </div>
-                                  </div>
-                                  <div class="col-12">
-                                    s
+                      </div>
+                  </div>
+                  <!-- body -->
+                <div class="row ">
+                  <div class="col" >
+                    <div class="collapse multi-collapse" id="multiCollapseExample{{i}}">
+                      <div class="col-12 d-flex   justify-content-end">
+                        <button class="btn text-white px-4 my-3" style="background-color: #262d70">
+                          Add New Period
+                        </button>
+                      </div>
+                      <div class="card card-body">
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="col-12 card-header">
+                              <div class="row">
+                                <div class="col-12 col-md-6 ">
+                                  <div class="d-flex  justify-content-center justify-content-sm-start ">
+                                    <label >
+                                      Period 2
+                                    </label>
                                   </div>
                                 </div>
+                                <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
+                                  <div class="delete-period ">
+                                    <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                    <label style="color: black;padding-left: 15px;padding-right: 15px;">Reset</label>
+                                    </div>
+                                </div>
                               </div>
-                            </div>                       
-                          </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+
+                                    <div class="col-12">
+                                      <div style="padding: 20px;padding-bottom: 0px;">
+                                        <label class="lbl-input ">Operating hours</label>
+                                        <div class="row">
+                                          <div class="col-12 col-md-4 ">
+                                            <input type="time" class="form-control input-style-period" style="padding-right: 15px;">
+                                          </div>
+                                          <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
+                                            <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
+                                          </div>
+                                          <div class="col-12 col-md-4 ">
+                                            <input type="time" class="form-control input-style-period" style="padding-right: 15px;" >
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div style="padding: 20px;padding-bottom: 0px;">
+                                        <div class="row" style="margin-bottom: 35px;">
+
+                                          <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+                                            <label class="lbl-input">Interval</label>
+                                            <div style="position: relative;">
+                                              <input type="number"  class="form-control input-style-period interval" >
+                                              <label class="unit">Minutes</label>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+                                            <label class="lbl-input ">Visit fee</label>
+                                            <div style="position: relative;">
+                                              <input type="number"  class="form-control input-style-period" >
+                                              <label class="unit">EGP</label>
+                                            </div>                                              
+                                          </div>
+
+                                          <div class="col-12 col-md-4" style="margin-bottom: 10px;">
+                                            <label class="lbl-input">Checkup fee</label>
+                                            <div style="position: relative;">
+                                              <input type="number"  class="form-control input-style-period" >
+                                              <label class="unit">EGP</label>
+                                            </div>                                            
+                                          </div>
+
+                                        </div>
+                                      </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                          </div>                       
                         </div>
                       </div>
                     </div>
-                    <!-- <div class="col">
-                      <div class="collapse multi-collapse" id="multiCollapseExample2">
-                        <div class="card card-body">
-                          Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                        </div>
-                      </div>
-                    </div> -->
                   </div>
-            </div>
+                </div>
+          </div>
 
 
-
-            <!-- <div id="Sunday" class="col-12"     ></div>
-            <div id="Monday" class="col-12" ></div>
-            <div id="Tuesday" class="col-12" ></div>
-            <div id="Wednesday" class="col-12" ></div>
-            <div id="Thursday" class="col-12" ></div>
-            <div id="Friday" class="col-12" ></div> -->
             
         </div>
     </div>
