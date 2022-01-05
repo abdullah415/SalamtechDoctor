@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { LoginService } from './../../../Service/login.service';
 import { Login } from './../../../Models/Login';
+import { LoginResponse } from 'src/Models/LoginResponse';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,8 @@ export class LoginComponent implements OnInit {
   buttonEnable:boolean
   loginDoctorForm:Login=new Login();
   errorMsg:string
+
+  AuthenticatedUser:LoginResponse=new LoginResponse()
 
   constructor(private loginService:LoginService) {
     this.buttonEnable=true;
@@ -28,7 +31,7 @@ export class LoginComponent implements OnInit {
     let Phone= this.loginDoctorForm.Phone
     let Password=this.loginDoctorForm.Password
 
-    if(Phone !=0 && Password?.length>0){
+    if(Phone ?.length>0 && Password?.length>0){
       this.buttonEnable=false;
     }else{
       this.buttonEnable=true
@@ -38,10 +41,11 @@ export class LoginComponent implements OnInit {
   Login(){
     this.loginService.login(this.loginDoctorForm).subscribe((res)=>{
       // this.buttonEnable=true;
-      console.log("suc")
+      this.AuthenticatedUser= res
+      localStorage.setItem('Authorization',this.AuthenticatedUser.Data.Token)
     },
     (err)=>{
-      this.errorMsg=err.error.Message
+      console.log(err)
     })
   }
 

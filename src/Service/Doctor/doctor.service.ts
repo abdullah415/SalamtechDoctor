@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DoctorInfoModel } from 'src/Models/doctor-info-model';
@@ -10,12 +10,14 @@ import { DropDownModel } from 'src/Models/drop-down-model';
 })
 export class DoctorService {
 
+  auth:string =localStorage.getItem('Authorization') as string;
   constructor(private http: HttpClient) { }
+
 
   //#region Options
   httpOptions = {
     headers: new HttpHeaders({
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiZmZkNmQ4MjItMmUyOS00ZGFhLTk5M2MtYzRmYmRkOTI1NWY4IiwiZXhwIjoxNjQxMDQxNDM5LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.cd_fGmg73iV9o3d4r0Rke0mNSjXO8O7gg8wHF-SihDU',
+        'Authorization':  `Bearer ${this.auth}`
       }
 
     )};

@@ -12,13 +12,17 @@ import { GeneralResponse } from 'src/Models/general-response';
 })
 export class LookupsService {
 
-  constructor(private http:HttpClient) { }
+  auth:string =localStorage.getItem('Authorization') as string;
+  constructor(private http: HttpClient) { }
+
 
   //#region Options
   httpOptions = {
     headers: new HttpHeaders({
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiOWIxYjkwNzEtZWZkNy00MDQ3LWE1NzctMjg3OTdlMjY4NjRkIiwiZXhwIjoxNjQxNDYxMzU1LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.ehFTuLy5VuB846Nnk0Q05HiSQ0r6UyF-5_Uasp6EtTM',
-      })};
+        'Authorization':  `Bearer ${this.auth}`
+      }
+
+    )};
   //#endregion
 
     //#region Get Cities

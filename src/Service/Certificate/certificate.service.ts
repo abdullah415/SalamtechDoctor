@@ -6,15 +6,17 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CertificateService {
-  constructor(private http: HttpClient) {}
+  auth:string =localStorage.getItem('Authorization') as string;
+  constructor(private http: HttpClient) { }
+
 
   //#region Options
   httpOptions = {
     headers: new HttpHeaders({
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiMGUxNzJjYmItY2Q4Zi00MDE4LTgyZjUtNWRlZmMzZTdlODEwIiwiZXhwIjoxNjQxMzczMTE0LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.3dExNCRwEwiY7cFTDgAK99v2bAgln56Y0SPGeshppYk',
-    }),
-  };
+        'Authorization':  `Bearer ${this.auth}`
+      }
+
+    )};
   //#endregion
 
   CreateCertificate(lang: string, Certificate: FormData) {
