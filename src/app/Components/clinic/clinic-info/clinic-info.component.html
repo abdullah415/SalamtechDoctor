@@ -1,4 +1,4 @@
-<form class="d-block" dir="auto" [formGroup]="ClinicInfoForm">
+<form #form="ngForm" class="d-block" dir="auto" [formGroup]="ClinicInfoForm">
   <div class="row">
     <!-- Picture Doctor -->
     <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
@@ -226,6 +226,7 @@
       <span class="star"> * </span>
       <div dir="auto" class="input-style">
         <input
+
           formControlName="FixedFee"
           type="number"
           style="border-width: 1px; outline: none; display: block"
@@ -242,11 +243,13 @@
       </div>
     </div>
 
+    <!-- Address -->
     <div class="col-lg-5 col-sm-12">
       <span class="lbl-Register">Location (GoogleMap)</span>
       <!-- <span class="star"> * </span> -->
       <div class="input-style">
         <input
+        [(ngModel)]="address"
           type="text"
           class="form-control textForArabic"
           formControlName="Address"
@@ -258,9 +261,7 @@
             ClinicInfoForm.controls['Address'].invalid &&
             ClinicInfoForm.controls['Address'].touched
           "
-          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-          maxlength="10"
-          minlength="3"
+
         />
       </div>
     </div>
@@ -302,19 +303,7 @@
             Pick Location
           </button>
         </div>
-        <!-- <h1>
-            <p *ngIf="coordinates.address">
-                Address: {{coordinates.address}}
-            </p>
-        </h1>
-        <h3>
-            <p *ngIf="coordinates.latitude">
-                Latitude: {{coordinates.latitude}}
-            </p>
-            <p *ngIf="coordinates.longitude">
-                Longitude: {{coordinates.longitude}}
-            </p>
-        </h3> -->
+
       </div>
     </div>
   </div>
@@ -448,7 +437,7 @@
   </div>
 
   <div class="row">
-    <!-- ApartmentNumber -->
+    <!-- Services -->
     <div class="col-12 mb-4">
       <span class="lbl-Register"> Services </span>
       <span class="star"> * </span>
@@ -460,7 +449,6 @@
         [(ngModel)]="selectedItems"
         (ngModelChange)="onItemSelect($event)"
         (onSelectAll)="onSelectAll($event)"
-
       >
       </ng-multiselect-dropdown>
     </div>
@@ -470,7 +458,8 @@
 <div class="row justify-content-end mt-4">
   <div class="col-3">
     <button
-      (click)="submitClinic()"
+      [disabled]="ClinicInfoForm.invalid"
+      (click)="submitClinic() "
       class="btn text-white w-100"
       style="background-color: #262d70"
     >

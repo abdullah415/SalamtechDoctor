@@ -1,6 +1,8 @@
-.pac-container{
+::ng-deep .pac-container {
   z-index: 9999;
 }
 agm-map{
-  height: 300px
+  height: 300px;
 }
+
+

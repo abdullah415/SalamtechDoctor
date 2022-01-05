@@ -16,8 +16,8 @@ export class GalaryService {
       //#region Options
       httpOptions = {
         headers: new HttpHeaders({
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMTgwNzk4MTQ1IiwibmFtZWlkIjoiMjQyIiwianRpIjoiNTI0NDcxNzYtOTM1Mi00OWY5LTliYTgtYzE1YWUzODc5YzA4IiwiZXhwIjoxNjQxMzcwOTcxLCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.Jvnz3YrBGPqzWenJZ-37425JWZkIhHMvj3oYJzRXgVA',
-          })};
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiOWIxYjkwNzEtZWZkNy00MDQ3LWE1NzctMjg3OTdlMjY4NjRkIiwiZXhwIjoxNjQxNDYxMzU1LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.ehFTuLy5VuB846Nnk0Q05HiSQ0r6UyF-5_Uasp6EtTM',
+        })};
       //#endregion
 
       //#region CreateClinicGallery

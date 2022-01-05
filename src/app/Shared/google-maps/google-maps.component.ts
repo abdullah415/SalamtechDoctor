@@ -1,6 +1,6 @@
 
 import { MapsAPILoader } from '@agm/core';
-import { Component, OnInit, ViewChild, ElementRef, NgZone, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone, Input, AfterViewInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -29,13 +29,15 @@ export class GoogleMapsComponent implements OnInit {
   ) { }
 
 
+
+
   ngOnInit() {
+
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
-      let autocomplete = new google.maps.places.Autocomplete(<HTMLInputElement>document.getElementById("address"), {
-        types: ['address']});
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
         autocomplete.addListener("place_changed", () => {
           this.ngZone.run(() => {
             //get the place result
@@ -49,6 +51,7 @@ export class GoogleMapsComponent implements OnInit {
             //set latitude, longitude and zoom
             this.latitude = place.geometry.location.lat();
             this.longitude = place.geometry.location.lng();
+            this.getAddress(this.latitude, this.longitude);
             this.zoom = 12;
           });
         });
@@ -57,10 +60,7 @@ export class GoogleMapsComponent implements OnInit {
 
   }
 
-  text(){
-    console.log("compelete",this.searchElementRef.nativeElement.value)
 
-  }
 
   // Get Current Location Coordinates
   private setCurrentLocation() {

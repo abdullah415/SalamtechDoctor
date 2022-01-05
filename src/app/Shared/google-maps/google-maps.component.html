@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h3 class="modal-title">Angular Google Maps with Places Search Example</h3>
+  <h3 class="modal-title">Pick your location</h3>
   <button type="button" class="close" data-dismiss="modal" (click)="closeModal('dismiss')">
       <span aria-hidden="true">&times;</span>
   </button>
@@ -7,9 +7,7 @@
 <div class="modal-body">
 
   <div class="form-group">
-      <input type="text" id="address" class="form-control"  (keydown.enter)="$event.preventDefault()"
-          placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
-          >
+    <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
   </div>
 
   <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">

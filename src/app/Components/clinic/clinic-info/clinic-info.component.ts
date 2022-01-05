@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GoogleMapsComponent } from 'src/app/Shared/google-maps/google-maps.component';
 import { Area } from 'src/Models/Area';
@@ -10,6 +10,7 @@ import { LookupsService } from 'src/Service/Lockups/lookups.service';
 import { ClinicInfoModel } from './../../../../Models/clinicInfoModel';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { IdNameList } from 'src/Models/id-name-list';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clinic-info',
@@ -18,12 +19,13 @@ import { IdNameList } from 'src/Models/id-name-list';
 })
 export class ClinicInfoComponent implements OnInit {
   coordinates: Coordinates;
+  address:string
   Cities: City[];
   Areas: Area[];
 
   openGoogelMapsModal() {
     const modalRef = this.modalService.open(GoogleMapsComponent, {
-      scrollable: true,
+      scrollable: true,modalDialogClass:"modal-xl modal-dialog-centered modal-dialog-scrollable"
       // windowClass: 'myCustomModalClass',
       // keyboard: false,
       // backdrop: 'static'
@@ -37,11 +39,12 @@ export class ClinicInfoComponent implements OnInit {
     modalRef.componentInstance.fromParent = data;
     modalRef.result.then(
       (result) => {
-        this.coordinates = result;
+        this.address = result.address;
       },
       (reason) => {}
     );
   }
+
 
   ClinicInfoForm: FormGroup;
   ClinicInfoModel: ClinicInfoModel;
@@ -56,14 +59,19 @@ export class ClinicInfoComponent implements OnInit {
     private fb: FormBuilder,
     private modalService: NgbModal,
     private lookupService: LookupsService,
-    private ClinicService:ClinicInfoService
+    private ClinicService:ClinicInfoService,
+    private Router:Router
   ) {
     this.coordinates = {} as Coordinates;
   }
 
+
+
   ngOnInit(): void {
 
-    //#region test select
+
+
+    //#region multiple select
     this.GetServices()
 
     this.dropdownSettings = {
@@ -118,7 +126,10 @@ export class ClinicInfoComponent implements OnInit {
       FixedFee: ['', [Validators.required]],
       Services: ['', [Validators.nullValidator]],
     });
+
+
     //#endregion
+
   }
 
   //#region review AND File FormData image from input file
@@ -180,7 +191,6 @@ export class ClinicInfoComponent implements OnInit {
         this.Services = res.Data;
     this.dropdownList = this.Services
 
-        console.log(this.dropdownList)
       },
       (err) => {
         console.log(err);
@@ -200,25 +210,29 @@ export class ClinicInfoComponent implements OnInit {
   //#region SelectedArea
   SelectArea(event:any){
     this.ClinicInfoForm.controls.Area = event.target.value;
-    console.log(event.target.value)
+    // console.log(event.target.value)
   }
   //#endregion
 
   //#region Create
   CreateClinic(lang:string,ClinicForm:FormData){
     this.ClinicService.CreateClinic(lang,ClinicForm).subscribe((res)=>{
-      console.log(res)
+     this.Router.navigateByUrl("clinic/gallary")
     },
     (err)=>{console.log(err)})
   }
   //#endregion
+
+  ressetform(form:NgForm){
+    form.reset()
+  }
 
   //#region
   submitClinic(){
     const formData = new FormData();
     this.selectedItems.forEach(element => {
       formData.append('HealthEntityServiceDtos',element.Id as unknown as Blob)    });
-    console.log("list",this.selectedItemsIds)
+    // console.log("list",this.selectedItemsIds)
 
     formData.append('HealthEntityPhoneDtos',[+this.ClinicInfoForm.controls.PhoneNumber.value,+this.ClinicInfoForm.controls.PhoneNumber2.value,+this.ClinicInfoForm.controls.PhoneNumber3.value] as unknown as Blob)
 
@@ -236,6 +250,8 @@ export class ClinicInfoComponent implements OnInit {
     formData.append('clinicLogo',this.ClinicInfoModel.clinicLogo)
 
     this.CreateClinic('en',formData)
+
+
   }
 
 
