@@ -10,9 +10,9 @@ import { ResenderCode } from './resender-code';
 })
 export class SignupService implements OnInit {
 
-  //#region Constructor
-  constructor(private http: HttpClient) {}
-  //#endregion
+  auth:string =localStorage.getItem('Authorization') as string;
+
+  constructor(private http: HttpClient) { }
 
   //#region On Init Method
   ngOnInit(): void {
@@ -26,10 +26,11 @@ export class SignupService implements OnInit {
   //#endregion
 
   //#region Options
-  httpOptions = { 
+  httpOptions = {
     headers: new HttpHeaders({
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiZGQ3NWQyYTMtY2ZhMS00MjkzLTk1OTItOGEyOGFhY2NiNzZjIiwiZXhwIjoxNjQwNjkyNTA0LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.Xxli9oxmtDWlgTpW9lgkQpz_WVkbA8LS2Avi73Cz6mI'
+        'Authorization':  `Bearer ${this.auth}`
       }
+
     )};
   //#endregion
 
@@ -38,6 +39,6 @@ export class SignupService implements OnInit {
     return this.http.post(`${environment.URL}en/User/Register`,user,this.httpOptions);
   }
   //#endregion
-   
+
 
 }

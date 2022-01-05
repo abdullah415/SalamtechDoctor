@@ -9,13 +9,17 @@ import { DropDownModel } from 'src/Models/drop-down-model';
 })
 export class DocumentService {
 
+  auth:string =localStorage.getItem('Authorization') as string;
   constructor(private http: HttpClient) { }
 
-    //#region Options
+
+  //#region Options
   httpOptions = {
     headers: new HttpHeaders({
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiYjg5YjNkOWItZmEwNy00YzMzLTg2ZjgtNTgzMTlhMTc1YzIxIiwiZXhwIjoxNjQxMjkyNzY3LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.zopo2nE2NxBttbC-_DMXh0lQt5_S-ng9Ic-0F_ChpcM',
-      })};
+        'Authorization':  `Bearer ${this.auth}`
+      }
+
+    )};
   //#endregion
 
     //#region Get Legal Document
