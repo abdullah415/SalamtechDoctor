@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ClinicPeriod } from 'src/Models/clinic-period';
 import { ClinicSchedule } from 'src/Models/clinic-schedule';
 import { ClinicScheduleDay } from 'src/Models/clinic-schedule-day';
 import { DropDownModel } from 'src/Models/drop-down-model';
@@ -13,14 +14,18 @@ import { GeneralResponse } from 'src/Models/general-response';
 })
 export class ClinicScheduleService {
 
-  constructor(private http:HttpClient) { }
+  auth:string =localStorage.getItem('Authorization') as string;
+  constructor(private http: HttpClient) { }
 
-    //#region Options
-    httpOptions = {
-      headers: new HttpHeaders({
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiOWIxYjkwNzEtZWZkNy00MDQ3LWE1NzctMjg3OTdlMjY4NjRkIiwiZXhwIjoxNjQxNDYxMzU1LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.ehFTuLy5VuB846Nnk0Q05HiSQ0r6UyF-5_Uasp6EtTM',
-        })};
-    //#endregion
+
+  //#region Options
+  httpOptions = {
+    headers: new HttpHeaders({
+        'Authorization':  `Bearer ${this.auth}`
+      }
+
+    )};
+  //#endregion
     
     //#region GetDuration Medical Examination
     GetDurationMedicalExamination(lang:string):Observable<GeneralResponse<Duration>>{
@@ -37,6 +42,12 @@ export class ClinicScheduleService {
     //#region Get Clinic Schedual By ClinicId
     GetClinicSchedualByClinicDayId(lang:string ,  ClinicId :number , DayId :number):Observable<GeneralResponse<ClinicScheduleDay>>{
       return this.http.get<GeneralResponse<ClinicScheduleDay>>(`${environment.URL}${lang}/DoctorClinic/GetClinicSchedualByClinicDayId?ClinicId=${ClinicId}&DayId=${DayId}`,this.httpOptions);
+    }
+    //#endregion
+    
+    //#region CreateDoctorClinicSchedual
+    CreateDoctorClinicSchedual(lang:string ,  ClinicScheduleDay:ClinicPeriod):Observable<GeneralResponse<null>>{
+      return this.http.post<GeneralResponse<null>>(`${environment.URL}${lang}/DoctorClinic/CreateDoctorClinicSchedual`,ClinicScheduleDay,this.httpOptions);
     }
     //#endregion
 }
