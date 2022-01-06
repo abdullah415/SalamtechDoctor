@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild  } from '@angular/core';
 import { LoginService } from './../../../Service/login.service';
 import { Login } from './../../../Models/Login';
 import { LoginResponse } from 'src/Models/LoginResponse';
@@ -10,10 +10,12 @@ import { LoginResponse } from 'src/Models/LoginResponse';
 })
 
 export class LoginComponent implements OnInit {
+  @ViewChild('closeModal') closebutton: ElementRef;
 
   buttonEnable:boolean
   loginDoctorForm:Login=new Login();
   errorMsg:string
+
 
   AuthenticatedUser:LoginResponse=new LoginResponse()
 
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   checkForm(){
@@ -43,11 +46,13 @@ export class LoginComponent implements OnInit {
       // this.buttonEnable=true;
       this.AuthenticatedUser= res
       localStorage.setItem('Authorization',this.AuthenticatedUser.Data.Token)
+      this.closebutton.nativeElement.click();
     },
     (err)=>{
       console.log(err)
     })
   }
+
 
   passwordIcon(){
     const password = document.querySelector('#Password');

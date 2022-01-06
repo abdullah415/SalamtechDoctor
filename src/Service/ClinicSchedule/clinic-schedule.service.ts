@@ -14,6 +14,9 @@ import { GeneralResponse } from 'src/Models/general-response';
 })
 export class ClinicScheduleService {
 
+
+
+  culture:string = localStorage.getItem('lang') as string;
   auth:string =localStorage.getItem('Authorization') as string;
   constructor(private http: HttpClient) { }
 
@@ -27,21 +30,22 @@ export class ClinicScheduleService {
     )};
   //#endregion
     
+
     //#region GetDuration Medical Examination
     GetDurationMedicalExamination(lang:string):Observable<GeneralResponse<Duration>>{
-      return this.http.get<GeneralResponse<Duration>>(`${environment.URL}${lang}/LookUp/GetDurationMedicalExamination`,this.httpOptions);
+      return this.http.get<GeneralResponse<Duration>>(`${environment.URL}${this.culture}/LookUp/GetDurationMedicalExamination`,this.httpOptions);
     }
     //#endregion
 
     //#region Get Clinic Schedual By ClinicId
     GetClinicSchedualByClinicId(lang:string , ID:number):Observable<GeneralResponse<ClinicSchedule>>{
-      return this.http.get<GeneralResponse<ClinicSchedule>>(`${environment.URL}${lang}/DoctorClinic/GetClinicSchedualByClinicId?ClinicId=${ID}`,this.httpOptions);
+      return this.http.get<GeneralResponse<ClinicSchedule>>(`${environment.URL}${this.culture}/DoctorClinic/GetClinicSchedualByClinicId?ClinicId=${ID}`,this.httpOptions);
     }
     //#endregion
 
     //#region Get Clinic Schedual By ClinicId
     GetClinicSchedualByClinicDayId(lang:string ,  ClinicId :number , DayId :number):Observable<GeneralResponse<ClinicScheduleDay>>{
-      return this.http.get<GeneralResponse<ClinicScheduleDay>>(`${environment.URL}${lang}/DoctorClinic/GetClinicSchedualByClinicDayId?ClinicId=${ClinicId}&DayId=${DayId}`,this.httpOptions);
+      return this.http.get<GeneralResponse<ClinicScheduleDay>>(`${environment.URL}${this.culture}/DoctorClinic/GetClinicSchedualByClinicDayId?ClinicId=${ClinicId}&DayId=${DayId}`,this.httpOptions);
     }
     //#endregion
     

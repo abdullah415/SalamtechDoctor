@@ -9,6 +9,7 @@ import { GeneralResponse } from 'src/Models/general-response';
 })
 export class ClinicInfoService {
 
+  culture:string = localStorage.getItem('lang') as string;
   auth:string =localStorage.getItem('Authorization') as string;
   constructor(private http: HttpClient) { }
 
@@ -24,6 +25,6 @@ export class ClinicInfoService {
 
 
   CreateClinic(lang:string,ClinicInfo:FormData){
-    return this.http.post(`${environment.URL}${lang}/DoctorClinic/CreateDoctorClinic`,ClinicInfo,this.httpOptions);
+    return this.http.post(`${environment.URL}${this.culture}/DoctorClinic/CreateDoctorClinic`,ClinicInfo,this.httpOptions);
   }
 }

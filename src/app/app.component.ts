@@ -13,7 +13,7 @@ export class AppComponent {
   title = 'SalamtechDoctor';
 
   ngOnInit(){
-    localStorage.setItem("lang","en")
+    // localStorage.setItem("lang","en")
   }
 
 }
