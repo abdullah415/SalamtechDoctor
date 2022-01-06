@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
 })
 export class CertificateService {
   auth:string =localStorage.getItem('Authorization') as string;
+  culture:string = localStorage.getItem('lang') as string;
+
   constructor(private http: HttpClient) { }
 
 
@@ -21,7 +23,7 @@ export class CertificateService {
 
   CreateCertificate(lang: string, Certificate: FormData) {
     return this.http.post(
-      `${environment.URL}${lang}/Doctor/CreateDoctorCertificate`,
+      `${environment.URL}${this.culture}/Doctor/CreateDoctorCertificate`,
       Certificate,
       this.httpOptions
     );
@@ -30,7 +32,7 @@ export class CertificateService {
   //#region Get Certificate
   GetDoctorCertificate(lang: string) {
     return this.http.get(
-      `${environment.URL}${lang}/Doctor/GetDoctorCertificate`,
+      `${environment.URL}${this.culture}/Doctor/GetDoctorCertificate`,
       this.httpOptions
     );
   }
@@ -39,7 +41,7 @@ export class CertificateService {
   //#region Delete Certificate Id
   DeleteCertificate(lang: string,id:number) {
     return this.http.delete(
-      `${environment.URL}${lang}/Doctor/DeleteDoctorCertificates?CertificateId=${id}`,
+      `${environment.URL}${this.culture}/Doctor/DeleteDoctorCertificates?CertificateId=${id}`,
       this.httpOptions
     );
   }
@@ -48,7 +50,7 @@ export class CertificateService {
   //#region Update Certificate Id
   UpdateCertificate(lang: string,Certificate: FormData) {
     return this.http.post(
-      `${environment.URL}${lang}/Doctor/UpdateDoctorCertificate`,Certificate,
+      `${environment.URL}${this.culture}/Doctor/UpdateDoctorCertificate`,Certificate,
       this.httpOptions
     );
   }

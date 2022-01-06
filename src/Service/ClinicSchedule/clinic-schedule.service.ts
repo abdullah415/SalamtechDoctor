@@ -13,30 +13,36 @@ import { GeneralResponse } from 'src/Models/general-response';
 })
 export class ClinicScheduleService {
 
-  constructor(private http:HttpClient) { }
 
-    //#region Options
-    httpOptions = {
-      headers: new HttpHeaders({
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiOWIxYjkwNzEtZWZkNy00MDQ3LWE1NzctMjg3OTdlMjY4NjRkIiwiZXhwIjoxNjQxNDYxMzU1LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.ehFTuLy5VuB846Nnk0Q05HiSQ0r6UyF-5_Uasp6EtTM',
-        })};
-    //#endregion
-    
+  culture:string = localStorage.getItem('lang') as string;
+  auth:string =localStorage.getItem('Authorization') as string;
+  constructor(private http: HttpClient) { }
+
+
+  //#region Options
+  httpOptions = {
+    headers: new HttpHeaders({
+        'Authorization':  `Bearer ${this.auth}`
+      }
+
+    )};
+  //#endregion
+
     //#region GetDuration Medical Examination
     GetDurationMedicalExamination(lang:string):Observable<GeneralResponse<Duration>>{
-      return this.http.get<GeneralResponse<Duration>>(`${environment.URL}${lang}/LookUp/GetDurationMedicalExamination`,this.httpOptions);
+      return this.http.get<GeneralResponse<Duration>>(`${environment.URL}${this.culture}/LookUp/GetDurationMedicalExamination`,this.httpOptions);
     }
     //#endregion
 
     //#region Get Clinic Schedual By ClinicId
     GetClinicSchedualByClinicId(lang:string , ID:number):Observable<GeneralResponse<ClinicSchedule>>{
-      return this.http.get<GeneralResponse<ClinicSchedule>>(`${environment.URL}${lang}/DoctorClinic/GetClinicSchedualByClinicId?ClinicId=${ID}`,this.httpOptions);
+      return this.http.get<GeneralResponse<ClinicSchedule>>(`${environment.URL}${this.culture}/DoctorClinic/GetClinicSchedualByClinicId?ClinicId=${ID}`,this.httpOptions);
     }
     //#endregion
 
     //#region Get Clinic Schedual By ClinicId
     GetClinicSchedualByClinicDayId(lang:string ,  ClinicId :number , DayId :number):Observable<GeneralResponse<ClinicScheduleDay>>{
-      return this.http.get<GeneralResponse<ClinicScheduleDay>>(`${environment.URL}${lang}/DoctorClinic/GetClinicSchedualByClinicDayId?ClinicId=${ClinicId}&DayId=${DayId}`,this.httpOptions);
+      return this.http.get<GeneralResponse<ClinicScheduleDay>>(`${environment.URL}${this.culture}/DoctorClinic/GetClinicSchedualByClinicDayId?ClinicId=${ClinicId}&DayId=${DayId}`,this.httpOptions);
     }
     //#endregion
 }

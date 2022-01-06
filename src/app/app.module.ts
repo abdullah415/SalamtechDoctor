@@ -7,7 +7,7 @@ import { NavComponent } from './Shared/nav/nav.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './Components/login/login.component';
 import { SideBarComponent } from './Components/Signup/side-bar/side-bar.component';
 import { SignupComponent } from './Components/Signup/signup/signup.component';
@@ -29,6 +29,7 @@ import { ClinicSidebarComponent } from './Components/clinic/clinic-sidebar/clini
 import { GoogleMapsComponent } from './Shared/google-maps/google-maps.component';
 import { AgmCoreModule } from '@agm/core';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HttpInterceptorInterceptor } from 'src/Interceptor/http-interceptor.interceptor';
 
 
 
@@ -83,7 +84,7 @@ export function CreateTranslateLoader(http: HttpClient) {
 
   })
 ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:HttpInterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

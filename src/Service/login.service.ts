@@ -11,10 +11,12 @@ import { LoginResponse } from 'src/Models/LoginResponse';
 })
 export class LoginService {
 
+  culture:string = localStorage.getItem('lang') as string;
+
   constructor(private http:HttpClient) { }
 
 
   login(user:Login):Observable<LoginResponse>{
-    return this.http.post<LoginResponse>(`${environment.URL}en/User/Login`,user);
+    return this.http.post<LoginResponse>(`${environment.URL}${this.culture}/User/Login`,user);
   }
 }

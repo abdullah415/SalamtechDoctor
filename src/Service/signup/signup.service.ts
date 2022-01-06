@@ -11,6 +11,8 @@ import { ResenderCode } from './resender-code';
 export class SignupService implements OnInit {
 
   auth:string =localStorage.getItem('Authorization') as string;
+  culture:string = localStorage.getItem('lang') as string;
+
 
   constructor(private http: HttpClient) { }
 
@@ -36,7 +38,7 @@ export class SignupService implements OnInit {
 
   //#region Signup API
   SignUp(user:Signup){
-    return this.http.post(`${environment.URL}en/User/Register`,user,this.httpOptions);
+    return this.http.post(`${environment.URL}${this.culture}/User/Register`,user,this.httpOptions);
   }
   //#endregion
 

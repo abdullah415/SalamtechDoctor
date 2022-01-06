@@ -9,6 +9,8 @@ import { DropDownModel } from 'src/Models/drop-down-model';
 })
 export class DocumentService {
 
+  culture:string = localStorage.getItem('lang') as string;
+
   auth:string =localStorage.getItem('Authorization') as string;
   constructor(private http: HttpClient) { }
 
@@ -24,13 +26,13 @@ export class DocumentService {
 
     //#region Get Legal Document
     GetLegalDocument(lang:string):Observable<DropDownModel>{
-      return this.http.get<DropDownModel>(`${environment.URL}${lang}/LookUp/GetLegalDocument`,this.httpOptions);
+      return this.http.get<DropDownModel>(`${environment.URL}${this.culture}/LookUp/GetLegalDocument`,this.httpOptions);
     }
     //#endregion CreateDoctorDocuments
 
     //#region Create Documents
     CreateDoctorDocuments(lang:string , Documents:FormData){
-      return this.http.post(`${environment.URL}${lang}/Doctor/CreateDoctorDocuments`,Documents,this.httpOptions);
+      return this.http.post(`${environment.URL}${this.culture}/Doctor/CreateDoctorDocuments`,Documents,this.httpOptions);
     }
     //#endregion
 

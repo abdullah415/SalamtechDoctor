@@ -16,8 +16,8 @@ DefaultLang:string |null;
   constructor(private translate:TranslateService){
     // translate.setDefaultLang('en');
     // translate.use('en');
-    if(localStorage.getItem("lan") !=null){
-      this.DefaultLang = localStorage.getItem("lan");
+    if(localStorage.getItem("lang") !=null){
+      this.DefaultLang = localStorage.getItem("lang");
     }else{
       this.DefaultLang='en'
     }
@@ -52,10 +52,10 @@ DefaultLang:string |null;
     if(e === 'en')
     {
 
-      console.log(localStorage.getItem("lan"))
+      console.log(localStorage.getItem("lang"))
 
       this.DefaultLang = 'ar';
-      localStorage.setItem("lan",'ar')
+      localStorage.setItem("lang",'ar')
       this.translate.use(this.DefaultLang);
       document.getElementsByTagName('html')[0].setAttribute("dir","rtl");
 
@@ -63,7 +63,7 @@ DefaultLang:string |null;
     }
     if(e === 'ar')
     {
-      localStorage.setItem("lan","en")
+      localStorage.setItem("lang","en")
       this.DefaultLang = 'en';
       this.translate.use(this.DefaultLang);
       document.getElementsByTagName('html')[0].setAttribute("dir","ltr");

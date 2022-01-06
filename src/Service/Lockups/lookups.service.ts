@@ -13,14 +13,16 @@ import { GeneralResponse } from 'src/Models/general-response';
 })
 export class LookupsService {
 
-  auth:string =localStorage.getItem('Authorization') as string;
+  culture:string = localStorage.getItem('lang') as string;
+
+  auth:string =localStorage.getItem('Authorization') as string
   constructor(private http: HttpClient) { }
 
 
   //#region Options
   httpOptions = {
     headers: new HttpHeaders({
-        'Authorization':  `Bearer ${this.auth}`
+        'Authorization':  `Bearer ${localStorage.getItem('Authorization') as string}`
       }
 
     )};
@@ -28,25 +30,25 @@ export class LookupsService {
 
     //#region Get Cities
     GetCities(lang:string):Observable<GeneralResponse<City>>{
-      return this.http.get<GeneralResponse<City>>(`${environment.URL}${lang}/City/GetAllCities`,this.httpOptions);
+      return this.http.get<GeneralResponse<City>>(`${environment.URL}${this.culture}/City/GetAllCities`,this.httpOptions);
     }
     //#endregion CreateDoctorDocuments
 
     //#region Get Areas
     GetAreas(lang:string):Observable<GeneralResponse<Area>>{
-      return this.http.get<GeneralResponse<Area>>(`${environment.URL}${lang}/Area/GetAllAreas`,this.httpOptions);
+      return this.http.get<GeneralResponse<Area>>(`${environment.URL}${this.culture}/Area/GetAllAreas`,this.httpOptions);
     }
     //#endregion
 
     //#region Get Services
     GetServices(lang:string):Observable<DropDownModel>{
-      return this.http.get<DropDownModel>(`${environment.URL}${lang}/Services/GetServicesBySpecialist`,this.httpOptions);
+      return this.http.get<DropDownModel>(`${environment.URL}${this.culture}/Services/GetServicesBySpecialist`,this.httpOptions);
     }
     //#endregion
 
     //#region Get Days
     GetDays(lang:string):Observable<DropDownModel>{
-      return this.http.get<DropDownModel>(`${environment.URL}${lang}/LookUp/GetDays`,this.httpOptions);
+      return this.http.get<DropDownModel>(`${environment.URL}${this.culture}/LookUp/GetDays`,this.httpOptions);
     }
     //#endregion
 
