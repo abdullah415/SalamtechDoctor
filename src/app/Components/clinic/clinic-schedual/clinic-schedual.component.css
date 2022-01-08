@@ -168,3 +168,16 @@ hr
   margin: 20px;
   padding: 10px;
 }
+
+.next-btn
+{
+  border-radius: 8px;
+  background-color: #262d70;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 10px;
+}

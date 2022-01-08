@@ -38,9 +38,9 @@
                         </button>
                       </div>
                       
+                      <!-- Add Default Period If Day Cannot any Period    -->
                       <div *ngIf="item.DayPeriodCount == 0; else elseBlock">
-
-                          <div class="card card-body my-3"  *ngFor="let in of counter(1+Counter) ;let i = index">
+                          <div class="card card-body my-3">
                             <div class="row">
                               <div class="col-12">
                                 <div class="col-12 card-header">
@@ -48,7 +48,7 @@
                                     <div class="col-12 col-md-6 ">
                                       <div class="d-flex  justify-content-center justify-content-sm-start ">
                                         <label >
-                                          Period {{i}}
+                                          Period 1
                                         </label>
                                       </div>
                                     </div>
@@ -63,66 +63,104 @@
                                   </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="row">
-    
-                                        <div class="col-12">
-                                          <div style="padding: 20px;padding-bottom: 0px;">
-                                            <label class="lbl-input ">Operating hours</label>
-                                            <div class="row">
-                                              <div class="col-12 col-md-4 ">
-                                                <input type="time" class="form-control input-style-period" style="padding-right: 15px;">
-                                              </div>
-                                              <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
-                                                <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
-                                              </div>
-                                              <div class="col-12 col-md-4 ">
-                                                <input type="time" class="form-control input-style-period" style="padding-right: 15px;" >
+
+                                  <!-- Period From -->
+                                      <form [formGroup]="PeriodForm"  #PeriodFormRef
+                                            class="row"
+                                            dir="auto">
+
+                                            <!-- row 1 for => DateFrom , DateTo -->
+                                            <div class="col-12">
+                                              <div style="padding: 20px;padding-bottom: 0px;">
+                                                <label class="lbl-input ">Operating hours</label>
+
+                                                <div class="row">
+
+                                                  <div class="col-12 col-md-5 ">
+                                                    <input type="time"
+                                                            formControlName="DateFrom" 
+                                                            class="form-control input-style-period" 
+                                                            style="padding-right: 15px;">
+
+                                                  </div>
+
+                                                  <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
+                                                    <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
+                                                  </div>
+
+                                                  <div class="col-12 col-md-5 ">
+                                                    <input type="time"
+                                                            formControlName="DateTo"  
+                                                            class="form-control input-style-period" 
+                                                            style="padding-right: 15px;" >
+                                                  </div>
+                                                </div>
+
                                               </div>
                                             </div>
-                                          </div>
-                                        </div>
-                                        <div class="col-12">
-                                          <div style="padding: 20px;padding-bottom: 0px;">
-                                            <div class="row" style="margin-bottom: 35px;">
-    
-                                              <div class="col-12 col-md-4" style="margin-bottom: 10px;">
-                                                <label class="lbl-input">Interval</label>
-                                                <div style="position: relative;">
-                                                  <select 
-                                                  (change)="SelectDuration($event)"
-                                                  class="form-select" aria-label="Default select example">
-                                                    <option value="">
-                                                      Select Duration
-                                                    </option>
-                                                    <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
-                                                      {{item.Duration}} Minutes
-                                                      </option>
-                                                  </select>
-                                                  <!-- <label class="unit">Minutes</label> -->
+
+                                            <!-- row 2 for = > DurationMedicalExaminationId , Fees   -->
+                                            <div class="col-12">
+
+                                              <div style="padding: 20px;padding-bottom: 0px;">
+                                                <div class="row" style="margin-bottom: 10px;">
+
+                                                  <!-- DurationMedicalExaminationId -->
+                                                  <div class="col-12 col-md-5" style="margin-bottom: 10px;">
+                                                    <label class="lbl-input">Interval</label>
+                                                    <div style="position: relative;">
+
+                                                      <select (change)="SelectDuration($event)"
+                                                              formControlName="DurationExamination"
+                                                              class="form-select" 
+                                                              aria-label="Default select example">
+
+                                                        <option value="">
+                                                          Select Duration
+                                                        </option>
+
+                                                        <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
+                                                          {{item.Duration}} Minutes
+                                                          </option>
+
+                                                      </select>
+                                                    </div>
+                                                  </div>
+
+                                                  <!-- Fees col -->
+                                                  <div class="col-12 col-md-5 offset-md-1" style="margin-bottom: 10px;">
+                                                    <label class="lbl-input ">Visit fee</label>
+                                                    <div style="position: relative;">
+                                                      <input type="number" 
+                                                              formControlName="Fees" 
+                                                              class="form-control input-style-period" >
+                                                      <label class="unit">EGP</label>
+                                                    </div>                                              
+                                                  </div>
+
                                                 </div>
                                               </div>
-    
-                                              <div class="col-12 col-md-4" style="margin-bottom: 10px;">
-                                                <label class="lbl-input ">Visit fee</label>
-                                                <div style="position: relative;">
-                                                  <input type="number"  class="form-control input-style-period" >
-                                                  <label class="unit">EGP</label>
-                                                </div>                                              
-                                              </div>
-    
-                                              <div class="col-12 col-md-4" style="margin-bottom: 10px;">
-                                                <label class="lbl-input">Checkup fee</label>
-                                                <div style="position: relative;">
-                                                  <input type="number"  class="form-control input-style-period" >
-                                                  <label class="unit">EGP</label>
-                                                </div>                                            
-                                              </div>
-    
                                             </div>
-                                          </div>
-                                        </div>
-                                      
-                                    </div>
+
+                                            <!-- row 3 for => Submit Btn -->
+                                            <div class="row">
+
+                                                <div class="col-12 ">
+                                                    <div class="d-flex justify-content-end">
+                                                        <button class="next-btn" 
+                                                                [disabled]="PeriodFormRef.invalid"
+                                                                (click)="SubmitPeriod(item.DayId , item.Active)" >
+
+                                                          Submit
+                                                          
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        
+                                      </form>
+
                                 </div>
                               </div>                       
                             </div>
@@ -131,9 +169,11 @@
                       </div>
 
                       <ng-template #elseBlock>
-                        <div class="card card-body my-3"  *ngFor="let in of counter(item.DayPeriodCount+Counter) ;let i = index">
+                        <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDay ;let i = index">
                           <div class="row">
                             <div class="col-12">
+
+                              <!--row for => Period header   -->
                               <div class="col-12 card-header">
                                 <div class="row">
                                   <div class="col-12 col-md-6 ">
@@ -153,68 +193,98 @@
                                   </div>
                                 </div>
                               </div>
+
+                              <!--row for => Period Body   -->
                               <div class="col-12">
                                   <div class="row">
   
+                                    <!-- row 1 for=>  TimeFrom , TimeTo -->
                                       <div class="col-12">
                                         <div style="padding: 20px;padding-bottom: 0px;">
                                           <label class="lbl-input ">Operating hours</label>
                                           <div class="row">
-                                            <div class="col-12 col-md-4 ">
-                                              <input type="time" class="form-control input-style-period" style="padding-right: 15px;">
+
+                                                <!-- TimeFrom col -->
+                                                <div class="col-12 col-md-5 ">
+                                                  <input type="time" 
+                                                        class="form-control input-style-period" 
+                                                        style="padding-right: 15px;"
+                                                        value="{{Period.TimeFrom}}">    
+                                                </div>
+
+                                                <!-- To label col -->
+                                                <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
+                                                  <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
+                                                </div>
+
+                                                <!-- TimeTo col -->
+                                                <div class="col-12 col-md-5 ">
+                                                  <input type="time" 
+                                                          class="form-control input-style-period" 
+                                                          style="padding-right: 15px;"
+                                                          value="{{Period.TimeTo}}" >
+                                                </div>
+
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <!-- row 2 for = > DurationMedicalExaminationId , Fees   -->
+                                      <div class="col-12">
+                                        <div style="padding: 20px;padding-bottom: 0px;">
+                                          <div class="row" style="margin-bottom: 10px;">
+  
+                                            <!-- DurationMedicalExaminationId -->
+                                            <div class="col-12 col-md-5" 
+                                                  style="margin-bottom: 10px;">
+
+                                                  <label class="lbl-input">Interval</label>
+
+                                                  <div style="position: relative;">
+                                                    <select (change)="SelectDuration($event)"
+                                                            class="form-select" aria-label="Default select example">
+
+                                                          <option value="">
+                                                            {{Period.DurationMedicalExaminationId}}
+                                                          </option>
+
+                                                          <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
+                                                            {{item.Duration}} Minutes
+                                                          </option>
+
+                                                    </select>
+                                                  </div>
+
                                             </div>
-                                            <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
-                                              <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
-                                            </div>
-                                            <div class="col-12 col-md-4 ">
-                                              <input type="time" class="form-control input-style-period" style="padding-right: 15px;" >
+  
+                                            <!-- Fees col -->
+                                            <div class="col-12 col-md-5 offset-md-1" style="margin-bottom: 10px;">
+
+                                              <label class="lbl-input ">Visit fee</label>
+
+                                              <div style="position: relative;">
+                                                <input type="number"  
+                                                        class="form-control input-style-period"
+                                                        value="{{Period.Fees}}" >
+                                                <label class="unit">EGP</label>
+                                              </div> 
                                             </div>
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="col-12">
-                                        <div style="padding: 20px;padding-bottom: 0px;">
-                                          <div class="row" style="margin-bottom: 35px;">
-  
-                                            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
-                                              <label class="lbl-input">Interval</label>
-                                              <div style="position: relative;">
-                                                <select 
-                                                (change)="SelectDuration($event)"
-                                                class="form-select" aria-label="Default select example">
-                                                  <option value="">
-                                                    Select Duration
-                                                  </option>
-                                                  <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
-                                                    {{item.Duration}} Minutes
-                                                    </option>
-                                                </select>
-                                                <!-- <label class="unit">Minutes</label> -->
-                                              </div>
-                                            </div>
-  
-                                            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
-                                              <label class="lbl-input ">Visit fee</label>
-                                              <div style="position: relative;">
-                                                <input type="number"  class="form-control input-style-period" >
-                                                <label class="unit">EGP</label>
-                                              </div>                                              
-                                            </div>
-  
-                                            <div class="col-12 col-md-4" style="margin-bottom: 10px;">
-                                              <label class="lbl-input">Checkup fee</label>
-                                              <div style="position: relative;">
-                                                <input type="number"  class="form-control input-style-period" >
-                                                <label class="unit">EGP</label>
-                                              </div>                                            
-                                            </div>
-  
-                                          </div>
+
+                                      <!-- row 3 for => Submit Btn -->
+                                      <div class="col-12 ">
+                                        <div class="d-flex justify-content-end">
+                                          <button class="next-btn">
+                                            Submit
+                                          </button>
                                         </div>
                                       </div>
                                     
                                   </div>
                               </div>
+
                             </div>                       
                           </div>
                         </div>
@@ -223,10 +293,7 @@
                     </div>
                   </div>
                 </div>
-          </div>
-
-
-            
+          </div>   
         </div>
     </div>
 </div>

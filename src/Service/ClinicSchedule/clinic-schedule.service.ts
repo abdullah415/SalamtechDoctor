@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ClinicSchedule } from 'src/Models/clinic-schedule';
 import { ClinicScheduleDay } from 'src/Models/clinic-schedule-day';
+import { CreateClinicSchedule } from 'src/Models/create-clinic-schedule';
 import { DropDownModel } from 'src/Models/drop-down-model';
 import { Duration } from 'src/Models/duration';
 import { GeneralResponse } from 'src/Models/general-response';
@@ -13,20 +14,17 @@ import { GeneralResponse } from 'src/Models/general-response';
 })
 export class ClinicScheduleService {
 
-<<<<<<< HEAD
 
 
   culture:string = localStorage.getItem('lang') as string;
   auth:string =localStorage.getItem('Authorization') as string;
-  constructor(private http: HttpClient) { }
-=======
+
   constructor(private http:HttpClient) { }
->>>>>>> parent of dbe3a18 (access input denied in schedule)
 
     //#region Options
     httpOptions = {
       headers: new HttpHeaders({
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjAxMDExMTExMTExIiwibmFtZWlkIjoiMTc0IiwianRpIjoiOWIxYjkwNzEtZWZkNy00MDQ3LWE1NzctMjg3OTdlMjY4NjRkIiwiZXhwIjoxNjQxNDYxMzU1LCJpc3MiOiJTYWxhbVRlY2hAMjAyMSIsImF1ZCI6IlNhbGFtVGVjaEAyMDIxIn0.ehFTuLy5VuB846Nnk0Q05HiSQ0r6UyF-5_Uasp6EtTM',
+        'Authorization':  `Bearer ${this.auth}`
         })};
     //#endregion
     
@@ -48,4 +46,12 @@ export class ClinicScheduleService {
       return this.http.get<GeneralResponse<ClinicScheduleDay>>(`${environment.URL}${this.culture}/DoctorClinic/GetClinicSchedualByClinicDayId?ClinicId=${ClinicId}&DayId=${DayId}`,this.httpOptions);
     }
     //#endregion
-}
+
+    //#region CreateDoctorClinicSchedual
+    CreateDoctorClinicSchedual(CreateClinicSchedule:CreateClinicSchedule):Observable<GeneralResponse<null>>{
+      return this.http.post<GeneralResponse<null>>(`${environment.URL}${this.culture}/DoctorClinic/CreateDoctorClinicSchedual`,CreateClinicSchedule,this.httpOptions);
+
+    }
+    //#endregion
+
+  }
