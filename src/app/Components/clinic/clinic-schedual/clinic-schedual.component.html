@@ -23,7 +23,7 @@
                       </div>
                       <div class="col-6 col-md-6 d-flex justify-content-end">
                           <label class="switch">
-                              <input type="checkbox" checked>
+                              <input type="checkbox" [checked]="item.Active">
                               <span class="slider round"></span>
                             </label>
                       </div>
@@ -32,11 +32,7 @@
                 <div class="row ">
                   <div class="col-12" >
                     <div class="collapse multi-collapse" id="multiCollapseExample{{i}}">
-                      <div class="col-12 d-flex   justify-content-end">
-                        <button (click)="AddPeriod()" class="btn text-white px-4 my-3" style="background-color: #262d70">
-                          Add New Period
-                        </button>
-                      </div>
+                     
                       
                       <!-- Add Default Period If Day Cannot any Period    -->
                       <div *ngIf="item.DayPeriodCount == 0; else elseBlock">
@@ -169,125 +165,921 @@
                       </div>
 
                       <ng-template #elseBlock>
-                        <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDay ;let i = index">
-                          <div class="row">
-                            <div class="col-12">
-
-                              <!--row for => Period header   -->
-                              <div class="col-12 card-header">
-                                <div class="row">
-                                  <div class="col-12 col-md-6 ">
-                                    <div class="d-flex  justify-content-center justify-content-sm-start ">
-                                      <label >
-                                        Period 2 
-                                      </label>
+                        
+                        <div *ngIf="item.DayId == 1">
+                          <div class="col-12 d-flex   justify-content-end">
+                            <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
+                              Add New Period
+                            </button>
+                          </div>
+                            <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
+                              <div class="row">
+                                <div class="col-12">
+    
+                                  <!--row for => Period header   -->
+                                  <div class="col-12 card-header">
+                                    <div class="row">
+                                      <div class="col-12 col-md-6 ">
+                                        <div class="d-flex  justify-content-center justify-content-sm-start ">
+                                          <label >
+                                            Period {{i}} 
+                                          </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
+                                        <div class="delete-period ">
+                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                        </span>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                  (click)="ResetPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                            Resetttttt
+                                          </label>
+                                          </div>
+                                      </div>
                                     </div>
                                   </div>
-                                  <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
-                                    <div class="delete-period ">
-                                     <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
-                                      <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
-                                     </span>
-                                      <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <!--row for => Period Body   -->
-                              <div class="col-12">
-                                  <div class="row">
-  
-                                    <!-- row 1 for=>  TimeFrom , TimeTo -->
-                                      <div class="col-12">
-                                        <div style="padding: 20px;padding-bottom: 0px;">
-                                          <label class="lbl-input ">Operating hours</label>
-                                          <div class="row">
-
-                                                <!-- TimeFrom col -->
-                                                <div class="col-12 col-md-5 ">
-                                                  <input type="time" 
-                                                        class="form-control input-style-period" 
-                                                        style="padding-right: 15px;"
-                                                        value="{{Period.TimeFrom}}">    
-                                                </div>
-
-                                                <!-- To label col -->
-                                                <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
-                                                  <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
-                                                </div>
-
-                                                <!-- TimeTo col -->
-                                                <div class="col-12 col-md-5 ">
-                                                  <input type="time" 
-                                                          class="form-control input-style-period" 
-                                                          style="padding-right: 15px;"
-                                                          value="{{Period.TimeTo}}" >
-                                                </div>
-
+    
+                                  <!--row for => Period Body   -->
+                                  <div class="col-12">
+                                      <div class="row">
+      
+                                        <!-- row 1 for=>  TimeFrom , TimeTo -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <label class="lbl-input ">Operating hours</label>
+                                              <div class="row">
+    
+                                                    <!-- TimeFrom col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                            class="form-control input-style-period" 
+                                                            style="padding-right: 15px;"
+                                                            [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeFrom"
+                                                      >    
+                                                    </div>
+    
+                                                    <!-- To label col -->
+                                                    <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
+                                                      <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
+                                                    </div>
+    
+                                                    <!-- TimeTo col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                              class="form-control input-style-period" 
+                                                              style="padding-right: 15px;"
+                                                              [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeTo" >
+                                                    </div>
+    
+                                              </div>
+                                            </div>
                                           </div>
-                                        </div>
-                                      </div>
-
-                                      <!-- row 2 for = > DurationMedicalExaminationId , Fees   -->
-                                      <div class="col-12">
-                                        <div style="padding: 20px;padding-bottom: 0px;">
-                                          <div class="row" style="margin-bottom: 10px;">
-  
-                                            <!-- DurationMedicalExaminationId -->
-                                            <div class="col-12 col-md-5" 
-                                                  style="margin-bottom: 10px;">
-
-                                                  <label class="lbl-input">Interval</label>
-
+    
+                                          <!-- row 2 for = > DurationMedicalExaminationId , Fees   -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <div class="row" style="margin-bottom: 10px;">
+      
+                                                <!-- DurationMedicalExaminationId -->
+                                                <div class="col-12 col-md-5" 
+                                                      style="margin-bottom: 10px;">
+    
+                                                      <label class="lbl-input">Interval</label>
+    
+                                                      <div style="position: relative;">
+                                                        <select (change)="SelectDuration($event)"
+                                                                class="form-select" aria-label="Default select example">
+    
+                                                              <option value="">
+                                                                {{DurationMedicalExaminationList[Period.DurationMedicalExaminationId].Duration}} Minutes
+                                                              </option>
+    
+                                                              <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
+                                                                {{item.Duration}} Minutes
+                                                              </option>
+    
+                                                        </select>
+                                                      </div>
+    
+                                                </div>
+      
+                                                <!-- Fees col -->
+                                                <div class="col-12 col-md-5 offset-md-1" style="margin-bottom: 10px;">
+    
+                                                  <label class="lbl-input ">Visit fee</label>
+    
                                                   <div style="position: relative;">
-                                                    <select (change)="SelectDuration($event)"
-                                                            class="form-select" aria-label="Default select example">
-
-                                                          <option value="">
-                                                            {{Period.DurationMedicalExaminationId}}
-                                                          </option>
-
-                                                          <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
-                                                            {{item.Duration}} Minutes
-                                                          </option>
-
-                                                    </select>
-                                                  </div>
-
-                                            </div>
-  
-                                            <!-- Fees col -->
-                                            <div class="col-12 col-md-5 offset-md-1" style="margin-bottom: 10px;">
-
-                                              <label class="lbl-input ">Visit fee</label>
-
-                                              <div style="position: relative;">
-                                                <input type="number"  
-                                                        class="form-control input-style-period"
-                                                        value="{{Period.Fees}}" >
-                                                <label class="unit">EGP</label>
-                                              </div> 
+                                                    <input type="number"  
+                                                            class="form-control input-style-period"
+                                                            [(ngModel)]="ClinicScheduleDayList[item.DayId][i].Fees" 
+                                                    >
+                                                    <label class="unit">EGP</label>
+                                                  </div> 
+                                                </div>
+                                              </div>
                                             </div>
                                           </div>
-                                        </div>
+    
+                                          <!-- row 3 for => Submit Btn -->
+                                          <div class="col-12 ">
+                                            <div class="d-flex justify-content-end">
+                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                                Submit
+                                              </button>
+                                            </div>
+                                          </div>
+                                        
                                       </div>
-
-                                      <!-- row 3 for => Submit Btn -->
-                                      <div class="col-12 ">
-                                        <div class="d-flex justify-content-end">
-                                          <button class="next-btn">
-                                            Submit
-                                          </button>
-                                        </div>
-                                      </div>
-                                    
                                   </div>
+    
+                                </div>                       
                               </div>
-
-                            </div>                       
-                          </div>
+                            </div>
                         </div>
+
+                        <div *ngIf="item.DayId == 2">
+                          <div class="col-12 d-flex   justify-content-end">
+                            <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
+                              Add New Period
+                            </button>
+                          </div>
+                            <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
+                              <div class="row">
+                                <div class="col-12">
+    
+                                  <!--row for => Period header   -->
+                                  <div class="col-12 card-header">
+                                    <div class="row">
+                                      <div class="col-12 col-md-6 ">
+                                        <div class="d-flex  justify-content-center justify-content-sm-start ">
+                                          <label >
+                                            Period 2 
+                                          </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
+                                        <div class="delete-period ">
+                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                        </span>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+    
+                                  <!--row for => Period Body   -->
+                                  <div class="col-12">
+                                      <div class="row">
+      
+                                        <!-- row 1 for=>  TimeFrom , TimeTo -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <label class="lbl-input ">Operating hours</label>
+                                              <div class="row">
+    
+                                                    <!-- TimeFrom col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                            class="form-control input-style-period" 
+                                                            style="padding-right: 15px;"
+                                                            [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeFrom"
+                                                      >    
+                                                    </div>
+    
+                                                    <!-- To label col -->
+                                                    <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
+                                                      <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
+                                                    </div>
+    
+                                                    <!-- TimeTo col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                              class="form-control input-style-period" 
+                                                              style="padding-right: 15px;"
+                                                              [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeTo"
+                                                      >
+                                                    </div>
+    
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 2 for = > DurationMedicalExaminationId , Fees   -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <div class="row" style="margin-bottom: 10px;">
+      
+                                                <!-- DurationMedicalExaminationId -->
+                                                <div class="col-12 col-md-5" 
+                                                      style="margin-bottom: 10px;">
+    
+                                                      <label class="lbl-input">Interval</label>
+    
+                                                      <div style="position: relative;">
+                                                        <select (change)="SelectDuration($event)"
+                                                                class="form-select" aria-label="Default select example">
+    
+                                                              <option value="">
+                                                                {{DurationMedicalExaminationList[Period.DurationMedicalExaminationId].Duration}} Minutes
+                                                              </option>
+    
+                                                              <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
+                                                                {{item.Duration}} Minutes
+                                                              </option>
+    
+                                                        </select>
+                                                      </div>
+    
+                                                </div>
+      
+                                                <!-- Fees col -->
+                                                <div class="col-12 col-md-5 offset-md-1" style="margin-bottom: 10px;">
+    
+                                                  <label class="lbl-input ">Visit fee</label>
+    
+                                                  <div style="position: relative;">
+                                                    <input type="number"  
+                                                            class="form-control input-style-period"
+                                                            value="{{Period.Fees}}" >
+                                                    <label class="unit">EGP</label>
+                                                  </div> 
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 3 for => Submit Btn -->
+                                          <div class="col-12 ">
+                                            <div class="d-flex justify-content-end">
+                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                                Submit
+                                              </button>
+                                            </div>
+                                          </div>
+                                        
+                                      </div>
+                                  </div>
+    
+                                </div>                       
+                              </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="item.DayId == 3">
+
+                            <div class="col-12 d-flex   justify-content-end">
+                              <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
+                                Add New Period
+                              </button>
+                            </div>
+
+                            <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
+                              <div class="row">
+                                <div class="col-12">
+    
+                                  <!--row for => Period header   -->
+                                  <div class="col-12 card-header">
+                                    <div class="row">
+                                      <div class="col-12 col-md-6 ">
+                                        <div class="d-flex  justify-content-center justify-content-sm-start ">
+                                          <label >
+                                            Period 2 
+                                          </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
+                                        <div class="delete-period ">
+                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                        </span>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+    
+                                  <!--row for => Period Body   -->
+                                  <div class="col-12">
+                                      <div class="row">
+      
+                                        <!-- row 1 for=>  TimeFrom , TimeTo -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <label class="lbl-input ">Operating hours</label>
+                                              <div class="row">
+    
+                                                    <!-- TimeFrom col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                            class="form-control input-style-period" 
+                                                            style="padding-right: 15px;"
+                                                            [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeFrom"
+                                                      >    
+                                                    </div>
+    
+                                                    <!-- To label col -->
+                                                    <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
+                                                      <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
+                                                    </div>
+    
+                                                    <!-- TimeTo col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                              class="form-control input-style-period" 
+                                                              style="padding-right: 15px;"
+                                                              [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeTo"
+                                                      >
+                                                    </div>
+    
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 2 for = > DurationMedicalExaminationId , Fees   -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <div class="row" style="margin-bottom: 10px;">
+      
+                                                <!-- DurationMedicalExaminationId -->
+                                                <div class="col-12 col-md-5" 
+                                                      style="margin-bottom: 10px;">
+    
+                                                      <label class="lbl-input">Interval</label>
+    
+                                                      <div style="position: relative;">
+                                                        <select (change)="SelectDuration($event)"
+                                                                class="form-select" aria-label="Default select example">
+    
+                                                              <option value="">
+                                                                {{DurationMedicalExaminationList[Period.DurationMedicalExaminationId].Duration}} Minutes
+                                                              </option>
+    
+                                                              <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
+                                                                {{item.Duration}} Minutes
+                                                              </option>
+    
+                                                        </select>
+                                                      </div>
+    
+                                                </div>
+      
+                                                <!-- Fees col -->
+                                                <div class="col-12 col-md-5 offset-md-1" style="margin-bottom: 10px;">
+    
+                                                  <label class="lbl-input ">Visit fee</label>
+    
+                                                  <div style="position: relative;">
+                                                    <input type="number"  
+                                                            class="form-control input-style-period"
+                                                            value="{{Period.Fees}}" >
+                                                    <label class="unit">EGP</label>
+                                                  </div> 
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 3 for => Submit Btn -->
+                                          <div class="col-12 ">
+                                            <div class="d-flex justify-content-end">
+                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                                Submit
+                                              </button>
+                                            </div>
+                                          </div>
+                                        
+                                      </div>
+                                  </div>
+    
+                                </div>                       
+                              </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="item.DayId == 4">
+
+                            <div class="col-12 d-flex   justify-content-end">
+                              <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
+                                Add New Period
+                              </button>
+                            </div>
+
+                            <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
+                              <div class="row">
+                                <div class="col-12">
+    
+                                  <!--row for => Period header   -->
+                                  <div class="col-12 card-header">
+                                    <div class="row">
+                                      <div class="col-12 col-md-6 ">
+                                        <div class="d-flex  justify-content-center justify-content-sm-start ">
+                                          <label >
+                                            Period 2 
+                                          </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
+                                        <div class="delete-period ">
+                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                        </span>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+    
+                                  <!--row for => Period Body   -->
+                                  <div class="col-12">
+                                      <div class="row">
+      
+                                        <!-- row 1 for=>  TimeFrom , TimeTo -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <label class="lbl-input ">Operating hours</label>
+                                              <div class="row">
+    
+                                                    <!-- TimeFrom col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                            class="form-control input-style-period" 
+                                                            style="padding-right: 15px;"
+                                                            [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeFrom" 
+                                                      >    
+                                                    </div>
+    
+                                                    <!-- To label col -->
+                                                    <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
+                                                      <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
+                                                    </div>
+    
+                                                    <!-- TimeTo col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                              class="form-control input-style-period" 
+                                                              style="padding-right: 15px;"
+                                                              [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeTo"
+                                                      >
+                                                    </div>
+    
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 2 for = > DurationMedicalExaminationId , Fees   -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <div class="row" style="margin-bottom: 10px;">
+      
+                                                <!-- DurationMedicalExaminationId -->
+                                                <div class="col-12 col-md-5" 
+                                                      style="margin-bottom: 10px;">
+    
+                                                      <label class="lbl-input">Interval</label>
+    
+                                                      <div style="position: relative;">
+                                                        <select (change)="SelectDuration($event)"
+                                                                class="form-select" aria-label="Default select example">
+    
+                                                              <option value="">
+                                                                {{DurationMedicalExaminationList[Period.DurationMedicalExaminationId].Duration}} Minutes
+                                                              </option>
+    
+                                                              <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
+                                                                {{item.Duration}} Minutes
+                                                              </option>
+    
+                                                        </select>
+                                                      </div>
+    
+                                                </div>
+      
+                                                <!-- Fees col -->
+                                                <div class="col-12 col-md-5 offset-md-1" style="margin-bottom: 10px;">
+    
+                                                  <label class="lbl-input ">Visit fee</label>
+    
+                                                  <div style="position: relative;">
+                                                    <input type="number"  
+                                                            class="form-control input-style-period"
+                                                            value="{{Period.Fees}}" >
+                                                    <label class="unit">EGP</label>
+                                                  </div> 
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 3 for => Submit Btn -->
+                                          <div class="col-12 ">
+                                            <div class="d-flex justify-content-end">
+                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                                Submit
+                                              </button>
+                                            </div>
+                                          </div>
+                                        
+                                      </div>
+                                  </div>
+    
+                                </div>                       
+                              </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="item.DayId == 5">
+
+                            <div class="col-12 d-flex   justify-content-end">
+                              <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
+                                Add New Period
+                              </button>
+                            </div>
+
+                            <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
+                              <div class="row">
+                                <div class="col-12">
+    
+                                  <!--row for => Period header   -->
+                                  <div class="col-12 card-header">
+                                    <div class="row">
+                                      <div class="col-12 col-md-6 ">
+                                        <div class="d-flex  justify-content-center justify-content-sm-start ">
+                                          <label >
+                                            Period 2 
+                                          </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
+                                        <div class="delete-period ">
+                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                        </span>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+    
+                                  <!--row for => Period Body   -->
+                                  <div class="col-12">
+                                      <div class="row">
+      
+                                        <!-- row 1 for=>  TimeFrom , TimeTo -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <label class="lbl-input ">Operating hours</label>
+                                              <div class="row">
+    
+                                                    <!-- TimeFrom col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                            class="form-control input-style-period" 
+                                                            style="padding-right: 15px;"
+                                                            [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeFrom"                                                            >    
+                                                    </div>
+    
+                                                    <!-- To label col -->
+                                                    <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
+                                                      <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
+                                                    </div>
+    
+                                                    <!-- TimeTo col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                              class="form-control input-style-period" 
+                                                              style="padding-right: 15px;"
+                                                              [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeTo"
+                                                      >
+                                                    </div>
+    
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 2 for = > DurationMedicalExaminationId , Fees   -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <div class="row" style="margin-bottom: 10px;">
+      
+                                                <!-- DurationMedicalExaminationId -->
+                                                <div class="col-12 col-md-5" 
+                                                      style="margin-bottom: 10px;">
+    
+                                                      <label class="lbl-input">Interval</label>
+    
+                                                      <div style="position: relative;">
+                                                        <select (change)="SelectDuration($event)"
+                                                                class="form-select" aria-label="Default select example">
+    
+                                                              <option value="">
+                                                                {{DurationMedicalExaminationList[Period.DurationMedicalExaminationId].Duration}} Minutes
+                                                              </option>
+    
+                                                              <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
+                                                                {{item.Duration}} Minutes
+                                                              </option>
+    
+                                                        </select>
+                                                      </div>
+    
+                                                </div>
+      
+                                                <!-- Fees col -->
+                                                <div class="col-12 col-md-5 offset-md-1" style="margin-bottom: 10px;">
+    
+                                                  <label class="lbl-input ">Visit fee</label>
+    
+                                                  <div style="position: relative;">
+                                                    <input type="number"  
+                                                            class="form-control input-style-period"
+                                                            value="{{Period.Fees}}" >
+                                                    <label class="unit">EGP</label>
+                                                  </div> 
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 3 for => Submit Btn -->
+                                          <div class="col-12 ">
+                                            <div class="d-flex justify-content-end">
+                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                                Submit
+                                              </button>
+                                            </div>
+                                          </div>
+                                        
+                                      </div>
+                                  </div>
+    
+                                </div>                       
+                              </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="item.DayId == 6">
+
+                            <div class="col-12 d-flex   justify-content-end">
+                              <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
+                                Add New Period
+                              </button>
+                            </div>
+
+                            <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
+                              <div class="row">
+                                <div class="col-12">
+    
+                                  <!--row for => Period header   -->
+                                  <div class="col-12 card-header">
+                                    <div class="row">
+                                      <div class="col-12 col-md-6 ">
+                                        <div class="d-flex  justify-content-center justify-content-sm-start ">
+                                          <label >
+                                            Period 2 
+                                          </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
+                                        <div class="delete-period ">
+                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                        </span>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+    
+                                  <!--row for => Period Body   -->
+                                  <div class="col-12">
+                                      <div class="row">
+      
+                                        <!-- row 1 for=>  TimeFrom , TimeTo -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <label class="lbl-input ">Operating hours</label>
+                                              <div class="row">
+    
+                                                    <!-- TimeFrom col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                            class="form-control input-style-period" 
+                                                            style="padding-right: 15px;"
+                                                            [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeFrom"                                                            >    
+                                                    </div>
+    
+                                                    <!-- To label col -->
+                                                    <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
+                                                      <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
+                                                    </div>
+    
+                                                    <!-- TimeTo col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                              class="form-control input-style-period" 
+                                                              style="padding-right: 15px;"
+                                                              [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeTo"
+                                                      >
+                                                    </div>
+    
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 2 for = > DurationMedicalExaminationId , Fees   -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <div class="row" style="margin-bottom: 10px;">
+      
+                                                <!-- DurationMedicalExaminationId -->
+                                                <div class="col-12 col-md-5" 
+                                                      style="margin-bottom: 10px;">
+    
+                                                      <label class="lbl-input">Interval</label>
+    
+                                                      <div style="position: relative;">
+                                                        <select (change)="SelectDuration($event)"
+                                                                class="form-select" aria-label="Default select example">
+    
+                                                              <option value="">
+                                                                {{DurationMedicalExaminationList[Period.DurationMedicalExaminationId].Duration}} Minutes
+                                                              </option>
+    
+                                                              <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
+                                                                {{item.Duration}} Minutes
+                                                              </option>
+    
+                                                        </select>
+                                                      </div>
+    
+                                                </div>
+      
+                                                <!-- Fees col -->
+                                                <div class="col-12 col-md-5 offset-md-1" style="margin-bottom: 10px;">
+    
+                                                  <label class="lbl-input ">Visit fee</label>
+    
+                                                  <div style="position: relative;">
+                                                    <input type="number"  
+                                                            class="form-control input-style-period"
+                                                            value="{{Period.Fees}}" >
+                                                    <label class="unit">EGP</label>
+                                                  </div> 
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 3 for => Submit Btn -->
+                                          <div class="col-12 ">
+                                            <div class="d-flex justify-content-end">
+                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                                Submit
+                                              </button>
+                                            </div>
+                                          </div>
+                                        
+                                      </div>
+                                  </div>
+    
+                                </div>                       
+                              </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="item.DayId == 7">
+
+                            <div class="col-12 d-flex   justify-content-end">
+                              <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
+                                Add New Period
+                              </button>
+                            </div>
+
+                            <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
+                              <div class="row">
+                                <div class="col-12">
+    
+                                  <!--row for => Period header   -->
+                                  <div class="col-12 card-header">
+                                    <div class="row">
+                                      <div class="col-12 col-md-6 ">
+                                        <div class="d-flex  justify-content-center justify-content-sm-start ">
+                                          <label >
+                                            Period 2 
+                                          </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
+                                        <div class="delete-period ">
+                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                        </span>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+    
+                                  <!--row for => Period Body   -->
+                                  <div class="col-12">
+                                      <div class="row">
+      
+                                        <!-- row 1 for=>  TimeFrom , TimeTo -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <label class="lbl-input ">Operating hours</label>
+                                              <div class="row">
+    
+                                                    <!-- TimeFrom col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                            class="form-control input-style-period" 
+                                                            style="padding-right: 15px;"
+                                                            [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeFrom"
+                                                            >  
+                                                    </div>
+    
+                                                    <!-- To label col -->
+                                                    <div class="col-12 col-md-1 justify-content-end justify-content-sm-center ">
+                                                      <label class="lbl-input" style="padding-top: 5px;padding-bottom: 5px;">To</label>
+                                                    </div>
+    
+                                                    <!-- TimeTo col -->
+                                                    <div class="col-12 col-md-5 ">
+                                                      <input type="time" 
+                                                              class="form-control input-style-period" 
+                                                              style="padding-right: 15px;"
+                                                              [(ngModel)]="ClinicScheduleDayList[item.DayId][i].TimeTo"
+                                                      >
+                                                    </div>
+    
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 2 for = > DurationMedicalExaminationId , Fees   -->
+                                          <div class="col-12">
+                                            <div style="padding: 20px;padding-bottom: 0px;">
+                                              <div class="row" style="margin-bottom: 10px;">
+      
+                                                <!-- DurationMedicalExaminationId -->
+                                                <div class="col-12 col-md-5" 
+                                                      style="margin-bottom: 10px;">
+    
+                                                      <label class="lbl-input">Interval</label>
+    
+                                                      <div style="position: relative;">
+                                                        <select (change)="SelectDuration($event)"
+                                                                class="form-select" aria-label="Default select example">
+    
+                                                              <option value="">
+                                                                {{DurationMedicalExaminationList[Period.DurationMedicalExaminationId].Duration}} Minutes
+                                                              </option>
+    
+                                                              <option *ngFor="let item of DurationMedicalExamination" value={{item.Id}}>
+                                                                {{item.Duration}} Minutes
+                                                              </option>
+    
+                                                        </select>
+                                                      </div>
+    
+                                                </div>
+      
+                                                <!-- Fees col -->
+                                                <div class="col-12 col-md-5 offset-md-1" style="margin-bottom: 10px;">
+    
+                                                  <label class="lbl-input ">Visit fee</label>
+    
+                                                  <div style="position: relative;">
+                                                    <input type="number"  
+                                                            class="form-control input-style-period"
+                                                            value="{{Period.Fees}}" >
+                                                    <label class="unit">EGP</label>
+                                                  </div> 
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+    
+                                          <!-- row 3 for => Submit Btn -->
+                                          <div class="col-12 ">
+                                            <div class="d-flex justify-content-end">
+                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                                Submit
+                                              </button>
+                                            </div>
+                                          </div>
+                                        
+                                      </div>
+                                  </div>
+    
+                                </div>                       
+                              </div>
+                            </div>
+                        </div>
+                       
                       </ng-template>
 
                     </div>
