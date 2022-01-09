@@ -182,7 +182,7 @@
                                       <div class="col-12 col-md-6 ">
                                         <div class="d-flex  justify-content-center justify-content-sm-start ">
                                           <label >
-                                            Period {{i}} 
+                                            Period {{i+1}} 
                                           </label>
                                         </div>
                                       </div>
@@ -192,8 +192,8 @@
                                           <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
                                         </span>
                                           <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
-                                                  (click)="ResetPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                            Resetttttt
+                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                            Reset
                                           </label>
                                           </div>
                                       </div>
@@ -323,7 +323,10 @@
                                         <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
                                           <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
                                         </span>
-                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                            Reset
+                                          </label>
                                           </div>
                                       </div>
                                     </div>
@@ -454,7 +457,10 @@
                                         <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
                                           <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
                                         </span>
-                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                            Reset
+                                          </label>
                                           </div>
                                       </div>
                                     </div>
@@ -585,7 +591,10 @@
                                         <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
                                           <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
                                         </span>
-                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                            Reset
+                                          </label>
                                           </div>
                                       </div>
                                     </div>
@@ -716,7 +725,10 @@
                                         <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
                                           <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
                                         </span>
-                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                            Reset
+                                          </label>
                                           </div>
                                       </div>
                                     </div>
@@ -846,7 +858,10 @@
                                         <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
                                           <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
                                         </span>
-                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                            Reset
+                                          </label>
                                           </div>
                                       </div>
                                     </div>
@@ -976,7 +991,10 @@
                                         <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
                                           <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
                                         </span>
-                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                            Reset
+                                          </label>
                                           </div>
                                       </div>
                                     </div>

@@ -28,9 +28,11 @@ export class ClinicSchedualComponent implements OnInit {
   DurationMedicalExaminationList:{[Id:number]:Duration}={};
   // Counter:number;
   ClinicScheduleDay:ClinicScheduleDay;
+  PeriodsDay:ClinicScheduleDay[];
   // ClinicScheduleDay:GeneralResponse<ClinicScheduleDay>[];
   ClinicScheduleDayList:{[Id:number]:ClinicScheduleDay[]} = {}
-  // ClinicScheduleDayListOriginal:{[Id:number]:ClinicScheduleDay[]} = {}
+  DayPeriodsList:{[ScheduleId:number]:ClinicScheduleDay} = {}
+  ClinicScheduleDayListOriginal:{[Id:number]:ClinicScheduleDay[]} = {}
   CreateClinicSchedule:CreateClinicSchedule;
   //#endregion
 
@@ -66,12 +68,12 @@ export class ClinicSchedualComponent implements OnInit {
     for (let index = 1; index <= 7; index++) {
       this.GetClinicSchedualByClinicDayId('en',41,index);
     }
+
     //#endregion
 
     //#region  Register Form Section
           this.PeriodForm = this.fb.group(
             {
-                // FirstName:['',[Validators.required , Validators.minLength(3)]],
                 DateFrom:['',[Validators.required]],
                 DateTo:['',[Validators.required]],
                 Fees:['',[Validators.required]],
@@ -138,11 +140,38 @@ export class ClinicSchedualComponent implements OnInit {
         this.ClinicScheduleService.GetClinicSchedualByClinicDayId(lang,ClinicId,DayId).subscribe(
           (response)=>{
             this.ClinicScheduleDayList[DayId] = response.Data;
-            // this.ClinicScheduleDayListOriginal[DayId] = response.Data;
+            this.ClinicScheduleDayListOriginal[DayId] = response.Data;
             // console.log(this.ClinicScheduleDayList[DayId])
             // this.ClinicScheduleDayList[DayId].forEach(element => {
             //   console.log(element.SchedualId)
             // });
+          },
+          (err)=>{
+            console.log(err)
+          }
+        )
+      }
+      //#endregion
+
+      //#region Get Clinic Schedual By Clinic Day Id For One Day => To Reset
+      GetClinicSchedualByClinicDayIdForOneDay(lang:string,ClinicId:number,DayId:number ,SchedualId:number ,Index:number){
+        this.ClinicScheduleService.GetClinicSchedualByClinicDayId(lang,ClinicId,DayId).subscribe(
+          (response)=>{
+            this.PeriodsDay = response.Data;
+
+            this.PeriodsDay.forEach(element => {
+
+                if(element.SchedualId ==SchedualId )
+                {
+                  this.ClinicScheduleDayList[DayId][Index].TimeFrom = element.TimeFrom; 
+                  this.ClinicScheduleDayList[DayId][Index].TimeTo = element.TimeTo; 
+                  this.ClinicScheduleDayList[DayId][Index].Fees = element.Fees; 
+                  this.ClinicScheduleDayList[DayId][Index].Inactive = element.Inactive; 
+                  this.ClinicScheduleDayList[DayId][Index].DurationMedicalExaminationId = element.DurationMedicalExaminationId; 
+                  // console.log( this.ClinicScheduleDayList[DayId][Index]);
+                }
+            });
+
           },
           (err)=>{
             console.log(err)
@@ -263,9 +292,9 @@ export class ClinicSchedualComponent implements OnInit {
   }
   //#endregion
 
-  //#region Add Period On Schedule =>  Periods Exist 
-  ResetPeriod(DayId:number,ScheduleId:number ){
-  this. GetClinicSchedualByClinicDayId('en',41,DayId);
+  //#region Reset Period
+  ResetPeriod(DayId:number,Index:number,SchedualId:number){
+      this.GetClinicSchedualByClinicDayIdForOneDay('en',41,DayId ,SchedualId ,Index);     
   }
   //#endregion
 
