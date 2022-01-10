@@ -14,18 +14,32 @@
           <div id="Saturday" class="col-12">
                   <!--header  -->
                   <div class="row" style="margin-bottom: 15px;" >
-                      <div class="col-6 col-md-6 d-flex justify-content-start" data-bs-toggle="collapse" [attr.href]="'#multiCollapseExample'+i" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+                      <div class="col-6 col-md-6 d-flex justify-content-start" 
+                           data-bs-toggle="collapse" 
+                           [attr.href]="'#multiCollapseExample'+i" role="button" 
+                           aria-expanded="false" 
+                           aria-controls="multiCollapseExample1" >
+                        
+                        <div class="col-12 col-md-4 d-flex align-items-center justify-content-center" >
                           <label (click)="hideborder()" class="day-block" >
-                              {{item.DayName}}
-                               <span class="period-count"> {{item.DayPeriodCount}} &nbsp; Periods</span>
-                          </label>
+                            {{item.DayName}}
+                        </label>
+                        </div>
+
+                       <div class="col-12 col-md-6 d-flex align-items-center pl-0" style="opacity: 0.4;" >
+                        <i class="fas fa-circle Circle-style" ></i>
+                        <span class="period-count"> {{item.DayPeriodCount}} &nbsp; Periods</span>
+                       </div>
+                         
                           
                       </div>
                       <div class="col-6 col-md-6 d-flex justify-content-end">
+
                           <label class="switch">
                               <input type="checkbox" [checked]="item.Active">
                               <span class="slider round"></span>
-                            </label>
+                          </label>
+
                       </div>
                   </div>
                   <!-- body -->
@@ -50,10 +64,12 @@
                                     </div>
                                     <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
                                       <div class="delete-period ">
-                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                        <!-- <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
                                           <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
-                                         </span>
-                                        <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">Reset</label>
+                                         </span> -->
+                                        <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">
+                                          Reset
+                                        </label>
                                         </div>
                                     </div>
                                   </div>
@@ -168,8 +184,16 @@
                         
                         <div *ngIf="item.DayId == 1">
                           <div class="col-12 d-flex   justify-content-end">
-                            <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
-                              Add New Period
+                            <button (click)="AddPeriod(item.DayId)" 
+                                    class="btn  px-4 my-3" 
+                                    style="background-color: #E9EAF1;  color: #262d70;">
+
+                                    <i class="fa fa-plus"></i>
+                                    <span style="font-weight: 500;"
+                                            (click)="AddNewPeriod(item.DayId)">
+                                      Add New Period
+                                    </span> 
+
                             </button>
                           </div>
                             <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
@@ -188,13 +212,36 @@
                                       </div>
                                       <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
                                         <div class="delete-period ">
-                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
-                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
-                                        </span>
-                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
-                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                            Reset
-                                          </label>
+
+                                            <!-- <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                              <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                            </span> -->
+
+                                            <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                    (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                              Reset
+                                            </label>
+
+                                            <label *ngIf="Period.Inactive == true;else InactiveBlock" 
+                                                    style="color: green;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                    (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+                                              
+                                            Active
+
+                                            </label>
+
+                                            <ng-template #InactiveBlock 
+                                                          style="color: red;padding-left: 15px;padding-right: 15px;user-select: none;">
+                                              
+                                              <span style="cursor:pointer" 
+                                                    (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+
+                                                    Not Active
+
+                                              </span>
+
+                                            </ng-template>
+
                                           </div>
                                       </div>
                                     </div>
@@ -284,24 +331,50 @@
                                           <!-- row 3 for => Submit Btn -->
                                           <div class="col-12 ">
                                             <div class="d-flex justify-content-end">
-                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                                Submit
-                                              </button>
+                                                <div *ngIf="ClinicScheduleDayList[item.DayId][i].SchedualId != -1 ;else UpdateBlock">
+
+                                                      <button class="next-btn"
+                                                              style="background-color:#198754;" 
+                                                              (click)="UpdateNewPeriod( item.DayId ,i )">
+                                                        Update
+                                                      </button>
+
+                                                </div>
+
+                                                <ng-template  #UpdateBlock>
+
+                                                      <button class="next-btn" 
+                                                              (click)="SubmitNewPeriod(  item.DayId,i)">
+                                                        Submit
+                                                      </button>
+
+                                                </ng-template>
                                             </div>
                                           </div>
-                                        
+        
                                       </div>
                                   </div>
     
                                 </div>                       
                               </div>
                             </div>
+
+                            <!-- Scroll To This When Add New Period In This Day  -->
+                            <label id="DisplayNewPeriod{{item.DayId}}"></label>
                         </div>
 
                         <div *ngIf="item.DayId == 2">
                           <div class="col-12 d-flex   justify-content-end">
-                            <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
-                              Add New Period
+                            <button (click)="AddPeriod(item.DayId)" 
+                                    class="btn  px-4 my-3" 
+                                    style="background-color: #E9EAF1;  color: #262d70;">
+
+                                    <i class="fa fa-plus"></i>
+                                    <span style="font-weight: 500;"
+                                            (click)="AddNewPeriod(item.DayId)">
+                                      Add New Period
+                                    </span> 
+
                             </button>
                           </div>
                             <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
@@ -320,13 +393,33 @@
                                       </div>
                                       <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
                                         <div class="delete-period ">
-                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                        <!-- <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
                                           <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
-                                        </span>
+                                        </span> -->
                                           <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
                                                   (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
                                             Reset
                                           </label>
+
+                                            <label *ngIf="Period.Inactive == true;else InactiveBlock" 
+                                            style="color: green;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                            (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+                                      
+                                            Active
+
+                                            </label>
+
+                                            <ng-template #InactiveBlock 
+                                                          style="color: red;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;">
+                                              
+                                                    <span style="cursor:pointer" 
+                                                    (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+
+                                                        Not Active
+      
+                                                    </span>
+
+                                            </ng-template>
                                           </div>
                                       </div>
                                     </div>
@@ -416,15 +509,32 @@
                                           <!-- row 3 for => Submit Btn -->
                                           <div class="col-12 ">
                                             <div class="d-flex justify-content-end">
-                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                                Submit
-                                              </button>
+                                              <div *ngIf="ClinicScheduleDayList[item.DayId][i].SchedualId != -1 ;else UpdateBlock">
+
+                                                <button class="next-btn" 
+                                                        style="background-color:#198754;" 
+                                                        (click)="UpdateNewPeriod( item.DayId,i)">
+                                                  Update
+                                                </button>
+
+                                              </div>
+
+                                          <ng-template  #UpdateBlock>
+
+                                                <button class="next-btn" 
+                                                        (click)="SubmitNewPeriod( item.DayId,i)">
+                                                  Submit
+                                                </button>
+
+                                          </ng-template>
                                             </div>
                                           </div>
                                         
                                       </div>
                                   </div>
-    
+
+                                  <!-- Scroll To This When Add New Period In This Day  -->
+                                  <label id="DisplayNewPeriod{{item.DayId}}"></label>
                                 </div>                       
                               </div>
                             </div>
@@ -433,9 +543,17 @@
                         <div *ngIf="item.DayId == 3">
 
                             <div class="col-12 d-flex   justify-content-end">
-                              <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
-                                Add New Period
+                              <button (click)="AddPeriod(item.DayId)" 
+                                      class="btn  px-4 my-3" 
+                                      style="background-color: #E9EAF1;  color: #262d70;">
+
+                                      <i class="fa fa-plus"></i>
+                                      <span style="font-weight: 500;"
+                                              (click)="AddNewPeriod(item.DayId)">
+                                        Add New Period
+                                      </span> 
                               </button>
+
                             </div>
 
                             <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
@@ -454,13 +572,33 @@
                                       </div>
                                       <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
                                         <div class="delete-period ">
-                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
-                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
-                                        </span>
-                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
-                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                            Reset
-                                          </label>
+                                            <!-- <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                              <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                            </span> -->
+                                              <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                      (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                                Reset
+                                              </label>
+                                              <label *ngIf="Period.Inactive == true;else InactiveBlock" 
+                                              style="color: green;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                              (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+                                        
+                                              Active
+
+                                              </label>
+
+                                              <ng-template #InactiveBlock 
+                                                            style="color: red;padding-left: 15px;padding-right: 15px;user-select: none;">
+                                                
+                                                          <span style="cursor:pointer" 
+                                                          (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+
+                                                              Not Active
+
+                                                          </span>
+
+                                              </ng-template>
+
                                           </div>
                                       </div>
                                     </div>
@@ -550,9 +688,24 @@
                                           <!-- row 3 for => Submit Btn -->
                                           <div class="col-12 ">
                                             <div class="d-flex justify-content-end">
-                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                                Submit
-                                              </button>
+                                              <div *ngIf="ClinicScheduleDayList[item.DayId][i].SchedualId != -1 ;else UpdateBlock">
+
+                                                <button class="next-btn"
+                                                        style="background-color:#198754;"  
+                                                        (click)="UpdateNewPeriod( item.DayId,i)">
+                                                  Update
+                                                </button>
+
+                                          </div>
+
+                                          <ng-template  #UpdateBlock>
+
+                                                <button class="next-btn" 
+                                                        (click)="SubmitNewPeriod( item.DayId,i)">
+                                                  Submit
+                                                </button>
+
+                                          </ng-template>
                                             </div>
                                           </div>
                                         
@@ -562,14 +715,25 @@
                                 </div>                       
                               </div>
                             </div>
+
+                             <!-- Scroll To This When Add New Period In This Day  -->
+                             <label id="DisplayNewPeriod{{item.DayId}}"></label>
                         </div>
 
                         <div *ngIf="item.DayId == 4">
 
                             <div class="col-12 d-flex   justify-content-end">
-                              <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
-                                Add New Period
+                              <button (click)="AddPeriod(item.DayId)" 
+                                      class="btn  px-4 my-3" 
+                                      style="background-color: #E9EAF1;  color: #262d70;">
+
+                                      <i class="fa fa-plus"></i>
+                                      <span style="font-weight: 500;"
+                                              (click)="AddNewPeriod(item.DayId)">
+                                        Add New Period
+                                      </span>  
                               </button>
+
                             </div>
 
                             <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
@@ -588,13 +752,34 @@
                                       </div>
                                       <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
                                         <div class="delete-period ">
-                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                        <!-- <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
                                           <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
-                                        </span>
+                                        </span> -->
                                           <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
                                                   (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
                                             Reset
                                           </label>
+
+                                          <label *ngIf="Period.Inactive == true;else InactiveBlock" 
+                                          style="color: green;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                          (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+                                    
+                                          Active
+
+                                          </label>
+
+                                          <ng-template #InactiveBlock 
+                                                        style="color: red;padding-left: 15px;padding-right: 15px;user-select: none;">
+                                            
+                                                        <span style="cursor:pointer" 
+                                                        (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+    
+                                                            Not Active
+          
+                                                        </span>
+
+                                          </ng-template>
+
                                           </div>
                                       </div>
                                     </div>
@@ -684,9 +869,25 @@
                                           <!-- row 3 for => Submit Btn -->
                                           <div class="col-12 ">
                                             <div class="d-flex justify-content-end">
-                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                                Submit
-                                              </button>
+                                              <div *ngIf="ClinicScheduleDayList[item.DayId][i].SchedualId != -1 ;else UpdateBlock">
+
+                                                <button class="next-btn"
+                                                        style="background-color:#198754;"  
+                                                        (click)="UpdateNewPeriod( item.DayId,i)">
+                                                  Update
+                                                </button>
+
+                                              </div>
+
+                                              <ng-template  #UpdateBlock>
+
+                                                <button class="next-btn" 
+                                                        (click)="SubmitNewPeriod( item.DayId,i)">
+                                                  Submit
+                                                </button>
+
+                                              </ng-template>
+
                                             </div>
                                           </div>
                                         
@@ -696,14 +897,25 @@
                                 </div>                       
                               </div>
                             </div>
+
+                             <!-- Scroll To This When Add New Period In This Day  -->
+                             <label id="DisplayNewPeriod{{item.DayId}}"></label>
                         </div>
 
                         <div *ngIf="item.DayId == 5">
 
                             <div class="col-12 d-flex   justify-content-end">
-                              <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
-                                Add New Period
-                              </button>
+                              <button (click)="AddPeriod(item.DayId)" 
+                                    class="btn  px-4 my-3" 
+                                    style="background-color: #E9EAF1;  color: #262d70;">
+
+                                    <i class="fa fa-plus"></i>
+                                    <span style="font-weight: 500;"
+                                            (click)="AddNewPeriod(item.DayId)">
+                                      Add New Period
+                                    </span> 
+
+                            </button>
                             </div>
 
                             <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
@@ -722,13 +934,32 @@
                                       </div>
                                       <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
                                         <div class="delete-period ">
-                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
-                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
-                                        </span>
-                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
-                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                            Reset
-                                          </label>
+                                            <!-- <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                              <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                            </span> -->
+                                              <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                      (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                                Reset
+                                              </label>
+                                              <label *ngIf="Period.Inactive == true;else InactiveBlock" 
+                                              style="color: green;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                              (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+                                        
+                                              Active
+
+                                              </label>
+
+                                              <ng-template #InactiveBlock 
+                                                            style="color: red;padding-left: 15px;padding-right: 15px;user-select: none;">
+                                                
+                                                            <span style="cursor:pointer" 
+                                                            (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+        
+                                                                Not Active
+              
+                                                            </span>
+
+                                              </ng-template>
                                           </div>
                                       </div>
                                     </div>
@@ -816,11 +1047,26 @@
     
                                           <!-- row 3 for => Submit Btn -->
                                           <div class="col-12 ">
-                                            <div class="d-flex justify-content-end">
-                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                                Submit
-                                              </button>
-                                            </div>
+                                              <div class="d-flex justify-content-end">
+                                                <div *ngIf="ClinicScheduleDayList[item.DayId][i].SchedualId != -1 ;else UpdateBlock">
+
+                                                        <button class="next-btn"
+                                                                style="background-color:#198754;"  
+                                                                (click)="UpdateNewPeriod( item.DayId,i)">
+                                                          Update
+                                                        </button>
+
+                                                  </div>
+
+                                                  <ng-template  #UpdateBlock>
+
+                                                        <button class="next-btn" 
+                                                                (click)="SubmitNewPeriod( item.DayId,i)">
+                                                          Submit
+                                                        </button>
+
+                                                  </ng-template>
+                                              </div>
                                           </div>
                                         
                                       </div>
@@ -829,14 +1075,25 @@
                                 </div>                       
                               </div>
                             </div>
+
+                             <!-- Scroll To This When Add New Period In This Day  -->
+                             <label id="DisplayNewPeriod{{item.DayId}}"></label>
                         </div>
 
                         <div *ngIf="item.DayId == 6">
 
                             <div class="col-12 d-flex   justify-content-end">
-                              <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
-                                Add New Period
-                              </button>
+                              <button (click)="AddPeriod(item.DayId)" 
+                                    class="btn  px-4 my-3" 
+                                    style="background-color: #E9EAF1;  color: #262d70;">
+
+                                    <i class="fa fa-plus"></i>
+                                    <span style="font-weight: 500;"
+                                            (click)="AddNewPeriod(item.DayId)">
+                                      Add New Period
+                                    </span> 
+
+                            </button>
                             </div>
 
                             <div class="card card-body my-3"  *ngFor="let Period of ClinicScheduleDayList[item.DayId] ;let i = index">
@@ -855,13 +1112,33 @@
                                       </div>
                                       <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
                                         <div class="delete-period ">
-                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
-                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
-                                        </span>
-                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
-                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                            Reset
-                                          </label>
+                                            <!-- <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                              <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                            </span> -->
+                                              <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                      (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                                Reset
+                                              </label>
+                                              <label *ngIf="Period.Inactive == true;else InactiveBlock" 
+                                              style="color: green;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                              (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+                                        
+                                              Active
+
+                                              </label>
+
+                                              <ng-template #InactiveBlock 
+                                                            style="color: red;padding-left: 15px;padding-right: 15px;user-select: none;">
+                                                
+                                                            <span style="cursor:pointer" 
+                                                            (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+        
+                                                                Not Active
+              
+                                                            </span>
+
+                                              </ng-template>
+
                                           </div>
                                       </div>
                                     </div>
@@ -949,11 +1226,29 @@
     
                                           <!-- row 3 for => Submit Btn -->
                                           <div class="col-12 ">
-                                            <div class="d-flex justify-content-end">
-                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                                Submit
-                                              </button>
-                                            </div>
+                                              <div class="d-flex justify-content-end">
+                                                
+                                                  <div *ngIf="ClinicScheduleDayList[item.DayId][i].SchedualId != -1 ;else UpdateBlock">
+
+                                                    <button class="next-btn"
+                                                            style="background-color:#198754;"  
+                                                            (click)="UpdateNewPeriod( item.DayId,i)">
+                                                      Update
+                                                    </button>
+
+                                                  </div>
+
+                                                  <ng-template  #UpdateBlock>
+
+                                                    <button class="next-btn" 
+                                                            (click)="SubmitNewPeriod( item.DayId,i )">
+                                                      Submit
+                                                    </button>
+
+                                                  </ng-template>
+
+                                              </div>
+
                                           </div>
                                         
                                       </div>
@@ -962,13 +1257,23 @@
                                 </div>                       
                               </div>
                             </div>
+
+                             <!-- Scroll To This When Add New Period In This Day  -->
+                             <label id="DisplayNewPeriod{{item.DayId}}"></label>
                         </div>
 
                         <div *ngIf="item.DayId == 7">
 
                             <div class="col-12 d-flex   justify-content-end">
-                              <button (click)="AddPeriod(item.DayId)" class="btn text-white px-4 my-3" style="background-color: #262d70">
-                                Add New Period
+                              <button (click)="AddPeriod(item.DayId)" 
+                                    class="btn  px-4 my-3" 
+                                    style="background-color: #E9EAF1;  color: #262d70;">
+
+                                    <i class="fa fa-plus"></i>
+                                    <span style="font-weight: 500;"
+                                            (click)="AddNewPeriod(item.DayId)">
+                                      Add New Period
+                                    </span> 
                               </button>
                             </div>
 
@@ -988,13 +1293,32 @@
                                       </div>
                                       <div class="col-12 col-md-6 d-flex   justify-content-center justify-content-sm-end ">
                                         <div class="delete-period ">
-                                        <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
-                                          <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
-                                        </span>
-                                          <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
-                                                  (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                            Reset
-                                          </label>
+                                            <!-- <span (click)="DeletePeriod()" style="cursor: pointer;user-select: none;">
+                                              <i class="far fa-trash-alt delete-view-btn"></i>&nbsp; Delete period
+                                            </span> -->
+                                              <label style="color: black;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                                      (click)="ResetPeriod(item.DayId,i,ClinicScheduleDayList[item.DayId][i].SchedualId)">
+                                                Reset
+                                              </label>
+                                              <label *ngIf="Period.Inactive == true;else InactiveBlock" 
+                                              style="color: green;padding-left: 15px;padding-right: 15px;cursor: pointer;user-select: none;"
+                                              (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+                                        
+                                              Active
+
+                                              </label>
+
+                                              <ng-template #InactiveBlock 
+                                                            style="color: red;padding-left: 15px;padding-right: 15px;user-select: none;">
+                                                
+                                                            <span style="cursor:pointer" 
+                                                            (click)="FlagActive(i,item.DayId,ClinicScheduleDayList[item.DayId][i])">
+        
+                                                                Not Active
+              
+                                                            </span>
+
+                                              </ng-template>
                                           </div>
                                       </div>
                                     </div>
@@ -1083,11 +1407,28 @@
     
                                           <!-- row 3 for => Submit Btn -->
                                           <div class="col-12 ">
-                                            <div class="d-flex justify-content-end">
-                                              <button class="next-btn" (click)="AddNewPeriod(item.DayId,ClinicScheduleDayList[item.DayId][i].SchedualId)">
-                                                Submit
-                                              </button>
-                                            </div>
+                                              <div class="d-flex justify-content-end">
+
+                                                <div *ngIf="ClinicScheduleDayList[item.DayId][i].SchedualId != -1 ;else UpdateBlock">
+
+                                                        <button class="next-btn"
+                                                                style="background-color:#198754;"  
+                                                                (click)="UpdateNewPeriod( item.DayId,i)">
+                                                          Update
+                                                        </button>
+
+                                                  </div>
+
+                                                  <ng-template  #UpdateBlock>
+
+                                                        <button class="next-btn" 
+                                                                (click)="SubmitNewPeriod( item.DayId,i)">
+                                                          Submit
+                                                        </button>
+
+                                                  </ng-template>
+                                                  
+                                              </div>
                                           </div>
                                         
                                       </div>
@@ -1096,6 +1437,9 @@
                                 </div>                       
                               </div>
                             </div>
+
+                             <!-- Scroll To This When Add New Period In This Day  -->
+                             <label id="DisplayNewPeriod{{item.DayId}}"></label>
                         </div>
                        
                       </ng-template>

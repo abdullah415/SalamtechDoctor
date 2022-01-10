@@ -32,7 +32,7 @@ export class ClinicSchedualComponent implements OnInit {
   // ClinicScheduleDay:GeneralResponse<ClinicScheduleDay>[];
   ClinicScheduleDayList:{[Id:number]:ClinicScheduleDay[]} = {}
   DayPeriodsList:{[ScheduleId:number]:ClinicScheduleDay} = {}
-  ClinicScheduleDayListOriginal:{[Id:number]:ClinicScheduleDay[]} = {}
+  // ClinicScheduleDayListOriginal:{[Id:number]:ClinicScheduleDay[]} = {}
   CreateClinicSchedule:CreateClinicSchedule;
   //#endregion
 
@@ -140,7 +140,7 @@ export class ClinicSchedualComponent implements OnInit {
         this.ClinicScheduleService.GetClinicSchedualByClinicDayId(lang,ClinicId,DayId).subscribe(
           (response)=>{
             this.ClinicScheduleDayList[DayId] = response.Data;
-            this.ClinicScheduleDayListOriginal[DayId] = response.Data;
+            // this.ClinicScheduleDayListOriginal[DayId] = response.Data;
             // console.log(this.ClinicScheduleDayList[DayId])
             // this.ClinicScheduleDayList[DayId].forEach(element => {
             //   console.log(element.SchedualId)
@@ -184,13 +184,26 @@ export class ClinicSchedualComponent implements OnInit {
       CreateDoctorClinicSchedual(NewPeriod:CreateClinicSchedule){
         this.ClinicScheduleService.CreateDoctorClinicSchedual(NewPeriod).subscribe(
           (respose)=>{
-            // console.log(respose)
+            console.log(respose)
           },
           (err)=>{
             console.log(err)
           }
         )
       }
+      //#endregion
+
+      //#region Update Doctor Clinic Schedual
+        UpdateDoctorClinicSchedual(NewPeriod:ClinicScheduleDay){
+          this.ClinicScheduleService.UpdateDoctorClinicSchedual(NewPeriod).subscribe(
+            (respose)=>{
+              console.log(respose)
+            },
+            (err)=>{
+              console.log(err)
+            }
+          )
+        }
       //#endregion
 
   //#endregion
@@ -249,53 +262,131 @@ export class ClinicSchedualComponent implements OnInit {
     this.CreateClinicSchedule.Fees                          = this.PeriodForm.controls.Fees.value ;
     this.CreateClinicSchedule.DurationMedicalExaminationId  = +this.PeriodForm.controls.DurationExamination.value;
     this.CreateClinicSchedule.Inactive                      = Active;
-
-     
+    
     this.CreateDoctorClinicSchedual(this.CreateClinicSchedule)
-
-
-    // console.log("ClinicId : ",this.CreateClinicSchedule.ClinicId)
-    // console.log("DayID : ",DayId);
-    // console.log("Active : ",Active);
-    // console.log("DateFrom : ",this.PeriodForm.controls.DateFrom.value );
-    // console.log("DateTo : ",this.PeriodForm.controls.DateTo.value );
-    // console.log("Fees : ",this.PeriodForm.controls.Fees.value);
-    // console.log("DurationExamination : ",this.PeriodForm.controls.DurationExamination.value);
 
   }
   //#endregion
 
-  //#region Add Period On Schedule =>  Periods Exist 
-  AddNewPeriod(DayId:number,ScheduleId:number ){
+  //#region Create New Period On Schedule 
+  SubmitNewPeriod(DayId:number,Index:number ){
 
-    // this.CreateClinicSchedule.ClinicId                      = 41;
-    // this.CreateClinicSchedule.DayId                         = DayId;
-    // this.CreateClinicSchedule.TimeFrom                      = this.PeriodForm.controls.DateFrom.value ;
-    // this.CreateClinicSchedule.TimeTo                        = this.PeriodForm.controls.DateTo.value ;
-    // this.CreateClinicSchedule.Fees                          = this.PeriodForm.controls.Fees.value ;
-    // this.CreateClinicSchedule.DurationMedicalExaminationId  = +this.PeriodForm.controls.DurationExamination.value;
-    // this.CreateClinicSchedule.Inactive                      = Active;
+     // Remove Seconds Block From TimeFrom , TimeTo 
+     this.ClinicScheduleDayList[DayId][Index].TimeFrom = this.ClinicScheduleDayList[DayId][Index].TimeFrom.substring(0,5);
+     this.ClinicScheduleDayList[DayId][Index].TimeTo = this.ClinicScheduleDayList[DayId][Index].TimeTo.substring(0,5);
+ 
+    //  console.log("Insert : ",this.ClinicScheduleDayList[DayId][Index])
+ 
+     let NewPeriod = {
+      DayId                       :this.ClinicScheduleDayList[DayId][Index].DayId,
+      TimeFrom                    :this.ClinicScheduleDayList[DayId][Index].TimeFrom,
+      TimeTo                      :this.ClinicScheduleDayList[DayId][Index].TimeTo,
+      Fees                        :this.ClinicScheduleDayList[DayId][Index].Fees,
+      DurationMedicalExaminationId:this.ClinicScheduleDayList[DayId][Index].DurationMedicalExaminationId,
+      Inactive                    :this.ClinicScheduleDayList[DayId][Index].Inactive,
+      ClinicId                    :41
+     } as CreateClinicSchedule;
 
+    //  console.log("NewPeriod : ",NewPeriod);
+
+     if(NewPeriod.TimeFrom !="" && NewPeriod.TimeTo !="" && NewPeriod.Fees !=0 ){
+        // Insert ClinicScheduleDay 
+        this.CreateDoctorClinicSchedual(NewPeriod);
+     }
      
-    // this.CreateDoctorClinicSchedual(this.CreateClinicSchedule)
 
+  }
+  //#endregion
 
-    // console.log("ClinicId : ",this.CreateClinicSchedule.ClinicId)
-    // console.log("DayID : ",DayId);
-    // console.log("Active : ",Active);
-    // console.log("DateFrom : ",this.PeriodForm.controls.DateFrom.value );
-    // console.log("DateTo : ",this.PeriodForm.controls.DateTo.value );
-    // console.log("Fees : ",this.PeriodForm.controls.Fees.value);
-    // console.log("DurationExamination : ",this.PeriodForm.controls.DurationExamination.value);
+  //#region Update New Period
+  UpdateNewPeriod( DayId:number ,Index:number ){
 
-    console.log("ScheduleId : ",this.ClinicScheduleDayList[DayId].find(x=>x.SchedualId == ScheduleId ))
+    // Remove Seconds Block From TimeFrom , TimeTo 
+    this.ClinicScheduleDayList[DayId][Index].TimeFrom = this.ClinicScheduleDayList[DayId][Index].TimeFrom.substring(0,5);
+    this.ClinicScheduleDayList[DayId][Index].TimeTo = this.ClinicScheduleDayList[DayId][Index].TimeTo.substring(0,5);
+
+    console.log("update : ",this.ClinicScheduleDayList[DayId][Index])
+
+     // Update ClinicScheduleDay 
+     this.UpdateDoctorClinicSchedual(this.ClinicScheduleDayList[DayId][Index]);
+
+  }
+  //#endregion
+
+  //#region Add New Period =>  Periods Exist On Day
+  AddNewPeriod(DayId:number){
+
+    // Check If Empty Period Exist 
+    let EmptyPeriod : ClinicScheduleDay | undefined = this.ClinicScheduleDayList[DayId].find(item=>item.SchedualId == -1);
+    
+    // To Prevent Repetition Empty Period
+    if( typeof(EmptyPeriod) == 'undefined' ) {
+
+        // Create Empty Period
+        let NewPeriod = {
+          DayName: '',
+          SchedualId:-1,
+          DayId:DayId ,
+          TimeFrom: '',
+          TimeTo: '',
+          Fees: 0,
+          DurationMedicalExaminationId: 1,
+          Inactive:false
+        } as ClinicScheduleDay;
+
+        // Push this.Empty period Into List
+        this.ClinicScheduleDayList[DayId].push(NewPeriod);
+        document.getElementById('DisplayNewPeriod'+DayId)?.scrollIntoView(); 
+        console.log("true"); 
+    }
   }
   //#endregion
 
   //#region Reset Period
   ResetPeriod(DayId:number,Index:number,SchedualId:number){
-      this.GetClinicSchedualByClinicDayIdForOneDay('en',41,DayId ,SchedualId ,Index);     
+
+      this.GetClinicSchedualByClinicDayIdForOneDay('en',41,DayId ,SchedualId ,Index); 
+      this.GetDurationMedicalExamination('en');
+      
   }
   //#endregion
+
+  //#region Flag Active Method
+  FlagActive(Index:number,DayId:number,ClinicScheduleDay:ClinicScheduleDay )
+  {
+
+     // Switch ClinicScheduleDay Inactive
+     if(ClinicScheduleDay.Inactive == true){
+
+      ClinicScheduleDay.Inactive = false; 
+      // To Add New Period => Set Inactive false
+      this.ClinicScheduleDayList[DayId][Index].Inactive = false;
+
+      }
+      else{
+
+        ClinicScheduleDay.Inactive = true;
+        // To Add New Period => Set Inactive false
+        this.ClinicScheduleDayList[DayId][Index].Inactive = true; 
+
+      }
+
+      // Remove Seconds Block From TimeFrom , TimeTo 
+      ClinicScheduleDay.TimeFrom = ClinicScheduleDay.TimeFrom.substring(0,5);
+      ClinicScheduleDay.TimeTo = ClinicScheduleDay.TimeTo.substring(0,5);
+
+
+      // Check If Period Will Add At First Time => Set Inactive Only Without Send Request Update
+      if(ClinicScheduleDay.SchedualId != -1)
+        {
+            // Update ClinicScheduleDay Inactive
+            this.UpdateDoctorClinicSchedual(ClinicScheduleDay);
+        }
+     
+  }
+  //#endregion
+
+
+
 
 }

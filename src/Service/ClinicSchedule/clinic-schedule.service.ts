@@ -50,7 +50,12 @@ export class ClinicScheduleService {
     //#region CreateDoctorClinicSchedual
     CreateDoctorClinicSchedual(CreateClinicSchedule:CreateClinicSchedule):Observable<GeneralResponse<null>>{
       return this.http.post<GeneralResponse<null>>(`${environment.URL}${this.culture}/DoctorClinic/CreateDoctorClinicSchedual`,CreateClinicSchedule,this.httpOptions);
+    }
+    //#endregion
 
+    //#region Update Doctor Clinic Schedual
+    UpdateDoctorClinicSchedual(CreateClinicSchedule:ClinicScheduleDay):Observable<GeneralResponse<null>>{
+      return this.http.post<GeneralResponse<null>>(`${environment.URL}${this.culture}/DoctorClinic/UpdateDoctorClinicSchedual`,CreateClinicSchedule,this.httpOptions);
     }
     //#endregion
 
