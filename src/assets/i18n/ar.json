@@ -43,7 +43,12 @@
           "option":"الإختيارات",
           "settings":"الإعدادات",
           "Help":"مساعدة",
-          "Logout":"خروج"
+          "Logout":"خروج",
+          "Dashboard":"لوحة التحكم",
+          "Clinics":"العيادات",
+          "Appointments":"المواعيد",
+          "Services":"الخدمات",
+          "Profile":"حسابى"
         },
         "DoctorInfo":{
           "FirstNameAr":"First Name",

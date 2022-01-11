@@ -30,6 +30,11 @@ import { GoogleMapsComponent } from './Shared/google-maps/google-maps.component'
 import { AgmCoreModule } from '@agm/core';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HttpInterceptorInterceptor } from 'src/Interceptor/http-interceptor.interceptor';
+import { HomeVisitComponent } from './Components/Service/home-visit/home-visit.component';
+import { VideoCallComponent } from './Components/Service/video-call/video-call.component';
+import { CallComponent } from './Components/Service/call/call.component';
+import { ChatComponent } from './Components/Service/chat/chat.component';
+import { MainServiceComponent } from './Components/Service/main-service.component';
 
 
 
@@ -61,6 +66,11 @@ export function CreateTranslateLoader(http: HttpClient) {
     ClinicSchedualComponent,
     ClinicSidebarComponent,
     GoogleMapsComponent,
+    HomeVisitComponent,
+    VideoCallComponent,
+    CallComponent,
+    ChatComponent,
+    MainServiceComponent,
   ],
   imports: [
     HttpClientModule,

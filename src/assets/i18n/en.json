@@ -47,7 +47,12 @@
           "option":"OPTIONS",
           "settings":"Settings",
           "Help":"Help",
-          "Logout":"Logout"
+          "Logout":"Logout",
+          "Dashboard":"Dashboard",
+          "Clinics":"Clinics",
+          "Appointments":"Appointments",
+          "Services":"Services",
+          "Profile":"Profile"
         },
         "DoctorInfo":{
           "FirstNameAr":"الأسم الأول",

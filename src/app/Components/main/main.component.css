@@ -25,7 +25,7 @@
 .sidebar-item
 {
     width: 80%;
-    height: 90%;
+    /* height: 90%; */
     background-color: #f3f3f3;
     margin-left: 10%;
     margin-right: 10%;
@@ -71,6 +71,7 @@ ul
 
 ul li
 {
+    padding-top:20px ;
     padding-bottom:20px ;
 }
 ul li span
@@ -80,7 +81,7 @@ ul li span
 
 .OnClick-Style
 {
-    border-inline-start: 2px solid #262D70;
+    /* border-inline-start: 2px solid #262D70; */
     color: #262D70;
 }
 .var-component
@@ -146,6 +147,7 @@ ul li span
 .menu-sidebar
 {
     height: 50%;
+    margin-bottom: 100px;
     /* border-bottom: 1px solid rgba(38, 44, 58, 0.2); */
 }
 

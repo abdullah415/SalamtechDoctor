@@ -1,4 +1,3 @@
-import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -12,11 +11,11 @@ import { ClinicScheduleService } from 'src/Service/ClinicSchedule/clinic-schedul
 import { LookupsService } from 'src/Service/Lockups/lookups.service';
 
 @Component({
-  selector: 'app-clinic-schedual',
-  templateUrl: './clinic-schedual.component.html',
-  styleUrls: ['./clinic-schedual.component.css']
+  selector: 'app-home-visit',
+  templateUrl: './home-visit.component.html',
+  styleUrls: ['./home-visit.component.css']
 })
-export class ClinicSchedualComponent implements OnInit {
+export class HomeVisitComponent implements OnInit {
 
   //#region Declare Variables
   PeriodForm : FormGroup ;
@@ -49,9 +48,10 @@ export class ClinicSchedualComponent implements OnInit {
     //#region Init Values
 
     //#region Change Active Component In Sidebar 
-    document.getElementById('sidebarinfo')?.classList.add('OnClick-Style');
-    document.getElementById('sidebargalary')?.classList.add('OnClick-Style');
-    document.getElementById('sidebarschedule')?.classList.add('OnClick-Style');
+    document.getElementById('Services')?.classList.add('OnClick-Style');
+    document.getElementById('HomeVisits')?.classList.add('Active-Block');
+    // document.getElementById('sidebargalary')?.classList.add('OnClick-Style');
+    // document.getElementById('sidebarschedule')?.classList.add('OnClick-Style');
     //#endregion
 
     this.DayList=[];
@@ -65,7 +65,8 @@ export class ClinicSchedualComponent implements OnInit {
         DurationMedicalExaminationId:-1,
         Inactive                    :false
       }
-      this.ClinicId = this.route.snapshot.paramMap.get('ClinicId');
+      this.ClinicId = 41;
+      
 
 
     //#endregion
@@ -73,8 +74,10 @@ export class ClinicSchedualComponent implements OnInit {
     //#region call Methods
     this.GetDurationMedicalExamination('en');
     // this.GetClinicSchedualByClinicId('en', this.ClinicId);
-   let d = this.route.snapshot.data['ClinicSchedule'];
-   this.ClinicSchedule = d.Data;
+  //  let d = this.route.snapshot.data['ClinicSchedule'];
+  //  this.ClinicSchedule = d.Data;
+
+  this.GetClinicSchedualByClinicId('en',41);
 
     for (let index = 1; index <= 7; index++) {
       this.GetClinicSchedualByClinicDayId('en', this.ClinicId,index);

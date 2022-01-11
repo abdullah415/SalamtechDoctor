@@ -11,6 +11,7 @@ import { ClinicInfoModel } from './../../../../Models/clinicInfoModel';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { IdNameList } from 'src/Models/id-name-list';
 import { Router } from '@angular/router';
+import { ClinicId } from 'src/Models/clinic-id';
 
 @Component({
   selector: 'app-clinic-info',
@@ -22,30 +23,6 @@ export class ClinicInfoComponent implements OnInit {
   address:string
   Cities: City[];
   Areas: Area[];
-
-  openGoogelMapsModal() {
-    const modalRef = this.modalService.open(GoogleMapsComponent, {
-      scrollable: true,modalDialogClass:"modal-xl modal-dialog-centered modal-dialog-scrollable"
-      // windowClass: 'myCustomModalClass',
-      // keyboard: false,
-      // backdrop: 'static'
-    });
-    let data = {
-      prop1: 'Some Data',
-      prop2: 'From Parent Component',
-      prop3: 'This Can be anything',
-    };
-
-    modalRef.componentInstance.fromParent = data;
-    modalRef.result.then(
-      (result) => {
-        this.address = result.address;
-      },
-      (reason) => {}
-    );
-  }
-
-
   ClinicInfoForm: FormGroup;
   ClinicInfoModel: ClinicInfoModel;
   CountryId:any
@@ -132,6 +109,30 @@ export class ClinicInfoComponent implements OnInit {
 
   }
 
+
+  openGoogelMapsModal() {
+    const modalRef = this.modalService.open(GoogleMapsComponent, {
+      scrollable: true,modalDialogClass:"modal-xl modal-dialog-centered modal-dialog-scrollable"
+      // windowClass: 'myCustomModalClass',
+      // keyboard: false,
+      // backdrop: 'static'
+    });
+    let data = {
+      prop1: 'Some Data',
+      prop2: 'From Parent Component',
+      prop3: 'This Can be anything',
+    };
+
+    modalRef.componentInstance.fromParent = data;
+    modalRef.result.then(
+      (result) => {
+        this.address = result.address;
+      },
+      (reason) => {}
+    );
+  }
+
+
   //#region review AND File FormData image from input file
   public imagePath: any;
   imgURL: any = '../../../../assets/img/DoctorImg/Rectangle 2.png';
@@ -214,12 +215,17 @@ export class ClinicInfoComponent implements OnInit {
   }
   //#endregion
 
-  //#region Create
+  //#region Create Clinic
   CreateClinic(lang:string,ClinicForm:FormData){
     this.ClinicService.CreateClinic(lang,ClinicForm).subscribe((res)=>{
-     this.Router.navigateByUrl("clinic/gallary")
+      // console.log("ClinicId : ",this.ClinicId.ClinicId)
+      // this.ClinicService.ClinicID = res.Data.ClinicId;
+    //  this.Router.navigateByUrl("clinic/gallary")/ClinicId
+     this.Router.navigate(['clinic/gallary/',res.Data.ClinicId]);
     },
-    (err)=>{console.log(err)})
+    (err)=>{
+      console.log(err)
+    })
   }
   //#endregion
 
@@ -254,11 +260,10 @@ export class ClinicInfoComponent implements OnInit {
 
   }
 
-
-
   onItemSelect(item: any) {
     // console.log(this.selectedItems)
   }
+
   onSelectAll(items: any) {
     // console.log(items);
   }
