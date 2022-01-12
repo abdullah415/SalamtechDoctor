@@ -1,17 +1,14 @@
 .Schedule {
-    width: 99px;
-    height: 24px;
-    flex-grow: 0;
-    margin: 31.2px 158px 30.9px 7px;
     font-size: 22px;
     font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.09;
-    letter-spacing: normal;
-    text-align: left;
     color: #262d70;
     user-select: none;
+  }
+  .ScheduleBlockTitle
+  {
+    padding-left: 80px;
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
 
   .Schedule-block
@@ -190,4 +187,9 @@ hr
 {
   font-size: 8px;
   margin-left: 8px;
+}
+
+.padding-right-50
+{
+    padding-right: 50px;
 }

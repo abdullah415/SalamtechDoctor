@@ -2,6 +2,7 @@
 {
     border-inline-start: 2px solid #262D70;
     color: #262D70;
+    font-weight: 700;
 }
 
 .shared-menu-bar
@@ -10,7 +11,7 @@
     font-size: 16px;
     color: #262d70;
     font-weight: 500;
-    padding: 20px;
+    user-select: none;
 }
 
 .path-row
@@ -25,13 +26,23 @@
 .Shared-Component
 {
     background-color:white;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 50px;
-    border-radius: 10px 10px  0px  0px;
+    border-radius: 10px 10px;
 }
 
 .Active-Block
 {
     background-color: #262d70;
     color: whitesmoke;
+    border-radius: 10px;
+}
+.changeCursor
+{
+    cursor: pointer;
+}
+
+.padding-block
+{
+    padding: 15px;
 }

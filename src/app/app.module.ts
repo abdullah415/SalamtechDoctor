@@ -35,6 +35,8 @@ import { VideoCallComponent } from './Components/Service/video-call/video-call.c
 import { CallComponent } from './Components/Service/call/call.component';
 import { ChatComponent } from './Components/Service/chat/chat.component';
 import { MainServiceComponent } from './Components/Service/main-service.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -90,10 +92,10 @@ export function CreateTranslateLoader(http: HttpClient) {
           useFactory: CreateTranslateLoader,
           deps: [HttpClient]
       },
-      defaultLanguage:'en'
-
-  })
-],
+      defaultLanguage:'en'}),
+      BrowserAnimationsModule,
+      ToastrModule.forRoot(), // ToastrModule added
+    ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:HttpInterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })

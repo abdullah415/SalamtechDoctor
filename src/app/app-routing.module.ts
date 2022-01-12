@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DoctorHomeVisitScheduleResolver } from 'src/Resolver/doctor-home-visit-schedule.resolver';
+import { DoctorVideoCallScheduleResolver } from 'src/Resolver/doctor-video-call-schedule.resolver';
 import { GalaryResolver } from 'src/Resolver/galary.resolver';
 import { ScheduleResolver } from 'src/Resolver/schedule.resolver';
 import { ClinicGalaryComponent } from './Components/clinic/clinic-galary/clinic-galary.component';
@@ -22,7 +24,7 @@ import { SignupComponent } from './Components/Signup/signup/signup.component';
 
 const routes: Routes = [
   
-  // {path:'',component:MainComponent },
+  {path:'',component:MainComponent },
   {path:'signup',component:SignUpMainComponent ,children:[
       {path:'',component:SignupComponent },
       {path:'OTP',component:OtpComponent },
@@ -41,12 +43,13 @@ const routes: Routes = [
   { path:':main',component:MainComponent ,
     children:[
         {path:'service',component:MainServiceComponent,children:[
-          {path:'',component:HomeVisitComponent} ,
-          {path:'videocall',component:VideoCallComponent} ,
-          {path:'call',component:CallComponent },
-          {path:'chat',component:ChatComponent },
+          {path:'',component:HomeVisitComponent , resolve:{DoctorHomeVisitSchedual:DoctorHomeVisitScheduleResolver}} ,
+          {path:'homevisit',component:HomeVisitComponent , resolve:{DoctorHomeVisitSchedual:DoctorHomeVisitScheduleResolver}} ,
+          {path:'videocall',component:VideoCallComponent , resolve:{DoctorVideoCallSchedual:DoctorVideoCallScheduleResolver}} ,
+          {path:'call',component:CallComponent , resolve:{DoctorCallSchedual:DoctorVideoCallScheduleResolver}},
+          {path:'chat',component:ChatComponent, resolve:{DoctorChatSchedual:DoctorVideoCallScheduleResolver} },
         ] },
-       
+        
     ] 
   },
  

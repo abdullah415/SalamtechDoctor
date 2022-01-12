@@ -28,7 +28,6 @@ export class ClinicScheduleService {
         })};
     //#endregion
     
-
     //#region GetDuration Medical Examination
     GetDurationMedicalExamination(lang:string):Observable<GeneralResponse<Duration>>{
       return this.http.get<GeneralResponse<Duration>>(`${environment.URL}${this.culture}/LookUp/GetDurationMedicalExamination`,this.httpOptions);
@@ -47,7 +46,7 @@ export class ClinicScheduleService {
     }
     //#endregion
 
-    //#region CreateDoctorClinicSchedual
+    //#region Create Doctor Clinic Schedual
     CreateDoctorClinicSchedual(CreateClinicSchedule:CreateClinicSchedule):Observable<GeneralResponse<null>>{
       return this.http.post<GeneralResponse<null>>(`${environment.URL}${this.culture}/DoctorClinic/CreateDoctorClinicSchedual`,CreateClinicSchedule,this.httpOptions);
     }

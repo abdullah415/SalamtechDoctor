@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClinicSchedule } from 'src/Models/clinic-schedule';
 import { ClinicScheduleDay } from 'src/Models/clinic-schedule-day';
 import { CreateClinicSchedule } from 'src/Models/create-clinic-schedule';
 import { Duration } from 'src/Models/duration';
 import { GeneralResponse } from 'src/Models/general-response';
 import { IdNameList } from 'src/Models/id-name-list';
-import { ClinicScheduleService } from 'src/Service/ClinicSchedule/clinic-schedule.service';
+import { DoctorService } from 'src/Service/DoctorService/doctor-service.service';
 import { LookupsService } from 'src/Service/Lockups/lookups.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-home-visit',
@@ -36,22 +38,24 @@ export class HomeVisitComponent implements OnInit {
   //#endregion
 
   //#region constructor
-  constructor( private ClinicScheduleService:ClinicScheduleService ,
+  constructor( private DoctorServiceService:DoctorService ,
                private LookupsService:LookupsService ,
                private fb:FormBuilder,
-               private route:ActivatedRoute ) { }
+               private route:ActivatedRoute,
+               private router:Router,
+               private toastr:ToastrService ) { }
   //#endregion
 
   //#region OnInit Method
   ngOnInit(): void {
 
     //#region Init Values
-
+    this.DoctorServiceService.ActiveComponent = "Home Visits";
     //#region Change Active Component In Sidebar 
-    document.getElementById('Services')?.classList.add('OnClick-Style');
+    document.getElementById('VideoCall')?.classList.remove('Active-Block');
+    document.getElementById('Call')?.classList.remove('Active-Block');
+    document.getElementById('Chat')?.classList.remove('Active-Block');
     document.getElementById('HomeVisits')?.classList.add('Active-Block');
-    // document.getElementById('sidebargalary')?.classList.add('OnClick-Style');
-    // document.getElementById('sidebarschedule')?.classList.add('OnClick-Style');
     //#endregion
 
     this.DayList=[];
@@ -73,14 +77,12 @@ export class HomeVisitComponent implements OnInit {
 
     //#region call Methods
     this.GetDurationMedicalExamination('en');
-    // this.GetClinicSchedualByClinicId('en', this.ClinicId);
-  //  let d = this.route.snapshot.data['ClinicSchedule'];
-  //  this.ClinicSchedule = d.Data;
 
-  this.GetClinicSchedualByClinicId('en',41);
+    let d = this.route.snapshot.data['DoctorHomeVisitSchedual'];
+    this.ClinicSchedule = d.Data;
 
     for (let index = 1; index <= 7; index++) {
-      this.GetClinicSchedualByClinicDayId('en', this.ClinicId,index);
+      this.GetDoctorHomeVisitSchedualByDayId(index);
     }
 
     //#endregion
@@ -118,7 +120,7 @@ export class HomeVisitComponent implements OnInit {
       //#region Get Duration Medical Examination
       GetDurationMedicalExamination(lang:string)
       {
-          this.ClinicScheduleService.GetDurationMedicalExamination(lang).subscribe(
+          this.DoctorServiceService.GetDurationMedicalExamination(lang).subscribe(
             (response)=>{
               this.DurationMedicalExamination = response.Data ;
 
@@ -134,10 +136,10 @@ export class HomeVisitComponent implements OnInit {
       }
       //#endregion
 
-      //#region Get Clinic Schedual By Clinic Id
-      GetClinicSchedualByClinicId(lang:string,ID:number)
+      //#region Get Doctor Home Visit Schedual
+      GetDoctorHomeVisitSchedual()
       {
-        this.ClinicScheduleService.GetClinicSchedualByClinicId(lang,ID).subscribe(
+        this.DoctorServiceService.GetDoctorHomeVisitSchedual().subscribe(
           (response)=>{
             this.ClinicSchedule = response.Data;
             console.log("ClinicSchedule : ", this.ClinicSchedule)
@@ -149,16 +151,11 @@ export class HomeVisitComponent implements OnInit {
       }
       //#endregion
 
-      //#region Get Clinic Schedual By Clinic Day Id
-      GetClinicSchedualByClinicDayId(lang:string,ClinicId:number,DayId:number){
-        this.ClinicScheduleService.GetClinicSchedualByClinicDayId(lang,ClinicId,DayId).subscribe(
+      //#region Get Doctor Home Visit Schedual By DayId
+      GetDoctorHomeVisitSchedualByDayId(DayId:number){
+        this.DoctorServiceService.GetDoctorHomeVisitSchedualByDayId(DayId).subscribe(
           (response)=>{
             this.ClinicScheduleDayList[DayId] = response.Data;
-            // this.ClinicScheduleDayListOriginal[DayId] = response.Data;
-            // console.log(this.ClinicScheduleDayList[DayId])
-            // this.ClinicScheduleDayList[DayId].forEach(element => {
-            //   console.log(element.SchedualId)
-            // });
           },
           (err)=>{
             console.log(err)
@@ -169,7 +166,7 @@ export class HomeVisitComponent implements OnInit {
 
       //#region Get Clinic Schedual By Clinic Day Id For One Day => To Reset
       GetClinicSchedualByClinicDayIdForOneDay(lang:string,ClinicId:number,DayId:number ,SchedualId:number ,Index:number){
-        this.ClinicScheduleService.GetClinicSchedualByClinicDayId(lang,ClinicId,DayId).subscribe(
+        this.DoctorServiceService.GetDoctorHomeVisitSchedualByDayId(DayId).subscribe(
           (response)=>{
             this.PeriodsDay = response.Data;
 
@@ -182,7 +179,6 @@ export class HomeVisitComponent implements OnInit {
                   this.ClinicScheduleDayList[DayId][Index].Fees = element.Fees; 
                   this.ClinicScheduleDayList[DayId][Index].Inactive = element.Inactive; 
                   this.ClinicScheduleDayList[DayId][Index].DurationMedicalExaminationId = element.DurationMedicalExaminationId; 
-                  // console.log( this.ClinicScheduleDayList[DayId][Index]);
                 }
             });
 
@@ -195,14 +191,15 @@ export class HomeVisitComponent implements OnInit {
       //#endregion
 
       //#region Create Clinic Schedule
-      CreateDoctorClinicSchedual(NewPeriod:CreateClinicSchedule){
-        this.ClinicScheduleService.CreateDoctorClinicSchedual(NewPeriod).subscribe(
+      CreateDoctorHomeVisitSchedual(NewPeriod:CreateClinicSchedule){
+        this.DoctorServiceService.CreateDoctorHomeVisitSchedual(NewPeriod).subscribe(
           (respose)=>{
-            // console.log(respose)
-            this.GetClinicSchedualByClinicDayId('en',NewPeriod.ClinicId,NewPeriod.DayId);
+            this.GetDoctorHomeVisitSchedualByDayId(NewPeriod.DayId);
+            this. toastr.success(respose.Message);              
           },
           (err)=>{
-            console.log(err)
+            console.log(err.Message);
+            this.toastr.error(err.Message, 'Errors...!');
           }
         )
       }
@@ -210,7 +207,7 @@ export class HomeVisitComponent implements OnInit {
 
       //#region Update Doctor Clinic Schedual
         UpdateDoctorClinicSchedual(NewPeriod:ClinicScheduleDay){
-          this.ClinicScheduleService.UpdateDoctorClinicSchedual(NewPeriod).subscribe(
+          this.DoctorServiceService.UpdateDoctorClinicSchedual(NewPeriod).subscribe(
             (respose)=>{
               // console.log(respose)
             },
@@ -278,7 +275,8 @@ export class HomeVisitComponent implements OnInit {
     this.CreateClinicSchedule.DurationMedicalExaminationId  = +this.PeriodForm.controls.DurationExamination.value;
     this.CreateClinicSchedule.Inactive                      = Active;
     
-    this.CreateDoctorClinicSchedual(this.CreateClinicSchedule)
+    this.CreateDoctorHomeVisitSchedual(this.CreateClinicSchedule)
+    this.reloadCurrentRoute();
 
   }
   //#endregion
@@ -306,7 +304,7 @@ export class HomeVisitComponent implements OnInit {
 
      if(NewPeriod.TimeFrom !="" && NewPeriod.TimeTo !="" && NewPeriod.Fees !=0 ){
         // Insert ClinicScheduleDay 
-        this.CreateDoctorClinicSchedual(NewPeriod);
+        this.CreateDoctorHomeVisitSchedual(NewPeriod);
       
      }
      
@@ -401,5 +399,12 @@ export class HomeVisitComponent implements OnInit {
      
   }
   //#endregion
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+}
 
 }
