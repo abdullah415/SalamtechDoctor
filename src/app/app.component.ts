@@ -1,5 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,HostListener,OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { Coordinates } from 'src/Models/Coordinates';
 import { GoogleMapsComponent } from './Shared/google-maps/google-maps.component';
 
@@ -10,11 +11,28 @@ import { GoogleMapsComponent } from './Shared/google-maps/google-maps.component'
 })
 export class AppComponent {
 
+  //online , Offline Events
+  //#region HostListeners
+  @HostListener('window:online',['$event'])
+  IsOnline(event:any){ this.toastr.success('The internet has been successfully restored ' , 'Success'); }
+  
+  @HostListener('window:offline',['$event'])
+  IsOffline(event:any){this.toastr.error('Please make sure you have internet ' , 'No Internet'); }
+  //#endregion
+
   title = 'SalamtechDoctor';
 
-  ngOnInit(){
-    // localStorage.setItem("lang","en")
-  }
+//#region Constructor
+constructor(private toastr:ToastrService){
+
+}
+//#endregion
+
+//#region On Init Method
+ngOnInit(){
+}
+//#endregion
+
 
 }
 

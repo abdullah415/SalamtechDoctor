@@ -7,7 +7,7 @@ import { NavComponent } from './Shared/nav/nav.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './Components/login/login.component';
 import { SideBarComponent } from './Components/Signup/side-bar/side-bar.component';
 import { SignupComponent } from './Components/Signup/signup/signup.component';
@@ -29,7 +29,6 @@ import { ClinicSidebarComponent } from './Components/clinic/clinic-sidebar/clini
 import { GoogleMapsComponent } from './Shared/google-maps/google-maps.component';
 import { AgmCoreModule } from '@agm/core';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { HttpInterceptorInterceptor } from 'src/Interceptor/http-interceptor.interceptor';
 import { HomeVisitComponent } from './Components/Service/home-visit/home-visit.component';
 import { VideoCallComponent } from './Components/Service/video-call/video-call.component';
 import { CallComponent } from './Components/Service/call/call.component';
@@ -37,6 +36,7 @@ import { ChatComponent } from './Components/Service/chat/chat.component';
 import { MainServiceComponent } from './Components/Service/main-service.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { InterceptorsProvider } from 'src/Interceptor/interceptors';
 
 
 
@@ -96,7 +96,8 @@ export function CreateTranslateLoader(http: HttpClient) {
       BrowserAnimationsModule,
       ToastrModule.forRoot(), // ToastrModule added
     ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:HttpInterceptorInterceptor,multi:true}],
+    //
+  providers: [InterceptorsProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,15 +11,13 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class HttpInterceptorInterceptor implements HttpInterceptor {
-  constructor(private router: Router) {}
+  constructor(private router: Router,private toastr:ToastrService) {}
 
-  intercept(
-    request: HttpRequest<unknown>,
-    next: HttpHandler
-  ): Observable<HttpEvent<unknown>> {
+  intercept( request: HttpRequest<any>, next: HttpHandler ): Observable<HttpEvent<any>> {
     // const authReq = request.clone({ headers: request.headers.set("Authorization", localStorage.getItem("Authorization") as string) });
 
     return next.handle(request).pipe(
@@ -30,7 +28,9 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
           this.router.navigateByUrl('')
           
           message = `Error: ${err.error.message}`;
-        } else {
+        } 
+
+        else {
           // handle server-side error
           message = `Error Status: ${err.status}\nMessage: ${err.message}`;
         }

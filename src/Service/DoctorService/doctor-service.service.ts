@@ -8,6 +8,7 @@ import { Duration } from 'src/Models/duration';
 import { GeneralResponse } from 'src/Models/general-response';
 import { CreateClinicSchedule } from 'src/Models/create-clinic-schedule';
 import { GeneralResponseSingleObject } from 'src/Models/general-response-single-object';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +43,10 @@ export class DoctorService {
 
         //#region Create Doctor Home Visit Schedual
         CreateDoctorHomeVisitSchedual(CreateClinicSchedule:CreateClinicSchedule):Observable<GeneralResponseSingleObject<null>>{
-          return this.http.post<GeneralResponseSingleObject<null>>(`${environment.URL}${this.culture}/DoctorService/CreateDoctorHomeVisitSchedual`,CreateClinicSchedule,this.httpOptions);
+          return this.http.post<GeneralResponseSingleObject<null>>( `${environment.URL}${this.culture}/DoctorService/CreateDoctorHomeVisitSchedual`,
+                                                                     CreateClinicSchedule                                                          ,
+                                                                     this.httpOptions
+                                                                  )
         }
         //#endregion
 

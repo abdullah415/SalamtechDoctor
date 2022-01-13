@@ -158,7 +158,7 @@ export class HomeVisitComponent implements OnInit {
             this.ClinicScheduleDayList[DayId] = response.Data;
           },
           (err)=>{
-            console.log(err)
+            // console.log(err)
           }
         )
       }
@@ -192,15 +192,15 @@ export class HomeVisitComponent implements OnInit {
 
       //#region Create Clinic Schedule
       CreateDoctorHomeVisitSchedual(NewPeriod:CreateClinicSchedule){
-        this.DoctorServiceService.CreateDoctorHomeVisitSchedual(NewPeriod).subscribe(
-          (respose)=>{
+       this.DoctorServiceService.CreateDoctorHomeVisitSchedual(NewPeriod).subscribe(
+          (response)=>{
             this.GetDoctorHomeVisitSchedualByDayId(NewPeriod.DayId);
-            this. toastr.success(respose.Message);              
+            this. toastr.success("Message : ",response.Message);
           },
           (err)=>{
-            console.log(err.Message);
-            this.toastr.error(err.Message, 'Errors...!');
-          }
+            // console.log("err : ",err.error.Message)              
+            // this.toastr.error(err.error.Message, 'Errors...!');
+          },
         )
       }
       //#endregion
@@ -209,7 +209,8 @@ export class HomeVisitComponent implements OnInit {
         UpdateDoctorClinicSchedual(NewPeriod:ClinicScheduleDay){
           this.DoctorServiceService.UpdateDoctorClinicSchedual(NewPeriod).subscribe(
             (respose)=>{
-              // console.log(respose)
+              console.log(respose)
+              this.toastr.success('Updated Successfully' , 'Update Operation');
             },
             (err)=>{
               console.log(err)
