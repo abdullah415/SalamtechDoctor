@@ -7,6 +7,7 @@ import { ScheduleResolver } from 'src/Resolver/schedule.resolver';
 import { ClinicGalaryComponent } from './Components/clinic/clinic-galary/clinic-galary.component';
 import { ClinicInfoMainComponent } from './Components/clinic/clinic-info-main.component';
 import { ClinicInfoComponent } from './Components/clinic/clinic-info/clinic-info.component';
+import { ClinicManagerComponent } from './Components/clinic-manager/clinic-manager.component';
 import { ClinicSchedualComponent } from './Components/clinic/clinic-schedual/clinic-schedual.component';
 import { MainComponent } from './Components/main/main.component';
 import { CallComponent } from './Components/Service/call/call.component';
@@ -21,6 +22,7 @@ import { DocumentsComponent } from './Components/Signup/documents/documents.comp
 import { OtpComponent } from './Components/Signup/otp/otp.component';
 import { SignUpMainComponent } from './Components/Signup/sign-up-main.component';
 import { SignupComponent } from './Components/Signup/signup/signup.component';
+import { MainClinicComponent } from './Components/clinic-manager/main/main-clinic.component';
 
 const routes: Routes = [
   
@@ -40,7 +42,7 @@ const routes: Routes = [
         {path:'schedule/:ClinicId',component:ClinicSchedualComponent , resolve:{ClinicSchedule:ScheduleResolver}},
       ] 
   },
-  { path:':main',component:MainComponent ,
+  { path:'main',component:MainComponent ,
     children:[
         {path:'service',component:MainServiceComponent,children:[
           {path:'',component:HomeVisitComponent , resolve:{DoctorHomeVisitSchedual:DoctorHomeVisitScheduleResolver}} ,
@@ -48,6 +50,11 @@ const routes: Routes = [
           {path:'videocall',component:VideoCallComponent , resolve:{DoctorVideoCallSchedual:DoctorVideoCallScheduleResolver}} ,
           {path:'call',component:CallComponent , resolve:{DoctorCallSchedual:DoctorVideoCallScheduleResolver}},
           {path:'chat',component:ChatComponent, resolve:{DoctorChatSchedual:DoctorVideoCallScheduleResolver} },
+        ] },
+
+        {path:'clinic',component:ClinicManagerComponent,children:[
+          {path:'',component:MainClinicComponent} ,
+          {path:'clinicinfo',component:ClinicInfoComponent },
         ] },
         
     ] 

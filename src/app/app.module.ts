@@ -37,6 +37,8 @@ import { MainServiceComponent } from './Components/Service/main-service.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { InterceptorsProvider } from 'src/Interceptor/interceptors';
+import { ClinicManagerComponent } from './Components/clinic-manager/clinic-manager.component';
+import { MainClinicComponent } from './Components/clinic-manager/main/main-clinic.component';
 
 
 
@@ -73,6 +75,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     CallComponent,
     ChatComponent,
     MainServiceComponent,
+    ClinicManagerComponent,
+    MainClinicComponent,
   ],
   imports: [
     HttpClientModule,

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  URL:"https://salamtech.azurewebsites.net/api/"
+  URL:"https://salamtech.azurewebsites.net/api/",
+  ImagesURL:"https://salamtech.azurewebsites.net"
 };
 
 /*
