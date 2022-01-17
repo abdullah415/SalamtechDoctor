@@ -94,14 +94,8 @@ ul li span
     background-color: #f9f9f9;
     /* padding-top: 35px; */
 }
-.container-outlet
-{
-    height: 100%;
-}
-.row-outlet
-{
-    height: 90%;
-}
+
+
 .row-terms
 {
     height: 10%;
@@ -151,8 +145,8 @@ ul li span
 
 .menu-sidebar
 {
-    height: 50%;
-    margin-bottom: 100px;
+    /* height: 50%; */
+    /* margin-bottom: 100px; */
     /* border-bottom: 1px solid rgba(38, 44, 58, 0.2); */
 }
 

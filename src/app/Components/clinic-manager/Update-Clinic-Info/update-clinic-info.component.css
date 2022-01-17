@@ -149,6 +149,7 @@
     {
         /* height:70%; */
         /* background-color: green; */
+        margin-bottom: 1px;
     }
 
     .ChangeProfilePhoto-block
@@ -164,15 +165,16 @@
 
     .img-block .img-col-block img
     {
-       margin: 20px 0px;
-       width: 150px;
-       height: 150px;
+       width: 200px;
+       height: 200px;
+       border-radius: 10px 10px 0px 0px;
     }
 
   .changePhoto-btn
   {
+      width:200px;
       padding: 15px 25px;
-      border-radius: 5px;
+      border-radius:0px 0px 10px 10px;
       border: 1px solid #262d70;
       background-color: #262d70;
       color: white;
@@ -193,12 +195,17 @@
   }
 
   .locationButton{
+    width: 100%;
     background-color: #00d2ca;
     color: #fff;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-weight: 500;
+    margin-top: 3px;
   }
 
 
-.update-Clinic-info-style
+.update-Clinic-style
 {
     background-color: white;
     padding: 35px;
