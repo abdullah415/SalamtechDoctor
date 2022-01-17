@@ -48,6 +48,7 @@ export class ClinicInfoComponent implements OnInit {
 
 
 
+
     //#region multiple select
     this.GetServices()
 
@@ -113,9 +114,6 @@ export class ClinicInfoComponent implements OnInit {
   openGoogelMapsModal() {
     const modalRef = this.modalService.open(GoogleMapsComponent, {
       scrollable: true,modalDialogClass:"modal-xl modal-dialog-centered modal-dialog-scrollable"
-      // windowClass: 'myCustomModalClass',
-      // keyboard: false,
-      // backdrop: 'static'
     });
     let data = {
       prop1: 'Some Data',
@@ -267,4 +265,5 @@ export class ClinicInfoComponent implements OnInit {
   onSelectAll(items: any) {
     // console.log(items);
   }
+  
 }

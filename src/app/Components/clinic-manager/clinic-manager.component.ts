@@ -52,7 +52,7 @@ export class ClinicManagerComponent implements OnInit {
   {
     this.ClinicMangeService.GetDoctorClinics().subscribe((response)=>{
       this.ClinicList = response.Data; 
-      console.log(response.Data[0].Logo)
+      console.log(response.Data)
     },
     (err)=>{
       console.log(err);

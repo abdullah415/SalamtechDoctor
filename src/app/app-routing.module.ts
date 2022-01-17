@@ -23,10 +23,14 @@ import { OtpComponent } from './Components/Signup/otp/otp.component';
 import { SignUpMainComponent } from './Components/Signup/sign-up-main.component';
 import { SignupComponent } from './Components/Signup/signup/signup.component';
 import { MainClinicComponent } from './Components/clinic-manager/main/main-clinic.component';
+import { UpdateClinicInfoComponent } from './Components/clinic-manager/Update-Clinic-Info/update-clinic-info.component';
+import { UpdateClinicGalaryComponent } from './Components/clinic-manager/Update-Clinic-Galary/update-clinic-galary.component';
+import { UpdateClinicScheduleComponent } from './Components/clinic-manager/Update-Clinic-Schedule/update-clinic-schedule.component';
 
 const routes: Routes = [
   
   {path:'',component:MainComponent },
+
   {path:'signup',component:SignUpMainComponent ,children:[
       {path:'',component:SignupComponent },
       {path:'OTP',component:OtpComponent },
@@ -35,6 +39,7 @@ const routes: Routes = [
       {path:'documents',component:DocumentsComponent },
       {path:'Congratulations',component:CongratulationsComponent },
   ] },
+
   { path:'clinic',component:ClinicInfoMainComponent ,
     children:[
         {path:'',component:ClinicInfoComponent },
@@ -42,8 +47,10 @@ const routes: Routes = [
         {path:'schedule/:ClinicId',component:ClinicSchedualComponent , resolve:{ClinicSchedule:ScheduleResolver}},
       ] 
   },
+
   { path:'main',component:MainComponent ,
     children:[
+
         {path:'service',component:MainServiceComponent,children:[
           {path:'',component:HomeVisitComponent , resolve:{DoctorHomeVisitSchedual:DoctorHomeVisitScheduleResolver}} ,
           {path:'homevisit',component:HomeVisitComponent , resolve:{DoctorHomeVisitSchedual:DoctorHomeVisitScheduleResolver}} ,
@@ -54,14 +61,14 @@ const routes: Routes = [
 
         {path:'clinic',component:ClinicManagerComponent,children:[
           {path:'',component:MainClinicComponent} ,
-          {path:'clinicinfo',component:ClinicInfoComponent },
+          {path:'updateclinic/:ID',component:UpdateClinicInfoComponent },
+          {path:'UpdateClinicGalary/:ClinicId',component:UpdateClinicGalaryComponent, resolve:{Galary:GalaryResolver} },
+          {path:'UpdateClinicSchedule/:ClinicId',component:UpdateClinicScheduleComponent , resolve:{ClinicSchedule:ScheduleResolver}},
         ] },
         
     ] 
   },
  
-
-
 ];
 
 @NgModule({

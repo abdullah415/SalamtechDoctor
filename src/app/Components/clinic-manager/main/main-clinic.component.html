@@ -15,12 +15,15 @@
 
 <!-- Exist Clinic Block -->
 <ng-template #elseBlock>
-    <div class="row">
-        <div class="col-12">
+    <div class="row ">
+        <div class="col-12" style="padding-left:0px;padding-bottom: 20px;">
             <div class="AddNewClinic-style">
+                <i class="fas fa-plus"></i>
                 Add New Clinic
             </div>
         </div>
+    </div>
+    <div class="row">
         <div class="col-12 Clinic-block">
             <div class="container">
                 <div class="row Clinic-table-header">
@@ -47,8 +50,9 @@
                        
                     </div>
                     <div class="col-2 d-flex justify-content-center">
-                        <i class="fas fa-map-marker-alt Icon-style" ></i> &nbsp;&nbsp;&nbsp;
-                        <i class="far fa-edit Icon-style" (click)="EditDoctorProfile(item.ClinicId)"></i>
+                        <i class="fas fa-map-marker-alt Icon-style map-icon" (click)="openGoogelMapsModal()" ></i>
+                         &nbsp;&nbsp;&nbsp;
+                        <i class="far fa-edit Icon-style"           (click)="EditDoctorProfile(item.ClinicId)"></i>
                     </div>
                 </div>
             </div>

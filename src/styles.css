@@ -12,6 +12,8 @@ html body{
   overflow-y: scroll;
 }
 
+html, body,.container, .sidebar-col {height:100%;}
+
 /*-------------------validations input start-------------------*/
 .ng-valid[required] , .ng-valid.required
 {

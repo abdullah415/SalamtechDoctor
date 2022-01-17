@@ -39,6 +39,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { InterceptorsProvider } from 'src/Interceptor/interceptors';
 import { ClinicManagerComponent } from './Components/clinic-manager/clinic-manager.component';
 import { MainClinicComponent } from './Components/clinic-manager/main/main-clinic.component';
+import { UpdateClinicInfoComponent } from './Components/clinic-manager/Update-Clinic-Info/update-clinic-info.component';
+import { UpdateClinicGalaryComponent } from './Components/clinic-manager/Update-Clinic-Galary/update-clinic-galary.component';
+import { UpdateClinicScheduleComponent } from './Components/clinic-manager/Update-Clinic-Schedule/update-clinic-schedule.component';
 
 
 
@@ -77,6 +80,9 @@ export function CreateTranslateLoader(http: HttpClient) {
     MainServiceComponent,
     ClinicManagerComponent,
     MainClinicComponent,
+    UpdateClinicInfoComponent,
+    UpdateClinicGalaryComponent,
+    UpdateClinicScheduleComponent,
   ],
   imports: [
     HttpClientModule,

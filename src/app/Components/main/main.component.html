@@ -1,10 +1,13 @@
-<div class="row main-sidebar">
-  <div class="col-0 col-md-2 sidebar-col" >
+<div class="row main-sidebar" >
+  
+    <div class="col-2 col-md-2   sidebar-col" >
 
-    <div class="sidebar-item">
-       <div class="logo">
+      <div class="sidebar-item">
+
+        <div class="logo">
           <img src="../../../assets/img/logo.webp"  >
         </div>
+
         <div class="sidebar-content" >
 
           <div class="menu-sidebar">
@@ -76,34 +79,30 @@
           </div>
 
         </div>
-    </div>
-  </div>
-  <div class="col-12 col-md-10 var-component ">
-    <div class="row bg-info">
-      <div class="col-12 p-0">
-        <app-main-nav></app-main-nav>
-      </div>
-    </div>
-    <div class="container-fluid container-outlet">
-      <div class="row row-outlet ">
-        <div class="col-12">
-          <router-outlet>
 
-            
-          </router-outlet>
-        </div>
-      </div>
-      <!-- <div  class="row row-terms justify-content-center"
-        style="align-items: center; justify-content: center" >
-        <div class="col-12 Terms-Condition-style">
-          <span class="noselect">
-            {{ "mainModule.sideBar.singingUpYouAreApproveOur" | translate }}
-            <span class="termsCondition-style">{{
-              "mainModule.sideBar.Terms&Conditions" | translate
-            }}</span>
-          </span>
-        </div>
-      </div> -->
     </div>
-  </div>
+
+    </div>
+
+    <div class="col-12 col-md-10 var-component ">
+
+        <div class="row bg-info">
+          <div class="col-12 p-0">
+            <app-main-nav></app-main-nav>
+          </div>
+        </div>
+
+        <div class="container-fluid container-outlet">
+          <div class="row row-outlet ">
+            <div class="col-12">
+              <router-outlet>
+
+                
+              </router-outlet>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
 </div>

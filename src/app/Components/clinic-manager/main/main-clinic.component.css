@@ -34,7 +34,8 @@
     color: #fff;
     border-radius: 10px;
     font-weight: 500;
-    margin-top: 10px;
+    cursor: pointer;
+    /* margin-top: 10px; */
 
 }
 .Clinic-table-header
@@ -55,7 +56,7 @@
 
 .Clinic-block
 {
-    margin-top: 15px;
+    /* margin-top: 15px; */
     background-color: #fff;
     border-radius: 10px;
 }
@@ -70,5 +71,10 @@
 .Icon-style
 {
     font-size: 20px;
+    color: #a5a5a5;
     cursor: pointer;
+}
+.map-icon
+{
+    font-size: 25px;
 }

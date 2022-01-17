@@ -3,14 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Galary } from 'src/Models/galary';
 import { GeneralResponse } from 'src/Models/general-response';
 import { GalaryService } from 'src/Service/ClinicGalary/galary.service';
-import { ClinicInfoService } from 'src/Service/ClinicInfo/clinic-info.service';
 
 @Component({
-  selector: 'app-clinic-galary',
-  templateUrl: './clinic-galary.component.html',
-  styleUrls: ['./clinic-galary.component.css']
+  selector: 'app-update-clinic-galary',
+  templateUrl: './update-clinic-galary.component.html',
+  styleUrls: ['./update-clinic-galary.component.css']
 })
-export class ClinicGalaryComponent implements OnInit {
+export class UpdateClinicGalaryComponent implements OnInit {
 
   //#region Decalre Variables
   GalaryList: Galary[];
@@ -112,13 +111,15 @@ export class ClinicGalaryComponent implements OnInit {
   }
   //#endregion
 
-  //#region Next to
-
+  //#region Next to Update Clinic Schedule Component
   Next() {
-    // this.router.navigateByUrl("clinic/Schedule")
-    console.log(" this.ClinicId : ", this.ClinicId);
-    this.router.navigate(['clinic/schedule/',this.ClinicId]);
+    this.router.navigate(['main/clinic/UpdateClinicSchedule/',this.ClinicId]);
+  }
+  //#endregion
 
+  //#region Next to Update Clinic Schedule Component
+  Back() {
+    this.router.navigate(['main/clinic/updateclinic/',this.ClinicId]);
   }
   //#endregion
 

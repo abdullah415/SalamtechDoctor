@@ -1,7 +1,6 @@
-import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClinicSchedule } from 'src/Models/clinic-schedule';
 import { ClinicScheduleDay } from 'src/Models/clinic-schedule-day';
 import { CreateClinicSchedule } from 'src/Models/create-clinic-schedule';
@@ -12,11 +11,11 @@ import { ClinicScheduleService } from 'src/Service/ClinicSchedule/clinic-schedul
 import { LookupsService } from 'src/Service/Lockups/lookups.service';
 
 @Component({
-  selector: 'app-clinic-schedual',
-  templateUrl: './clinic-schedual.component.html',
-  styleUrls: ['./clinic-schedual.component.css']
+  selector: 'app-update-clinic-schedule',
+  templateUrl: './update-clinic-schedule.component.html',
+  styleUrls: ['./update-clinic-schedule.component.css']
 })
-export class ClinicSchedualComponent implements OnInit {
+export class UpdateClinicScheduleComponent implements OnInit {
 
   //#region Declare Variables
   PeriodForm : FormGroup ;
@@ -40,6 +39,7 @@ export class ClinicSchedualComponent implements OnInit {
   constructor( private ClinicScheduleService:ClinicScheduleService ,
                private LookupsService:LookupsService ,
                private fb:FormBuilder,
+               private router:Router,
                private route:ActivatedRoute ) { }
   //#endregion
 
@@ -397,5 +397,12 @@ export class ClinicSchedualComponent implements OnInit {
      
   }
   //#endregion
+
+    //#region Next to Update Clinic Schedule Component
+    Back() {
+      this.router.navigate(['main/clinic/UpdateClinicGalary/',this.ClinicId]);
+    }
+    //#endregion
+
 
 }

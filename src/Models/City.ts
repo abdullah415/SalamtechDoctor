@@ -1,8 +1,8 @@
 export class City{
-  Id: number
+  CountryId: number
   CountryName: string
+  Id: number
   Name: string
   NameAr: string
-  CountryId: number
   Inactive: boolean
 }
