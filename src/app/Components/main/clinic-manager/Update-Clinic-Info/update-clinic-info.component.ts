@@ -196,7 +196,7 @@ openGoogelMapsModal() {
   submitClinic(){
 
     this.formData.append('ClinicId', this.ClinicID as unknown as Blob)
-    // this.formData.append('HealthEntityPhoneDtos', this.ListOfMobileNumber as unknown as Blob)
+    this.formData.append('HealthEntityPhoneDtos',JSON.stringify(this.ListOfMobileNumber[0]))
     this.formData.append('Name',this.ClinicToUpdate.Name)
     this.formData.append('NameAr',this.ClinicToUpdate.NameAr)
     this.formData.append('Email',this.ClinicToUpdate.Email)
@@ -233,9 +233,11 @@ openGoogelMapsModal() {
           (response)=>{
             this.ClinicToUpdate = response.Data;
             this.imgURL = environment.ImagesURL+response.Data.Logo;
+
             response.Data.HealthEntityPhoneDtos.forEach((element: string) => {
               this.ListOfMobileNumber.push(element);
             });
+
           },
           (err)=>{
             console.log(err)

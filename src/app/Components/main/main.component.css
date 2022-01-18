@@ -14,6 +14,9 @@
 {
     height: 100%;
     background-color: red;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+     user-select: none;
 
 }
 .sidebar-col
@@ -89,6 +92,17 @@ ul li span
     color: #262D70;
     font-weight: 700;
 }
+
+.calender
+{
+    color: #A5A9B5;
+}
+
+.calender-visited
+{
+    color: #262D70;
+}
+
 .var-component
 {
     background-color: #f9f9f9;

@@ -22,7 +22,8 @@ export class MainServiceComponent implements OnInit {
 
     //#region Init Values
     document.getElementById('Services')?.classList.add('OnClick-Style');
-    document.getElementsByClassName('OnClick-Style').item;
+    document.getElementById('ServiceIcon')?.classList.add('calender-visited');
+
     //#endregion
 
     //#region Invoke Method
