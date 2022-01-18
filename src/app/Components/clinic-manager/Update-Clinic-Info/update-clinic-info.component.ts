@@ -37,6 +37,9 @@ export class UpdateClinicInfoComponent implements OnInit {
   ClinicID:any;
   CitiesList:{[Id:number]:City}={};
   AreaList:{[Id:number]:Area}={};
+ formData = new FormData();  
+ ListOfMobileNumber:string[]; 
+
   //#endregion
 
   //#region constructor
@@ -86,7 +89,7 @@ export class UpdateClinicInfoComponent implements OnInit {
       };
 
       this.imgURL = '../../../../assets/img/DoctorImg/Rectangle 2.png';
-
+      this.ListOfMobileNumber = [];
       //#endregion
 
       //#region Invoke Methods
@@ -95,7 +98,7 @@ export class UpdateClinicInfoComponent implements OnInit {
       this.getCities();
       this.getAreas();
       //#endregion
-
+      
     }
 //#endregion
 
@@ -140,11 +143,10 @@ openGoogelMapsModal() {
     reader.onload = (_event) => {
       this.imgURL = reader.result;
     };
-    this.ClinicToUpdate.Logo = files[0];
-    // this.FormDataImage.append('EpisodeIamge', files[0]);
+
+    this.formData.append('clinicLogo',files[0])
   }
   //#endregion
-
 
   //#region git Services
   GetServices() {
@@ -173,8 +175,7 @@ openGoogelMapsModal() {
   }
   //#endregion
 
-
-  //#region Create Clinic
+  //#region Update Clinic
   UpdateClinic(ClinicForm:FormData){
     this.ClinicService.UpdateDoctorClinic(ClinicForm).subscribe((res)=>{
      this.Router.navigate(['clinic/gallary/',this.ClinicID]);
@@ -193,31 +194,22 @@ openGoogelMapsModal() {
 
   //#region submit Clinic
   submitClinic(){
-    const formData = new FormData();
-    // this.selectedItems.forEach(element => {
-    //   formData.append('HealthEntityServiceDtos',element.Id as unknown as Blob)   
-    //  });
-    // console.log("list",this.selectedItemsIds)
 
-    // formData.append('HealthEntityPhoneDtos',[+this.ClinicInfoForm.controls.PhoneNumber.value,+this.ClinicInfoForm.controls.PhoneNumber2.value,+this.ClinicInfoForm.controls.PhoneNumber3.value] as unknown as Blob)
-    
-    formData.append('ClinicId', this.ClinicID as unknown as Blob)
-    formData.append('HealthEntityPhoneDtos', this.ClinicToUpdate.HealthEntityPhoneDtos as unknown as Blob)
-    formData.append('Name',this.ClinicToUpdate.Name)
-    formData.append('NameAr',this.ClinicToUpdate.NameAr)
-    formData.append('Email',this.ClinicToUpdate.Email)
-    formData.append('CountryId',this.ClinicToUpdate.CountryId as unknown as Blob)
-    formData.append('CityId',this.ClinicToUpdate.CityId as unknown as Blob)
-    formData.append('AreaId',this.ClinicToUpdate.AreaId as unknown as Blob)
-    formData.append('FixedFee',this.ClinicToUpdate.FixedFee as unknown as Blob)
-    formData.append('Address',this.ClinicToUpdate.Address)
-    formData.append('BlockNo',this.ClinicToUpdate.BlockNo as unknown as Blob)
-    formData.append('FloorNo',this.ClinicToUpdate.FloorNo as unknown as Blob)
-    formData.append('Inactive',this.ClinicToUpdate.Inactive as unknown as Blob )
-    formData.append('clinicLogo',this.ClinicToUpdate.Logo )
-
-    this.UpdateClinic(formData)
-
+    this.formData.append('ClinicId', this.ClinicID as unknown as Blob)
+    // this.formData.append('HealthEntityPhoneDtos', this.ListOfMobileNumber as unknown as Blob)
+    this.formData.append('Name',this.ClinicToUpdate.Name)
+    this.formData.append('NameAr',this.ClinicToUpdate.NameAr)
+    this.formData.append('Email',this.ClinicToUpdate.Email)
+    this.formData.append('CountryId',this.ClinicToUpdate.CountryId as unknown as Blob)
+    this.formData.append('CityId',this.ClinicToUpdate.CityId as unknown as Blob)
+    this.formData.append('AreaId',this.ClinicToUpdate.AreaId as unknown as Blob)
+    this.formData.append('FixedFee',this.ClinicToUpdate.FixedFee as unknown as Blob)
+    this.formData.append('Address',this.ClinicToUpdate.Address)
+    this.formData.append('BlockNo',this.ClinicToUpdate.BlockNo as unknown as Blob)
+    this.formData.append('FloorNo',this.ClinicToUpdate.FloorNo as unknown as Blob)
+    this.formData.append('Inactive',this.ClinicToUpdate.Inactive as unknown as Blob )
+   
+    this.UpdateClinic(this.formData)
   }
   //#endregion
 
@@ -240,8 +232,10 @@ openGoogelMapsModal() {
         this.ClinicService.GetDoctorClinicByClinicId(ID).subscribe(
           (response)=>{
             this.ClinicToUpdate = response.Data;
-            console.log(this.ClinicToUpdate)
             this.imgURL = environment.ImagesURL+response.Data.Logo;
+            response.Data.HealthEntityPhoneDtos.forEach((element: string) => {
+              this.ListOfMobileNumber.push(element);
+            });
           },
           (err)=>{
             console.log(err)
@@ -255,10 +249,8 @@ openGoogelMapsModal() {
         this.lookupService.GetCities('en').subscribe(
           (response)=>{
             this.Cities =  response.Data;
-            // console.log("ClinicToUpdate CityID :",this.ClinicToUpdate.CityId)
             response.Data.forEach(element => {
               this.CitiesList[element.Id] = element;
-              // console.log("this.CitiesList[element.Id] : ",this.CitiesList[element.Id].Id)
             });
           },
           (err)=>{

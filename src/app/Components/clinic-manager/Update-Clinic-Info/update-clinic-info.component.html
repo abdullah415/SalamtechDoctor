@@ -163,15 +163,22 @@
 
           <!-- Phone Number -->
           <div class="col-12 col-md-4 mb-4">
-            <span class="lbl-Register">PhoneNumber</span>
+            <span class="lbl-Register">Phone Number</span>
             <span class="star"> * </span>
             <div dir="auto" class="input-style">
-              <input type="number" style=" border-width: 1px;
-                                      outline: none;
-                                      display: block;
-                                      padding-left: 70px;" class="form-control"
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                maxlength="10" minlength="10" [class.icon]="1" [(ngModel)]="ClinicToUpdate.HealthEntityPhoneDtos[0]" />
+              <input type="number" 
+                      style=" border-width: 1px;
+                              outline: none;
+                              display: block;
+                              padding-left: 70px;" 
+                      class="form-control"
+
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      maxlength="10" 
+                      minlength="10" 
+                      [class.icon]="1" 
+                      [(ngModel)]="ListOfMobileNumber[0]" />
+
               <span class="unit">+20</span>
             </div>
           </div>
@@ -181,12 +188,18 @@
             <span class="lbl-Register">Phone Number2</span>
             <div dir="auto" class="input-style">
 
-              <input type="number" style=" border-width: 1px;
-                                      outline: none;
-                                      display: block;
-                                      padding-left: 70px;" class="form-control"
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                maxlength="10" minlength="10" [class.icon]="1" [(ngModel)]="ClinicToUpdate.HealthEntityPhoneDtos[1]" />
+              <input type="number" 
+                      style=" border-width: 1px;
+                              outline: none;
+                              display: block;
+                              padding-left: 70px;" 
+                        class="form-control"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        maxlength="10" 
+                        minlength="10" 
+                        [class.icon]="1" 
+                        [(ngModel)]="ListOfMobileNumber[1]" />
+
               <span class="unit">+20</span>
             </div>
           </div>
@@ -196,12 +209,17 @@
             <span class="lbl-Register">Phone Number3</span>
             <div dir="auto" class="input-style">
 
-              <input type="number" style=" border-width: 1px;
-                                      outline: none;
-                                      display: block;
-                                      padding-left: 70px;" class="form-control"
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                maxlength="10" minlength="10" [class.icon]="1" [(ngModel)]="ClinicToUpdate.HealthEntityPhoneDtos[2]" />
+              <input type="number" 
+                      style=" border-width: 1px;
+                              outline: none;
+                              display: block;
+                              padding-left: 70px;" 
+                      class="form-control"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      maxlength="10" 
+                      minlength="10" 
+                      [class.icon]="1" 
+                      [(ngModel)]="ListOfMobileNumber[2]" />
               <span class="unit">+20</span>
             </div>
           </div>
