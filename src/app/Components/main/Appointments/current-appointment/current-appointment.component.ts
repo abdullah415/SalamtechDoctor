@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { PatientItem } from 'src/Models/patient-item';
 import { AppointmentService } from 'src/Service/Appointment/appointment.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class CurrentAppointmentComponent implements OnInit {
   //#region Decalre Variables
   IamgeURL:string;
   p:number = 1;
+  PatientList:PatientItem[];
   //#endregion
 
   //#region constructor
@@ -29,7 +31,7 @@ export class CurrentAppointmentComponent implements OnInit {
     //#endregion
   
     //#region Invoke Methods
-    this.GetCurrentDoctorAppointment(10,0);
+    this.GetCurrentDoctorAppointment(10,1);
     //#endregion
   }
   //#endregion
@@ -40,7 +42,8 @@ export class CurrentAppointmentComponent implements OnInit {
   GetCurrentDoctorAppointment(MaxResultCount:number,SkipCount:number){
     this.AppointmentService.GetCurrentDoctorAppointment(MaxResultCount,SkipCount).subscribe(
       (response)=>{
-        console.log(response.Data);
+         this.PatientList = response.Data.Items;
+         console.log( this.PatientList);
       },
       (err)=>{
         console.log(err);

@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
- .qq
+
+/* @font-face {
+  font-family: "STC";
+  src: local("STC"), url(./assets/fonts/STCRegular.ttf) format("truetype");
+} */
+
+.qq
 {
     background-color: red;
     height: 90%;

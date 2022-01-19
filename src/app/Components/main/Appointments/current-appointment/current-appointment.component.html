@@ -7,14 +7,14 @@
         <div class="col-3">Actions</div>
     </div>
 
-    <div *ngFor="let item of [].constructor(100)| paginate: { itemsPerPage: 5, currentPage: p }" class="row Appointment-table-body">
+    <div *ngFor="let item of PatientList| paginate: { itemsPerPage: 2, currentPage: p }" class="row Appointment-table-body">
         <div class="col-3 padding-row">
                 <img class="Clinic-Logo-Style" 
                      src="{{IamgeURL}}" 
                      onerror="this.src='../../../../assets/img/LogoAlternative.png';">
-                {{p}}
+                {{item.PatientName}}
         </div>
-        <div class="col-2 padding-row">20/12/2021</div>
+        <div class="col-2 padding-row">{{item.AppointmentDate}}</div>
         <div class="col-2 padding-row">10:15 PM</div>
         <div class="col-2 padding-row">
             <img class="type-bg-icon" src="../../../../../assets/img/CallIconVisited.png"> Call

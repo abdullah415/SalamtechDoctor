@@ -2,7 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { GeneralResponseAppointment } from 'src/Models/general-response-appointment';
 import { GeneralResponseSingleObject } from 'src/Models/general-response-single-object';
+import { PatientItem } from 'src/Models/patient-item';
 import { UpdateClinic } from 'src/Models/update-clinic';
 
 @Injectable({
@@ -22,8 +24,8 @@ export class AppointmentService {
 
 
   //#region Get Current Doctor Appointment
-  GetCurrentDoctorAppointment(MaxResultCount:number , SkipCount:number):Observable<GeneralResponseSingleObject<UpdateClinic>>{
-    return this.http.get<GeneralResponseSingleObject<UpdateClinic>>(`${environment.URL}${this.culture}/DoctorAppointment/GetCurrentDoctorAppointment?SkipCount=${SkipCount}&MaxResultCount=${MaxResultCount}`,this.httpOptions);
+  GetCurrentDoctorAppointment(MaxResultCount:number , SkipCount:number):Observable<GeneralResponseAppointment<PatientItem>>{
+    return this.http.get<GeneralResponseAppointment<PatientItem>>(`${environment.URL}${this.culture}/DoctorAppointment/GetCurrentDoctorAppointment?SkipCount=${SkipCount}&MaxResultCount=${MaxResultCount}`,this.httpOptions);
   }
   //#endregion
 
