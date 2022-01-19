@@ -46,6 +46,7 @@ import { AppointmentComponent } from './Components/main/Appointments/appointment
 import { HistoryAppointmentComponent } from './Components/main/Appointments/history-appointment/history-appointment.component';
 import { CurrentAppointmentComponent } from './Components/main/Appointments/current-appointment/current-appointment.component';
 import { UpcomingAppointmentComponent } from './Components/main/Appointments/upcoming-appointment/upcoming-appointment.component';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 
 
@@ -113,6 +114,7 @@ export function CreateTranslateLoader(http: HttpClient) {
       defaultLanguage:'en'}),
       BrowserAnimationsModule,
       ToastrModule.forRoot(), // ToastrModule added
+       NgxPaginationModule
     ],
     //
   providers: [InterceptorsProvider],

@@ -24,7 +24,6 @@ export class ClinicInfoService {
     headers: new HttpHeaders({
         'Authorization':  `Bearer ${this.auth}`
       }
-
     )};
   //#endregion
 
