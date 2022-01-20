@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild  } from '@angular/core';
-import { LoginService } from './../../../Service/login.service';
-import { Login } from './../../../Models/Login';
 import { LoginResponse } from 'src/Models/LoginResponse';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Login } from 'src/Models/Login';
+import { LoginService } from 'src/Service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   errorMsg:string
   AuthenticatedUser:LoginResponse=new LoginResponse()
   //#endregion
- 
+
   //#region constructor
   constructor(private loginService:LoginService,
               private fb:FormBuilder,
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           Password:['',[Validators.required , Validators.minLength(6)]]
         });
     //#endregion
-    
+
   }
   //#endregion
 
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
       this.toastr.success("Login Successfully ", 'Errors...!');
       window.setInterval(() => {
         window.location.reload();
-      }, 2000);  
+      }, 2000);
     },
     (err)=>{
       console.log(err)

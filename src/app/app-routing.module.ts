@@ -1,3 +1,4 @@
+//#region imports
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DoctorHomeVisitScheduleResolver } from 'src/Resolver/doctor-home-visit-schedule.resolver';
@@ -23,6 +24,8 @@ import { ChatComponent } from './Components/main/Service/chat/chat.component';
 import { HomeVisitComponent } from './Components/main/Service/home-visit/home-visit.component';
 import { MainServiceComponent } from './Components/main/Service/main-service.component';
 import { VideoCallComponent } from './Components/main/Service/video-call/video-call.component';
+import { LoginPageComponent } from './Components/SignIn/login-page/login-page.component';
+import { RegisterPageComponent } from './Components/SignIn/register-page/register-page.component';
 import { CertificatesComponent } from './Components/Signup/certificates/certificates.component';
 import { CongratulationsComponent } from './Components/Signup/congratulations/congratulations.component';
 import { DoctorInfoComponent } from './Components/Signup/doctor-info/doctor-info.component';
@@ -31,10 +34,18 @@ import { OtpComponent } from './Components/Signup/otp/otp.component';
 import { SignUpMainComponent } from './Components/Signup/sign-up-main.component';
 import { SignupComponent } from './Components/Signup/signup/signup.component';
 
+//#endregion
+
 
 const routes: Routes = [
-  
-  {path:'',component:MainComponent },
+
+  {path:'',component:SignUpMainComponent,children:[
+    {path:'Login',component:LoginPageComponent},
+    {path:'',component:LoginPageComponent},
+    {path:'register',component:RegisterPageComponent}
+  ] },
+
+  {path:'',component:SignUpMainComponent },
 
   {path:'signup',component:SignUpMainComponent ,children:[
       {path:'',component:SignupComponent },
@@ -50,9 +61,8 @@ const routes: Routes = [
         {path:'',component:ClinicInfoComponent },
         {path:'gallary/:ClinicId',component:ClinicGalaryComponent , resolve:{Galary:GalaryResolver}},
         {path:'schedule/:ClinicId',component:ClinicSchedualComponent , resolve:{ClinicSchedule:ScheduleResolver}},
-      ] 
+      ]
   },
-
 
   { path:'main',component:MainComponent ,
     children:[
@@ -81,10 +91,10 @@ const routes: Routes = [
           // {path:'UpdateClinicGalary/:ClinicId',component:UpdateClinicGalaryComponent, resolve:{Galary:GalaryResolver} },
           // {path:'UpdateClinicSchedule/:ClinicId',component:UpdateClinicScheduleComponent , resolve:{ClinicSchedule:ScheduleResolver}},
         ] },
-        
-    ] 
+
+    ]
   },
- 
+
 ];
 
 @NgModule({

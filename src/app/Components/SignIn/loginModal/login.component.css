@@ -36,7 +36,7 @@
   border: none!important;
   transition: all .85s;
   border-bottom-left-radius: 15px!important;
-  border-bottom-right-radius: 15px!important;
+  border-bottom-right-radius: 0px!important;
   box-shadow: inset 8px -8px 10px 0 rgba(139, 144, 160, 0.3);
 }
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {

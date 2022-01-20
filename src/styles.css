@@ -5,20 +5,17 @@
   src: local("STC"), url(./assets/fonts/STCRegular.ttf) format("truetype");
 } */
 
-.qq
-{
-    background-color: red;
-    height: 90%;
-
-}
 
 
 html body{
   overflow-x: hidden;
-  overflow-y: scroll;
 }
 
-html, body,.container, .sidebar-col {height:100%;}
+.container
+{
+  height: 100%;
+}
+html, body, .sidebar-col {height:100%;}
 
 /*-------------------validations input start-------------------*/
 .ng-valid[required] , .ng-valid.required

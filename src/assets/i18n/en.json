@@ -27,6 +27,28 @@
           "ForgetPassword":"Forget Password?",
           "LoginAsPatient":"Login As Patient"
         },
+        "LoginPage":{
+          "SignIn":"Sign In",
+          "PhoneNumber":"Phone Number",
+          "Password":"Password",
+          "ForgetPassword":" Forgotten password ? ",
+          "SignInBtn":"Signin"
+        },
+        "RegisterPage":{
+          "Signup":"Create Account",
+          "FirstName":"First Name",
+          "MiddleName":"Middle Name",
+          "LastName":" Last   Name ",
+          "PhoneNumber":"Phone Number",
+          "Email":"Email",
+          "Password":"Password",
+          "ReEnterPassword":"ReEnter Password",
+          "Terms&Conditions":" By singing up you approve on our",
+          "Terms&ConditionsKeyword":"Terms & Conditions",
+          "AlreadyHaveAnAccount":"Already have an account ?",
+          "Signin":"Signin",
+          "CreateAccount":"Create Account"
+        },
         "otp":{
             "verify":"verify",
             "ResendAgain":"Resend Again",

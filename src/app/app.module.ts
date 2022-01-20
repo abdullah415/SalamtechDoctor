@@ -8,7 +8,6 @@ import { FooterComponent } from './Shared/footer/footer.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './Components/login/login.component';
 import { SideBarComponent } from './Components/Signup/side-bar/side-bar.component';
 import { SignupComponent } from './Components/Signup/signup/signup.component';
 import { DoctorInfoComponent } from './Components/Signup/doctor-info/doctor-info.component';
@@ -46,7 +45,10 @@ import { AppointmentComponent } from './Components/main/Appointments/appointment
 import { HistoryAppointmentComponent } from './Components/main/Appointments/history-appointment/history-appointment.component';
 import { CurrentAppointmentComponent } from './Components/main/Appointments/current-appointment/current-appointment.component';
 import { UpcomingAppointmentComponent } from './Components/main/Appointments/upcoming-appointment/upcoming-appointment.component';
-import {NgxPaginationModule} from 'ngx-pagination'; 
+import {NgxPaginationModule} from 'ngx-pagination';
+import { LoginComponent } from './Components/SignIn/loginModal/login.component';
+import { LoginPageComponent } from './Components/SignIn/login-page/login-page.component';
+import { RegisterPageComponent } from './Components/SignIn/register-page/register-page.component';
 
 
 
@@ -92,6 +94,8 @@ export function CreateTranslateLoader(http: HttpClient) {
     HistoryAppointmentComponent,
     CurrentAppointmentComponent,
     UpcomingAppointmentComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
   ],
   imports: [
     HttpClientModule,

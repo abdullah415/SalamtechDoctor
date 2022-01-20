@@ -128,6 +128,7 @@ input[type=number] {
     background-size: 20px;
     content: var("+20");
   }
+  
   .unit {
     position: absolute;
     display: block;

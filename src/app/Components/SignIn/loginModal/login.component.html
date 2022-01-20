@@ -10,21 +10,24 @@
   <div class="modal-dialog modal-dialog-centered ">
     <div class="modal-content">
       <nav ngbNav #nav="ngbNav" class="nav-tabs">
+
+          <!-- Login Doctor -->
         <ng-container ngbNavItem>
           <a ngbNavLink class="modal-header col-6 Login-As-Doctor justify-content-center py-4">{{ 'mainModule.login.LoginAsDoctor' | translate }}</a>
-          
+
           <!-- Login Patient  -->
           <ng-template ngbNavContent>
               <form class="p-5" autocomplete="off">
+                
                   <!-- Phone number -->
                   <div class="form-group">
                     <label for="Phone" style="color: #8b90a0;">{{ 'mainModule.login.PhoneNumber' | translate }}</label>
-                    <input id="Phone" 
-                            [(ngModel)]="loginDoctorForm.Phone" 
+                    <input id="Phone"
+                            [(ngModel)]="loginDoctorForm.Phone"
                             class="form-control"
-                            style="border-color: #8b90a0!important;" 
-                            type="text" 
-                            name="Phone" 
+                            style="border-color: #8b90a0!important;"
+                            type="text"
+                            name="Phone"
                             placeholder="Please Enter Mobile Number ..."
                             required>
                   </div>
@@ -32,23 +35,23 @@
                   <!-- Password -->
                   <div class="form-group mt-3">
                         <div class="input-group mb-3">
-                            <input class="form-control" 
-                                    id="Password" 
-                                    [(ngModel)]="loginDoctorForm.Password" 
-                                    type="password" 
-                                    placeholder="*******" 
+                            <input class="form-control"
+                                    id="Password"
+                                    [(ngModel)]="loginDoctorForm.Password"
+                                    type="password"
+                                    placeholder="*******"
                                     name="Password"
                                     required>
 
-                            <span (click)="passwordIcon()" 
-                                  class="input-group-text" 
+                            <span (click)="passwordIcon()"
+                                  class="input-group-text"
                                   style="background-color: white!important; cursor: pointer;">
 
                             <i class="far fa-eye text-end" id="togglePassword"></i></span>
 
                         </div>
-                        <small id="Password" 
-                                *ngIf="errorMsg !=null" 
+                        <small id="Password"
+                                *ngIf="errorMsg !=null"
                                 class="form-text  text-danger">{{errorMsg}}
                         </small>
                   </div>
@@ -59,16 +62,16 @@
                   </div>
 
                   <!-- Login Btn -->
-                  <button type="submit" 
+                  <button type="submit"
                           class="btn w-100 text-white mt-5"
                           style="background-color: #262d70;">
                     {{ 'mainModule.login.SignIn' | translate }}
                   </button>
 
-                  <button #closeModal 
-                          type="button" 
-                          class="btn btn-secondary" 
-                          style="display: none;" 
+                  <button #closeModal
+                          type="button"
+                          class="btn btn-secondary"
+                          style="display: none;"
                           data-bs-dismiss="modal">
                           Close
                   </button>
@@ -80,12 +83,13 @@
                         {{ 'mainModule.login.createAccount' | translate }}
                       </a>
                   </label>
+
               </form>
           </ng-template>
 
         </ng-container>
 
-        <!-- Login Doctor -->
+        <!-- Login Patient -->
         <ng-container ngbNavItem>
             <a ngbNavLink class="modal-header col-6 Login-As-Patient justify-content-center py-4">{{ 'mainModule.login.LoginAsPatient' | translate }}</a>
             <ng-template ngbNavContent>
@@ -95,18 +99,18 @@
 
                 <!-- phone Phone -->
                 <div class="form-group">
-                  <label for="Phone" 
+                  <label for="Phone"
                           style="color: #8b90a0;">
                           {{ 'mainModule.login.PhoneNumber' | translate }}
                   </label>
 
                   <!-- [(ngModel)]="loginDoctorForm.Phone"  -->
-                  <input id="Phone" 
+                  <input id="Phone"
                         formControlName="PhoneNumber"
                         class="form-control"
-                        style="border-color: #8b90a0!important;" 
-                        type="number" 
-                        name="Phone" 
+                        style="border-color: #8b90a0!important;"
+                        type="number"
+                        name="Phone"
                         placeholder="Please Enter Mobile Number ... "
                         required >
                 </div>
@@ -116,23 +120,23 @@
                   <div class="input-group mb-3">
 
                         <!-- [(ngModel)]="loginDoctorForm.Password"  -->
-                            <input class="form-control" 
-                                    id="Password" 
+                            <input class="form-control"
+                                    id="Password"
                                     formControlName="Password"
-                                    type="password" 
-                                    placeholder="*******" 
+                                    type="password"
+                                    placeholder="*******"
                                     name="Password"
                                     required>
 
-                            <span (click)="passwordIcon()" 
-                                  class="input-group-text border-rounded" 
+                            <span (click)="passwordIcon()"
+                                  class="input-group-text border-rounded"
                                   style="background-color: white!important; cursor: pointer;"><i
-                                  class="far fa-eye text-end "  
+                                  class="far fa-eye text-end "
                                   id="togglePassword"></i>
                             </span>
                       </div>
-                      <small id="Password" 
-                              *ngIf="errorMsg !=null" 
+                      <small id="Password"
+                              *ngIf="errorMsg !=null"
                               class="form-text  text-danger">
                               {{errorMsg}}
                       </small>
@@ -144,9 +148,9 @@
                 </div>
 
                 <!-- Login Btn -->
-                <button (click)="LoginDoctor()" 
-                        [disabled]="LoginForm.invalid" 
-                        type="submit" 
+                <button (click)="LoginDoctor()"
+                        [disabled]="LoginForm.invalid"
+                        type="submit"
                         class="btn w-100 text-white mt-5"
                         style="background-color: #262d70;">
 
@@ -163,7 +167,7 @@
                   </label>
 
               </form>
-              
+
             </ng-template>
         </ng-container>
 
