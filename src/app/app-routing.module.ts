@@ -24,6 +24,7 @@ import { ChatComponent } from './Components/main/Service/chat/chat.component';
 import { HomeVisitComponent } from './Components/main/Service/home-visit/home-visit.component';
 import { MainServiceComponent } from './Components/main/Service/main-service.component';
 import { VideoCallComponent } from './Components/main/Service/video-call/video-call.component';
+import { LoginMainComponent } from './Components/SignIn/login-main.component';
 import { LoginPageComponent } from './Components/SignIn/login-page/login-page.component';
 import { RegisterPageComponent } from './Components/SignIn/register-page/register-page.component';
 import { CertificatesComponent } from './Components/Signup/certificates/certificates.component';
@@ -39,13 +40,11 @@ import { SignupComponent } from './Components/Signup/signup/signup.component';
 
 const routes: Routes = [
 
-  {path:'',component:SignUpMainComponent,children:[
-    {path:'Login',component:LoginPageComponent},
+  {path:'',component:LoginMainComponent,children:[
     {path:'',component:LoginPageComponent},
+    {path:'Login',component:LoginPageComponent},
     {path:'register',component:RegisterPageComponent}
   ] },
-
-  {path:'',component:SignUpMainComponent },
 
   {path:'signup',component:SignUpMainComponent ,children:[
       {path:'',component:SignupComponent },

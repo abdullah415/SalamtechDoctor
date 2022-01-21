@@ -70,7 +70,9 @@ ul li span
 }
 .row-outlet
 {
-    min-height: 90%;
+  /* display: flex;
+  justify-content: center; */
+   min-height: 90%;
 }
 
 /*-------------- Terms-Condition Style Start   ------------------*/

@@ -49,6 +49,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { LoginComponent } from './Components/SignIn/loginModal/login.component';
 import { LoginPageComponent } from './Components/SignIn/login-page/login-page.component';
 import { RegisterPageComponent } from './Components/SignIn/register-page/register-page.component';
+import { LoginMainComponent } from './Components/SignIn/login-main.component';
 
 
 
@@ -96,6 +97,7 @@ export function CreateTranslateLoader(http: HttpClient) {
     UpcomingAppointmentComponent,
     LoginPageComponent,
     RegisterPageComponent,
+    LoginMainComponent,
   ],
   imports: [
     HttpClientModule,

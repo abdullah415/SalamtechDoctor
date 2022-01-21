@@ -1,6 +1,7 @@
+
 .main-div
 {
-  height: 85%;
+  min-height: 85%;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -46,6 +47,7 @@
   color: #97999a;
   font-weight: 500;
   cursor: pointer;
+  text-align: center;
 }
 
 .create-account-link
@@ -158,6 +160,9 @@
 .Checkbox-Condition
 {
   margin: 5px;
+  display: inline-block;
+  width: fit-content;
+  background-color: blue;
 }
 
 .CreateAccount-btn

@@ -1,6 +1,9 @@
 .appFooter {
   background-color: #232227;
- 
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  min-height: 10%;
 }
 
 

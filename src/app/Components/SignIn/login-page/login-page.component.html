@@ -1,86 +1,88 @@
-<div dir="auto"  class="container-fluid main-div " >
-  <div class="row" style="height: 100%;">
-    <div class="col-12  d-flex justify-content-center align-items-center ">
+<div class="container-fluid" style="height: 85%">
+  <div dir="auto"  class="main-div " >
+    <div class="row" style="height: 100%;">
+      <div class="col-12  d-flex justify-content-center align-items-center ">
 
-      <div class="col-12 col-md-6">
-        <div class="card">
+        <div class="col-12 col-md-6">
+          <div class="card">
 
-          <h5 class="card-header d-flex justify-content-center">
-            {{ 'mainModule.LoginPage.SignIn' | translate }}
-          </h5>
+            <h5 class="card-header d-flex justify-content-center">
+              {{ 'mainModule.LoginPage.SignIn' | translate }}
+            </h5>
 
-          <div  class="card-body">
-            <div class="row d-flex justify-content-center">
+            <div  class="card-body">
+              <div class="row d-flex justify-content-center">
 
-                 <!-- Phone Number -->
-                 <div  class="col-12  col-md-8 PhoneNumber-col">
+                   <!-- Phone Number -->
+                   <div  class="col-12  col-md-8 PhoneNumber-col">
 
+                      <label class="label-input">
+                        <span class="star"> * </span>
+                        {{ 'mainModule.LoginPage.PhoneNumber' | translate }}
+                      </label>
+
+                      <div dir="auto" class="form-group">
+
+                        <input type="number"
+                               class="form-control"
+                               oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                               maxlength="10"
+                               minlength="10"
+                               [class.icon]="1"  >
+
+                        <span class="unit">+20</span>
+
+                      </div>
+
+                  </div>
+
+                <!-- Password -->
+                <div class="col-12  col-md-8 Password-col">
                     <label class="label-input">
                       <span class="star"> * </span>
-                      {{ 'mainModule.LoginPage.PhoneNumber' | translate }}
+                      {{ 'mainModule.LoginPage.Password' | translate }}
                     </label>
 
-                    <div dir="auto" class="form-group">
+                    <div class="form-group form-group-Password">
 
-                      <input type="number"
+                      <input type="password"
                              class="form-control"
-                             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                             maxlength="10"
-                             minlength="10"
-                             [class.icon]="1"  >
+                             placeholder="***********"
+                             id="PasswordLogin">
 
-                      <span class="unit">+20</span>
+                      <span dir="auto" class="eye"
+                      (click)="passwordIcon('PasswordLogin')">
+                        <i class="far fa-eye text-end" id="togglePassword"></i>
+                       </span>
+
+                      <label class="ForgetPassword"> {{ 'mainModule.LoginPage.ForgetPassword' | translate }} </label>
 
                     </div>
 
                 </div>
 
-              <!-- Password -->
-              <div class="col-12  col-md-8 Password-col">
-                  <label class="label-input">
-                    <span class="star"> * </span>
-                    {{ 'mainModule.LoginPage.Password' | translate }}
+                <!-- Sign-In Btn -->
+                <div class="col-12  col-md-8 login-btn Sign-InBtn-col">
+                      <label class="label-Login">
+                        {{ 'mainModule.LoginPage.SignInBtn' | translate }}
+                      </label>
+                </div>
+
+                <!-- Create account Link -->
+                <div class="col-12  col-md-8" style="text-align: center;">
+                  <label class="Create-account">
+                    Don't have an account  ?
+                    <span class="create-account-link" routerLink="/register">Create account</span>
                   </label>
-
-                  <div class="form-group form-group-Password">
-
-                    <input type="password"
-                           class="form-control"
-                           placeholder="***********"
-                           id="PasswordLogin">
-
-                    <span dir="auto" class="eye"
-                    (click)="passwordIcon('PasswordLogin')">
-                      <i class="far fa-eye text-end" id="togglePassword"></i>
-                     </span>
-
-                    <label class="ForgetPassword"> {{ 'mainModule.LoginPage.ForgetPassword' | translate }} </label>
-
-                  </div>
+                </div>
 
               </div>
-
-              <!-- Sign-In Btn -->
-              <div class="col-12  col-md-8 login-btn Sign-InBtn-col">
-                    <label class="label-Login">
-                      {{ 'mainModule.LoginPage.SignInBtn' | translate }}
-                    </label>
-              </div>
-
-              <!-- Create account Link -->
-              <div class="col-12  col-md-8">
-                <label class="Create-account">
-                  Don't have an account  ?
-                  <span class="create-account-link" routerLink="/register">Create account</span>
-                </label>
-              </div>
-
             </div>
+
           </div>
-
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
 </div>

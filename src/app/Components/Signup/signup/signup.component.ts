@@ -77,15 +77,12 @@ export class SignupComponent implements OnInit {
                     this.router.navigateByUrl("OTP");
                     this.SignupService.ResenderCodeObject = this._Responsesignup.Data["Data"];
                     this.SignupService.Phone = this.SignUp.Phone;
-                    // console.log("dsdsdsdsdsd : ",this._Responsesignup.Data["Data"]);
                   },
               (err)=> {
                 this.ErrorMessege = err.error['Message'];
                     // console.log(err.error['Message']);
                   }
           )
-
-      // document.getElementById('Doctorinfo')?.classList.add('OnClick-Style');
    }
    //#endregion
 

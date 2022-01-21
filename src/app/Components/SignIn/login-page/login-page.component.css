@@ -1,9 +1,11 @@
+
 .main-div
 {
-  height: 85%;
+  height: 100%;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
+
 }
 .card{
   background-color: transparent;
@@ -42,7 +44,7 @@
 }
 .Create-account
 {
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
   color: #97999a;
   font-weight: 500;
 }
