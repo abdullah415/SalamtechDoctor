@@ -58,7 +58,7 @@ DefaultLang:string |null;
       localStorage.setItem("lang",'ar')
       this.translate.use(this.DefaultLang);
       document.getElementsByTagName('html')[0].setAttribute("dir","rtl");
-
+      window.location.reload();
 
     }
     if(e === 'ar')
@@ -67,7 +67,7 @@ DefaultLang:string |null;
       this.DefaultLang = 'en';
       this.translate.use(this.DefaultLang);
       document.getElementsByTagName('html')[0].setAttribute("dir","ltr");
-
+      window.location.reload();
     }
 
   }

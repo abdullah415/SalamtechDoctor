@@ -89,7 +89,11 @@
           "Biography":"المعلومات الشخصية"
         },
         "Documents":{
-
+          "UploadNationalIdFrontFace":" صورة  الرقم القومى من الوجه",
+          "UploadNationalIdBackFace":"صورة  الرقم القومى من الخلف إن أمكن",
+          "UploadSyndicateFrontFace":"صورة من كارنيه النقابة من الوجه",
+          "UploadSyndicatebackFace":" صورة من كارنيه النقابة من الخلف أن أمكن",
+          "Next":"التالى"
         },
         "Clinic":{
           "sidebarinfo":"بيانات العيادة",
@@ -111,6 +115,26 @@
           "Submit":"اضافة",
           "Save":"حفظ",
           "Next":"التالي"
+        },
+        "ClinicInfo":{
+          "ChangeLogo":"تغيير صورة البروفايل",
+          "Name":"الأسم",
+          "NameAr":"Name English",
+          "PhoneNumber":"رقم الموبايل",
+          "PhoneNumber2":"رقم موبايل أخر",
+          "PhoneNumber3":"رقم موبايل أخر",
+          "FixedFee":"سعر الكشف",
+          "Location":"المكان(الخريطة)",
+          "PickLocation":"أختر المكان",
+          "City":"المدينة",
+          "Area":"المنطقة",
+          "SelectArea":"أختر المنطقة",
+          "Street":"الشارع",
+          "BuildingNumber":"رقم المبنى",
+          "FloorNumber":"رقم الدور",
+          "ApartmentNumber":"رقم ",
+          "Services":"الخدمات",
+          "Next":"التالى"
         }
     }
 }

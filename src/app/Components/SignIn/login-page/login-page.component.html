@@ -10,7 +10,7 @@
               {{ 'mainModule.LoginPage.SignIn' | translate }}
             </h5>
 
-            <div  class="card-body">
+            <form [formGroup]="LoginForm"  class="card-body">
               <div class="row d-flex justify-content-center">
 
                    <!-- Phone Number -->
@@ -24,6 +24,7 @@
                       <div dir="auto" class="form-group">
 
                         <input type="number"
+                               formControlName="PhoneNumber"
                                class="form-control"
                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                maxlength="10"
@@ -46,6 +47,7 @@
                     <div class="form-group form-group-Password">
 
                       <input type="password"
+                              formControlName="Password"
                              class="form-control"
                              placeholder="***********"
                              id="PasswordLogin">
@@ -62,10 +64,13 @@
                 </div>
 
                 <!-- Sign-In Btn -->
-                <div class="col-12  col-md-8 login-btn Sign-InBtn-col">
+                <div  class="col-12  col-md-8 login-btn Sign-InBtn-col"
+                      (click)="Login()">
+
                       <label class="label-Login">
                         {{ 'mainModule.LoginPage.SignInBtn' | translate }}
                       </label>
+                      
                 </div>
 
                 <!-- Create account Link -->
@@ -77,7 +82,7 @@
                 </div>
 
               </div>
-            </div>
+            </form>
 
           </div>
         </div>

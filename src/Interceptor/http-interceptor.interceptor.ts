@@ -25,7 +25,7 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
         let message = '';
         if (err.status === 401) {
           // handle client-side error
-          this.router.navigateByUrl('')
+          this.router.navigateByUrl('/Login')
           
           message = `Error: ${err.error.message}`;
         } 

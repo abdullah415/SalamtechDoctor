@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   //#endregion
 
   //#region constructor
-  constructor(private loginService:LoginService,
+  constructor( private loginService:LoginService,
               private fb:FormBuilder,
               private toastr:ToastrService,
               private router:Router) {
@@ -60,7 +60,6 @@ export class LoginComponent implements OnInit {
 
   //#region Login Method
   LoginDoctor(){
-
     this.loginDoctorForm.Phone =(this.LoginForm.controls.PhoneNumber.value).toString();
     this.loginDoctorForm.Phone ='0'+this.loginDoctorForm.Phone;
     this.loginDoctorForm.Password = this.LoginForm.controls.Password.value;
@@ -77,7 +76,6 @@ export class LoginComponent implements OnInit {
     (err)=>{
       console.log(err)
       // this.toastr.success("", 'Errors...!');
-
     })
   }
   //#endregion

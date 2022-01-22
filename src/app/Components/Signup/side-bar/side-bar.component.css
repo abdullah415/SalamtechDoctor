@@ -1,27 +1,30 @@
 /*-------------- sidebar start ------------------*/
 .main-sidebar
 {
-    height: 90%;
+    min-height: 85%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
     /* background-color: red; */
 
 }
 .sidebar-col
 {
     background-color: #f3f3f3;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 .sidebar-item
 {
-    width: 80%;
+    /* width: 80%; */
     height: 80%;
     background-color: #f3f3f3;
-    /* background-colorgb(3, 2, 2)red; */
-
     margin: 10%;
 }
 
 ul
 {
-    /* background-color: saddlebrown; */
     list-style-type:none;
     margin-top: 50px;
 }
@@ -66,7 +69,7 @@ ul li span
 }
 .container-outlet
 {
-    height: 90%;
+    height: 85%;
 }
 .row-outlet
 {
@@ -79,10 +82,8 @@ ul li span
 .Terms-Condition-style
 {
     height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: #8B90A0;
+    text-align: center;
 }
 .termsCondition-style
 {

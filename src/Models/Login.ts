@@ -1,5 +1,5 @@
 export class Login{
-  Phone: string
-  Password: string
+  Phone: any
+  Password: any
   UserTypeId: number
 }

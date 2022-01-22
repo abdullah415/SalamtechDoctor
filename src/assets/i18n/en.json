@@ -13,7 +13,7 @@
             "PhoneNumber":"Phone Number",
             "Password":"Password",
             "ConfirmPassword":"Confirm Password",
-            "Next":"Next"
+            "Next":"Next"   
         },
         "ResendCode":{
             "verify":"verify"
@@ -93,7 +93,11 @@
           "Biography":"Biography"
         },
         "Documents":{
-
+          "UploadNationalIdFrontFace":"Upload Front Face required",
+          "UploadNationalIdBackFace":"Upload Back Face if Available",
+          "UploadSyndicateFrontFace":"Upload Front Face required",
+          "UploadSyndicatebackFace":" Upload Back if Available",
+          "Next":"Next"
         },
         "Clinic":{
           "sidebarinfo":"Clinic Info",
@@ -115,6 +119,44 @@
           "Submit":"Submit",
           "Save":"Save",
           "Next":"Next"
+        },
+        "ClinicInfo":{
+          "ChangeLogo":"Change Logo",
+          "Name":"Name",
+          "NameAr":"الإسم بالعربى",
+          "PhoneNumber":"Phone Number",
+          "PhoneNumber2":"Another Phone Number",
+          "PhoneNumber3":"Another Phone Number",
+          "FixedFee":"FixedFee",
+          "Location":"Location (GoogleMap)",
+          "PickLocation":"Pick Location",
+          "City":"City",
+          "Area":"Area",
+          "SelectArea":"Select Area",
+          "Street":"Street",
+          "BuildingNumber":"Building Number",
+          "FloorNumber":"Floor Number",
+          "ApartmentNumber":"Apartment Number",
+          "Services":"Services",
+          "Next":"Next"
+        },
+        "Schedule":{
+          "Schedule":"Schedule",
+          "Periods":"Periods",
+          "Period1":"Period 1",
+          "Reset":"Reset",
+          "Operatinghours":"Operating hours",
+          "SelectDuration":"Select Duration",
+          "Minutes":"Minutes",
+          "Visitfee":"Visit fee",
+          "EGP":"EGP",
+          "Submit":"Submit",
+          "AddNewPeriod":"Add New Period",
+          "Period":"Period",
+          "Active":"Active",
+          "NotActive":"Not Active",
+          "Interval":"Interval",
+          "Update":"Update"
         }
     }
 }

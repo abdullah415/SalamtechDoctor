@@ -37,7 +37,6 @@ import { SignupComponent } from './Components/Signup/signup/signup.component';
 
 //#endregion
 
-
 const routes: Routes = [
 
   {path:'',component:LoginMainComponent,children:[

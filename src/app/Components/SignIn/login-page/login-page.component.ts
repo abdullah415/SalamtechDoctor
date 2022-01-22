@@ -15,10 +15,13 @@ export class LoginPageComponent implements OnInit {
 
   //#region Declare Variables
   LoginForm:FormGroup;
+  LoginObj:Login;
+  AuthenticatedUser:LoginResponse=new LoginResponse()
   //#endregion
 
   //#region constructor
   constructor(private fb:FormBuilder,
+              private loginService:LoginService,
               private toastr:ToastrService,
               private router:Router) {
   }
@@ -27,12 +30,16 @@ export class LoginPageComponent implements OnInit {
   //#region On Init Method
   ngOnInit() {
 
+    //#region  Init Values
+    this.LoginObj = {"Phone":"","Password":"","UserTypeId":2};
+    //#endregion
+
      //#region  Register Form Section
      this.LoginForm = this.fb.group(
       {
-          // PhoneNumber:['',[Validators.required]],
-          // Password:['',[Validators.required , Validators.minLength(6)]]
-        });
+        PhoneNumber:['',[Validators.required,Validators.minLength(10)]],
+        Password:['',[Validators.required , Validators.minLength(6)]]
+      });
     //#endregion
 
   }
@@ -50,4 +57,30 @@ export class LoginPageComponent implements OnInit {
     }
     //#endregion
 
+
+    //#region Consume API's
+
+      //#region Login
+      Login(){
+        this.LoginObj.Phone ="0"+ (this.LoginForm.controls.PhoneNumber.value).toString();
+        this.LoginObj.Password = (this.LoginForm.controls.Password.value).toString();
+       
+    
+        this.loginService.login(this.LoginObj).subscribe((res)=>{
+          // this.buttonEnable=true;
+          this.AuthenticatedUser= res
+          localStorage.setItem('Authorization',this.AuthenticatedUser.Data.Token)
+          this.toastr.success("Login Successfully ", 'Errors...!');
+          window.setInterval(() => {
+            window.location.reload();
+          }, 2000);
+        },
+        (err)=>{
+          console.log(err)
+          // this.toastr.success("", 'Errors...!');
+        })
+      }
+      //#endregion
+
+    //#endregion
   }

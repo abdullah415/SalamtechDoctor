@@ -59,6 +59,7 @@
         </div>
         <div class="card-body bg-color">
           <div class="row">
+
             <!-- Titlt Input -->
             <div class="col-6">
               <div class="input-group">
@@ -73,7 +74,6 @@
                   "  [(ngModel)]="editableCertificate.Title" />
               </div>
             </div>
-            <!-- End Titlt Input -->
 
             <!-- TitltAr Input -->
             <div dir="auto" class="col-6">
@@ -89,10 +89,11 @@
                   "  [(ngModel)]="editableCertificate.TitleAr" />
               </div>
             </div>
-            <!-- End TitltAr Input -->
+
           </div>
 
           <div class="row mt-3">
+
             <!--  Description Input -->
             <div class="col-6">
               <div class="form-floating">
@@ -108,7 +109,6 @@
                   [(ngModel)]="editableCertificate.Description" style="height: 120px"></textarea>
               </div>
             </div>
-            <!-- End Description Input -->
 
             <!--  DescriptionAr Input -->
             <div class="col-6">
@@ -125,7 +125,7 @@
                   [(ngModel)]="editableCertificate.DescriptionAr" style="height: 120px"></textarea>
               </div>
             </div>
-            <!-- End DescriptionAr Input -->
+
           </div>
 
           <!--  year Input -->
@@ -144,33 +144,46 @@
               </div>
             </div>
           </div>
-          <!-- End year Input -->
+
         </div>
 
         <div class="card-footer bg-light text-muted border-0">
+
           <div class="row">
             <div class="">
-              <div *ngIf="showImgbox" class="d-flex bg-color text-muted border p-2 mb-2">
+              <div *ngIf="showImgbox" 
+                    class="d-flex bg-color text-muted border p-2 mb-2">
+
                 <div class="col-6 btn text-start">
                   {{ imageName }}
                 </div>
+
                 <div class="col-6 d-flex justify-content-end">
 
                   <!-- Button trigger modal -->
-                  <div class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                  <div  class="btn" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#exampleModal2">
+
                     <span dir="auto" class="eye text-muted">
-                      <i class="far fa-eye mx-1" id="togglePassword"></i>{{"mainModule.Certificate.View" | translate}}
+                        <i class="far fa-eye mx-1" id="togglePassword"></i>
+                        {{"mainModule.Certificate.View" | translate}}
                     </span>
                   </div>
 
                   <!-- Modal -->
-                  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label"
-                    aria-hidden="true">
+                  <div  class="modal fade" 
+                        id="exampleModal2" 
+                        tabindex="-1" 
+                        aria-labelledby="exampleModal2Label"
+                        aria-hidden="true">
+
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
                         <img src="{{ imgURL }}" />
                       </div>
                     </div>
+                    
                   </div>
 
                   <div class="btn" (click)="DeleteImg()">
@@ -180,12 +193,25 @@
                   </div>
                 </div>
               </div>
-              <input type="file" class="btn button-upload px-3 mb-2" formControlName="ImageCertificate" #file
-                accept="image/*" id="getFile" style="display: none" (change)="preview(file.files)" />
-              <button *ngIf="!showImgbox" onclick="document.getElementById('getFile').click()"
-                class="btn button-upload px-3 mb-2">
-                <i class="fas fa-upload px-2"></i>{{ imageName }}
+
+              <input  type="file" 
+                      class="btn button-upload px-3 mb-2" 
+                      formControlName="ImageCertificate" 
+                      #file
+                      accept="image/*" 
+                      id="getFile" 
+                      style="display: none" 
+                      (change)="preview(file.files)" />
+
+              <button *ngIf="!showImgbox" 
+                      onclick="document.getElementById('getFile').click()"
+                      class="btn button-upload px-3 mb-2">
+
+                    <i class="fas fa-upload px-2"></i>
+                    {{ imageName }}
+
               </button>
+
             </div>
           </div>
 
@@ -201,7 +227,9 @@
               </button>
             </div>
           </div>
+
         </div>
+
       </div>
     </div>
   </form>

@@ -19,8 +19,10 @@
                             </div>
                         </button>
                         <div onclick="document.getElementById('getFile1').click()" class="col img-col-block" [hidden]="Upload_Image == true && imgFront != null">
-                            <i  class="fas fa-cloud-upload-alt img-icon"></i><br>
-                            <label class="upload-label"> Upload Front required </label>
+                              <i  class="fas fa-cloud-upload-alt img-icon"></i><br>
+                              <label class="upload-label">
+                                {{"mainModule.Documents.UploadNationalIdFrontFace" | translate }} 
+                              </label>
                           </div>
                       </div>
                       <div  class="edit_view upload-image" >
@@ -58,14 +60,13 @@
                       </button>
                       <div onclick="document.getElementById('getFile2').click()" class="col img-col-block" [hidden]="Upload_Image == true && imgBack != null ">
                           <i  class="fas fa-cloud-upload-alt img-icon"></i><br>
-                          <label class="upload-label">Upload Back if Available </label>
+                          <label class="upload-label">
+                             {{"mainModule.Documents.UploadNationalIdBackFace" | translate }}
+                          </label>
                         </div>
                     </div>
                     <div  class="edit_view upload-image" >
                      <button class="btn-edit" onclick="document.getElementById('getFile2').click()"><i class="far fa-edit icon-edit-style"></i></button>
-                      <!-- <button class="btn-eye">
-                        <i class="far fa-eye  icon-edit-style"></i>
-                      </button> -->
 
                        <!--Modal   -->
                        <div class="btn" data-bs-toggle="modal" [attr.data-bs-target]="'#imgBackID'" >
@@ -110,7 +111,9 @@
                         </button>
                         <div onclick="document.getElementById('getFile3').click()" class="col img-col-block" [hidden]="Upload_Image == true && SyndicateFront != null">
                             <i  class="fas fa-cloud-upload-alt img-icon"></i><br>
-                            <label class="upload-label">Upload Front required </label>
+                            <label class="upload-label">
+                                {{"mainModule.Documents.UploadSyndicateFrontFace" | translate }}
+                            </label>
                           </div>
                       </div>
                       <div  class="edit_view upload-image" >
@@ -149,7 +152,9 @@
                       </button>
                       <div onclick="document.getElementById('getFile4').click()" class="col img-col-block" [hidden]="Upload_Image == true && SyndicateBack != null ">
                           <i  class="fas fa-cloud-upload-alt img-icon"></i><br>
-                          <label class="upload-label">Upload Back if Available</label>
+                          <label class="upload-label">
+                            {{"mainModule.Documents.UploadSyndicatebackFace" | translate }}
+                          </label>
                         </div>
                     </div>
                     <div  class="edit_view upload-image" >
@@ -182,7 +187,7 @@
     </div>
 
     <!-- Profession Certificate -->
-    <div class="row Syndicate-block" *ngIf="LegalDocumentList.length != 2">
+    <!-- <div class="row Syndicate-block" *ngIf="LegalDocumentList.length != 2">
         <div class="col-12 document-title" >{{LegalDocumentList[2].Name}} </div>
         <div class="col-12">
             <div class="row">
@@ -213,25 +218,16 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
-    <div class="row justify-content-end ">
-      <div class="col-3">
-        <!-- <button class="btn text-white w-100"
-                style="background-color: #262d70;margin-top: 50px;padding: 15px;"
-                (click)="SubmitDocuments()">
-          Next
-        </button> -->
-
-         <!--Modal   -->
+    <div class="row">
+      <div class="col-12 d-flex justify-content-end">
          <div class="btn" data-bs-toggle="modal" [attr.data-bs-target]="'#nextbtn'" >
           <span dir="auto">
-            <!-- <i class="far fa-eye icon-edit-style" id="togglePassword"></i> -->
-            <button class="btn text-white w-100"
-            style="background-color: #262d70;margin-top: 50px;padding: 15px;"
-            (click)="SubmitDocuments()">
-            Next
+            <button class="btn-next"
+                    (click)="SubmitDocuments()">
+             {{"mainModule.Documents.Next" | translate }}
           </button>
           </span>
         </div>
@@ -244,7 +240,6 @@
             </div>
           </div>
         </div>
-      <!-- End Modal -->
       </div>
     </div>
 
