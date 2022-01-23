@@ -70,7 +70,7 @@ export class MainClinicComponent implements OnInit {
 
   //#region Edit Doctor Profile
   EditDoctorProfile(ID:number){
-    this.router.navigate(['main/clinic/updateclinic',ID]);
+    this.router.navigate(['main/updateclinic/updateclinic',ID]);
   }
   //#endregion
 

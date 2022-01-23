@@ -29,8 +29,15 @@ export class UpdateClinicGalaryComponent implements OnInit {
     //#region Init Values
 
      //#region Change Active Component In Sidebar 
-     document.getElementById('sidebarinfo')?.classList.add('OnClick-Style');
-     document.getElementById('sidebargalary')?.classList.add('OnClick-Style');
+     document.getElementById('Dashboard')?.classList.remove('OnClick-Style');
+      document.getElementById('DashboardIcon')?.classList.remove('calender-visited');
+      document.getElementById('Clinics')?.classList.remove('OnClick-Style');
+      document.getElementById('ClinicsIcon')?.classList.remove('OnClick-Style');
+      document.getElementById('Services')?.classList.remove('OnClick-Style');
+      document.getElementById('ServiceIcon')?.classList.remove('calender-visited');
+      document.getElementById('Profile')?.classList.add('OnClick-Style');
+      document.getElementById('ProfileIcon')?.classList.add('calender-visited');
+
      //#endregion
 
      this.ClinicId = this.route.snapshot.paramMap.get('ClinicId');
@@ -113,13 +120,13 @@ export class UpdateClinicGalaryComponent implements OnInit {
 
   //#region Next to Update Clinic Schedule Component
   Next() {
-    this.router.navigate(['main/clinic/UpdateClinicSchedule/',this.ClinicId]);
+    this.router.navigate(['main/updateclinic/UpdateClinicSchedule/',this.ClinicId]);
   }
   //#endregion
 
   //#region Next to Update Clinic Schedule Component
   Back() {
-    this.router.navigate(['main/clinic/updateclinic/',this.ClinicId]);
+    this.router.navigate(['main/updateclinic/updateclinic/',this.ClinicId]);
   }
   //#endregion
 

@@ -28,7 +28,7 @@
                             style="border-color: #8b90a0!important;"
                             type="text"
                             name="Phone"
-                            placeholder="Please Enter Mobile Number ..."
+                            placeholder="Please Enter Mobile Number"
                             required>
                   </div>
 
@@ -63,6 +63,7 @@
 
                   <!-- Login Btn -->
                   <button type="submit"
+                            (click)="LoginDoctor()"
                           class="btn w-100 text-white mt-5"
                           style="background-color: #262d70;">
                     {{ 'mainModule.login.SignIn' | translate }}
@@ -109,7 +110,7 @@
                         formControlName="PhoneNumber"
                         class="form-control"
                         style="border-color: #8b90a0!important;"
-                        type="number"
+                        type="text"
                         name="Phone"
                         placeholder="Please Enter Mobile Number ... "
                         required >

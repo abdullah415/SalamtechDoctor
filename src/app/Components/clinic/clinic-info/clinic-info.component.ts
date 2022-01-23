@@ -12,7 +12,6 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { IdNameList } from 'src/Models/id-name-list';
 import { Router } from '@angular/router';
 import { ClinicId } from 'src/Models/clinic-id';
-
 @Component({
   selector: 'app-clinic-info',
   templateUrl: './clinic-info.component.html',
@@ -82,17 +81,15 @@ export class ClinicInfoComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.min(1000000000),
-          Validators.max(9999999999),
         ],
       ],
       PhoneNumber2: [
         '',
-        [Validators.min(1000000000), Validators.max(9999999999)],
+        [Validators.nullValidator],
       ],
       PhoneNumber3: [
         '',
-        [Validators.min(1000000000), Validators.max(9999999999)],
+        [Validators.nullValidator],
       ],
       City: ['', [Validators.required]],
       Address: ['', [Validators.required]],

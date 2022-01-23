@@ -58,6 +58,16 @@ export class UpdateClinicInfoComponent implements OnInit {
 
       //#region Init Values
 
+      document.getElementById('Dashboard')?.classList.remove('OnClick-Style');
+      document.getElementById('DashboardIcon')?.classList.remove('calender-visited');
+      document.getElementById('Clinics')?.classList.remove('OnClick-Style');
+      document.getElementById('ClinicsIcon')?.classList.remove('OnClick-Style');
+      document.getElementById('Services')?.classList.remove('OnClick-Style');
+      document.getElementById('ServiceIcon')?.classList.remove('calender-visited');
+      document.getElementById('Profile')?.classList.add('OnClick-Style');
+      document.getElementById('ProfileIcon')?.classList.add('calender-visited');
+
+
       this.dropdownSettings = {
         singleSelection: false,
         idField: 'Id',
@@ -238,6 +248,8 @@ openGoogelMapsModal() {
               this.ListOfMobileNumber.push(element);
             });
 
+            console.log("HealthEntityPhoneDtos : ",response.Data.HealthEntityPhoneDtos)
+
           },
           (err)=>{
             console.log(err)
@@ -281,7 +293,7 @@ openGoogelMapsModal() {
 
   //#region Next
   Next(){
-    this.Router.navigate(['main/clinic/UpdateClinicGalary/',this.ClinicID]);
+    this.Router.navigate(['main/updateclinic/UpdateClinicGalary/',this.ClinicID]);
   }
   //#endregion
 

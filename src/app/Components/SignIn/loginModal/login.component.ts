@@ -61,21 +61,23 @@ export class LoginComponent implements OnInit {
   //#region Login Method
   LoginDoctor(){
     this.loginDoctorForm.Phone =(this.LoginForm.controls.PhoneNumber.value).toString();
-    this.loginDoctorForm.Phone ='0'+this.loginDoctorForm.Phone;
+    // this.loginDoctorForm.Phone ='0'+this.loginDoctorForm.Phone;
     this.loginDoctorForm.Password = this.LoginForm.controls.Password.value;
+    console.log(" this.loginDoctorForm.Phone :", this.loginDoctorForm.Phone)
+    console.log(" this.loginDoctorForm.Password :", this.loginDoctorForm.Password)
 
     this.loginService.login(this.loginDoctorForm).subscribe((res)=>{
       // this.buttonEnable=true;
       this.AuthenticatedUser= res
       localStorage.setItem('Authorization',this.AuthenticatedUser.Data.Token)
-      this.toastr.success("Login Successfully ", 'Errors...!');
+      this.toastr.success("Login Successfully ", 'Successfully');
+      this.router.navigateByUrl("/main");
       window.setInterval(() => {
         window.location.reload();
       }, 2000);
     },
     (err)=>{
       console.log(err)
-      // this.toastr.success("", 'Errors...!');
     })
   }
   //#endregion

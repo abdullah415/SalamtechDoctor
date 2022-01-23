@@ -50,6 +50,7 @@ import { LoginComponent } from './Components/SignIn/loginModal/login.component';
 import { LoginPageComponent } from './Components/SignIn/login-page/login-page.component';
 import { RegisterPageComponent } from './Components/SignIn/register-page/register-page.component';
 import { LoginMainComponent } from './Components/SignIn/login-main.component';
+import { DashboardComponent } from './Components/main/Dashboard/dashboard/dashboard.component';
 
 
 
@@ -98,6 +99,7 @@ export function CreateTranslateLoader(http: HttpClient) {
     LoginPageComponent,
     RegisterPageComponent,
     LoginMainComponent,
+    DashboardComponent,
   ],
   imports: [
     HttpClientModule,

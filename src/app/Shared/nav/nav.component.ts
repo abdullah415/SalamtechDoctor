@@ -43,9 +43,6 @@ DefaultLang:string |null;
   }
   //#endregion
 
-
-
-
   //#region change Language Method
   ChangeLanguage(e:any)
   {

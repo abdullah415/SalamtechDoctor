@@ -21,9 +21,14 @@ export class MainServiceComponent implements OnInit {
   ngOnInit(): void {
 
     //#region Init Values
+    document.getElementById('Dashboard')?.classList.remove('OnClick-Style');
+    document.getElementById('DashboardIcon')?.classList.remove('calender-visited');
+    document.getElementById('Clinics')?.classList.remove('OnClick-Style');
+    document.getElementById('ClinicsIcon')?.classList.remove('OnClick-Style');
+    document.getElementById('Appointments')?.classList.remove('OnClick-Style');
+    document.getElementById('AppointmentIcon')?.classList.remove('calender-visited');
     document.getElementById('Services')?.classList.add('OnClick-Style');
     document.getElementById('ServiceIcon')?.classList.add('calender-visited');
-
     //#endregion
 
     //#region Invoke Method

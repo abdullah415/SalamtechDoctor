@@ -18,6 +18,7 @@ import { MainClinicComponent } from './Components/main/clinic-manager/main/main-
 import { UpdateClinicGalaryComponent } from './Components/main/clinic-manager/Update-Clinic-Galary/update-clinic-galary.component';
 import { UpdateClinicInfoComponent } from './Components/main/clinic-manager/Update-Clinic-Info/update-clinic-info.component';
 import { UpdateClinicScheduleComponent } from './Components/main/clinic-manager/Update-Clinic-Schedule/update-clinic-schedule.component';
+import { DashboardComponent } from './Components/main/Dashboard/dashboard/dashboard.component';
 import { MainComponent } from './Components/main/main.component';
 import { CallComponent } from './Components/main/Service/call/call.component';
 import { ChatComponent } from './Components/main/Service/chat/chat.component';
@@ -40,7 +41,6 @@ import { SignupComponent } from './Components/Signup/signup/signup.component';
 const routes: Routes = [
 
   {path:'',component:LoginMainComponent,children:[
-    {path:'',component:LoginPageComponent},
     {path:'Login',component:LoginPageComponent},
     {path:'register',component:RegisterPageComponent}
   ] },
@@ -65,6 +65,10 @@ const routes: Routes = [
   { path:'main',component:MainComponent ,
     children:[
 
+        {path:'',component:DashboardComponent},
+
+        {path:'dashboard',component:DashboardComponent},
+
         {path:'service',component:MainServiceComponent,children:[
           {path:'',component:HomeVisitComponent , resolve:{DoctorHomeVisitSchedual:DoctorHomeVisitScheduleResolver}} ,
           {path:'homevisit',component:HomeVisitComponent , resolve:{DoctorHomeVisitSchedual:DoctorHomeVisitScheduleResolver}} ,
@@ -73,7 +77,7 @@ const routes: Routes = [
           {path:'chat',component:ChatComponent, resolve:{DoctorChatSchedual:DoctorVideoCallScheduleResolver} },
         ] },
 
-        {path:'clinic',component:ClinicManagerComponent,children:[
+        {path:'updateclinic',component:ClinicManagerComponent,children:[
           {path:'',component:MainClinicComponent} ,
           {path:'updateclinic/:ID',component:UpdateClinicInfoComponent },
           {path:'UpdateClinicGalary/:ClinicId',component:UpdateClinicGalaryComponent, resolve:{Galary:GalaryResolver} },
@@ -89,10 +93,9 @@ const routes: Routes = [
           // {path:'UpdateClinicGalary/:ClinicId',component:UpdateClinicGalaryComponent, resolve:{Galary:GalaryResolver} },
           // {path:'UpdateClinicSchedule/:ClinicId',component:UpdateClinicScheduleComponent , resolve:{ClinicSchedule:ScheduleResolver}},
         ] },
-
     ]
   },
-
+    
 ];
 
 @NgModule({

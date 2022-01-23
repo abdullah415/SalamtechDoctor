@@ -21,6 +21,12 @@ export class AppointmentComponent implements OnInit {
     //#region Init Values
     this.AppointmentVisited = false;
 
+    document.getElementById('Dashboard')?.classList.remove('OnClick-Style');
+    document.getElementById('DashboardIcon')?.classList.remove('calender-visited');
+    document.getElementById('Clinics')?.classList.remove('OnClick-Style');
+    document.getElementById('ClinicsIcon')?.classList.remove('OnClick-Style');
+    document.getElementById('Services')?.classList.remove('OnClick-Style');
+    document.getElementById('ServiceIcon')?.classList.remove('calender-visited');
     document.getElementById('Appointments')?.classList.add('OnClick-Style');
     document.getElementById('AppointmentIcon')?.classList.add('calender-visited');
     //#endregion

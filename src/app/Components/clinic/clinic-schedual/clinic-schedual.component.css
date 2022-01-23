@@ -191,3 +191,17 @@ hr
   font-size: 8px;
   margin-left: 8px;
 }
+
+.Back-btn
+{
+    margin-top: 15px;
+    padding: 40px;
+    border-width: 0px;
+    background-color: #262D70;
+    color: white;
+    font-weight: 500;
+    border-radius: 10px;
+    font-size: 17px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

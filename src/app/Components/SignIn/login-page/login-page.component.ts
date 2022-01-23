@@ -70,7 +70,8 @@ export class LoginPageComponent implements OnInit {
           // this.buttonEnable=true;
           this.AuthenticatedUser= res
           localStorage.setItem('Authorization',this.AuthenticatedUser.Data.Token)
-          this.toastr.success("Login Successfully ", 'Errors...!');
+          this.toastr.success("Login Successfully ", 'Successfully');
+          this.router.navigateByUrl("dashboard");
           window.setInterval(() => {
             window.location.reload();
           }, 2000);

@@ -29,8 +29,9 @@
 
           <div *ngIf="DefaultLang == 'en'">
             <div class="btn-lang" (click)="ChangeLanguage(DefaultLang)">
-              <img (click)="ChangeLanguage(DefaultLang)" src="../../../assets/img/en/en.png"
-                srcset="img/en@2x.png 2x,img/en@3x.png 3x" class="en">
+              <img (click)="ChangeLanguage(DefaultLang)" 
+                    src="../../../assets/img/en/en.png"
+                    class="en">
               <span>English</span>
             </div>
           </div>
@@ -49,8 +50,5 @@
 
     </div>
   </nav>
-  <p>
-    <!-- {{ 'mainModule.welcomeMessege' | translate }} -->
-  </p>
 </div>
 

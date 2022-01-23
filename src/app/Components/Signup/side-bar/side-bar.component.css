@@ -1,16 +1,17 @@
 /*-------------- sidebar start ------------------*/
 .main-sidebar
 {
-    min-height: 85%;
+    min-height: 100%;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+    /* width: 100%; */
     /* background-color: red; */
 
 }
 .sidebar-col
 {
-    background-color: #f3f3f3;
+    /* background-color: #f3f3f3; */
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
@@ -18,8 +19,8 @@
 .sidebar-item
 {
     /* width: 80%; */
-    height: 80%;
-    background-color: #f3f3f3;
+    height: 100%;
+    /* background-color: #f3f3f3; */
     margin: 10%;
 }
 
@@ -66,10 +67,11 @@ ul li span
 {
     background-color: white;
     padding-top: 35px;
+    
 }
 .container-outlet
 {
-    height: 85%;
+    height: 100%;
 }
 .row-outlet
 {
@@ -79,6 +81,10 @@ ul li span
 }
 
 /*-------------- Terms-Condition Style Start   ------------------*/
+.row-terms
+{
+    height: 10%;
+}
 .Terms-Condition-style
 {
     height: 50px;

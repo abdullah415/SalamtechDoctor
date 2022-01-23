@@ -16,8 +16,12 @@
             langue
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">English</a></li>
-            <li><a class="dropdown-item" href="#">Arabic</a></li>
+            <li>
+              <a class="dropdown-item" (click)="ChangeLanguage(DefaultLang)" >English</a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="ChangeLanguage(DefaultLang)"  >Arabic</a>
+            </li>
           </ul>
         </li>
         <li class="nav-item mx-4">

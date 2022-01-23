@@ -1,7 +1,7 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClinicSchedule } from 'src/Models/clinic-schedule';
 import { ClinicScheduleDay } from 'src/Models/clinic-schedule-day';
 import { CreateClinicSchedule } from 'src/Models/create-clinic-schedule';
@@ -40,7 +40,8 @@ export class ClinicSchedualComponent implements OnInit {
   constructor( private ClinicScheduleService:ClinicScheduleService ,
                private LookupsService:LookupsService ,
                private fb:FormBuilder,
-               private route:ActivatedRoute ) { }
+               private route:ActivatedRoute,
+               private router:Router ) { }
   //#endregion
 
   //#region OnInit Method
@@ -398,4 +399,10 @@ export class ClinicSchedualComponent implements OnInit {
   }
   //#endregion
 
+      //#region Next to Update Clinic Schedule Component
+      Back() {
+        // this.router.navigate(['main/updateclinic/UpdateClinicGalary/',this.ClinicId]);
+        this.router.navigateByUrl('/main/updateclinic');
+      }
+      //#endregion
 }
