@@ -1,15 +1,15 @@
 <div class="row main-row">
     <div class="col-12 noselect">
         <h3 class="title">
-            Enter the Verification Code
+            {{"mainModule.otp.EntertheVerificationCode" | translate }}
         </h3>
     </div>
     <div class="col-12">
         <div class="CodeSent-style">
-            Code sent to <span class="phone-style">+{{PhoneNumber}}</span>
+          {{"mainModule.otp.Codesentto" | translate }} <span class="phone-style">{{PhoneNumber}}</span>
         </div>
         <div class="expired-style">
-            This code will be expired within
+             {{"mainModule.otp.Thiscodewillbeexpiredwithin" | translate }}
             <span class="couter-style">{{minute}}:{{second}}</span>
         </div>
     </div>
@@ -27,8 +27,9 @@
       <!-- Next Button Block -->
       <div class="col-12">
         <div class="row" >
-            <button (click)="verify()" class="btn next-btn"
-                [routerLink]="['/']">
+            <button (click)="verify()" 
+                    class="btn next-btn">
+                    
                 {{ 'mainModule.otp.verify' | translate }}
             </button>
             <!-- [disabled]="signupform.invalid"   -->

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Signup } from 'src/Models/signup';
 import { Responsesignup } from 'src/Service/signup/responsesignup';
 import { SignupService } from 'src/Service/signup/signup.service';
@@ -23,7 +24,8 @@ export class SignupComponent implements OnInit {
   //#region Constructor
   constructor(private fb:FormBuilder ,
               private SignupService:SignupService ,
-              private router:Router) {
+              private router:Router,
+              private toastr:ToastrService) {
 
   }
   //#endregion
@@ -49,7 +51,7 @@ export class SignupComponent implements OnInit {
            MiddleName:['',[Validators.minLength(3) , Validators.required]],
            LastName:['',[Validators.minLength(3) , Validators.required]],
            Email:['',[Validators.email , Validators.required]],
-           PhoneNumber:['',[Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
+           PhoneNumber:['',[Validators.required]],
            Password:['',[Validators.required , Validators.minLength(6)]],
            ConfirmPassword:['',[Validators.required ]],
          });
@@ -65,24 +67,34 @@ export class SignupComponent implements OnInit {
                           this.signupform.controls.LastName.value;
 
         this.SignUp.Password = this.signupform.controls.Password.value;
-        this.SignUp.Phone = (this.signupform.controls.PhoneNumber.value).toString();
-        this.SignUp.Phone = '0'+this.SignUp.Phone;
-        this.SignUp.Email = this.signupform.controls.Email.value;
-        this.SignUp.UserTypeId = 2;
+        let ConfirmPassword = this.signupform.controls.ConfirmPassword.value;
 
-          let reuslt = this.SignupService.SignUp(this.SignUp).subscribe(
+       
 
-              (data)=> {
-                this._Responsesignup.Data = data;
-                    this.router.navigateByUrl("OTP");
-                    this.SignupService.ResenderCodeObject = this._Responsesignup.Data["Data"];
-                    this.SignupService.Phone = this.SignUp.Phone;
-                  },
-              (err)=> {
-                this.ErrorMessege = err.error['Message'];
-                    // console.log(err.error['Message']);
-                  }
-          )
+        if(this.SignUp.Password == ConfirmPassword){
+          this.SignUp.Phone = (this.signupform.controls.PhoneNumber.value).toString();
+          // this.SignUp.Phone = '2'+this.SignUp.Phone;
+          this.SignUp.Email = this.signupform.controls.Email.value;
+          this.SignUp.UserTypeId = 2;
+  
+            let reuslt = this.SignupService.SignUp(this.SignUp).subscribe(
+  
+                (data)=> {
+                  this._Responsesignup.Data = data;
+                      this.router.navigateByUrl("/signup/OTP");
+                      this.SignupService.ResenderCodeObject = this._Responsesignup.Data["Data"];
+                      console.log(this.SignupService.ResenderCodeObject);
+                      this.SignupService.Phone = this.SignUp.Phone;
+                    },
+                (err)=> {
+                  this.ErrorMessege = err.error['Message'];
+                      // console.log(err.error['Message']);
+                    }
+            )
+        }
+        else{
+          this.toastr.error("Confirm Password not Match ","Password Error !")
+        }    
    }
    //#endregion
 

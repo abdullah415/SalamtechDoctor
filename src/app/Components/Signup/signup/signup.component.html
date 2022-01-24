@@ -94,17 +94,19 @@
             <!-- <img src="../../../../assets/img/Group 512657.png" style="margin-left: 5px;margin-right: 5px;">
                           <span>+2</span> -->
 
-            <input formControlName="PhoneNumber" type="number" style="border-width: 1px; outline: none; display: block"
+            <input  formControlName="PhoneNumber" 
+                    type="text" 
+                    style="border-width: 1px; outline: none; display: block"
               class="form-control"
               oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-              maxlength="10" minlength="10" [class.is-valid]="
+              maxlength="11" minlength="11" [class.is-valid]="
               signupform.controls['PhoneNumber'].valid &&
               signupform.controls['PhoneNumber'].touched
             " [class.is-invalid]="
               signupform.controls['PhoneNumber'].invalid &&
               signupform.controls['PhoneNumber'].touched
             " [class.icon]="1" />
-            <span class="unit">+20</span>
+            <span class="unit">+2</span>
           </div>
         </div>
 

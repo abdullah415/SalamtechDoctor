@@ -49,6 +49,14 @@
           "Signin":"دخول",
           "CreateAccount":"تسجيل "
         },
+        "otp":{
+          "verify":"تحقق",
+          "ResendAgain":"إعادة الإرسال مرة أخرة",
+          "Didntrecivecode":"لم يتم الإرسال ",
+          "EntertheVerificationCode":"أدخل كود التحقق",
+          "Codesentto":"تم إرسال الكود الى ",
+          "Thiscodewillbeexpiredwithin":"يتم الغاء كود التحقق بعد"
+      },
         "sideBar":{
           "Signup":"التسجيل",
           "DoctorInfo":"بيانات الطبيب",

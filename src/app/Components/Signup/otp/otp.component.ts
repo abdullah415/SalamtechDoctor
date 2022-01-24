@@ -2,6 +2,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { SignupService } from 'src/Service/signup/signup.service';
 import { timer } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-otp',
@@ -24,7 +26,7 @@ export class OtpComponent implements OnInit {
   //#endregion
 
   //#region Constructor
-  constructor(private SignupService: SignupService) { }
+  constructor(private SignupService: SignupService ,private toastr:ToastrService ,private router:Router) { }
   //#endregion
 
   //#region OnInit Method
@@ -84,10 +86,10 @@ export class OtpComponent implements OnInit {
 
     var NCODE = this.NCODE1.toString() + this.NCODE2.toString() + this.NCODE3.toString() + this.NCODE4.toString();
     if (this.SignupService.ResenderCodeObject.Code == NCODE) {
-      console.log("Successfully");
+      this.router.navigateByUrl("/signup/doctorinfo");
     }
     else {
-      console.log("failed");
+      this.toastr.error("الكود الذى أدخلته غير صحيح ","خطأ")
     }
   }
   //#endregion

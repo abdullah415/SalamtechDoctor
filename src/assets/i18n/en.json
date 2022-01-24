@@ -52,7 +52,10 @@
         "otp":{
             "verify":"verify",
             "ResendAgain":"Resend Again",
-            "Didntrecivecode":"Didn’t recive a code ?"
+            "Didntrecivecode":"Didn’t recive a code ?",
+            "EntertheVerificationCode":"Enter the Verification Code",
+            "Codesentto":"Code sent to",
+            "Thiscodewillbeexpiredwithin":"This code will be expired within "
         },
         "sideBar":{
           "Signup":"Sign Up",

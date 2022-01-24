@@ -12,6 +12,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { IdNameList } from 'src/Models/id-name-list';
 import { Router } from '@angular/router';
 import { ClinicId } from 'src/Models/clinic-id';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-clinic-info',
   templateUrl: './clinic-info.component.html',
@@ -37,8 +38,7 @@ export class ClinicInfoComponent implements OnInit {
     private modalService: NgbModal,
     private lookupService: LookupsService,
     private ClinicService: ClinicInfoService,
-    private Router: Router
-  ) {
+    private Router: Router) {
     this.coordinates = {} as Coordinates;
   }
 
