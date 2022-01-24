@@ -89,8 +89,8 @@
                <div class="col-12 col-md-6" >
                 <span class="lbl-Register">City</span>
                 <span class="star"> * </span>
-                <select class="form-select" 
-                        aria-label="Default select example" 
+                <select class="form-select"
+                        aria-label="Default select example"
                         (change)="SelectCity($event)"
                         style="margin-bottom: 20px;">
 
@@ -105,8 +105,8 @@
               <div class="col-12 col-md-6" >
                 <span class="lbl-Register"> Area </span>
                 <span class="star"> * </span>
-                <select class="form-select" 
-                        aria-label="Default select example" 
+                <select class="form-select"
+                        aria-label="Default select example"
                         (change)="SelectArea($event)"
                         style="margin-bottom: 20px;">
 
@@ -118,10 +118,11 @@
               </div>
             </div>
           </div>
+          
         </div>
 
         <div class="row" >
-        
+
           <!-- Address -->
           <div class="col-12 col-md-8">
             <span class="lbl-Register">Location (GoogleMap)</span>
@@ -133,7 +134,7 @@
 
           <div class="col-12 col-md-4" style="margin-bottom: 20px;">
             <span class="lbl-Register"></span>
-            <div  class="d-flex justify-content-center" 
+            <div  class="d-flex justify-content-center"
                   style="align-items: center;">
 
                   <button class="btn locationButton" (click)="openGoogelMapsModal()">
@@ -166,17 +167,17 @@
             <span class="lbl-Register">Phone Number</span>
             <span class="star"> * </span>
             <div dir="auto" class="input-style">
-              <input type="number" 
+              <input type="number"
                       style=" border-width: 1px;
                               outline: none;
                               display: block;
-                              padding-left: 70px;" 
+                              padding-left: 70px;"
                       class="form-control"
 
                       oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                      maxlength="10" 
-                      minlength="10" 
-                      [class.icon]="1" 
+                      maxlength="10"
+                      minlength="10"
+                      [class.icon]="1"
                       [(ngModel)]="ListOfMobileNumber[0]" />
 
               <span class="unit">+20</span>
@@ -188,16 +189,16 @@
             <span class="lbl-Register">Phone Number2</span>
             <div dir="auto" class="input-style">
 
-              <input type="number" 
+              <input type="number"
                       style=" border-width: 1px;
                               outline: none;
                               display: block;
-                              padding-left: 70px;" 
+                              padding-left: 70px;"
                         class="form-control"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        maxlength="10" 
-                        minlength="10" 
-                        [class.icon]="1" 
+                        maxlength="10"
+                        minlength="10"
+                        [class.icon]="1"
                         [(ngModel)]="ListOfMobileNumber[1]" />
 
               <span class="unit">+20</span>
@@ -209,16 +210,16 @@
             <span class="lbl-Register">Phone Number3</span>
             <div dir="auto" class="input-style">
 
-              <input type="number" 
+              <input type="number"
                       style=" border-width: 1px;
                               outline: none;
                               display: block;
-                              padding-left: 70px;" 
+                              padding-left: 70px;"
                       class="form-control"
                       oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                      maxlength="10" 
-                      minlength="10" 
-                      [class.icon]="1" 
+                      maxlength="10"
+                      minlength="10"
+                      [class.icon]="1"
                       [(ngModel)]="ListOfMobileNumber[2]" />
               <span class="unit">+20</span>
             </div>
@@ -261,16 +262,16 @@
             Save Changes
           </button>
         </div>
-  
+
         <div class="col-12 col-md-2 d-flex justify-content-center justify-content-sm-start" >
           <button (click)="Next()" class="Next-btn" style="background-color: #262d70;margin-top: 2px;" >
             Next
           </button>
         </div>
-  
+
       </div>
     </div>
 
-    
+
   </div>
 

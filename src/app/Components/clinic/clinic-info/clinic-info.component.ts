@@ -19,24 +19,25 @@ import { ClinicId } from 'src/Models/clinic-id';
 })
 export class ClinicInfoComponent implements OnInit {
   coordinates: Coordinates;
-  address:string
+  address: string
   Cities: City[];
   Areas: Area[];
   ClinicInfoForm: FormGroup;
   ClinicInfoModel: ClinicInfoModel;
-  CountryId:any
-  Services:IdNameList[]
-  dropdownList:any = [];
-  selectedItems:IdNameList[] = [];
-  selectedItemsIds:number[] = [];
-  dropdownSettings:IDropdownSettings = {};
+  CountryId: any
+  Services: IdNameList[]
+  dropdownList: any = [];
+  selectedItems: IdNameList[] = [];
+  selectedItemsIds: number[] = [];
+  dropdownSettings: IDropdownSettings = {};
+  ListOfMobileNumber: any[];
 
   constructor(
     private fb: FormBuilder,
     private modalService: NgbModal,
     private lookupService: LookupsService,
-    private ClinicService:ClinicInfoService,
-    private Router:Router
+    private ClinicService: ClinicInfoService,
+    private Router: Router
   ) {
     this.coordinates = {} as Coordinates;
   }
@@ -46,7 +47,7 @@ export class ClinicInfoComponent implements OnInit {
   ngOnInit(): void {
 
 
-
+    this.ListOfMobileNumber = [];
 
     //#region multiple select
     this.GetServices()
@@ -60,7 +61,6 @@ export class ClinicInfoComponent implements OnInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
-
 
     //#endregion
 
@@ -93,11 +93,11 @@ export class ClinicInfoComponent implements OnInit {
       ],
       City: ['', [Validators.required]],
       Address: ['', [Validators.required]],
-      Street: ['', [Validators.required]],
+      // Street: ['', [Validators.required]],
       Area: ['', [Validators.required]],
       BuildingNumber: ['', [Validators.required]],
       FloorNumber: ['', [Validators.required]],
-      ApartmentNumber: ['', [Validators.required]],
+      // ApartmentNumber: ['', [Validators.required]],
       FixedFee: ['', [Validators.required]],
       Services: ['', [Validators.nullValidator]],
     });
@@ -110,7 +110,7 @@ export class ClinicInfoComponent implements OnInit {
 
   openGoogelMapsModal() {
     const modalRef = this.modalService.open(GoogleMapsComponent, {
-      scrollable: true,modalDialogClass:"modal-xl modal-dialog-centered modal-dialog-scrollable"
+      scrollable: true, modalDialogClass: "modal-xl modal-dialog-centered modal-dialog-scrollable"
     });
     let data = {
       prop1: 'Some Data',
@@ -123,7 +123,7 @@ export class ClinicInfoComponent implements OnInit {
       (result) => {
         this.address = result.address;
       },
-      (reason) => {}
+      (reason) => { }
     );
   }
 
@@ -153,104 +153,111 @@ export class ClinicInfoComponent implements OnInit {
   }
   //#endregion
 
-  //#region git Cities
+  //#region get Cities
   GetCities() {
     this.lookupService.GetCities('en').subscribe(
       (res) => {
         this.Cities = res.Data;
-
       },
       (err) => {
-        console.log(err);
       }
     );
   }
   //#endregion
 
-  //#region git Cities
+  //#region Get Areas
   GetAreas() {
     this.lookupService.GetAreas('en').subscribe(
       (res) => {
         this.Areas = res.Data;
       },
       (err) => {
-        console.log(err);
       }
     );
   }
   //#endregion
 
-  //#region git Services
+  //#region get Services
   GetServices() {
     this.lookupService.GetServices('en').subscribe(
       (res) => {
         this.Services = res.Data;
-    this.dropdownList = this.Services
-
+        this.dropdownList = this.Services
       },
       (err) => {
-        console.log(err);
       }
     );
   }
   //#endregion
 
   //#region Selectedcity
-  SelectCity(event:any){
-    this.ClinicInfoForm.controls.City=event.target.value;
-    let city =this.Cities.find(city=> city.Id == event.target.value)
+  SelectCity(event: any) {
+    this.ClinicInfoForm.controls.City = event.target.value;
+    let city = this.Cities.find(city => city.Id == event.target.value)
     this.CountryId = city?.CountryId
   }
   //#endregion
 
   //#region SelectedArea
-  SelectArea(event:any){
+  SelectArea(event: any) {
     this.ClinicInfoForm.controls.Area = event.target.value;
-    // console.log(event.target.value)
   }
   //#endregion
 
   //#region Create Clinic
-  CreateClinic(lang:string,ClinicForm:FormData){
-    this.ClinicService.CreateClinic(lang,ClinicForm).subscribe((res)=>{
+  CreateClinic(lang: string, ClinicForm: FormData) {
+    this.ClinicService.CreateClinic(lang, ClinicForm).subscribe((res) => {
       // console.log("ClinicId : ",this.ClinicId.ClinicId)
       // this.ClinicService.ClinicID = res.Data.ClinicId;
-    //  this.Router.navigateByUrl("clinic/gallary")/ClinicId
-     this.Router.navigate(['clinic/gallary/',res.Data.ClinicId]);
+      //  this.Router.navigateByUrl("clinic/gallary")/ClinicId
+      this.Router.navigate(['clinic/gallary/', res.Data.ClinicId]);
     },
-    (err)=>{
-      console.log(err)
-    })
+      (err) => {
+      })
   }
   //#endregion
 
-  ressetform(form:NgForm){
+  ressetform(form: NgForm) {
     form.reset()
   }
 
-  //#region
-  submitClinic(){
+  //#region submit Clinic
+  submitClinic() {
     const formData = new FormData();
     this.selectedItems.forEach(element => {
-      formData.append('HealthEntityServiceDtos',element.Id as unknown as Blob)    });
+      formData.append('HealthEntityServiceDtos', element.Id as unknown as Blob)
+    });
+
+    this.ListOfMobileNumber.push(this.ClinicInfoForm.controls.PhoneNumber.value);
+
+    if(this.ClinicInfoForm.controls.PhoneNumber2.value !='undefined'){
+      this.ListOfMobileNumber.push(this.ClinicInfoForm.controls.PhoneNumber2.value);
+    }
+
+    if(this.ClinicInfoForm.controls.PhoneNumber3.value !='undefined'){
+      this.ListOfMobileNumber.push(this.ClinicInfoForm.controls.PhoneNumber3.value);
+    }
+
     // console.log("list",this.selectedItemsIds)
 
-    formData.append('HealthEntityPhoneDtos',[+this.ClinicInfoForm.controls.PhoneNumber.value,+this.ClinicInfoForm.controls.PhoneNumber2.value,+this.ClinicInfoForm.controls.PhoneNumber3.value] as unknown as Blob)
+    // formData.append('HealthEntityPhoneDtos',[+this.ClinicInfoForm.controls.PhoneNumber.value,+this.ClinicInfoForm.controls.PhoneNumber2.value,+this.ClinicInfoForm.controls.PhoneNumber3.value] as unknown as Blob)
+    formData.append('HealthEntityPhoneDtos', this.ListOfMobileNumber as unknown as Blob)
 
-    formData.append('Name',this.ClinicInfoForm.controls.Name.value)
-    formData.append('NameAr',this.ClinicInfoForm.controls.NameAr.value)
-    formData.append('Email',this.ClinicInfoForm.controls.Email.value)
-    formData.append('CountryId',this.CountryId as unknown as Blob)
-    formData.append('CityId',this.ClinicInfoForm.controls.City as unknown as Blob)
-    formData.append('AreaId',this.ClinicInfoForm.controls.Area as unknown as Blob)
-    formData.append('FixedFee',+this.ClinicInfoForm.controls.FixedFee.value as unknown as Blob)
-    formData.append('Address',this.ClinicInfoForm.controls.Address.value)
-    formData.append('BlockNo',+this.ClinicInfoForm.controls.BuildingNumber.value as unknown as Blob)
-    formData.append('FloorNo',+this.ClinicInfoForm.controls.FloorNumber.value as unknown as Blob)
-    formData.append('Inactive',"true")
-    formData.append('clinicLogo',this.ClinicInfoModel.clinicLogo)
 
-    this.CreateClinic('en',formData)
+    formData.append('Name', this.ClinicInfoForm.controls.Name.value)
+    formData.append('NameAr', this.ClinicInfoForm.controls.NameAr.value)
+    formData.append('Email', this.ClinicInfoForm.controls.Email.value)
+    formData.append('CountryId', this.CountryId as unknown as Blob)
+    formData.append('CityId', this.ClinicInfoForm.controls.City as unknown as Blob)
+    formData.append('AreaId', this.ClinicInfoForm.controls.Area as unknown as Blob)
+    formData.append('FixedFee', +this.ClinicInfoForm.controls.FixedFee.value as unknown as Blob)
+    formData.append('Address', this.ClinicInfoForm.controls.Address.value)
+    formData.append('BlockNo', +this.ClinicInfoForm.controls.BuildingNumber.value as unknown as Blob)
+    formData.append('FloorNo', +this.ClinicInfoForm.controls.FloorNumber.value as unknown as Blob)
+    formData.append('Inactive', "true")
+    formData.append('clinicLogo', this.ClinicInfoModel.clinicLogo)
+
+    this.CreateClinic('en', formData)
 
 
   }
@@ -262,5 +269,5 @@ export class ClinicInfoComponent implements OnInit {
   onSelectAll(items: any) {
     // console.log(items);
   }
-  
+
 }
